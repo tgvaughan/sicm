@@ -1,0 +1,1439 @@
+@font-face{
+	font-family: "Adobe Caslon Pro";src: url(../fonts/ACaslonPro-Regular.otf);font-style: normal;	font-weight: normal;
+}
+@font-face{
+	font-family: "Adobe Caslon Pro";	src: url(../fonts/ACaslonPro-Bold.otf);	font-style: normal;	font-weight: bold;
+}
+@font-face{
+	font-family: "Adobe Caslon Pro";	src: url(../fonts/ACaslonPro-Italic.otf);	font-style: italic;	font-weight: normal;
+}
+@font-face{
+	font-family: "Adobe Caslon Pro";	src: url(../fonts/ACaslonPro-BoldItalic.otf);	font-style: italic;	font-weight: bold;
+}
+@font-face{
+	font-family: "Courier New";src: url(../fonts/CourierNew.ttf);font-style: normal;	font-weight: normal;
+}
+@font-face{
+	font-family: "Courier New";	src: url(../fonts/courbd_0.ttf);	font-style: normal;	font-weight: bold;
+}
+@font-face{
+	font-family: "Courier New";	src: url(../fonts/couri_0.ttf);	font-style: italic;	font-weight: normal;
+}
+@font-face{
+	font-family: "Courier New";	src: url(../fonts/courbi_0.ttf);	font-style: italic;	font-weight: bold;
+}
+
+@font-face{
+	font-family: "Monospaced";src: url(../fonts/MONSPACN.TTF);font-style: normal;	font-weight: normal;
+}
+@font-face{
+	font-family: "Monospaced";	src: url(../fonts/MONSPACB.TTF);	font-style: normal;	font-weight: bold;
+}
+@font-face{
+	font-family: "Monospaced";	src: url(../fonts/MONSPACI.TTF);	font-style: italic;	font-weight: normal;
+}
+@font-face{
+	font-family: "Monospaced";	src: url(../fonts/MONSPACT.TTF);	font-style: italic;	font-weight: bold;
+}
+
+
+
+.body {
+font-family: "Adobe Caslon Pro";
+text-align: justify;
+font-size: small;
+}
+
+.cp {
+page-break-before: always;
+}
+
+p { display: block;
+font-family: "Adobe Caslon Pro";
+ margin-top: 0pt;
+ margin-bottom: 0pt;
+ margin-left: 0pt;
+ margin-right: 0pt;
+ text-indent: 20pt;
+ }
+
+.center {
+text-align: center;
+text-indent: 0pt;
+}
+
+.cent1{
+text-align: center;
+text-indent: 0pt;
+margin-top: 12pt;
+}
+
+.center-top-bottom {
+text-align: center;
+text-indent: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+}
+
+.center-top {
+text-align: center;
+text-indent: 0pt;
+margin-top: 12pt;
+}
+
+.center-top1 {
+text-align: center;
+text-indent: 0pt;
+margin-top: 25%;
+}
+
+.right {
+text-align: right;
+text-indent: 0pt;
+}
+
+.right-top-bottom {
+text-align: right;
+text-indent: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+}
+
+.right-top {
+text-align: right;
+text-indent: 0pt;
+margin-top: 12pt;
+}
+
+
+p.orn {
+text-align: center;
+text-indent: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+}
+
+.space-break {
+margin-top: 12pt;
+text-indent: 20pt;
+}
+.space-break-top {
+margin-top: 20pt;
+text-indent: 20pt;
+}
+
+blockquote, div.epigraph, div.letter, div.poem {
+margin-left: 20pt;
+margin-right: 20pt;
+margin-top: 20pt;
+margin-bottom: 20pt;
+}
+
+.pull-quote {
+font-size: small;
+font-family: "Courier New";
+margin-top: 12pt;
+margin-bottom: 12pt;
+}
+
+.pull-quote1 {
+margin-left: 20pt;
+margin-right: 20pt;
+margin-top: 0pt;
+margin-bottom: 12pt;
+}
+
+.pull-quoteb {
+margin-left: 40pt;
+margin-right: 10pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+}
+.pull-quotec {
+margin-left: 20pt;
+margin-right: 20pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+padding: 8pt;
+}
+.pull-quotebox {
+margin-top: 12pt;
+margin-bottom: 12pt;
+border: 1px solid #000000;
+}
+
+
+.noindent {
+text-indent: 0pt;
+}
+
+
+.noindent1-top {
+text-indent: 0pt;
+margin-top: 12pt;
+}
+.noindent1-topa {
+text-indent: 0pt;
+margin-top: 6pt;
+}
+.eqtext, .eqtext1 {
+text-indent: 0pt;
+margin-top: 8pt;
+margin-left: 0pt;
+margin-bottom: 8pt;
+}
+
+.noindent1-top1, .pa {
+text-indent: 0pt;
+margin-top: 4pt;
+}
+
+.noindent-top {
+text-indent: 0pt;
+margin-top: 26pt;
+}
+
+.level1 {
+font-size: large;
+margin-top: 26pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+
+.level2 {
+font-size: medium;
+margin-top: 20pt;
+margin-bottom: 4pt;
+text-align: left;
+}
+.level3 {
+font-size: medium;
+margin-top: 20pt;
+margin-bottom: 0pt;
+text-align: left;
+}
+.level4 {
+font-size: medium;
+margin-top: 20pt;
+margin-bottom: 8pt;
+text-align: left;
+}
+.part-number {
+font-size: large;
+margin-top: 10%;
+margin-bottom: 12pt;
+text-align: center;
+}
+
+.part-title{
+font-size: large;
+margin-top: 25%;
+margin-bottom: 26pt;
+text-align: center;
+}
+
+.chapter-number {
+font-size: x-large;
+margin-top: 30pt;
+margin-bottom: 0pt;
+text-align: left;
+}
+
+.chapter-title{
+font-size: x-large;
+margin-top: 8pt;
+margin-bottom: 26pt;
+text-align: left;
+}
+.chapter-subtitle{
+font-size: x-large;
+margin-top: 8pt;
+margin-bottom: 26pt;
+text-align: center;
+text-indent: 0pt;
+font-weight: bold;
+}
+.appendix-title, .index-title, .glossary-title, .author_bio-title {
+font-size: large;
+margin-top: 20%;
+margin-bottom: 26pt;
+text-align: center;
+}
+
+.toc-title   {
+font-size: x-large;
+margin-top: 20%;
+margin-bottom: 26pt;
+text-align: left;
+}
+.front-title   {
+font-size: x-large;
+margin-top: 20%;
+margin-bottom: 26pt;
+text-align: left;
+}
+.back-title   {
+font-size: x-large;
+margin-top: 20%;
+margin-bottom: 26pt;
+text-align: left;
+}
+.acknowledgments-subtitle, .preface-subtitle,  .prologue-subtitle, .foreword-subtitle   {
+font-size: medium;
+margin-top: 0pt;
+margin-bottom: 26pt;
+text-align: center;
+}
+
+.notes-title {
+font-size: large;
+margin-top: 20%;
+margin-bottom: 26pt;
+text-align: center;
+}
+
+.copyright-title {
+font-size: medium;
+margin-top: 10%;
+margin-bottom: 26pt;
+text-align: center;
+font-weight: normal;
+}
+
+.toc-part {
+text-indent: 0pt;
+margin-top: 12pt;
+font-weight: normal;
+}
+
+.ded { display: block;
+ margin-top: 6pt;
+ margin-bottom: 0pt;
+ margin-left: 0pt;
+ margin-right: 0pt;
+ text-indent: 0pt;
+text-align: center;
+ }
+
+.ded2 { display: block;
+ margin-top: 25%;
+ margin-bottom: 0pt;
+ margin-left: 0pt;
+ margin-right: 0pt;
+ text-indent: 0pt;
+text-align: center;
+ }
+
+.figure-title { display: block;
+ margin-top: 20pt;
+ margin-bottom: 4pt;
+ margin-left: 0pt;
+ margin-right: 0pt;
+ text-indent: 0pt;
+text-align: left;
+font-weight: bold;
+ }
+.fig-img { display: block;
+ margin-top: 12pt;
+ margin-bottom: 12pt;
+ margin-left: 0pt;
+ margin-right: 0pt;
+ text-indent: 0pt;
+text-align: center;
+ }
+.fig-img1 { display: block;
+ margin-top: 0pt;
+ margin-bottom: 0pt;
+ margin-left: 0pt;
+ margin-right: 0pt;
+ text-indent: 0pt;
+text-align: center;
+ }
+
+.toc {
+text-indent: 0pt;
+margin-top: 14pt;
+}
+.toc1 {
+text-indent: 0pt;
+margin-top: 6pt;
+margin-left: 10pt;
+}
+
+.toc-h1 {
+text-indent: 0pt;
+margin-top: 6pt;
+margin-left: 10pt;
+}
+.toc-h3 {
+text-indent: 0pt;
+margin-top: 0pt;
+margin-left: 10pt;
+}
+
+.toc-preface, .toc-acknowledgements, .toc-glossary, .toc-appendix {
+text-indent: 0pt;
+margin-top: 6pt;
+margin-bottom: 6pt;
+}
+
+
+.copyright-space {
+text-indent: 0pt;
+margin-top: 12pt;
+font-size: small;
+text-align: center;
+}
+
+.copyright-spaces {
+text-indent: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+font-size: small;
+text-align: center;
+}
+
+.copyright {
+text-indent: 0pt;
+margin-top: 0pt;
+font-size: small;
+text-align: center;
+}
+
+
+.glossentry {
+margin-left: 20pt;
+text-indent: -20pt;
+margin-top: 6pt;
+}
+
+.ntx {
+text-indent: 0pt;
+margin-top: 6pt;
+}
+.ntxp {
+text-indent: 0pt;
+margin-left: 16pt;
+margin-top: 6pt;
+}
+
+.footnote {
+text-indent: 0pt;
+}
+
+.poem-line {
+text-indent: 0pt;
+text-align: left;
+}
+
+span.underline {
+text-decoration: underline;
+}
+
+.table1 {
+font-size: small;
+margin-top: 10pt;
+margin-bottom: 10pt;
+border-collapse: collapse;
+}
+.table1width {
+width: 100%;
+font-size: small;
+margin-top: 10pt;
+margin-bottom: 10pt;
+border-collapse: collapse;
+}
+.table2 {
+font-size: small;
+width: 50%;
+margin-left: 30pt;
+margin-right: 30pt;
+margin-top: 10pt;
+margin-bottom: 10pt;
+border-collapse: collapse;
+}
+.table3 {
+font-size: small;
+width: 60%;
+margin-left: 30pt;
+margin-right: 30pt;
+margin-top: 10pt;
+margin-bottom: 10pt;
+border-collapse: collapse;
+}
+.table1tb {
+font-size: small;
+width: 100%;
+margin-top: 12pt;
+margin-bottom: 12pt;
+border-collapse: collapse;
+}
+.table1t {
+font-size: small;
+width: 100%;
+margin-top: 12pt;
+margin-bottom: 0pt;
+border-collapse: collapse;
+}
+.table1b {
+font-size: small;
+width: 100%;
+margin-top: 0pt;
+margin-bottom: 12pt;
+border-collapse: collapse;
+}
+.table1n {
+font-size: small;
+margin-top: 0pt;
+margin-bottom: 0pt;
+border-collapse: collapse;
+}
+.table1n1 {
+width: 60%;
+font-size: small;
+margin-top: 0pt;
+margin-bottom: 0pt;
+border-collapse: collapse;
+}
+
+
+
+
+.img {
+text-align: center;
+text-indent: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+}
+
+.td1 {
+padding: 2pt;
+}
+.td1w {
+width:20%;
+padding: 2pt;
+}
+
+.td1l {
+padding: 2pt;
+border-left: 1px solid #000000;
+}
+
+.td1r {
+padding: 2pt;
+border-right: 1px solid #000000;
+}
+
+.td1t {
+padding: 2pt;
+border-top: 1px solid #000000;
+}
+
+.td1b {
+padding: 2pt;
+border-bottom: 1px solid #000000;
+}
+
+.td1all {
+padding: 2pt;
+border: 1px solid #000000;
+}
+
+.th1 {
+border-top: 1px solid #000000;
+border-bottom: 1px solid #000000;
+padding: 2pt;
+}
+
+
+
+
+.table-caption
+{
+text-indent: 0pt;
+margin-top: 20pt;
+margin-bottom: 20pt;
+text-align: center;
+}
+.table-foot
+{
+text-indent: 0pt;
+margin-top: 0pt;
+margin-bottom: 20pt;
+text-align: left;
+font-size: x-small;
+}
+
+.caption {
+text-indent: 0pt;
+margin-top: 6pt;
+margin-bottom: 0pt;
+}
+
+.idx_head
+{
+margin-top: 12pt;
+margin-bottom: 0em;
+font-size: medium;
+text-align: center;
+text-indent: 0pt;
+}
+
+.idx-main
+{
+text-indent: -12pt;
+margin-left: 12pt;
+}
+
+.idx-main-top
+{
+text-indent: -12pt;
+margin-left: 12pt;
+margin-top: 10pt;
+}
+.idx-main-top1
+{
+text-indent: -12pt;
+margin-left: 12pt;
+margin-top: 30pt;
+}
+.idx-sub
+{
+text-indent: -12pt;
+margin-left: 20pt;
+}
+.idx-subsub
+{
+text-indent: -28pt;
+margin-left: 42pt;
+}
+.nl-top
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 34pt;
+margin-top: 12pt;
+}
+.nl
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 34pt;
+}
+.nl-para
+{
+text-align: left;
+text-indent: 20pt;
+margin-left: 34pt;
+}
+
+.nl1-list
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 12pt;
+margin-top: 4pt;
+}
+.nl1-list-para
+{
+text-align: left;
+text-indent: 0pt;
+margin-top: 4pt;
+margin-left: 12pt;
+}
+.nl-2list
+{
+text-align: left;
+text-indent: -20pt;
+margin-left: 34pt;
+}
+.nl-2list-para
+{
+text-indent: 0pt;
+margin-left: 26pt;
+}
+.nl-3list
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 40pt;
+}
+.nl-3list-para
+{
+text-indent: 0pt;
+margin-left: 40pt;
+}
+.nl-4list
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 54pt;
+}
+.nl-4list-para
+{
+text-indent: 0pt;
+margin-left: 54pt;
+}
+.nl-5list
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 68pt;
+}
+.nl-5list-para
+{
+text-indent: 0pt;
+margin-left: 68pt;
+}
+
+
+.bl-top
+{
+margin-top: 12pt;
+text-align: left;
+margin-left: 28pt;
+text-indent: -6pt;
+}
+.bl
+{
+text-align: left;
+margin-left: 28pt;
+text-indent: -6pt;
+}
+.bl-para
+{
+margin-left: 28pt;
+text-indent: 0pt;
+}
+.bl-1list
+{
+text-align: left;
+margin-left: 6pt;
+text-indent: -6pt;
+}
+.bl-2list
+{
+text-align: left;
+margin-left: 16pt;
+text-indent: -6pt;
+}
+.bl-3list
+{
+text-align: left;
+margin-left: 28pt;
+text-indent: -6pt;
+}
+.bl-4list
+{
+text-align: left;
+margin-left: 40pt;
+text-indent: -6pt;
+}
+
+.bl-5list
+{
+text-align: left;
+margin-left: 56pt;
+text-indent: -6pt;
+}
+.ext
+{
+margin-left: 30pt;
+margin-right: 30pt;
+text-indent: 0pt;
+}
+.ext-top
+{
+margin-left: 30pt;
+margin-right: 30pt;
+margin-top: 12pt;
+text-indent: 0pt;
+}
+.ext-bottom
+{
+margin-left: 30pt;
+margin-right: 30pt;
+margin-bottom: 12pt;
+text-indent: 0pt;
+}
+.vtx
+{
+margin-left: 40pt;
+margin-right: 30pt;
+text-indent: 0pt;
+}
+.vtx-top
+{
+margin-left: 40pt;
+margin-right: 30pt;
+margin-top: 12pt;
+text-indent: 0pt;
+}
+.vtx-bottom
+{
+margin-left: 40pt;
+margin-right: 30pt;
+margin-bottom: 12pt;
+text-indent: 0pt;
+}
+.dropcap
+{
+font-size: xx-large;
+}
+.half-title
+{
+font-size: large;
+margin-top: 10%;
+margin-bottom: 12pt;
+text-align: left;
+text-indent: 0pt;
+}
+.half-subtitle
+{
+font-size: large;
+margin-top: 0pt;
+margin-bottom: 26pt;
+text-align: center;
+text-indent: 0pt;
+}
+
+.title
+{
+font-size: x-large;
+margin-top: 10%;
+margin-bottom: 0pt;
+text-align: left;
+text-indent: 0pt;
+}
+.tit1
+{
+font-size: large;
+margin-top: 10pt;
+margin-bottom: 0pt;
+text-align: left;
+text-indent: 0pt;
+}
+.sub-title
+{
+font-size: medium;
+margin-top: 8pt;
+margin-bottom: 26pt;
+text-align: center;
+text-indent: 0pt;
+}
+.au
+{
+font-size: large;
+margin-top: 80pt;
+margin-bottom: 0pt;
+text-align: left;
+text-indent: 0pt;
+}    
+.tit-publisher
+{
+font-size: medium;
+margin-top: 30%;
+margin-bottom: 0pt;
+text-align: left;
+text-indent: 0pt;
+}    
+.tit-publisher1
+{
+font-size: small;
+margin-top: 0pt;
+margin-bottom: 0pt;
+text-align: center;
+text-indent: 0pt;
+}    
+
+.L-opening
+{
+margin-top: 12pt;
+margin-bottom: 0pt;
+text-indent: 0pt;
+}    
+.signature
+{
+margin-top: 12pt;
+margin-bottom: 0pt;
+text-indent: 0pt;
+}    
+.box-heading
+{
+margin-top: 0.3em;
+margin-bottom: 0.4em;
+text-indent: 0pt;
+text-align: center;
+}    
+.para-hang
+{
+margin-top: 0pt;
+margin-bottom: 0pt;
+margin-left: 12pt;
+text-indent: -12pt;
+}    
+.para-hang-top
+{
+margin-top: 12pt;
+margin-bottom: 0pt;
+margin-left: 12pt;
+text-indent: -12pt;
+}    
+
+.pq
+{
+text-indent: 20pt;
+margin-left: 0pt;
+}
+.pq-indent
+{
+text-indent: 20pt;
+margin-left: 0pt;
+}
+.pq-center
+{
+text-align: center;
+text-indent: 0pt;
+}
+.pq-noindent
+{
+text-indent: 0pt;
+margin-left: 0pt;
+}
+.pqpa
+{
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 6pt;
+}
+.pq-noindent1-top
+{
+text-indent: 0pt;
+margin-top: 12pt;
+margin-left: 0pt;
+}
+
+.pq-noindent1-top1
+{
+text-indent: 0pt;
+margin-top: 6pt;
+margin-left: 0pt;
+}
+
+.pq-noindent-top
+{
+text-indent: 0pt;
+margin-top: 26pt;
+margin-left: 0pt;
+}
+.pq-space-break
+{
+text-indent: 20pt;
+margin-top: 12pt;
+margin-left: 0pt;
+}
+.pq-space-break-top
+{
+text-indent: 20pt;
+margin-top: 26pt;
+margin-left: 0pt;
+}
+
+
+.pq-right
+{
+text-indent: 0pt;
+margin-left: 0pt;
+text-align: right;
+}
+.cotx
+{
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 4em;
+}
+.reference-text
+{
+text-indent: -22pt;
+margin-left: 22pt;
+margin-top: 4pt;
+}
+.reference-text1
+{
+text-indent: -14pt;
+margin-left: 12pt;
+margin-top: 8pt;
+}
+.reference-text-top
+{
+text-indent: -1.5em;
+margin-left: 20pt;
+margin-top: 12pt;
+}
+.divimage
+{
+display: inline-block;
+padding-top: 16pt;
+padding-bottom: 16pt;
+width: 100%;
+}
+.strike
+{
+text-decoration: line-through;
+}
+.ulnoindent
+{
+margin-left: 12pt;
+margin-top: 10pt;
+margin-bottom: 10pt;
+}
+.olnoindent
+{
+margin-left: 12pt;
+margin-top: 10pt;
+margin-bottom: 10pt;
+}
+.ulindent
+{
+margin-left: 0pt;
+margin-top: 10pt;
+margin-bottom: 10pt;
+}
+.olindent
+{
+margin-left: 0pt;
+margin-top: 10pt;
+margin-bottom: 10pt;
+}
+
+.litop
+{
+margin-top: 6pt;
+}
+
+.block
+{
+display: block;
+}
+.tdph
+{
+margin-top: 0pt;
+margin-bottom: 0pt;
+margin-left: 12pt;
+text-indent: -12pt;
+}    
+.tdindent
+{
+margin-top: 0pt;
+margin-bottom: 0pt;
+margin-left: 12pt;
+text-indent: 0pt;
+}    
+.tdnl
+{
+margin-top: 0pt;
+margin-bottom: 0pt;
+margin-left: 12pt;
+text-indent: -12pt;
+}    
+
+
+
+/* New Style Updating */
+
+
+
+
+
+
+.noindent1-top-exe {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 4pt;
+text-align: left;
+}
+.noindent1-top-War {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.noindent1-top-slo {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.noindent1-top-rem {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.noindent1-top-con {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.noindent1-top-app {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.noindent1-top-def {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.noindent1-top-pro {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.noindent1-top-not {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.noindent1-top-sol {
+text-indent: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+}
+.noindent1-top-the {
+text-indent: 0pt;
+margin-left: 0pt;
+margin-top: 12pt;
+margin-bottom: 12pt;
+text-align: left;
+}
+.disp-eq-no { display: block;
+ margin-top: 12pt;
+ margin-bottom: 12pt;
+ margin-left: 0pt;
+ margin-right: 0pt;
+ text-indent: 0pt;
+text-align: center;
+ }
+.disp-eq { display: block;
+ margin-top: 12pt;
+ margin-bottom: 12pt;
+ margin-left: 0pt;
+ margin-right: 0pt;
+ text-indent: 0pt;
+text-align: center;
+ }
+
+
+.border1
+{
+padding-left: 2pt;
+padding-right: 2pt;
+border: 1px solid #000000;
+}
+
+.color1
+{
+color: blue;
+}
+
+.color2
+{
+color: red;
+}
+
+.color3
+{
+color: green;
+}
+
+
+
+.nl1-list-1
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 12pt;
+margin-top: 4pt;
+}
+.nl1-list-2
+{
+text-align: left;
+text-indent: -14pt;
+margin-left: 30pt;
+margin-top: 4pt;
+}
+.nl1-list-n
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 12pt;
+margin-top: 4pt;
+}
+.nl3-list
+{
+text-align: left;
+text-indent: -14pt;
+margin-left: 28pt;
+}
+.font1
+{
+font-family: "Courier New";
+}
+
+
+
+
+
+.nl1-list-na
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 30pt;
+margin-top: 4pt;
+}
+.nl1-list-1a
+{
+text-align: left;
+text-indent: -30pt;
+margin-left: 30pt;
+margin-top: 4pt;
+} 
+.nl2-list
+{
+text-align: left;
+text-indent: -12pt;
+margin-left: 32pt;
+margin-top: 4pt;
+}
+.nl2-list-para
+{
+text-align: left;
+text-indent: 0pt;
+margin-top: 4pt;
+margin-left: 32pt;
+} 
+
+
+
+.pqp1
+{
+text-indent: 0pt;
+margin-left: 10pt;
+margin-top: 0pt;
+}
+.pqp1t
+{
+text-indent: 0pt;
+margin-left: 10pt;
+margin-top: 10pt;
+}
+.pqp1a
+{
+text-indent: 0pt;
+margin-left: 18pt;
+margin-top: 0pt;
+}
+.pqp1b
+{
+text-indent: 0pt;
+margin-left: 6pt;
+margin-top: 0pt;
+}
+.pqp1c
+{
+text-indent: 0pt;
+margin-left: 12pt;
+margin-top: 0pt;
+}
+.pqp1d
+{
+text-indent: 0pt;
+margin-left: 16pt;
+margin-top: 0pt;
+}
+.pqp2
+{
+text-indent: 0pt;
+margin-left: 20pt;
+margin-top: 0pt;
+}
+.pqp2a
+{
+text-indent: 0pt;
+margin-left: 24pt;
+margin-top: 0pt;
+}
+.pqp3
+{
+text-indent: 0pt;
+margin-left: 30pt;
+margin-top: 0pt;
+}
+.pqp3a
+{
+text-indent: 0pt;
+margin-left: 34pt;
+margin-top: 0pt;
+}
+.pqp3b
+{
+text-indent: 0pt;
+margin-left: 38pt;
+margin-top: 0pt;
+}
+.pqp4a
+{
+text-indent: 0pt;
+margin-left: 34pt;
+margin-top: 0pt;
+}
+.pqp4
+{
+text-indent: 0pt;
+margin-left: 40pt;
+margin-top: 0pt;
+}
+.pqp4b
+{
+text-indent: 0pt;
+margin-left: 46pt;
+margin-top: 0pt;
+}
+.pqp4c
+{
+text-indent: 0pt;
+margin-left: 48pt;
+margin-top: 0pt;
+}
+.pqp5
+{
+text-indent: 0pt;
+margin-left: 50pt;
+margin-top: 0pt;
+}
+.pqp5a
+{
+text-indent: 0pt;
+margin-left: 56pt;
+margin-top: 0pt;
+}
+.pqp5b
+{
+text-indent: 0pt;
+margin-left: 58pt;
+margin-top: 0pt;
+}
+.pqp5c
+{
+text-indent: 0pt;
+margin-left: 54pt;
+margin-top: 0pt;
+}
+.pqp6
+{
+text-indent: 0pt;
+margin-left: 60pt;
+margin-top: 0pt;
+}
+.pqp6a
+{
+text-indent: 0pt;
+margin-left: 66pt;
+margin-top: 0pt;
+}
+.pqp7
+{
+text-indent: 0pt;
+margin-left: 70pt;
+margin-top: 0pt;
+}
+.pqp7a
+{
+text-indent: 0pt;
+margin-left: 74pt;
+margin-top: 0pt;
+}
+.pqp8
+{
+text-indent: 0pt;
+margin-left: 80pt;
+margin-top: 0pt;
+}
+.pqp8a
+{
+text-indent: 0pt;
+margin-left: 84pt;
+margin-top: 0pt;
+}
+.pqp9
+{
+text-indent: 0pt;
+margin-left: 90pt;
+margin-top: 0pt;
+}
+.pqp10
+{
+text-indent: 0pt;
+margin-left: 100pt;
+margin-top: 0pt;
+}
+.pqp10b
+{
+text-indent: 0pt;
+margin-left: 104pt;
+margin-top: 0pt;
+}
+.pqp11
+{
+text-indent: 0pt;
+margin-left: 110pt;
+margin-top: 0pt;
+}
+.pqp12a
+{
+text-indent: 0pt;
+margin-left: 126pt;
+margin-top: 0pt;
+}
+.pqp10a
+{
+text-indent: 0pt;
+margin-left: 160pt;
+margin-top: 0pt;
+}
+.tablei1 {
+font-size: small;
+margin-left: 20pt;
+margin-top: 0pt;
+margin-bottom: 0pt;
+border-collapse: collapse;
+}
+.tablei2 {
+font-size: small;
+margin-left: 10pt;
+margin-top: 0pt;
+margin-bottom: 0pt;
+border-collapse: collapse;
+}
+
+
+.navigation {
+ color: red;
+ text-align: right;
+ font-style: italic;
+}
