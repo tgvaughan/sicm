@@ -23,284 +23,475 @@
 <h1 class="chapter-number"><a href="toc.html#chap-9"><strong>9</strong></a></h1>
 <h1 class="chapter-title"><a href="toc.html#chap-9"><strong>Appendix: Our Notation</strong></a></h1>
 <div class="pull-quoteb">
+
 <p class="pq-noindent">An adequate notation should be understood by at least two people, one of whom may be the author.</p>
+
 <p class="pq-noindent1-top">Abdus Salam (1950).</p>
 </div>
+
 <p class="cotx">We adopt a <em>functional mathematical notation</em> that is close to that used by Spivak in his <em>Calculus on Manifolds</em> [<a href="bibliography001.html#bib_40">40</a>]. The use of functional notation avoids many of the ambiguities of traditional mathematical notation; the ambiguities of traditional notation that can impede clear reasoning in classical mechanics. Functional notation carefully distinguishes the function from the value of the function when applied to particular arguments. In functional notation mathematical expressions are unambiguous and self-contained.</p>
+
 <p>We adopt a <em>generic arithmetic</em> in which the basic arithmetic operations, such as addition and multiplication, are extended to a wide variety of mathematical types. Thus, for example, the addition operator &#x002B; can be applied to numbers, tuples of numbers, matrices, functions, etc. Generic arithmetic formalizes the common informal practice used to manipulate mathematical objects.</p>
+
 <p>We often want to manipulate aggregate quantities, such as the collection of all of the rectangular coordinates of a collection of particles, without explicitly manipulating the component parts. Tensor arithmetic provides a traditional way of manipulating aggregate objects: Indices label the parts; conventions, such as the summation convention, are introduced to manipulate the indices. We introduce a <em>tuple arithmetic</em> as an alternative way of manipulating aggregate quantities that usually lets us avoid labeling the parts with indices. Tuple arithmetic is inspired by tensor arithmetic but it is more general: not all of the components of a tuple need to be of the same size or type.</p>
+
 <p>The mathematical notation is in one-to-one correspondence with expressions of the computer language <em>Scheme</em> [<a href="bibliography001.html#bib_24">24</a>]. Scheme is based on the <em>&#x03BB;</em>-calculus [<a href="bibliography001.html#bib_13">13</a>] and directly supports the manipulation of functions. We augment Scheme with symbolic, numerical, <a id="p510"></a>and generic features to support our applications. For a simple introduction to Scheme, see the Scheme appendix. The correspondence between the mathematical notation and Scheme requires that mathematical expressions be unambiguous and self-contained. Scheme provides immediate feedback in verification of mathematical deductions and facilitates the exploration of the behavior of systems.</p>
 <section>
 <section title="Functions">
 <h2 class="level2"><strong>Functions</strong></h2>
+
 <p class="noindent">The value of the function <em>f</em>, given the argument <em>x</em>, is written <em>f</em>(<em>x</em>). The expression <em>f</em>(<em>x</em>) denotes the value of the function at the given argument; when we wish to denote the function we write just <em>f</em>. Functions may take several arguments. For example, we may have the function that gives the Euclidean distance between two points in the plane given by their rectangular coordinates:</p>
+
 <p class="eqtext" id="disp_9.1"><epub:switch id="mathmlSwitch1867"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>d</mi><mo stretchy='false'>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy='false'>)</mo><mo>=</mo><msqrt><mrow><msup><mrow><mrow><mo>(</mo><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>&#x2212;</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mrow><mo>(</mo><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>&#x2212;</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup></mrow></msqrt><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.1</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">In Scheme we can write this as:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define (d x1 y1 x2 y2)</span></p>
+
 <p class="pqp1"><span class="font1">(sqrt (&#x002B; (square (- x2 x1)) (square (- y2 y1)))))</span></p>
 </div>
+
 <p>Functions may be composed if the range of one overlaps the domain of the other. The composition of functions is constructed by passing the output of one to the input of the other. We write the composition of two functions using the &#x2218; operation:</p>
+
 <p class="eqtext" id="disp_9.2"><epub:switch id="mathmlSwitch1868"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo>:</mo><mi>x</mi><mo>&#x21A6;</mo><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.2</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">A procedure <span class="font1">h</span> that computes the cube of the sine of its argument may be defined by composing the procedures <span class="font1">cube</span> and <span class="font1">sin</span>:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define h (compose cube sin))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(h 2)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>.7518269446689928</em></span></p>
 </div>
+
 <p class="noindent">which is the same as</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(cube (sin 2))</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>.7518269446689928</em></span></p>
 </div>
 <a id="p511"></a>
+
 <p>Arithmetic is extended to the manipulation of functions: the usual mathematical operations may be applied to functions. Examples are addition and multiplication; we may add or multiply two functions if they take the same kinds of arguments and if their values can be added or multiplied:</p>
+
 <p class="eqtext" id="disp_9.3"><epub:switch id="mathmlSwitch1869"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='right'><mrow><mo stretchy='false'>(</mo><mi>f</mi><mo>+</mo><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>+</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='right'><mrow><mo stretchy='false'>(</mo><mi>f</mi><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>9.3</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">A procedure <span class="font1">g</span> that multiplies the cube of its argument by the sine of its argument is</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define g (<sub>&#x002A;</sub> cube sin))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(g 2)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>7.274379414605454</em></span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(<sub>&#x002A;</sub> (cube 2) (sin 2))</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>7.274379414605454</em></span></p>
 </div>
 </section>
 <section title="Symbolic values">
 <h2 class="level2"><strong>Symbolic values</strong></h2>
+
 <p class="noindent">As in usual mathematical notation, arithmetic is extended to allow the use of symbols that represent unknown or incompletely specified mathematical objects. These symbols are manipulated as if they had values of a known type. By default, a Scheme symbol is assumed to represent a real number. So the expression <span class="font1">&#x2019;a</span> is a literal Scheme symbol that represents an unspecified real number:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">((compose cube sin) &#x2019;a)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(expt (sin a) 3)</em></span></p>
 </div>
+
 <p class="noindent">The default printer simplifies the expression and displays it in a readable form.<sup><a href="#endnote_1" id="endnote_ref_1">1</a></sup> We can use the simplifier to verify a trigonometric identity:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">((- (&#x002B; (square sin) (square cos)) 1) &#x2019;a)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>0</em></span></p>
 </div>
 <a id="p512"></a>
+
 <p>Just as it is useful to be able to manipulate symbolic numbers, it is useful to be able to manipulate symbolic functions. The procedure <span class="font1">literal-function</span> makes a procedure that acts as a function having no properties other than its name. By default, a literal function is defined to take one real argument and produce one real value. For example, we may want to work with a function <em>f</em> : <strong>R</strong> &#x2192; <strong>R</strong>:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">((literal-function &#x2019;f) &#x2019;x)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(f x)</em></span></p>
+
 <p class="pq-noindent1-top"><span class="font1">((compose (literal-function &#x2019;f) (literal-function &#x2019;g)) &#x2019;x)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(f (g x))</em></span></p>
 </div>
+
 <p>We can also make literal functions of multiple, possibly structured arguments that return structured values. For example, to denote a literal function named <span class="font1">g</span> that takes two real arguments and returns a real value (<em>g</em> : <strong>R</strong> &#x00D7; <strong>R</strong> &#x2192; <strong>R</strong>) we may write:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1"><span class="font1">(define g (literal-function &#x2019;g (-&#x003E; (X Real Real) Real)))</span></span></p>
+
 <p class="pq-noindent1-top"><span class="font1"><span class="font1">(g &#x2019;x &#x2019;y)</span></span></p>
+
 <p class="pq-noindent"><span class="font1"><span class="font1"><em>(g x y)</em></span></span></p>
 </div>
+
 <p class="noindent">We may use such a literal function anywhere that an explicit function of the same type may be used.</p>
+
 <p>There is a whole language for describing the type of a literal function in terms of the number of arguments, the types of the arguments, and the types of the values. Here we describe a function that maps pairs of real numbers to real numbers with the expression <span class="font1">(-&#x003E; (X Real Real) Real)</span>. Later we will introduce structured arguments and values and show extensions of literal functions to handle these.</p>
 </section>
 <section title="Tuples">
 <h2 class="level2"><strong>Tuples</strong></h2>
+
 <p class="noindent">There are two kinds of tuples: <em>up</em> tuples and <em>down</em> tuples. We write tuples as ordered lists of their components; a tuple is delimited by parentheses if it is an up tuple and by square brackets if it is a down tuple. For example, the up tuple <em>v</em> of velocity components <em>v</em><sup>0</sup>, <em>v</em><sup>1</sup>, and <em>v</em><sup>2</sup> is</p>
+
 <p class="eqtext" id="disp_9.4"><epub:switch id="mathmlSwitch1870"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>v</mi><mo>=</mo><mrow><mo>(</mo><mrow><msup><mi>v</mi><mn>0</mn></msup><mo>,</mo><msup><mi>v</mi><mn>1</mn></msup><mo>,</mo><msup><mi>v</mi><mn>2</mn></msup></mrow><mo>)</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.4</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
+
 <p class="noindent">The down tuple <em>p</em> of momentum components <em>p</em><sub>0</sub>, <em>p</em><sub>1</sub>, and <em>p</em><sub>2</sub> is</p>
+
 <p class="eqtext" id="disp_9.5"><epub:switch id="mathmlSwitch1871"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>p</mi><mo>=</mo><mo stretchy='false'>[</mo><msub><mi>p</mi><mn>0</mn></msub><mo>,</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub><mo stretchy='false'>]</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.5</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <a id="p513"></a>
+
 <p class="noindent">A component of an up tuple is usually identified by a superscript. A component of a down tuple is usually identified by a subscript. We use zero-based indexing when referring to tuple elements. This notation follows the usual convention in tensor arithmetic.</p>
+
 <p>We make tuples with the constructors <span class="font1">up</span> and <span class="font1">down</span>:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define v (up &#x2019;v^0 &#x2019;v^1 &#x2019;v^2))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">v</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(up v^0 v^1 v^2)</em></span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(define p (down &#x2019;p_0 &#x2019;p_1 &#x2019;p_2))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">p</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(down p_0 p_1 p_2)</em></span></p>
 </div>
+
 <p>Tuple arithmetic is different from the usual tensor arithmetic in that the components of a tuple may also be tuples and different components need not have the same structure. For example, a tuple structure <em>s</em> of phase-space states is</p>
+
 <p class="eqtext" id="disp_9.6"><epub:switch id="mathmlSwitch1872"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>s</mi><mo>=</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>,</mo><mo stretchy='false'>[</mo><msub><mi>p</mi><mi>x</mi></msub><mo>,</mo><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.6</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">It is an up tuple of the time, the coordinates, and the momenta. The time <em>t</em> has no substructure. The coordinates are an up tuple of the coordinate components <em>x</em> and <em>y</em>. The momentum is a down tuple of the momentum components <em>p<sub>x</sub></em> and <em>p<sub>y</sub></em>. This is written:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define s (up &#x2019;t (up &#x2019;x &#x2019;y) (down &#x2019;p_x &#x2019;p_y)))</span></p>
 </div>
+
 <p>In order to reference components of tuple structures there are selector functions, for example:</p>
+
 <p class="eqtext" id="disp_9.7"><epub:switch id="mathmlSwitch1873"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd columnalign='right'><mrow><mi>I</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mi>s</mi></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='right'><mrow><msub><mi>I</mi><mn>0</mn></msub><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mi>t</mi></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='right'><mrow><msub><mi>I</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='right'><mrow><msub><mi>I</mi><mn>2</mn></msub><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo stretchy='true'>[</mo><msub><mi>p</mi><mi>x</mi></msub><mo>,</mo><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='true'>]</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='right'><mrow><msub><mi>I</mi><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msub><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mi>x</mi></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='right'><mrow></mrow></mtd><mtd columnalign='left'><mo>&#x2026;</mo></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='right'><mrow><msub><mi>I</mi><mrow><mn>2</mn><mo>,</mo><mn>1</mn></mrow></msub><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><msub><mi>p</mi><mi>y</mi></msub><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>9.7</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">The sequence of integer subscripts on the selector describes the access chain to the desired component.</p>
 <a id="p514"></a>
+
 <p>The procedure <span class="font1">component</span> is the general selector procedure that implements the selector functions. For example, <em>I</em><sub>0,1</sub> is implemented by <span class="font1">(component 0 1)</span>:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">((component 0 1) (up (up &#x2019;a &#x2019;b) (up &#x2019;c &#x2019;d)))</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>b</em></span></p>
 </div>
+
 <p class="noindent">To access a component of a tuple we may also use the selector procedure <span class="font1">ref</span>, which takes a tuple and an index and returns the indicated element of the tuple:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(ref (up &#x2019;a &#x2019;b &#x2019;c) 1)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>b</em></span></p>
 </div>
+
 <p class="noindent">We use zero-based indexing everywhere. The procedure <span class="font1">ref</span> can be used to access any substructure of a tree of tuples:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(ref (up (up &#x2019;a &#x2019;b) (up &#x2019;c &#x2019;d)) 0 1)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>b</em></span></p>
 </div>
+
 <p>Two up tuples of the same length may be added or subtracted, elementwise, to produce an up tuple, if the components are compatible for addition. Similarly, two down tuples of the same length may be added or subtracted, elementwise, to produce a down tuple, if the components are compatible for addition.</p>
+
 <p>Any tuple may be multiplied by a number by multiplying each component by the number. Numbers may, of course, be multiplied. Tuples that are compatible for addition form a vector space.</p>
+
 <p>For convenience we define the square of a tuple to be the sum of the squares of the components of the tuple. Tuples can be multiplied, as described below, but the square of a tuple is not the product of the tuple with itself.</p>
+
 <p>The meaning of multiplication of tuples depends on the structure of the tuples. Two tuples are compatible for contraction if they are of opposite types, they are of the same length, and corresponding elements have the following property: either they are both tuples and are compatible for contraction, or one of them is not a tuple. If two tuples are compatible for contraction then generic multiplication is interpreted as contraction: the result is the sum of the products of corresponding components of the tuples. For example, <em>p</em> and <em>v</em> introduced in equations (<a href="chapter009.html#disp_9.4">9.4</a>) and (<a href="chapter009.html#disp_9.5">9.5</a>) above are compatible for contraction; the product is</p>
 <a id="p515"></a>
+
 <p class="eqtext" id="disp_9.8"><epub:switch id="mathmlSwitch1874"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>p</mi><mi>v</mi><mo>=</mo><msub><mi>p</mi><mn>0</mn></msub><msup><mi>v</mi><mn>0</mn></msup><mo>+</mo><msub><mi>p</mi><mn>1</mn></msub><msup><mi>v</mi><mn>1</mn></msup><mo>+</mo><msub><mi>p</mi><mn>2</mn></msub><msup><mi>v</mi><mn>2</mn></msup><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.8</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 
 <p class="noindent">So the product of tuples that are compatible for contraction is an inner product. Using the tuples <span class="font1">p</span> and <span class="font1">v</span> defined above gives us</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(<sub>&#x002A;</sub> p v)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> p_0 v^0) (<sub>&#x002A;</sub> p_1 v^1) (<sub>&#x002A;</sub> p_2 v^2))</em></span></p>
 </div>
+
 <p>Contraction of tuples is commutative: <em>pv</em> &#x003D; <em>vp</em>. Caution: Multiplication of tuples that are compatible for contraction is, in general, not associative. For example, let <em>u</em> &#x003D; (5, 2), <em>v</em> &#x003D; (11, 13), and <em>g</em> &#x003D; [[3, 5], [7, 9]]. Then <em>u</em>(<em>gv</em>) &#x003D; 964, but (<em>ug</em>)<em>v</em> &#x003D; 878. The expression <em>ugv</em> is ambiguous. An expression that has this ambiguity does not occur in this book.</p>
+
 <p>The rule for multiplying two structures that are not compatible for contraction is simple. If <em>A</em> and <em>B</em> are not compatible for contraction, the product <em>AB</em> is a tuple of type <em>B</em> whose components are the products of <em>A</em> and the components of <em>B</em>. The same rule is applied recursively in multiplying the components. So if <em>B</em> &#x003D; (<em>B</em><sup>0</sup>, <em>B</em><sup>1</sup>, <em>B</em><sup>2</sup>), the product of <em>A</em> and <em>B</em> is</p>
+
 <p class="eqtext" id="disp_9.9"><epub:switch id="mathmlSwitch1875"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mo stretchy='false'>(</mo><mi>A</mi><msup><mi>B</mi><mn>0</mn></msup><mo>,</mo><mi>A</mi><msup><mi>B</mi><mn>1</mn></msup><mo>,</mo><mi>A</mi><msup><mi>B</mi><mn>2</mn></msup><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.9</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">If <em>A</em> and <em>C</em> are not compatible for contraction and <em>C</em> &#x003D; [<em>C</em><sub>0</sub>, <em>C</em><sub>1</sub>, <em>C</em><sub>2</sub>], the product is</p>
+
 <p class="eqtext" id="disp_9.10"><epub:switch id="mathmlSwitch1876"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>A</mi><mi>C</mi><mo>=</mo><mrow><mo>[</mo><mrow><mi>A</mi><msub><mi>C</mi><mn>0</mn></msub><mo>,</mo><mi>A</mi><msub><mi>C</mi><mn>1</mn></msub><mo>,</mo><mi>A</mi><msub><mi>C</mi><mn>2</mn></msub></mrow><mo>]</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.10</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p>Tuple structures can be made to represent linear transformations. For example, the rotation commonly represented by the matrix</p>
+
 <p class="eqtext" id="disp_9.11"><epub:switch id="mathmlSwitch1877"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd><mtd><mrow><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.11</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">can be represented as a tuple structure:<sup><a href="#endnote_2" id="endnote_ref_2">2</a></sup></p>
 <a id="p516"></a>
+
 <p class="eqtext" id="disp_9.12"><epub:switch id="mathmlSwitch1878"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.12</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">Such a tuple is compatible for contraction with an up tuple that represents a vector. So, for example:</p>
+
 <p class="eqtext" id="disp_9.13"><epub:switch id="mathmlSwitch1879"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow><mtext>&#x2009;</mtext><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mi>x</mi></mtd></mtr><mtr><mtd><mi>y</mi></mtd></mtr></mtable></mrow><mo>)</mo></mrow><mo>=</mo><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>x</mi><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mo>&#x2212;</mo><mi>y</mi><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>x</mi><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mo>+</mo><mi>y</mi><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.13</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">Two tuples that represent linear transformations, though not compatible for contraction, may also be combined by multiplication. In this case the product represents the composition of the linear transformations. For example, the product of the tuples representing two rotations is</p>
+
 <p class="eqtext" id="disp_9.14"><epub:switch id="mathmlSwitch1880"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>]</mo><mtext>&#x2009;</mtext></mrow><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03C6;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03C6;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03C6;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03C6;</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></mtd><mtd><mrow></mrow></mtd></mtr><mtr><mtd><mrow><mo>=</mo><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo>+</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi>sin</mi><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo>+</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo>+</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi>cos</mi><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo>+</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.14</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 
 <p class="noindent">Multiplication of tuples that represent linear transformations is associative but generally not commutative, just as the composition of the transformations is associative but not generally commutative.</p>
 </section>
 <section title="Derivatives">
 <h2 class="level2"><strong>Derivatives</strong></h2>
+
 <p class="noindent">The derivative of a function <em>f</em> is a function, denoted by <em>Df</em>. Our notational convention is that <em>D</em> is a high-precedence operator. Thus <em>D</em> operates on the adjacent function before any other application occurs: <em>Df</em>(<em>x</em>) is the same as (<em>Df</em>)(<em>x</em>). Higher-order derivatives are described by exponentiating the derivative operator. Thus the <em>n</em>th derivative of a function <em>f</em> is notated as <em>D<sup>n</sup>f</em>.</p>
+
 <p>The procedure for producing the derivative of a function is named <span class="font1">D</span>. The derivative of the <span class="font1">sin</span> procedure is a procedure that computes <span class="font1">cos</span>:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define derivative-of-sine (D sin))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(derivative-of-sine &#x2019;x)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(cos x)</em></span></p>
 </div>
+
 <p>The derivative of a function <em>f</em> is the function <em>Df</em> whose value for a particular argument is something that can be multiplied by an increment &#x0394;<em>x</em> in the argument to get a linear approximation to the increment in the value of <em>f</em>:</p>
+
 <p class="eqtext" id="disp_9.15"><epub:switch id="mathmlSwitch1881"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>+</mo><mo>&#x0394;</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>&#x2248;</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>+</mo><mi>D</mi><mtext>&#x2009;</mtext><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><mi>x</mi><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.15</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <a id="p517"></a>
+
 <p>For example, let <em>f</em> be the function that cubes its argument (<em>f</em>(<em>x</em>) &#x003D; <em>x</em><sup>3</sup>); then <em>Df</em> is the function that yields three times the square of its argument (<em>Df</em>(<em>y</em>) &#x003D; 3<em>y</em><sup>2</sup>). So <em>f</em>(5) &#x003D; 125 and <em>Df</em>(5) &#x003D; 75. The value of <em>f</em> with argument <em>x</em> &#x002B; &#x0394;<em>x</em> is</p>
+
 <p class="eqtext" id="disp_9.16"><epub:switch id="mathmlSwitch1882"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>+</mo><mo>&#x0394;</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>=</mo><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mo>+</mo><mo>&#x0394;</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow><mn>3</mn></msup><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>&#x0394;</mo><mi>x</mi><mo>+</mo><mn>3</mn><mi>x</mi><mo>&#x0394;</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mo>&#x0394;</mo><msup><mi>x</mi><mn>3</mn></msup></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.16</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">and</p>
+
 <p class="eqtext" id="disp_9.17"><epub:switch id="mathmlSwitch1883"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><mi>x</mi><mo>=</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>&#x0394;</mo><mi>x</mi><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.17</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
+
 <p class="noindent">So <em>Df</em>(<em>x</em>) multiplied by &#x0394;<em>x</em> gives us the term in <em>f</em>(<em>x</em> &#x002B; &#x0394;<em>x</em>) that is linear in &#x0394;<em>x</em>, providing a good approximation to <em>f</em>(<em>x</em> &#x002B; &#x0394;<em>x</em>) &#x2212; <em>f</em>(<em>x</em>) when &#x0394;<em>x</em> is small.</p>
+
 <p>Derivatives of compositions obey the chain rule:</p>
+
 <p class="eqtext" id="disp_9.18"><epub:switch id="mathmlSwitch1884"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mo stretchy='false'>(</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>)</mo><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><mi>D</mi><mi>g</mi><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.18</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
+
 <p class="noindent">So at <em>x</em>,</p>
+
 <p class="eqtext" id="disp_9.19"><epub:switch id="mathmlSwitch1885"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mo stretchy='false'>(</mo><mi>D</mi><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><mi>D</mi><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.19</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p><span class="font1">D</span> is an example of an <em>operator</em>. An operator is like a function except that multiplication of operators is interpreted as composition, whereas multiplication of functions is multiplication of the values (see equation <a href="chapter009.html#disp_9.3">9.3</a>). If <em>D</em> were an ordinary function, then the rule for multiplication would imply that <em>D</em><sup>2</sup><em>f</em> would just be the product of <em>Df</em> with itself, which is not what is intended. A product of a number and an operator scales the operator. So, for example</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(((<sub>&#x002A;</sub> 5 D) cos) &#x2019;x)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(<sub>&#x002A;</sub> -5 (sin x))</em></span></p>
 </div>
+
 <p class="noindent">Arithmetic is extended to allow manipulation of operators. A typical operator is (<em>D</em>&#x002B;<em>I</em>)(<em>D</em>&#x2212;<em>I</em>) &#x003D; <em>D</em><sup>2</sup>&#x2212;<em>I</em>, where <em>I</em> is the identity operator, which subtracts a function from its second derivative. Such an operator can be constructed and used as follows:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(((<sub>&#x002A;</sub> (&#x002B; D I) (- D I)) (literal-function &#x2019;f)) &#x2019;x)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (((expt D 2) f) x) (<sub>&#x002A;</sub> -1 (f x)))</em></span></p>
 </div>
 <a id="p518"></a>
 </section>
 <section title="Derivatives of functions of multiple arguments">
 <h2 class="level2"><strong>Derivatives of functions of multiple arguments</strong></h2>
+
 <p class="noindent">The derivative generalizes to functions that take multiple arguments. The derivative of a real-valued function of multiple arguments is an object whose contraction with the tuple of increments in the arguments gives a linear approximation to the increment in the function&#x2019;s value.</p>
+
 <p>A function of multiple arguments can be thought of as a function of an up tuple of those arguments. Thus an incremental argument tuple is an up tuple of components, one for each argument position. The derivative of such a function is a down tuple of the partial derivatives of the function with respect to each argument position.</p>
+
 <p>Suppose we have a real-valued function <em>g</em> of two real-valued arguments, and we want to approximate the increment in the value of <em>g</em> from its value at <em>x</em>, <em>y</em>. If the arguments are incremented by the tuple (&#x0394;<em>x,</em> &#x0394;<em>y</em>) we compute:</p>
+
 <p class="eqtext" id="disp_9.20"><epub:switch id="mathmlSwitch1886"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd columnalign='left'><mrow><mi>D</mi><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><mo stretchy='false'>(</mo><mo>&#x0394;</mo><mi>x</mi><mo>,</mo><mo>&#x0394;</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo stretchy='false'>[</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo stretchy='false'>]</mo><mo>&#x00B7;</mo><mo stretchy='false'>(</mo><mo>&#x0394;</mo><mi>x</mi><mo>,</mo><mo>&#x0394;</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><mi>x</mi><mo>+</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><mi>y</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>9.20</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 
 <p class="noindent">Using the two-argument literal function <span class="font1">g</span> defined on <a href="chapter009.html#p512">page 512</a>, we have:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">((D g) &#x2019;x &#x2019;y)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
 </div>
+
 <p>In general, partial derivatives are just the components of the derivative of a function that takes multiple arguments (or structured arguments or both; see below). So a partial derivative of a function is a composition of a component selector and the derivative of that function.<sup><a href="#endnote_3" id="endnote_ref_3">3</a></sup> Indeed:</p>
+
 <p class="eqtext" id="disp_9.21"><epub:switch id="mathmlSwitch1887"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>g</mi><mo>=</mo><msub><mi>I</mi><mn>0</mn></msub><mo>&#x2218;</mo><mi>D</mi><mi>g</mi></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.21</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
+
 <p class="eqtext" id="disp_9.22"><epub:switch id="mathmlSwitch1888"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>g</mi><mo>=</mo><msub><mi>I</mi><mn>1</mn></msub><mo>&#x2218;</mo><mi>D</mi><mi>g</mi><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.22</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p>Concretely, if</p>
+
 <p class="eqtext" id="disp_9.23"><epub:switch id="mathmlSwitch1889"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>&#x003D;</mo><msup><mi>x</mi><mn>3</mn></msup><msup><mi>y</mi><mn>5</mn></msup></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.23</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p519"></a>
+
 <p class="noindent">then</p>
+
 <p class="eqtext" id="disp_9.24"><epub:switch id="mathmlSwitch1890"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>=</mo><mrow><mo>[</mo><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><msup><mi>y</mi><mn>5</mn></msup><mo>,</mo><mn>5</mn><msup><mi>x</mi><mn>3</mn></msup><msup><mi>y</mi><mn>4</mn></msup></mrow><mo>]</mo></mrow></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.24</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">and the first-order approximation of the increment for changing the arguments by &#x0394;<em>x</em> and &#x0394;<em>y</em> is</p>
+
 <p class="eqtext" id="disp_9.25"><epub:switch id="mathmlSwitch1891"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd columnalign='left'><mrow><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>+</mo><mo>&#x0394;</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>+</mo><mo>&#x0394;</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>&#x2248;</mo><mrow><mo>[</mo><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><msup><mi>y</mi><mn>5</mn></msup><mo>,</mo><mn>5</mn><msup><mi>x</mi><mn>3</mn></msup><msup><mi>y</mi><mn>4</mn></msup></mrow><mo>]</mo></mrow><mo>&#x00B7;</mo><mo stretchy='false'>(</mo><mo>&#x0394;</mo><mi>x</mi><mo>,</mo><mo>&#x0394;</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><msup><mi>y</mi><mn>5</mn></msup><mo>&#x0394;</mo><mi>x</mi><mo>+</mo><mn>5</mn><msup><mi>x</mi><mn>3</mn></msup><msup><mi>y</mi><mn>4</mn></msup><mo>&#x0394;</mo><mi>y</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>9.25</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
+
 <p>Partial derivatives of compositions also obey a chain rule:</p>
+
 <p class="eqtext" id="disp_9.26"><epub:switch id="mathmlSwitch1892"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><msub><mo>&#x2202;</mo><mi>i</mi></msub><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mo stretchy='false'>(</mo><mi>D</mi><mtext>&#x2009;</mtext><mi>f</mi><mo stretchy='false'>)</mo><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><msub><mo>&#x2202;</mo><mi>i</mi></msub><mi>g</mi><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.26</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">So if <em>x</em> is a tuple of arguments, then</p>
+
 <p class="eqtext" id="disp_9.27"><epub:switch id="mathmlSwitch1893"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mi>i</mi></msub><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><msub><mo>&#x2202;</mo><mi>i</mi></msub><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.27</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p>Mathematical notation usually does not distinguish functions of multiple arguments and functions of the tuple of arguments. Let <em>h</em>((<em>x</em>, <em>y</em>)) &#x003D; <em>g</em>(<em>x</em>, <em>y</em>). The function <em>h</em>, which takes a tuple of arguments <em>x</em> and <em>y</em>, is not distinguished from the function <em>g</em> that takes arguments <em>x</em> and <em>y</em>. We use both ways of defining functions of multiple arguments. The derivatives of both kinds of functions are compatible for contraction with a tuple of increments to the arguments. Scheme comes in handy here:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define (h s)</span></p>
+
 <p class="pqp1"><span class="font1">(g (ref s 0) (ref s 1)))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(h (up &#x2019;x &#x2019;y))</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(g x y)</em></span></p>
+
 <p class="pq-noindent1-top"><span class="font1">((D g) &#x2019;x &#x2019;y)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
+
 <p class="pq-noindent1-top"><span class="font1">((D h) (up &#x2019;x &#x2019;y))</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
 </div>
+
 <p>A phase-space state function is a function of time, coordinates, and momenta. Let <em>H</em> be such a function. The value of <em>H</em> is <em>H</em>(<em>t,</em> (<em>x</em>, <em>y</em>), [<em>p<sub>x</sub></em>, <em>p<sub>y</sub></em>]) for time <em>t</em>, coordinates (<em>x</em>, <em>y</em>), and momenta [<em>p<sub>x</sub></em>, <em>p<sub>y</sub></em>]. Let <em>s</em> be the phase-space state tuple as in (<a href="chapter009.html#disp_9.6">9.6</a>):</p>
+
 <p class="eqtext" id="disp_9.28"><epub:switch id="mathmlSwitch1894"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>s</mi><mo>=</mo><mrow><mo>(</mo><mrow><mi>t</mi><mo>,</mo><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>,</mo><mrow><mo>[</mo><mrow><msub><mi>p</mi><mi>x</mi></msub><mo>,</mo><msub><mi>p</mi><mi>y</mi></msub></mrow><mo>]</mo></mrow></mrow><mo>)</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.28</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p520"></a>
+
 <p class="noindent">The value of <em>H</em> for argument tuple <em>s</em> is <em>H</em>(<em>s</em>). We use both ways of writing the value of <em>H</em>.</p>
+
 <p>We often show a function of multiple arguments that include tuples by indicating the boundaries of the argument tuples with semicolons and separating their components with commas. If <em>H</em> is a function of phase-space states with arguments <em>t</em>, (<em>x</em>, <em>y</em>), and [<em>p<sub>x</sub></em>, <em>p<sub>y</sub></em>], we may write <em>H</em>(<em>t</em>; <em>x</em>, <em>y</em>; <em>p<sub>x</sub></em>, <em>p<sub>y</sub></em>). This notation loses the up/down distinction, but our semicolon-and-comma notation is convenient and reasonably unambiguous.</p>
+
 <p>The derivative of <em>H</em> is a function that produces an object that can be contracted with an increment in the argument structure to produce an increment in the function&#x2019;s value. The derivative is a down tuple of three partial derivatives. The first partial derivative is the partial derivative with respect to the numerical argument. The second partial derivative is a down tuple of partial derivatives with respect to each component of the up-tuple argument. The third partial derivative is an up tuple of partial derivatives with respect to each component of the down-tuple argument:</p>
+
 <p class="eqtext" id="disp_9.29"><epub:switch id="mathmlSwitch1895"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd columnalign='left'><mrow><mi>D</mi><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mrow><mo>[</mo><mrow><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow><mo>]</mo></mrow></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mrow><mo>[</mo><mrow><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><mrow><mo>[</mo><mrow><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow><mo>]</mo></mrow><mo>,</mo><mrow><mo>(</mo><mrow><msub><mo>&#x2202;</mo><mrow><mn>2</mn><mo>,</mo><mn>0</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mrow><mn>2</mn><mo>,</mo><mn>1</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow><mo>)</mo></mrow></mrow><mo>]</mo></mrow><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>9.29</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">where &#x2202;<sub>1,0</sub> indicates the partial derivative with respect to the first component (index 0) of the second argument (index 1) of the function, and so on. Indeed, &#x2202;<em><sub>z</sub>F</em> &#x003D; <em>I<sub>z</sub></em> &#x2218; <em>DF</em> for any function <em>F</em> and access chain <em>z</em>. So, if we let &#x0394;<em>s</em> be an incremental phase-space state tuple,</p>
+
 <p class="eqtext" id="disp_9.30"><epub:switch id="mathmlSwitch1896"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mo>&#x0394;</mo><mi>s</mi><mo>=</mo><mo stretchy='false'>(</mo><mo>&#x0394;</mo><mi>t</mi><mo>,</mo><mo stretchy='false'>(</mo><mo>&#x0394;</mo><mi>x</mi><mo>,</mo><mo>&#x0394;</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>,</mo><mo stretchy='false'>[</mo><mo>&#x0394;</mo><msub><mi>p</mi><mi>x</mi></msub><mo>,</mo><mo>&#x0394;</mo><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.30</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">then</p>
+
 <p class="eqtext" id="disp_9.31"><epub:switch id="mathmlSwitch1897"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd columnalign='left'><mrow><mi>D</mi><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><mi>s</mi></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><mi>t</mi></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>+</mo><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><mi>x</mi><mo>+</mo><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><mi>y</mi></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>+</mo><msub><mo>&#x2202;</mo><mrow><mn>2</mn><mo>,</mo><mn>0</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><msub><mi>p</mi><mi>x</mi></msub><mo>+</mo><msub><mo>&#x2202;</mo><mrow><mn>2</mn><mo>,</mo><mn>1</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>&#x0394;</mo><msub><mi>p</mi><mi>y</mi></msub><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>9.31</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">Caution: Partial derivative operators with respect to different structured arguments generally do not commute.</p>
 <a id="p521"></a>
+
 <p>In Scheme we must make explicit choices. We usually assume that phase-space state functions are functions of the tuple. For example,</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define H</span></p>
+
 <p class="pqp1"><span class="font1">(literal-function &#x2019;H</span></p>
+
 <p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real) (DOWN Real Real)) Real)))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(H s)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(H (up t (up x y) (down p_x p_y)))</em></span></p>
+
 <p class="pq-noindent1-top"><span class="font1">((D H) s)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(down</em></span></p>
+
 <p class="pqp1"><span class="font1"><em>(((partial 0) H) (up t (up x y) (down p_x p_y)))</em></span></p>
+
 <p class="pqp1"><span class="font1"><em>(down (((partial 1 0) H) (up t (up x y) (down p_x p_y)))</em></span></p>
+
 <p class="pqp4"><span class="font1"><em>(((partial 1 1) H) (up t (up x y) (down p_x p_y))))</em></span></p>
+
 <p class="pqp1"><span class="font1"><em>(up (((partial 2 0) H) (up t (up x y) (down p_x p_y)))</em></span></p>
+
 <p class="pqp3"><span class="font1"><em>(((partial 2 1) H) (up t (up x y) (down p_x p_y)))))</em></span></p>
 </div>
 </section>
 <section title="Structured results">
 <h2 class="level2"><strong>Structured results</strong></h2>
+
 <p class="noindent">Some functions produce structured outputs. A function whose output is a tuple is equivalent to a tuple of component functions each of which produces one component of the output tuple.</p>
+
 <p>For example, a function that takes one numerical argument and produces a structure of outputs may be used to describe a curve through space. The following function describes a helical path around the <em>z</em>-axis in three-dimensional space:</p>
+
 <p class="eqtext" id="disp_9.32"><epub:switch id="mathmlSwitch1898"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>h</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mi>cos</mi><mo>&#x2061;</mo><mi>t</mi><mo>,</mo><mi>sin</mi><mo>&#x2061;</mo><mi>t</mi><mo>,</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mi>cos</mi><mo>&#x2061;</mo><mo>,</mo><mi>sin</mi><mo>&#x2061;</mo><mo>,</mo><mi>I</mi><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.32</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">The derivative is just the up tuple of the derivatives of each component of the function:</p>
+
 <p class="eqtext" id="disp_9.33"><epub:switch id="mathmlSwitch1899"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>h</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mi>t</mi><mo>,</mo><mi>cos</mi><mo>&#x2061;</mo><mi>t</mi><mo>,</mo><mn>1</mn><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.33</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p>We can write</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define (helix t)</span></p>
+
 <p class="pqp1"><span class="font1">(up (cos t) (sin t) t))</span></p>
 </div>
+
 <p class="noindent">or just</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define helix (up cos sin identity))</span></p>
 </div>
 <a id="p522"></a>
+
 <p class="noindent">Its derivative is just the up tuple of the derivatives of each component of the function:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">((D helix) &#x2019;t)</span></p>
+
 <p class="pq-noindent"><span class="font1"><em>(up (<sub>&#x002A;</sub> -1 (sin t)) (cos t) 1)</em></span></p>
 </div>
+
 <p>In general, a function that produces structured outputs is just treated as a structure of functions, one for each of the components. The derivative of a function of structured inputs that produces structured outputs is an object that when contracted with an incremental input structure produces a linear approximation to the incremental output. Thus, if we define function <em>g</em> by</p>
+
 <p class="eqtext" id="disp_9.34"><epub:switch id="mathmlSwitch1900"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>=</mo><mrow><mo>(</mo><mrow><msup><mrow><mrow><mo>(</mo><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mo>,</mo><msup><mrow><mrow><mo>(</mo><mrow><mi>y</mi><mo>&#x2212;</mo><mi>x</mi></mrow><mo>)</mo></mrow></mrow><mn>3</mn></msup><mo>,</mo><msup><mi>e</mi><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup></mrow><mo>)</mo></mrow><mo>,</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.34</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">then the derivative of <em>g</em> is</p>
+
 <p class="eqtext" id="disp_9.35"><epub:switch id="mathmlSwitch1901"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>=</mo><mrow><mo>[</mo><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mn>2</mn><mo stretchy='false'>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mo>&#x2212;</mo><mn>3</mn><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mo>&#x2212;</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mtd></mtr><mtr><mtd><mrow><msup><mi>e</mi><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow><mo>,</mo><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mn>2</mn><mo stretchy='false'>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mn>3</mn><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mo>&#x2212;</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mtd></mtr><mtr><mtd><mrow><msup><mi>e</mi><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow><mo>]</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.35</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
+
 <p class="noindent">In Scheme:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define (g x y)</span></p>
+
 <p class="pqp1"><span class="font1">(up (square (&#x002B; x y)) (cube (- y x)) (exp (&#x002B; x y))))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">((D g) &#x2019;x &#x2019;y)</span></p>
 <table class="table1n">
 <tr>
@@ -335,41 +526,72 @@
 </tr>
 </table>
 </div>
+
 <p>Caution must be exercised when taking the derivative of the product of functions that each produce structured results. The problem is that the usual product rule does not hold. Let <em>f</em> and <em>g</em> be functions of <em>x</em> whose results are compatible for contraction to a number. The increment of <em>f</em> for an increment &#x0394;<em>x</em> of <em>x</em> is <em>Df</em>(<em>x</em>)&#x0394;<em>x</em>, and similarly for <em>g</em>. The increment of the product <em>fg</em> is <em>D</em>(<em>fg</em>)(<em>x</em>)&#x0394;<em>x</em>, but expanded in terms of the derivative of <em>f</em> and <em>g</em> the increment is (<em>Df</em>(<em>x</em>)&#x0394;<em>x</em>)<em>g</em>(<em>x</em>) &#x002B; <em>f</em>(<em>x</em>)(<em>Dg</em>(<em>x</em>)&#x0394;<em>x</em>). It is not ((<em>Df</em>)(<em>x</em>)<em>g</em>(<em>x</em>) &#x002B; <em>f</em>(<em>x</em>)(<em>Dg</em>(<em>x</em>)))&#x0394;<em>x</em>. The reason is that the shape of the derivative of <em>f</em> is such that <em>Df</em>(<em>x</em>) should be multiplied by &#x0394;<em>x</em> rather than <em>g</em>(<em>x</em>).</p>
 <a id="p523"></a>
+
 <p class="noindent1-top-exe" id="Exe_9-1"><strong>Exercise  9.1: Chain rule</strong></p>
+
 <p class="noindent">Let <em>F</em> (<em>x</em>, <em>y</em>) &#x003D; <em>x</em><sup>2</sup><em>y</em><sup>3</sup>, <em>G</em>(<em>x</em>, <em>y</em>) &#x003D; (<em>F</em> (<em>x</em>, <em>y</em>), <em>y</em>), and <em>H</em>(<em>x</em>, <em>y</em>) &#x003D; <em>F</em> (<em>F</em> (<em>x</em>, <em>y</em>), <em>y</em>), so that <em>H</em> &#x003D; <em>F</em> &#x2218; <em>G</em>.</p>
+
 <p class="noindent1-top"><strong>a.</strong> Compute &#x2202;<sub>0</sub><em>F</em> (<em>x</em>, <em>y</em>) and &#x2202;<sub>1</sub><em>F</em> (<em>x</em>, <em>y</em>).</p>
+
 <p class="noindent1-top"><strong>b.</strong> Compute &#x2202;<sub>0</sub><em>F</em> (<em>F</em> (<em>x</em>, <em>y</em>), <em>y</em>) and &#x2202;<sub>1</sub><em>F</em> (<em>F</em> (<em>x</em>, <em>y</em>), <em>y</em>).</p>
+
 <p class="noindent1-top"><strong>c.</strong> Compute &#x2202;<sub>0</sub><em>G</em>(<em>x</em>, <em>y</em>) and &#x2202;<sub>1</sub><em>G</em>(<em>x</em>, <em>y</em>).</p>
+
 <p class="noindent1-top"><strong>d.</strong> Compute <em>DF</em> (<em>a</em>, <em>b</em>), <em>DG</em>(3, 5) and <em>DH</em>(3<em>a</em><sup>2</sup>, 5<em>b</em><sup>3</sup>).</p>
+
 <p class="noindent1-top-exe" id="Exe_9-2"><strong>Exercise  9.2: Computing derivatives</strong></p>
+
 <p class="noindent">We can represent functions of multiple arguments as procedures in several ways, depending upon how we wish to use them. The simplest idea is to identify the procedure arguments with the function&#x2019;s arguments.</p>
+
 <p>For example, we could write implementations of the functions that occur in <a href="chapter009.html#Exe_9-1">exercise 9.1</a> as follows:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define (f x y)</span></p>
+
 <p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> (square x) (cube y)))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(define (g x y)</span></p>
+
 <p class="pqp1"><span class="font1">(up (f x y) y))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(define (h x y)</span></p>
+
 <p class="pqp1"><span class="font1">(f (f x y) y))</span></p>
 </div>
+
 <p>With this choice it is awkward to compose a function that takes multiple arguments, such as <em>f</em>, with a function that produces a tuple of those arguments, such as <em>g</em>. Alternatively, we can represent the function arguments as slots of a tuple data structure, and then composition with a function that produces such a data structure is easy. However, this choice requires the procedures to build and take apart structures.</p>
+
 <p>For example, we may define procedures that implement the functions above as follows:</p>
 <div class="pull-quote">
+
 <p class="pq-noindent"><span class="font1">(define (f v)</span></p>
+
 <p class="pqp1"><span class="font1">(let ((x (ref v 0))</span></p>
+
 <p class="pqp4"><span class="font1">(y (ref v 1)))</span></p>
+
 <p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> (square x) (cube y))))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(define (g v)</span></p>
+
 <p class="pqp1"><span class="font1">(let ((x (ref v 0))</span></p>
+
 <p class="pqp4"><span class="font1">(y (ref v 1)))</span></p>
+
 <p class="pqp2"><span class="font1">(up (f v) y)))</span></p>
+
 <p class="pq-noindent1-top"><span class="font1">(define h (compose f g))</span></p>
 </div>
+
 <p>Repeat <a href="chapter009.html#Exe_9-1">exercise 9.1</a> using the computer. Explore both implementations of multiple-argument functions.</p>
+
 <p class="ntx" id="endnote_1"><a epub:type="noteref" href="#endnote_ref_1"><sup>1</sup></a>The procedure <span class="font1">print-expression</span> can be used in a program to print a simplified version of an expression. The default printer in the user interface incorporates the simplifier.</p>
+
 <p class="ntx" id="endnote_2"><a epub:type="noteref" href="#endnote_ref_2"><sup>2</sup></a>To emphasize the relationship of simple tuple structures to matrix notation we often format <span class="font1">up</span> tuples as vertical arrangements of components and <span class="font1">down</span> tuples as horizontal arrangements of components. However, we could just as well have written this tuple as [(cos <em>&#x03B8;</em>, sin <em>&#x03B8;</em>), (&#x2212; sin <em>&#x03B8;</em>, cos <em>&#x03B8;</em>)].</p>
+
 <p class="ntx" id="endnote_3"><a epub:type="noteref" href="#endnote_ref_3"><sup>3</sup></a>Partial derivative operators such as <span class="font1">(partial 2)</span> are operators, so <span class="font1">(expt (partial 1) 2)</span> is a second partial derivative.</p>
 <a id="p524"></a>
 </section>
