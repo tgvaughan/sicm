@@ -56,6 +56,10 @@ html {
   ul.no-bullet {padding-left: 0.6em}
 }
 
+p.quote-citation::before {
+    content: "—";
+}
+
 body {
   background-color: #f8f8f8;
   margin: 0;
