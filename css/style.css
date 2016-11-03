@@ -494,3 +494,9 @@ a#References ~ p {
   bottom: 0; 
   padding: 0.4ex 0.0ex;
 }
+
+/* Style for dedication */
+
+div.dedication > p {
+    text-align: center;
+}
