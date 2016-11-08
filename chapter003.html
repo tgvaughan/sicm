@@ -1,35 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Structure and Interpretation of Classical Mechanics Chapter 3</title>
-<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
-    <script type="text/javascript"
-            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-</head>
-<body>
+---
+title: Hamiltonian Mechanics
+chapter: 3
 
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter002.html">previous</a></span><span>,
-    <a href="chapter004.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-<div class="body">
-<section title="Hamiltonian Mechanics" epub:type="bodymatter chapter">
+next:
+    title: Chapter 4
+    url: chapter004.html
+prev:
+    title: Chapter 2
+    url: chapter002.html
+
+layout: chapter
+---
 <a id="p195"></a>
-<h1 class="chapter-number"><a href="toc.html#chap-3"><strong>3</strong></a></h1>
-<h1 class="chapter-title"><a href="toc.html#chap-3"><strong>Hamiltonian Mechanics</strong></a></h1>
-<div class="pull-quoteb">
 
-<p class="pq-noindent">Numerical experiments are just what their name implies: experiments. In describing and evaluating them, one should enter the state of mind of the experimental physicist, rather than that of the mathematician. Numerical experiments cannot be used to prove theorems; but, from the physicist&#x2019;s point of view, they do often provide convincing evidence for the existence of a phenomenon. We will therefore follow an informal, descriptive and non-rigorous approach. Briefly stated, our aim will be to <em>understand</em> the fundamental properties of dynamical systems rather than to <em>prove</em> them.</p>
+{% include chapter_title.html %}
 
-<p class="pq-noindent1-top">Michel H&#x00E9;non, &#x201C;Numerical Exploration of Hamiltonian Systems,&#x201D; in <em>Chaotic Behavior of Deterministic Systems</em> [<a href="bibliography001.html#bib_21">21</a>], <a href="chapter001.html#p57">p. 57</a>.</p>
-</div>
+<blockquote>
+    <p>Numerical experiments are just what their name implies: experiments. In
+    describing and evaluating them, one should enter the state of mind of the
+    experimental physicist, rather than that of the mathematician. Numerical
+    experiments cannot be used to prove theorems; but, from the
+    physicist&#x2019;s point of view, they do often provide convincing evidence
+    for the existence of a phenomenon. We will therefore follow an informal,
+    descriptive and non-rigorous approach. Briefly stated, our aim will be to
+    <em>understand</em> the fundamental properties of dynamical systems rather
+    than to <em>prove</em> them.</p>
 
-<p class="cotx">The formulation of mechanics with generalized coordinates and momenta as dynamical state variables is called the Hamiltonian formulation. The Hamiltonian formulation of mechanics is equivalent to the Lagrangian formulation; however, each presents a useful point of view. The Lagrangian formulation is especially useful in the initial formulation of a system. The Hamiltonian formulation is especially useful in understanding the evolution of a system, especially when there are symmetries and conserved quantities.</p>
+    <p class="quote-citation">Michel H&#x00E9;non, &#x201C;Numerical
+    Exploration of Hamiltonian Systems,&#x201D; in
+    <em>Chaotic Behavior of Deterministic Systems</em>
+    [<a href="bibliography.html#bib_21">21</a>], <a href="chapter001.html#p57">p. 57</a>.</p>
+</blockquote>
+
+<p>The formulation of mechanics with generalized coordinates and momenta as dynamical state variables is called the Hamiltonian formulation. The Hamiltonian formulation of mechanics is equivalent to the Lagrangian formulation; however, each presents a useful point of view. The Lagrangian formulation is especially useful in the initial formulation of a system. The Hamiltonian formulation is especially useful in understanding the evolution of a system, especially when there are symmetries and conserved quantities.</p>
 
 <p>For each continuous symmetry of a mechanical system there is a conserved quantity. If the generalized coordinates can be chosen to reflect a symmetry, then, by the Lagrange equations, the momenta conjugate to the cyclic coordinates are conserved. We have seen that such conserved quantities allow us to deduce important properties of the motion. For instance, consideration of the energy and angular momentum allowed us to deduce that rotation of a free rigid body about the axis of intermediate moment of inertia is unstable, and that rotation about the other principal axes is stable. For the axisymmetric top, we used two conserved momenta to reexpress the equations governing the evolution of the tilt angle so that they involve only the tilt angle and its derivative. <a id="p196"></a>The evolution of the tilt angle can be determined independently and has simply periodic solutions. Consideration of the conserved momenta has provided key insight. The Hamiltonian formulation is motivated by the desire to focus attention on the momenta.</p>
 
@@ -1238,7 +1241,7 @@
 </figure>
 <a id="p241"></a>
 
-<p>The surface of section technique was put to spectacular use in the 1964 landmark paper [<a href="bibliography001.html#bib_22">22</a>] by astronomers Michel H&#x00E9;non and Carl Heiles. In their numerical investigations they found that some trajectories are chaotic, whereas other trajectories are regular. An essential characteristic of the chaotic motions is that initially nearby trajectories separate exponentially with time; the separation of regular trajectories is linear.<sup><a href="#endnote_24" id="endnote_ref_24">24</a></sup> They found that these two types of trajectories are typically clustered in the phase space into regions of regular motion and regions of chaotic motion.</p>
+<p>The surface of section technique was put to spectacular use in the 1964 landmark paper [<a href="bibliography.html#bib_22">22</a>] by astronomers Michel H&#x00E9;non and Carl Heiles. In their numerical investigations they found that some trajectories are chaotic, whereas other trajectories are regular. An essential characteristic of the chaotic motions is that initially nearby trajectories separate exponentially with time; the separation of regular trajectories is linear.<sup><a href="#endnote_24" id="endnote_ref_24">24</a></sup> They found that these two types of trajectories are typically clustered in the phase space into regions of regular motion and regions of chaotic motion.</p>
 <section>
 <section title="Periodically Driven Systems">
 <h3 class="level3" id="h3_3-6-1"><a href="toc.html#Rh3_3-6-1"><strong>3.6.1 Periodically Driven Systems</strong></a></h3>
@@ -1379,7 +1382,7 @@
 <section title="Autonomous Systems">
 <h3 class="level3" id="h3_3-6-3"><a href="toc.html#Rh3_3-6-3"><strong>3.6.3 Autonomous Systems</strong></a></h3>
 
-<p class="noindent">We illustrated the use of Poincar&#x00E9; sections to visualize qualitative features of the phase space for a one-degree-of-freedom system with periodic drive, but the idea is more general. Here we show how H&#x00E9;non and Heiles [<a href="bibliography001.html#bib_22">22</a>] used the surface of section to elucidate the properties of an autonomous system.</p>
+<p class="noindent">We illustrated the use of Poincar&#x00E9; sections to visualize qualitative features of the phase space for a one-degree-of-freedom system with periodic drive, but the idea is more general. Here we show how H&#x00E9;non and Heiles [<a href="bibliography.html#bib_22">22</a>] used the surface of section to elucidate the properties of an autonomous system.</p>
 </section>
 </section>
 <section title="H&#x00E9;non&#x2013;Heiles background">
@@ -1442,7 +1445,7 @@
 
 <p class="eqtext" id="disp_3.134"><epub:switch id="mathmlSwitch937"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>&#x03C3;</mi><mi>r</mi></msub><mo>&#x2248;</mo><mn>2</mn><msub><mi>&#x03C3;</mi><mi>z</mi></msub><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>3.134</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p>H&#x00E9;non and Heiles [<a href="bibliography001.html#bib_22">22</a>] approached this problem differently from others at the time. Rather than improving the models for the motion of stars in the galaxy, they concentrated on what turned out to be the central issue: What is the qualitative nature of motion? The problem had nothing to do with galactic dynamics in particular, but with the problem of motion. They abstracted the dynamical problem from the particulars of galactic dynamics.</p>
+<p>H&#x00E9;non and Heiles [<a href="bibliography.html#bib_22">22</a>] approached this problem differently from others at the time. Rather than improving the models for the motion of stars in the galaxy, they concentrated on what turned out to be the central issue: What is the qualitative nature of motion? The problem had nothing to do with galactic dynamics in particular, but with the problem of motion. They abstracted the dynamical problem from the particulars of galactic dynamics.</p>
 </section>
 <section title="The system of H&#x00E9;non and Heiles">
 <h2 class="level2"><strong>The system of H&#x00E9;non and Heiles</strong></h2>
@@ -2130,9 +2133,9 @@
 
 <p class="ntx" id="endnote_22"><a epub:type="noteref" href="#endnote_ref_22"><sup>22</sup></a>It is not always possible to choose a set of generalized coordinates in which all symmetries are simultaneously manifest. For these systems, the reduction of the phase space is more complicated. We have already encountered such a problem: the motion of a free rigid body. The system is invariant under rotation about any axis, yet no single coordinate system can reflect this symmetry. Nevertheless, we have already found that the dynamics is described by a system of lower dimension than the full phase space: the Euler equations.</p>
 
-<p class="ntx" id="endnote_23"><a epub:type="noteref" href="#endnote_ref_23"><sup>23</sup></a>The surface of section technique was introduced by Poincar&#x00E9; in his <em>M&#x00E9;thodes Nouvelles de la M&#x00E9;canique C&#x00E9;leste</em> [<a href="bibliography001.html#bib_35">35</a>]. Poincar&#x00E9; proved remarkable results about dynamical systems using the surface of section technique, and we shall return to some of these later. The surface of section technique is a key tool in the modern study of dynamical systems, for both analytical and numerical investigations.</p>
+<p class="ntx" id="endnote_23"><a epub:type="noteref" href="#endnote_ref_23"><sup>23</sup></a>The surface of section technique was introduced by Poincar&#x00E9; in his <em>M&#x00E9;thodes Nouvelles de la M&#x00E9;canique C&#x00E9;leste</em> [<a href="bibliography.html#bib_35">35</a>]. Poincar&#x00E9; proved remarkable results about dynamical systems using the surface of section technique, and we shall return to some of these later. The surface of section technique is a key tool in the modern study of dynamical systems, for both analytical and numerical investigations.</p>
 
-<p class="ntx" id="endnote_24"><a epub:type="noteref" href="#endnote_ref_24"><sup>24</sup></a>That solutions of ordinary differential equations can show exponential sensitivity to initial conditions was independently discovered by Edward Lorenz [<a href="bibliography001.html#bib_31">31</a>] in the context of a simplified model of convection in the Earth&#x2019;s atmosphere. Lorenz coined the picturesque term &#x201C;butterfly effect&#x201D; to describe this sensitivity: his weather system model is so sensitive to initial conditions that &#x201C;the flapping of a butterfly&#x2019;s wings in Brazil can change the course of a typhoon in Japan.&#x201D;</p>
+<p class="ntx" id="endnote_24"><a epub:type="noteref" href="#endnote_ref_24"><sup>24</sup></a>That solutions of ordinary differential equations can show exponential sensitivity to initial conditions was independently discovered by Edward Lorenz [<a href="bibliography.html#bib_31">31</a>] in the context of a simplified model of convection in the Earth&#x2019;s atmosphere. Lorenz coined the picturesque term &#x201C;butterfly effect&#x201D; to describe this sensitivity: his weather system model is so sensitive to initial conditions that &#x201C;the flapping of a butterfly&#x2019;s wings in Brazil can change the course of a typhoon in Japan.&#x201D;</p>
 
 <p class="ntx" id="endnote_25"><a epub:type="noteref" href="#endnote_ref_25"><sup>25</sup></a>We saw an example of this extreme sensitivity to initial conditions in <a href="chapter001.html#Fig_1-7">figure 1.7</a> (<a href="chapter001.html#h1-6b">section 1.7</a>) and also in the double-pendulum project (<a href="chapter001.html#Exe_1-44">exercise 1.44</a>).</p>
 
@@ -2156,18 +2159,6 @@
 
 <p class="ntx" id="endnote_35"><a epub:type="noteref" href="#endnote_ref_35"><sup>35</sup></a>This question was also addressed in the remarkable paper by H&#x00E9;non and Heiles, but with a different map from what we use here.</p>
 
-<p class="ntx" id="endnote_36"><a epub:type="noteref" href="#endnote_ref_36"><sup>36</sup></a>The standard map has been extensively studied. Early investigations were by Chirikov [<a href="bibliography001.html#bib_12">12</a>] and by Taylor [<a href="bibliography001.html#bib_44">44</a>], so the map is sometimes called the Chirikov&#x2013;Taylor map. Chirikov coined the term &#x201C;standard map,&#x201D; which we adopt.</p>
+<p class="ntx" id="endnote_36"><a epub:type="noteref" href="#endnote_ref_36"><sup>36</sup></a>The standard map has been extensively studied. Early investigations were by Chirikov [<a href="bibliography.html#bib_12">12</a>] and by Taylor [<a href="bibliography.html#bib_44">44</a>], so the map is sometimes called the Chirikov&#x2013;Taylor map. Chirikov coined the term &#x201C;standard map,&#x201D; which we adopt.</p>
 <a id="p284"></a>
 </section>
-</section>
-</div>
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter002.html">previous</a></span><span>,
-    <a href="chapter004.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-</body>
-</html>

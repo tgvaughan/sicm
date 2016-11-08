@@ -2,305 +2,310 @@
 ---
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Structure and Interpretation of Classical Mechanics</title>
+    <head>
+        <title>Structure and Interpretation of Classical Mechanics</title>
 
-    {% include header.html %}
+        {% include header.html %}
 
-  </head>
+    </head>
 
-  <body>
-    <section><span class="top jump" title="Jump to top"><a href="#pagetop" accesskey="t">⇡</a></span><a id="pagetop"></a>
-      <h1 class="titlefont">Structure and Interpretation<br /> of Classical Mechanics</h1>
+    <body>
 
-      <div class="subtitle"><abbr>Second Edition</abbr><br /> Unofficial HTML Version</div>
+        {% include toplink.html %}
 
-      <strong>Gerald Jay Sussman and Jack Wisdom</strong><br />
+        <section>
+            <h1 class="titlefont">Structure and Interpretation<br /> of Classical Mechanics</h1>
 
-      <p>©2014 by The Massachusetts Institute of Technology
-      </p>
+            <div class="subtitle"><abbr>Second Edition</abbr><br /> Unofficial HTML Version</div>
 
-      <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img style="height: 5ex;" src="images/by-nc-sa.svg" alt="SVG"/></a>
+            <strong>Gerald Jay Sussman and Jack Wisdom</strong><br />
 
-      <p>This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0
-        Unported License (<a href="http://creativecommons.org/licenses/by-sa/3.0/"><abbr>CC BY-SA 3.0</abbr></a>).
-        Based on a work at <a href="https://mitpress.mit.edu/books/structure-and-interpretation-classical-mechanics-0">mitpress.mit.edu</a>.
-      </p>
+            <p>©2014 by The Massachusetts Institute of Technology
+            </p>
 
-      <p>The <abbr>MIT</abbr> Press<br>
-      Cambridge, Massachusetts<br>
-        London, England
-      </p>
+            <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img style="height: 5ex;" src="images/by-nc-sa.svg" alt="SVG"/></a>
 
-      <div class="body">
+            <p>This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0
+            Unported License (<a href="http://creativecommons.org/licenses/by-sa/3.0/"><abbr>CC BY-SA 3.0</abbr></a>).
+            Based on a work at <a href="https://mitpress.mit.edu/books/structure-and-interpretation-classical-mechanics-0">mitpress.mit.edu</a>.
+            </p>
 
-        <a id="SEC_Overview"></a>
-        <h2 class="shortcontents-heading">Short Table of Contents</h2>
-        <div class="shortcontents">
-          <ul class="no-bullet">
-            <li><a id="stoc-dedication" href="#toc-dedication">Dedication</a></li>
-            <li><a id="stoc-preface" href="#toc-preface">Preface</a></li>
-            <li><a id="stoc-acknowledgments" href="#toc-acknowledgments">Acknowledgments</a></li>
-            <li><a id="stoc-chap-1" href="#toc-chap-1">Lagrangian Mechanics</a></li>
-            <li><a id="stoc-chap-2" href="#toc-chap-2">Rigid Bodies</a></li>
-            <li><a id="stoc-chap-3" href="#toc-chap-3">Hamiltonian Mechanics</a></li>
-            <li><a id="stoc-chap-4" href="#toc-chap-4">Phase Space Structure</a></li>
-            <li><a id="stoc-chap-5" href="#toc-chap-5">Canonical Transformations</a></li>
-            <li><a id="stoc-chap-6" href="#toc-chap-6">Canonical Evolution</a></li>
-            <li><a id="stoc-chap-7" href="#toc-chap-7">Canonical Perturbation Theory</a></li>
-            <li><a id="stoc-chap-8" href="#toc-chap-8">Appendix: Scheme</a></li>
-            <li><a id="stoc-chap-9" href="#toc-chap-9">Appendix: Our Notation</a></li>
-          </ul>
-        </div>
+            <p>The <abbr>MIT</abbr> Press<br>
+            Cambridge, Massachusetts<br>
+            London, England
+            </p>
 
-        <a id="SEC_Contents"></a>
-        <h2 class="contents-heading">Table of Contents</h2>
+            <div class="body">
 
-        <ul class="no-bullet">
-          <li><a id="toc-dedication" href="dedication001.html">Dedication</a></li>
-          <li><a id="toc-preface" href="preface001.html">Preface</a></li>
-          <li><a id="toc-acknowledgments" href="acknowledgments.html">Acknowledgments</a></li>
+                <a id="SEC_Overview"></a>
+                <h2 class="shortcontents-heading">Short Table of Contents</h2>
+                <div class="shortcontents">
+                    <ul class="no-bullet">
+                        <li><a id="stoc-dedication" href="#toc-dedication">Dedication</a></li>
+                        <li><a id="stoc-preface" href="#toc-preface">Preface</a></li>
+                        <li><a id="stoc-acknowledgments" href="#toc-acknowledgments">Acknowledgments</a></li>
+                        <li><a id="stoc-chap-1" href="#toc-chap-1">Lagrangian Mechanics</a></li>
+                        <li><a id="stoc-chap-2" href="#toc-chap-2">Rigid Bodies</a></li>
+                        <li><a id="stoc-chap-3" href="#toc-chap-3">Hamiltonian Mechanics</a></li>
+                        <li><a id="stoc-chap-4" href="#toc-chap-4">Phase Space Structure</a></li>
+                        <li><a id="stoc-chap-5" href="#toc-chap-5">Canonical Transformations</a></li>
+                        <li><a id="stoc-chap-6" href="#toc-chap-6">Canonical Evolution</a></li>
+                        <li><a id="stoc-chap-7" href="#toc-chap-7">Canonical Perturbation Theory</a></li>
+                        <li><a id="stoc-chap-8" href="#toc-chap-8">Appendix: Scheme</a></li>
+                        <li><a id="stoc-chap-9" href="#toc-chap-9">Appendix: Our Notation</a></li>
+                    </ul>
+                </div>
 
-          <li>
-            <a id="toc-chap-1" href="chapter001.html"><strong>1 Lagrangian Mechanics</strong></a>
-            <ul class="no-bullet">
-              <li><a id="Rh1-2" href="chapter001.html#h1-2">1.1 Configuration Spaces</a></li>
-              <li><a id="Rh1-3" href="chapter001.html#h1-3">1.2 Generalized Coordinates</a></li>
-              <li><a id="Rh1-4" href="chapter001.html#h1-4">1.3 The Principle of Stationary Action</a></li>
-              <li><a id="Rh1-5" href="chapter001.html#h1-5">1.4 Computing Actions</a></li>
-              <li><a id="Rh1-6" href="chapter001.html#h1-6">1.5 The Euler&#x2013;Lagrange Equations</a>
+                <a id="SEC_Contents"></a>
+                <h2 class="contents-heading">Table of Contents</h2>
+
                 <ul class="no-bullet">
-                  <li><a id="Rh3_1-5-1" href="chapter001.html#h3_1-5-1">1.5.1 Derivation of the Lagrange Equations</a></li>
-                  <li><a id="Rh3_1-5-2" href="chapter001.html#h3_1-5-2">1.5.2 Computing Lagrange&#x2019;s Equations</a></li>
+                    <li><a id="toc-dedication" href="dedication.html">Dedication</a></li>
+                    <li><a id="toc-preface" href="preface.html">Preface</a></li>
+                    <li><a id="toc-acknowledgments" href="acknowledgments.html">Acknowledgments</a></li>
+
+                    <li>
+                        <a id="toc-chap-1" href="chapter001.html"><strong>1 Lagrangian Mechanics</strong></a>
+                        <ul class="no-bullet">
+                            <li><a id="Rh1-2" href="chapter001.html#h1-2">1.1 Configuration Spaces</a></li>
+                            <li><a id="Rh1-3" href="chapter001.html#h1-3">1.2 Generalized Coordinates</a></li>
+                            <li><a id="Rh1-4" href="chapter001.html#h1-4">1.3 The Principle of Stationary Action</a></li>
+                            <li><a id="Rh1-5" href="chapter001.html#h1-5">1.4 Computing Actions</a></li>
+                            <li><a id="Rh1-6" href="chapter001.html#h1-6">1.5 The Euler&#x2013;Lagrange Equations</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_1-5-1" href="chapter001.html#h3_1-5-1">1.5.1 Derivation of the Lagrange Equations</a></li>
+                                    <li><a id="Rh3_1-5-2" href="chapter001.html#h3_1-5-2">1.5.2 Computing Lagrange&#x2019;s Equations</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-6a" href="chapter001.html#h1-6a">1.6 How to Find Lagrangians</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_1-6-1" href="chapter001.html#h3_1-6-1">1.6.1 Coordinate Transformations</a></li>
+                                    <li><a id="Rh3_1-6-2" href="chapter001.html#h3_1-6-2">1.6.2 Systems with Rigid Constraints</a></li>
+                                    <li><a id="Rh3_1-6-3" href="chapter001.html#h3_1-6-3">1.6.3 Constraints as Coordinate Transformations</a></li>
+                                    <li><a id="Rh3_1-6-4" href="chapter001.html#h3_1-6-4">1.6.4 The Lagrangian Is Not Unique</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-6b" href="chapter001.html#h1-6b">1.7 Evolution of Dynamical State</a></li>
+                            <li><a id="Rh1-6c" href="chapter001.html#h1-6c">1.8 Conserved Quantities</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_1-8-1" href="chapter001.html#h3_1-8-1">1.8.1 Conserved Momenta</a></li>
+                                    <li><a id="Rh3_1-8-2" href="chapter001.html#h3_1-8-2">1.8.2 Energy Conservation</a></li>
+                                    <li><a id="Rh3_1-8-3" href="chapter001.html#h3_1-8-3">1.8.3 Central Forces in Three Dimensions</a></li>
+                                    <li><a id="Rh3_1-8-4" href="chapter001.html#h3_1-8-4">1.8.4 The Restricted Three-Body Problem</a></li>
+                                    <li><a id="Rh3_1-8-5" href="chapter001.html#h3_1-8-5">1.8.5 Noether&#x2019;s Theorem</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-6d" href="chapter001.html#h1-6d">1.9 Abstraction of Path Functions</a></li>
+                            <li><a id="Rh1-6e" href="chapter001.html#h1-6e">1.10 Constrained Motion</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_1-10-1" href="chapter001.html#h3_1-10-1">1.10.1 Coordinate Constraints</a></li>
+                                    <li><a id="Rh3_1-10-2" href="chapter001.html#h3_1-10-2">1.10.2 Derivative Constraints</a></li>
+                                    <li><a id="Rh3_1-10-3" href="chapter001.html#h3_1-10-3">1.10.3 Nonholonomic Systems</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-6f" href="chapter001.html#h1-6f">1.11 Summary</a></li>
+                            <li><a id="Rh1-6g" href="chapter001.html#h1-6g">1.12 Projects</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a id="toc-chap-2" href="chapter002.html"><strong>2 Rigid Bodies</strong></a>
+                        <ul class="no-bullet">
+                            <li><a id="Rh1-7" href="chapter002.html#h1-7">2.1 Rotational Kinetic Energy</a></li>
+                            <li><a id="Rh1-8" href="chapter002.html#h1-8">2.2 Kinematics of Rotation</a></li>
+                            <li><a id="Rh1-8a" href="chapter002.html#h1-8a">2.3 Moments of Inertia</a></li>
+                            <li><a id="Rh1-9" href="chapter002.html#h1-9">2.4 Inertia Tensor</a></li>
+                            <li><a id="Rh1-9a" href="chapter002.html#h1-9a">2.5 Principal Moments of Inertia</a></li>
+                            <li><a id="Rh1-10" href="chapter002.html#h1-10">2.6 Vector Angular Momentum</a></li>
+                            <li><a id="Rh1-11" href="chapter002.html#h1-11">2.7 Euler Angles</a></li>
+                            <li><a id="Rh1-12" href="chapter002.html#h1-12">2.8 Motion of a Free Rigid Body</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_2-8-1" href="chapter002.html#h3_2-8-1">2.8.1 Computing the Motion of Free Rigid Bodies</a></li>
+                                    <li><a id="Rh3_2-8-2" href="chapter002.html#h3_2-8-2">2.8.2 Qualitative Features</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-12a" href="chapter002.html#h1-12a">2.9 Euler&#x2019;s Equations</a></li>
+                            <li><a id="Rh1-12b" href="chapter002.html#h1-12b">2.10 Axisymmetric Tops</a></li>
+                            <li><a id="Rh1-12c" href="chapter002.html#h1-12c">2.11 Spin-Orbit Coupling</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_2-11-1" href="chapter002.html#h3_2-11-1">2.11.1 Development of the Potential Energy</a></li>
+                                    <li><a id="Rh3_2-11-2" href="chapter002.html#h3_2-11-2">2.11.2 Rotation of the Moon and Hyperion</a></li>
+                                    <li><a id="Rh3_2-11-3" href="chapter002.html#h3_2-11-3">2.11.3 Spin-Orbit Resonances</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-12d" href="chapter002.html#h1-12d">2.12 Nonsingular Coordinates and Quaternions</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_2-12-1" href="chapter002.html#h3_2-12-1">2.12.1 Motion in Terms of Quaternions</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-13" href="chapter002.html#h1-13">2.13 Summary</a></li>
+                            <li><a id="Rh1-14" href="chapter002.html#h1-14">2.14 Projects</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a id="toc-chap-3" href="chapter003.html"><strong>3 Hamiltonian Mechanics</strong></a>
+                        <ul class="no-bullet">
+                            <li><a id="Rh1-15" href="chapter003.html#h1-15">3.1 Hamilton's Equations</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_3-1-1" href="chapter003.html#h3_3-1-1">3.1.1 The Legendre Transformation</a></li>
+                                    <li><a id="Rh3_3-1-2" href="chapter003.html#h3_3-1-2">3.1.2 Hamilton's Equations from the Action Principle</a></li>
+                                    <li><a id="Rh3_3-1-3" href="chapter003.html#h3_3-1-3">3.1.3 A Wiring Diagram</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-16" href="chapter003.html#h1-16">3.2 Poisson Brackets</a></li>
+                            <li><a id="Rh1-17" href="chapter003.html#h1-17">3.3 One Degree of Freedom</a></li>
+                            <li><a id="Rh1-18" href="chapter003.html#h1-18">3.4 Phase Space Reduction</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_3-4-1" href="chapter003.html#h3_3-4-1">3.4.1 Lagrangian Reduction</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-19" href="chapter003.html#h1-19">3.5 Phase Space Evolution</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_3-5-1" href="chapter003.html#h3_3-5-1">3.5.1 Phase-Space Description Is Not Unique</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-20" href="chapter003.html#h1-20">3.6 Surfaces of Section</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_3-6-1" href="chapter003.html#h3_3-6-1">3.6.1 Periodically Driven Systems</a></li>
+                                    <li><a id="Rh3_3-6-2" href="chapter003.html#h3_3-6-2">3.6.2 Computing Stroboscopic Surfaces of Section</a></li>
+                                    <li><a id="Rh3_3-6-3" href="chapter003.html#h3_3-6-3">3.6.3 Autonomous Systems</a></li>
+                                    <li><a id="Rh3_3-6-4" href="chapter003.html#h3_3-6-4">3.6.4 Computing H&#x00E9;non&#x2013;Heiles Surfaces of Section</a></li>
+                                    <li><a id="Rh3_3-6-5" href="chapter003.html#h3_3-6-5">3.6.5 Non-Axisymmetric Top</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-21" href="chapter003.html#h1-21">3.7 Exponential Divergence</a></li>
+                            <li><a id="Rh1-21a" href="chapter003.html#h1-21a">3.8 Liouville&#x2019;s Theorem</a></li>
+                            <li><a id="Rh1-21b" href="chapter003.html#h1-21b">3.9 Standard Map</a></li>
+                            <li><a id="Rh1-22" href="chapter003.html#h1-22">3.10 Summary</a></li>
+                            <li><a id="Rh1-23" href="chapter003.html#h1-23">3.11 Projects</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a id="toc-chap-4" href="chapter004.html"><strong>4 Phase Space Structure</strong></a>
+                        <ul class="no-bullet">
+                            <li><a id="Rh1-24a" href="chapter004.html#h1-24a">4.1 Emergence of the Divided Phase Space</a></li>
+                            <li><a id="Rh1-24" href="chapter004.html#h1-24">4.2 Linear Stability</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_4-2-1" href="chapter004.html#h3_4-2-1">4.2.1 Equilibria of Differential Equations</a></li>
+                                    <li><a id="Rh3_4-2-2" href="chapter004.html#h3_4-2-2">4.2.2 Fixed Points of Maps</a></li>
+                                    <li><a id="Rh3_4-2-3" href="chapter004.html#h3_4-2-3">4.2.3 Relations Among Exponents</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-25" href="chapter004.html#h1-25">4.3 Homoclinic Tangle</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_4-3-1" href="chapter004.html#h3_4-3-1">4.3.1 Computation of Stable and Unstable Manifolds</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-26" href="chapter004.html#h1-26">4.4 Integrable Systems</a></li>
+                            <li><a id="Rh1-26a" href="chapter004.html#h1-26a">4.5 Poincar&#x00E9;&#x2013;Birkhoff Theorem</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_4-5-1" href="chapter004.html#h3_4-5-1">4.5.1 Computing the Poincar&#x00E9;&#x2013;Birkhoff Construction</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-26b" href="chapter004.html#h1-26b">4.6 Invariant Curves</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_4-6-1" href="chapter004.html#h3_4-6-1">4.6.1 Finding Invariant Curves</a></li>
+                                    <li><a id="Rh3_4-6-2" href="chapter004.html#h3_4-6-2">4.6.2 Dissolution of Invariant Curves</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-27" href="chapter004.html#h1-27">4.7 Summary</a></li>
+                            <li><a id="Rh1-28" href="chapter004.html#h1-28">4.8 Projects</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a id="toc-chap-5" href="chapter005.html"><strong>5 Canonical Transformations</strong></a>
+                        <ul class="no-bullet">
+                            <li><a id="Rh1-29" href="chapter005.html#h1-29">5.1 Point Transformations</a></li>
+                            <li><a id="Rh1-29a" href="chapter005.html#h1-29a">5.2 General Canonical Transformations</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_5-2-1" href="chapter005.html#h3_5-2-1">5.2.1 Time-Dependent Transformations</a></li>
+                                    <li><a id="Rh3_5-2-2" href="chapter005.html#h3_5-2-2">5.2.2 Abstracting the Canonical Condition</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-30" href="chapter005.html#h1-30">5.3 Invariants of Canonical Transformations</a></li>
+                            <li><a id="Rh1-31" href="chapter005.html#h1-31">5.4 Generating Functions</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_5-4-1" href="chapter005.html#h3_5-4-1">5.4.1 <em>F</em><sub>1</sub> Generates Canonical Transformations</a></li>
+                                    <li><a id="Rh3_5-4-2" href="chapter005.html#h3_5-4-2">5.4.2 Generating Functions and Integral Invariants</a></li>
+                                    <li><a id="Rh3_5-4-3" href="chapter005.html#h3_5-4-3">5.4.3 Types of Generating Functions</a></li>
+                                    <li><a id="Rh3_5-4-4" href="chapter005.html#h3_5-4-4">5.4.4 Point Transformations</a></li>
+                                    <li><a id="Rh3_5-4-5" href="chapter005.html#h3_5-4-5">5.4.5 Total Time Derivatives</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-32" href="chapter005.html#h1-32">5.5 Extended Phase Space</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_5-5-1" href="chapter005.html#h3_5-5-1">5.5.1 Poincar&#x00E9;&#x2013;Cartan Integral Invariant</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="Rh1-33" href="chapter005.html#h1-33">5.6 Reduced Phase Space</a></li>
+                            <li><a id="Rh1-34" href="chapter005.html#h1-34">5.7 Summary</a></li>
+                            <li><a id="Rh1-35" href="chapter005.html#h1-35">5.8 Projects</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a id="toc-chap-6" href="chapter006.html"><strong>6 Canonical Evolution</strong></a>
+                        <ul class="no-bullet">
+                            <li><a id="Rh1-36" href="chapter006.html#h1-36">6.1 Hamilton&#x2013;Jacobi Equation</a>
+                                <ul class="no-bullet">
+                                    <li><a id="Rh3_6-1-1" href="chapter006.html#h3_6-1-1">6.1.1 Harmonic Oscillator</a></li>
+                                    <li><a id="Rh3_6-1-2" href="chapter006.html#h3_6-1-2">6.1.2 Hamilton&#x2013;Jacobi Solution of the Kepler Problem</a></li>
+                                    <li><a id="Rh3_6-1-3" href="chapter006.html#h3_6-1-3">6.1.3 <em>F</em><sub>2</sub> and the Lagrangian</a></li>
+                                    <li><a id="Rh3_6-1-4" href="chapter006.html#h3_6-1-3">6.1.4 The Action Generates Time Evolution</a></li>
+                            </li>
+                                </ul>
+                                <li><a id="Rh1-37" href="chapter006.html#h1-37">6.2 Time Evolution is Canonical</a>
+                                    <ul class="no-bullet">
+                                        <li><a id="Rh3_6-2-1" href="chapter006.html#h3_6-2-1">6.2.1 Another View of Time Evolution</a></li>
+                                        <li><a id="Rh3_6-2-2" href="chapter006.html#h3_6-2-2">6.2.2 Yet Another View of Time Evolution</a></li>
+                                </li>
+                                    </ul>
+                                    <li><a id="Rh1-38" href="chapter006.html#h1-38">6.3 Lie Transforms</a></li>
+                                    <li><a id="Rh1-39" href="chapter006.html#h1-39">6.4 Lie Series</a></li>
+                                    <li><a id="Rh1-39a" href="chapter006.html#h1-39a">6.5 Exponential Identities</a></li>
+                                    <li><a id="Rh1-40" href="chapter006.html#h1-40">6.6 Summary</a></li>
+                                    <li><a id="Rh1-41" href="chapter006.html#h1-41">6.7 Projects</a></li>
+                    </li>
+                        </ul>
+
+                        <li><a id="toc-chap-7" href="chapter007.html"><strong>7 Canonical Perturbation Theory</strong></a>
+                            <ul class="no-bullet">
+                                <li><a id="Rh1-42" href="chapter007.html#h1-42">7.1 Perturbation Theory with Lie Series</a></li>
+                                <li><a id="Rh1-42a" href="chapter007.html#h1-42a">7.2 Pendulum as a Perturbed Rotor</a>
+                                    <ul class="no-bullet">
+                                        <li><a id="Rh3_7-2-1" href="chapter007.html#h3_7-2-1">7.2.1 Higher Order</a></li>
+                                        <li><a id="Rh3_7-2-2" href="chapter007.html#h3_7-2-2">7.2.2 Eliminating Secular Terms</a></li>
+                                    </ul>
+                                </li>
+                                <li><a id="Rh1-43" href="chapter007.html#h1-43">7.3 Many Degrees of Freedom</a>
+                                    <ul class="no-bullet">
+                                        <li><a id="Rh3_7-3-1" href="chapter007.html#h3_7-3-1">7.3.1 Driven Pendulum as a Perturbed Rotor</a></li>
+                                    </ul>
+                                </li>
+                                <li><a id="Rh1-44" href="chapter007.html#h1-44">7.4 Nonlinear Resonance</a>
+                                    <ul class="no-bullet">
+                                        <li><a id="Rh3_7-4-1" href="chapter007.html#h3_7-4-1">7.4.1 Pendulum Approximation</a></li>
+                                        <li><a id="Rh3_7-4-2" href="chapter007.html#h3_7-4-2">7.4.2 Reading the Hamiltonian</a></li>
+                                        <li><a id="Rh3_7-4-3" href="chapter007.html#h3_7-4-3">7.4.3 Resonance-Overlap Criterion</a></li>
+                                        <li><a id="Rh3_7-4-4" href="chapter007.html#h3_7-4-4">7.4.4 Higher-Order Perturbation Theory</a></li>
+                                        <li><a id="Rh3_7-4-5" href="chapter007.html#h3_7-4-5">7.4.5 Stability of the Inverted Vertical Equilibrium</a></li>
+                                    </ul>
+                                </li>
+                                <li><a id="Rh1-45" href="chapter007.html#h1-45">7.5 Summary</a></li>
+                                <li><a id="Rh1-46" href="chapter007.html#h1-46">7.6 Projects</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a id="toc-chap-8" href="chapter008.html"><strong>8 Appendix: Scheme</strong></a></li>
+
+                        <li><a id="toc-chap-9" href="chapter009.html"><strong>9 Appendix: Our Notation</strong></a></li>
+
+                        <li><a id="bib-1" href="bibliography.html">References</a></li>
+                        <li><a id="app-1" href="appendix.html">List of Exercises</a></li>
+                        <li><a id="indx-1" href="keyword_index.html">Index</a></li>
                 </ul>
-              </li>
-              <li><a id="Rh1-6a" href="chapter001.html#h1-6a">1.6 How to Find Lagrangians</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_1-6-1" href="chapter001.html#h3_1-6-1">1.6.1 Coordinate Transformations</a></li>
-                  <li><a id="Rh3_1-6-2" href="chapter001.html#h3_1-6-2">1.6.2 Systems with Rigid Constraints</a></li>
-                  <li><a id="Rh3_1-6-3" href="chapter001.html#h3_1-6-3">1.6.3 Constraints as Coordinate Transformations</a></li>
-                  <li><a id="Rh3_1-6-4" href="chapter001.html#h3_1-6-4">1.6.4 The Lagrangian Is Not Unique</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-6b" href="chapter001.html#h1-6b">1.7 Evolution of Dynamical State</a></li>
-              <li><a id="Rh1-6c" href="chapter001.html#h1-6c">1.8 Conserved Quantities</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_1-8-1" href="chapter001.html#h3_1-8-1">1.8.1 Conserved Momenta</a></li>
-                  <li><a id="Rh3_1-8-2" href="chapter001.html#h3_1-8-2">1.8.2 Energy Conservation</a></li>
-                  <li><a id="Rh3_1-8-3" href="chapter001.html#h3_1-8-3">1.8.3 Central Forces in Three Dimensions</a></li>
-                  <li><a id="Rh3_1-8-4" href="chapter001.html#h3_1-8-4">1.8.4 The Restricted Three-Body Problem</a></li>
-                  <li><a id="Rh3_1-8-5" href="chapter001.html#h3_1-8-5">1.8.5 Noether&#x2019;s Theorem</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-6d" href="chapter001.html#h1-6d">1.9 Abstraction of Path Functions</a></li>
-              <li><a id="Rh1-6e" href="chapter001.html#h1-6e">1.10 Constrained Motion</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_1-10-1" href="chapter001.html#h3_1-10-1">1.10.1 Coordinate Constraints</a></li>
-                  <li><a id="Rh3_1-10-2" href="chapter001.html#h3_1-10-2">1.10.2 Derivative Constraints</a></li>
-                  <li><a id="Rh3_1-10-3" href="chapter001.html#h3_1-10-3">1.10.3 Nonholonomic Systems</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-6f" href="chapter001.html#h1-6f">1.11 Summary</a></li>
-              <li><a id="Rh1-6g" href="chapter001.html#h1-6g">1.12 Projects</a></li>
-            </ul>
-          </li>
+            </div>
 
-          <li><a id="toc-chap-2" href="chapter002.html"><strong>2 Rigid Bodies</strong></a>
-            <ul class="no-bullet">
-              <li><a id="Rh1-7" href="chapter002.html#h1-7">2.1 Rotational Kinetic Energy</a></li>
-              <li><a id="Rh1-8" href="chapter002.html#h1-8">2.2 Kinematics of Rotation</a></li>
-              <li><a id="Rh1-8a" href="chapter002.html#h1-8a">2.3 Moments of Inertia</a></li>
-              <li><a id="Rh1-9" href="chapter002.html#h1-9">2.4 Inertia Tensor</a></li>
-              <li><a id="Rh1-9a" href="chapter002.html#h1-9a">2.5 Principal Moments of Inertia</a></li>
-              <li><a id="Rh1-10" href="chapter002.html#h1-10">2.6 Vector Angular Momentum</a></li>
-              <li><a id="Rh1-11" href="chapter002.html#h1-11">2.7 Euler Angles</a></li>
-              <li><a id="Rh1-12" href="chapter002.html#h1-12">2.8 Motion of a Free Rigid Body</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_2-8-1" href="chapter002.html#h3_2-8-1">2.8.1 Computing the Motion of Free Rigid Bodies</a></li>
-                  <li><a id="Rh3_2-8-2" href="chapter002.html#h3_2-8-2">2.8.2 Qualitative Features</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-12a" href="chapter002.html#h1-12a">2.9 Euler&#x2019;s Equations</a></li>
-              <li><a id="Rh1-12b" href="chapter002.html#h1-12b">2.10 Axisymmetric Tops</a></li>
-              <li><a id="Rh1-12c" href="chapter002.html#h1-12c">2.11 Spin-Orbit Coupling</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_2-11-1" href="chapter002.html#h3_2-11-1">2.11.1 Development of the Potential Energy</a></li>
-                  <li><a id="Rh3_2-11-2" href="chapter002.html#h3_2-11-2">2.11.2 Rotation of the Moon and Hyperion</a></li>
-                  <li><a id="Rh3_2-11-3" href="chapter002.html#h3_2-11-3">2.11.3 Spin-Orbit Resonances</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-12d" href="chapter002.html#h1-12d">2.12 Nonsingular Coordinates and Quaternions</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_2-12-1" href="chapter002.html#h3_2-12-1">2.12.1 Motion in Terms of Quaternions</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-13" href="chapter002.html#h1-13">2.13 Summary</a></li>
-              <li><a id="Rh1-14" href="chapter002.html#h1-14">2.14 Projects</a></li>
-            </ul>
-          </li>
+        </section>
 
-          <li><a id="toc-chap-3" href="chapter003.html"><strong>3 Hamiltonian Mechanics</strong></a>
-            <ul class="no-bullet">
-              <li><a id="Rh1-15" href="chapter003.html#h1-15">3.1 Hamilton's Equations</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_3-1-1" href="chapter003.html#h3_3-1-1">3.1.1 The Legendre Transformation</a></li>
-                  <li><a id="Rh3_3-1-2" href="chapter003.html#h3_3-1-2">3.1.2 Hamilton's Equations from the Action Principle</a></li>
-                  <li><a id="Rh3_3-1-3" href="chapter003.html#h3_3-1-3">3.1.3 A Wiring Diagram</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-16" href="chapter003.html#h1-16">3.2 Poisson Brackets</a></li>
-              <li><a id="Rh1-17" href="chapter003.html#h1-17">3.3 One Degree of Freedom</a></li>
-              <li><a id="Rh1-18" href="chapter003.html#h1-18">3.4 Phase Space Reduction</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_3-4-1" href="chapter003.html#h3_3-4-1">3.4.1 Lagrangian Reduction</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-19" href="chapter003.html#h1-19">3.5 Phase Space Evolution</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_3-5-1" href="chapter003.html#h3_3-5-1">3.5.1 Phase-Space Description Is Not Unique</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-20" href="chapter003.html#h1-20">3.6 Surfaces of Section</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_3-6-1" href="chapter003.html#h3_3-6-1">3.6.1 Periodically Driven Systems</a></li>
-                  <li><a id="Rh3_3-6-2" href="chapter003.html#h3_3-6-2">3.6.2 Computing Stroboscopic Surfaces of Section</a></li>
-                  <li><a id="Rh3_3-6-3" href="chapter003.html#h3_3-6-3">3.6.3 Autonomous Systems</a></li>
-                  <li><a id="Rh3_3-6-4" href="chapter003.html#h3_3-6-4">3.6.4 Computing H&#x00E9;non&#x2013;Heiles Surfaces of Section</a></li>
-                  <li><a id="Rh3_3-6-5" href="chapter003.html#h3_3-6-5">3.6.5 Non-Axisymmetric Top</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-21" href="chapter003.html#h1-21">3.7 Exponential Divergence</a></li>
-              <li><a id="Rh1-21a" href="chapter003.html#h1-21a">3.8 Liouville&#x2019;s Theorem</a></li>
-              <li><a id="Rh1-21b" href="chapter003.html#h1-21b">3.9 Standard Map</a></li>
-              <li><a id="Rh1-22" href="chapter003.html#h1-22">3.10 Summary</a></li>
-              <li><a id="Rh1-23" href="chapter003.html#h1-23">3.11 Projects</a></li>
-            </ul>
-          </li>
-
-          <li><a id="toc-chap-4" href="chapter004.html"><strong>4 Phase Space Structure</strong></a>
-            <ul class="no-bullet">
-              <li><a id="Rh1-24a" href="chapter004.html#h1-24a">4.1 Emergence of the Divided Phase Space</a></li>
-              <li><a id="Rh1-24" href="chapter004.html#h1-24">4.2 Linear Stability</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_4-2-1" href="chapter004.html#h3_4-2-1">4.2.1 Equilibria of Differential Equations</a></li>
-                  <li><a id="Rh3_4-2-2" href="chapter004.html#h3_4-2-2">4.2.2 Fixed Points of Maps</a></li>
-                  <li><a id="Rh3_4-2-3" href="chapter004.html#h3_4-2-3">4.2.3 Relations Among Exponents</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-25" href="chapter004.html#h1-25">4.3 Homoclinic Tangle</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_4-3-1" href="chapter004.html#h3_4-3-1">4.3.1 Computation of Stable and Unstable Manifolds</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-26" href="chapter004.html#h1-26">4.4 Integrable Systems</a></li>
-              <li><a id="Rh1-26a" href="chapter004.html#h1-26a">4.5 Poincar&#x00E9;&#x2013;Birkhoff Theorem</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_4-5-1" href="chapter004.html#h3_4-5-1">4.5.1 Computing the Poincar&#x00E9;&#x2013;Birkhoff Construction</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-26b" href="chapter004.html#h1-26b">4.6 Invariant Curves</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_4-6-1" href="chapter004.html#h3_4-6-1">4.6.1 Finding Invariant Curves</a></li>
-                  <li><a id="Rh3_4-6-2" href="chapter004.html#h3_4-6-2">4.6.2 Dissolution of Invariant Curves</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-27" href="chapter004.html#h1-27">4.7 Summary</a></li>
-              <li><a id="Rh1-28" href="chapter004.html#h1-28">4.8 Projects</a></li>
-            </ul>
-          </li>
-
-          <li><a id="toc-chap-5" href="chapter005.html"><strong>5 Canonical Transformations</strong></a>
-            <ul class="no-bullet">
-              <li><a id="Rh1-29" href="chapter005.html#h1-29">5.1 Point Transformations</a></li>
-              <li><a id="Rh1-29a" href="chapter005.html#h1-29a">5.2 General Canonical Transformations</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_5-2-1" href="chapter005.html#h3_5-2-1">5.2.1 Time-Dependent Transformations</a></li>
-                  <li><a id="Rh3_5-2-2" href="chapter005.html#h3_5-2-2">5.2.2 Abstracting the Canonical Condition</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-30" href="chapter005.html#h1-30">5.3 Invariants of Canonical Transformations</a></li>
-              <li><a id="Rh1-31" href="chapter005.html#h1-31">5.4 Generating Functions</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_5-4-1" href="chapter005.html#h3_5-4-1">5.4.1 <em>F</em><sub>1</sub> Generates Canonical Transformations</a></li>
-                  <li><a id="Rh3_5-4-2" href="chapter005.html#h3_5-4-2">5.4.2 Generating Functions and Integral Invariants</a></li>
-                  <li><a id="Rh3_5-4-3" href="chapter005.html#h3_5-4-3">5.4.3 Types of Generating Functions</a></li>
-                  <li><a id="Rh3_5-4-4" href="chapter005.html#h3_5-4-4">5.4.4 Point Transformations</a></li>
-                  <li><a id="Rh3_5-4-5" href="chapter005.html#h3_5-4-5">5.4.5 Total Time Derivatives</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-32" href="chapter005.html#h1-32">5.5 Extended Phase Space</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_5-5-1" href="chapter005.html#h3_5-5-1">5.5.1 Poincar&#x00E9;&#x2013;Cartan Integral Invariant</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-33" href="chapter005.html#h1-33">5.6 Reduced Phase Space</a></li>
-              <li><a id="Rh1-34" href="chapter005.html#h1-34">5.7 Summary</a></li>
-              <li><a id="Rh1-35" href="chapter005.html#h1-35">5.8 Projects</a></li>
-            </ul>
-          </li>
-
-          <li><a id="toc-chap-6" href="chapter006.html"><strong>6 Canonical Evolution</strong></a>
-            <ul class="no-bullet">
-              <li><a id="Rh1-36" href="chapter006.html#h1-36">6.1 Hamilton&#x2013;Jacobi Equation</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_6-1-1" href="chapter006.html#h3_6-1-1">6.1.1 Harmonic Oscillator</a></li>
-                  <li><a id="Rh3_6-1-2" href="chapter006.html#h3_6-1-2">6.1.2 Hamilton&#x2013;Jacobi Solution of the Kepler Problem</a></li>
-                  <li><a id="Rh3_6-1-3" href="chapter006.html#h3_6-1-3">6.1.3 <em>F</em><sub>2</sub> and the Lagrangian</a></li>
-                  <li><a id="Rh3_6-1-4" href="chapter006.html#h3_6-1-3">6.1.4 The Action Generates Time Evolution</a></li>
-              </li>
-              </ul>
-              <li><a id="Rh1-37" href="chapter006.html#h1-37">6.2 Time Evolution is Canonical</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_6-2-1" href="chapter006.html#h3_6-2-1">6.2.1 Another View of Time Evolution</a></li>
-                  <li><a id="Rh3_6-2-2" href="chapter006.html#h3_6-2-2">6.2.2 Yet Another View of Time Evolution</a></li>
-              </li>
-              </ul>
-              <li><a id="Rh1-38" href="chapter006.html#h1-38">6.3 Lie Transforms</a></li>
-              <li><a id="Rh1-39" href="chapter006.html#h1-39">6.4 Lie Series</a></li>
-              <li><a id="Rh1-39a" href="chapter006.html#h1-39a">6.5 Exponential Identities</a></li>
-              <li><a id="Rh1-40" href="chapter006.html#h1-40">6.6 Summary</a></li>
-              <li><a id="Rh1-41" href="chapter006.html#h1-41">6.7 Projects</a></li>
-          </li>
-          </ul>
-
-          <li><a id="toc-chap-7" href="chapter007.html"><strong>7 Canonical Perturbation Theory</strong></a>
-            <ul class="no-bullet">
-              <li><a id="Rh1-42" href="chapter007.html#h1-42">7.1 Perturbation Theory with Lie Series</a></li>
-              <li><a id="Rh1-42a" href="chapter007.html#h1-42a">7.2 Pendulum as a Perturbed Rotor</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_7-2-1" href="chapter007.html#h3_7-2-1">7.2.1 Higher Order</a></li>
-                  <li><a id="Rh3_7-2-2" href="chapter007.html#h3_7-2-2">7.2.2 Eliminating Secular Terms</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-43" href="chapter007.html#h1-43">7.3 Many Degrees of Freedom</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_7-3-1" href="chapter007.html#h3_7-3-1">7.3.1 Driven Pendulum as a Perturbed Rotor</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-44" href="chapter007.html#h1-44">7.4 Nonlinear Resonance</a>
-                <ul class="no-bullet">
-                  <li><a id="Rh3_7-4-1" href="chapter007.html#h3_7-4-1">7.4.1 Pendulum Approximation</a></li>
-                  <li><a id="Rh3_7-4-2" href="chapter007.html#h3_7-4-2">7.4.2 Reading the Hamiltonian</a></li>
-                  <li><a id="Rh3_7-4-3" href="chapter007.html#h3_7-4-3">7.4.3 Resonance-Overlap Criterion</a></li>
-                  <li><a id="Rh3_7-4-4" href="chapter007.html#h3_7-4-4">7.4.4 Higher-Order Perturbation Theory</a></li>
-                  <li><a id="Rh3_7-4-5" href="chapter007.html#h3_7-4-5">7.4.5 Stability of the Inverted Vertical Equilibrium</a></li>
-                </ul>
-              </li>
-              <li><a id="Rh1-45" href="chapter007.html#h1-45">7.5 Summary</a></li>
-              <li><a id="Rh1-46" href="chapter007.html#h1-46">7.6 Projects</a></li>
-            </ul>
-          </li>
-
-          <li><a id="toc-chap-8" href="chapter008.html"><strong>8 Appendix: Scheme</strong></a></li>
-
-          <li><a id="toc-chap-9" href="chapter009.html"><strong>9 Appendix: Our Notation</strong></a></li>
-
-          <li><a id="bib-1" href="bibliography001.html">References</a></li>
-          <li><a id="app-1" href="appendix001.html">List of Exercises</a></li>
-          <li><a id="indx-1" href="keyword_index.html">Index</a></li>
-        </ul>
-      </div>
-
-    </section>
-  </body>
+        {% include bottomlink.html %}
+    </body>
 </html>

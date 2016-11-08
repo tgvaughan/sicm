@@ -1,0 +1,15 @@
+<nav class="header">
+  <p>
+    {% if page.next %}
+        Next: <a href="{{page.next.url}}" accesskey="n" rel="next">{{page.next.title}}</a>,
+    {% endif %}
+
+    {% if page.prev %}
+        Prev: <a href="{{page.prev.url}}" accesskey="p" rel="prev">{{page.prev.title}}</a>,
+    {% endif %}
+
+    Up: <a href="toc.html" accesskey="u" rel="prev">Top</a>  
+
+    [<a href="toc.html#SEC_Contents" title="Table of contents" accesskey="c" rel="contents">Contents</a>]
+  </p>
+</nav>

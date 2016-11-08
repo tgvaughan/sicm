@@ -1,18 +1,34 @@
 ---
-title: Chapter 1
+title: Lagrangian Mechanics
+chapter: 1
+
+next:
+    title: Chapter 2
+    url: chapter002.html
+prev:
+    title: Acknowledgments
+    url: acknowledgments.html
+
 layout: chapter
 ---
 <a id="p1"></a>
-<h1 class="chapter-number"><a href="toc.html#chap-1"><strong>1</strong></a></h1>
-<h1 class="chapter-title"><a href="toc.html#chap-1"><strong>Lagrangian Mechanics</strong></a></h1>
 
-    <blockquote>
-        <p>The purpose of mechanics is to describe how bodies change their position in space with &#x201C;time.&#x201D; I should load my conscience with grave sins against the sacred spirit of lucidity were I to formulate the aims of mechanics in this way, without serious reflection and detailed explanations. Let us proceed to disclose these sins.</p>
+{% include chapter_title.html %}
 
-<p class="quote-citation">Albert Einstein, <em>Relativity, the Special and General Theory</em> [<a href="bibliography001.html#bib_16">16</a>], <a href="#p9">p. 9</a></p>
+<blockquote>
+    <p>The purpose of mechanics is to describe how bodies change their
+    position in space with &#x201C;time.&#x201D; I should load my
+    conscience with grave sins against the sacred spirit of lucidity were I
+    to formulate the aims of mechanics in this way, without serious
+    reflection and detailed explanations. Let us proceed to disclose these
+    sins.</p>
+
+    <p class="quote-citation">Albert Einstein, <em>Relativity, the Special
+        and General Theory</em>
+    [<a href="bibliography.html#bib_16">16</a>], <a href="#p9">p. 9</a></p>
 </blockquote>
 
-<p class="cotx">The subject of this book is motion and the mathematical tools used to describe it.</p>
+<p>The subject of this book is motion and the mathematical tools used to describe it.</p>
 
 <p>Centuries of careful observations of the motions of the planets revealed regularities in those motions, allowing accurate predictions of phenomena such as eclipses and conjunctions. The effort to formulate these regularities and ultimately to understand them led to the development of mathematics and to the discovery that mathematics could be effectively used to describe aspects of the physical world. That mathematics can be used to describe natural phenomena is a remarkable fact.</p>
 
@@ -3372,7 +3388,7 @@ layout: chapter
 
 <p class="noindent">We may no longer eliminate <em>&#x03B7;</em> by the same argument, because <em>&#x03B7;</em> is no longer orthogonal to &#x2202;<sub>1</sub><em>&#x03C8;</em> &#x2218; &#x0393;[<em>q</em>], and we cannot rewrite the constraint as a coordinate constraint because <em>&#x03C8;</em> is, by assumption, not integrable.</p>
 
-<p>The following is the derivation of the nonholonomic equations from Arnold et al. [<a href="bibliography001.html#bib_6">6</a>], translated into our notation. Define a &#x201C;virtual velocity&#x201D; <em>&#x03BE;</em> to be any velocity satisfying</p>
+<p>The following is the derivation of the nonholonomic equations from Arnold et al. [<a href="bibliography.html#bib_6">6</a>], translated into our notation. Define a &#x201C;virtual velocity&#x201D; <em>&#x03BE;</em> to be any velocity satisfying</p>
 
 <p class="eqtext" id="disp_1.236"><epub:switch id="mathmlSwitch403"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy='false'>(</mo><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>&#x03C8;</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mi>&#x03BE;</mi><mo>=</mo><mn>0.</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.236</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -3597,7 +3613,7 @@ layout: chapter
 
 <p class="ntx" id="endnote_21"><a epub:type="noteref" href="#endnote_ref_21"><sup>21</sup></a>The principle becomes the &#x201C;principle of least action&#x201D; if the path is sufficiently short. In the more general case the action is stationary. The term &#x201C;principle of least action&#x201D; is also commonly used to refer to a result, due to Maupertuis, Euler, and Lagrange, which says that free particles move along paths for which the integral of the kinetic energy is minimized among all paths with the given endpoints. Correspondingly, the term &#x201C;action&#x201D; is sometimes used to refer specifically to the integral of the kinetic energy. (Actually, Euler and Lagrange used the <em>vis viva</em>, or twice the kinetic energy.)</p>
 
-<p class="ntx" id="endnote_22"><a epub:type="noteref" href="#endnote_ref_22"><sup>22</sup></a>Other ways of stating the principle of stationary action make it sound teleological and mysterious. For instance, one could imagine that the system considers all possible paths from its initial configuration to its final configuration and then chooses the one with the smallest action. Indeed, the underlying vision of a purposeful, economical, and rational universe played no small part in the philosophical considerations that accompanied the initial development of mechanics. The earliest action principle that remains part of modern physics is Fermat&#x2019;s principle, which states that the path traveled by a light ray between two points is the path that takes the least amount of time. Fermat formulated this principle around 1660 and used it to derive the laws of reflection and refraction. Motivated by this, the French mathematician and astronomer Pierre-Louis Moreau de Maupertuis enunciated the principle of least action as a grand unifying principle in physics. In his <em>Essai de cosmologie</em> (1750) Maupertuis appealed to this principle of &#x201C;economy in nature&#x201D; as evidence of the existence of God, asserting that it demonstrated &#x201C;God&#x2019;s intention to regulate physical phenomena by a general principle of the highest perfection.&#x201D; For a historical perspective on Maupertuis&#x2019;s, Euler&#x2019;s, and Lagrange&#x2019;s roles in the formulation of the principle of least action, see [<a href="bibliography001.html#bib_28">28</a>].</p>
+<p class="ntx" id="endnote_22"><a epub:type="noteref" href="#endnote_ref_22"><sup>22</sup></a>Other ways of stating the principle of stationary action make it sound teleological and mysterious. For instance, one could imagine that the system considers all possible paths from its initial configuration to its final configuration and then chooses the one with the smallest action. Indeed, the underlying vision of a purposeful, economical, and rational universe played no small part in the philosophical considerations that accompanied the initial development of mechanics. The earliest action principle that remains part of modern physics is Fermat&#x2019;s principle, which states that the path traveled by a light ray between two points is the path that takes the least amount of time. Fermat formulated this principle around 1660 and used it to derive the laws of reflection and refraction. Motivated by this, the French mathematician and astronomer Pierre-Louis Moreau de Maupertuis enunciated the principle of least action as a grand unifying principle in physics. In his <em>Essai de cosmologie</em> (1750) Maupertuis appealed to this principle of &#x201C;economy in nature&#x201D; as evidence of the existence of God, asserting that it demonstrated &#x201C;God&#x2019;s intention to regulate physical phenomena by a general principle of the highest perfection.&#x201D; For a historical perspective on Maupertuis&#x2019;s, Euler&#x2019;s, and Lagrange&#x2019;s roles in the formulation of the principle of least action, see [<a href="bibliography.html#bib_28">28</a>].</p>
 
 <p class="ntx" id="endnote_23"><a epub:type="noteref" href="#endnote_ref_23"><sup>23</sup></a>For reflection the angle of incidence is equal to the angle of reflection. Refraction is described by Snell&#x2019;s law: when light passes from one medium to another, the ratio of the sines of the angles made to the normal to the interface is the inverse of the ratio of the refractive indices of the media. The refractive index is the ratio of the speed of light in the vacuum to the speed of light in the medium.</p>
 
@@ -3723,7 +3739,7 @@ layout: chapter
 
 <p class="ntx" id="endnote_70"><a epub:type="noteref" href="#endnote_ref_70"><sup>70</sup></a>Components of a tuple structure, such as the value of &#x0393;[<em>q</em>](<em>t</em>), can be selected with selector functions: <em>I<sub>i</sub></em> gets the element with index <em>i</em> from the tuple.</p>
 
-<p class="ntx" id="endnote_71"><a epub:type="noteref" href="#endnote_ref_71"><sup>71</sup></a>The Lipschitz condition is that the rate of change of the state is bounded by a constant in an open set around each state. See [<a href="bibliography001.html#bib_25">25</a>] for a good treatment of the Lipschitz condition.</p>
+<p class="ntx" id="endnote_71"><a epub:type="noteref" href="#endnote_ref_71"><sup>71</sup></a>The Lipschitz condition is that the rate of change of the state is bounded by a constant in an open set around each state. See [<a href="bibliography.html#bib_25">25</a>] for a good treatment of the Lipschitz condition.</p>
 
 <p class="ntx" id="endnote_72"><a epub:type="noteref" href="#endnote_ref_72"><sup>72</sup></a>If the coordinates are redundant we cannot, in general, solve for the highest-order derivative. However, since we can transform to irredundant coordinates, since we can solve the initial-value problem in the irredundant coordinates, and since we can construct the redundant coordinates from the irredundant coordinates, we can in general solve the initial-value problem for redundant coordinates. The only hitch is that we cannot specify arbitrary initial conditions: the initial conditions must be consistent with the constraints.</p>
 
@@ -3795,11 +3811,11 @@ layout: chapter
 
 <p class="ntx" id="endnote_95"><a epub:type="noteref" href="#endnote_ref_95"><sup>95</sup></a>Indeed, if we had scaled the constraint equations as we did in the discussion of Newtonian constraint forces, we could have identified <em>&#x03BB;</em> with the the magnitude of the constraint force <em>F</em>. However, though <em>&#x03BB;</em> will in general be related to the constraint forces it will not be one of them. We chose to leave the scaling as it naturally appeared rather than make things turn out artificially pretty.</p>
 
-<p class="ntx" id="endnote_96"><a epub:type="noteref" href="#endnote_ref_96"><sup>96</sup></a>This example appears in [<a href="bibliography001.html#bib_20">20</a>], pp. 49&#x2013;51,</p>
+<p class="ntx" id="endnote_96"><a epub:type="noteref" href="#endnote_ref_96"><sup>96</sup></a>This example appears in [<a href="bibliography.html#bib_20">20</a>], pp. 49&#x2013;51,</p>
 
 <p class="ntx" id="endnote_97"><a epub:type="noteref" href="#endnote_ref_97"><sup>97</sup></a>We will see in chapter 2 how to compute the kinetic energy of rotation, but for now the answer is <epub:switch id="mathmlSwitch447"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>M</mi><mtext>&#x2009;</mtext><msup><mi>R</mi><mn>2</mn></msup><msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup></mrow></math></epub:case></epub:switch>.</p>
 
-<p class="ntx" id="endnote_98"><a epub:type="noteref" href="#endnote_ref_98"><sup>98</sup></a>For some treatments of nonholonomic systems see, for example, Whittaker [<a href="bibliography001.html#bib_46">46</a>], Goldstein [<a href="bibliography001.html#bib_20">20</a>], Gantmakher [<a href="bibliography001.html#bib_19">19</a>], or Arnold et al. [<a href="bibliography001.html#bib_6">6</a>].</p>
+<p class="ntx" id="endnote_98"><a epub:type="noteref" href="#endnote_ref_98"><sup>98</sup></a>For some treatments of nonholonomic systems see, for example, Whittaker [<a href="bibliography.html#bib_46">46</a>], Goldstein [<a href="bibliography.html#bib_20">20</a>], Gantmakher [<a href="bibliography.html#bib_19">19</a>], or Arnold et al. [<a href="bibliography.html#bib_6">6</a>].</p>
 
-<p class="ntx" id="endnote_99"><a epub:type="noteref" href="#endnote_ref_99"><sup>99</sup></a>Arnold et al. [<a href="bibliography001.html#bib_6">6</a>] call the variational mechanics with the constraints added to the Lagrangian <em>Vakonomic mechanics</em>.</p>
+<p class="ntx" id="endnote_99"><a epub:type="noteref" href="#endnote_ref_99"><sup>99</sup></a>Arnold et al. [<a href="bibliography.html#bib_6">6</a>] call the variational mechanics with the constraints added to the Lagrangian <em>Vakonomic mechanics</em>.</p>
 </section>

@@ -1,35 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Structure and Interpretation of Classical Mechanics: Chapter 6</title>
-<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
-    <script type="text/javascript"
-            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-</head>
-<body>
+---
+title: Canonical Evolution
+chapter: 6
 
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter005.html">previous</a></span><span>,
-    <a href="chapter007.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-<div class="body">
-<section title="Canonical Evolution" epub:type="bodymatter chapter">
+next:
+    title: Chapter 7
+    url: chapter007.html
+prev:
+    title: Chapter 5
+    url: chapter005.html
+
+layout: chapter
+---
 <a id="p411"></a>
-<h1 class="chapter-number"><a href="toc.html#chap-6"><strong>6</strong></a></h1>
-<h1 class="chapter-title"><a href="toc.html#chap-6"><strong>Canonical Evolution</strong></a></h1>
-<div class="pull-quoteb">
 
-<p class="pq-noindent">What, then, is time? I know well enough what it is, provided that nobody asks me; but if I am asked what it is and try to explain, I am baffled. All the same I can confidently say that I know that if nothing passed, there would be no past time; if nothing were going to happen, there would be no future time; and if nothing <em>were</em> there would be no present time.</p>
+{% include chapter_title.html %}
 
-<p class="pq-noindent1-top">Augustine of Hippo, from <em>Confessions</em>, Book XI, Section 14. Translation by R.S. Pine-Coffin, 1961.</p>
-</div>
+<blockquote>
+    <p>What, then, is time? I know well enough what it is, provided that nobody
+    asks me; but if I am asked what it is and try to explain, I am baffled. All
+    the same I can confidently say that I know that if nothing passed, there
+    would be no past time; if nothing were going to happen, there would be no
+    future time; and if nothing <em>were</em> there would be no present
+    time.</p>
 
-<p class="cotx">Time evolution generates a canonical transformation: if we consider all possible initial states of a Hamiltonian system and follow all the trajectories for the same time interval, then the map from the initial state to the final state of each trajectory is a canonical transformation. Hamilton&#x2013;Jacobi theory gives a mixed-variable generating function that generates this time-evolution transformation. For the few integrable systems for which we can solve the Hamilton&#x2013;Jacobi equation this transformation gets us action-angle coordinates, which form a starting point to study perturbations.</p>
+    <p class="quote-citation">Augustine of Hippo, from <em>Confessions</em>,
+    Book XI, Section 14. Translation by R.S. Pine-Coffin, 1961.</p>
+</blockquote>
+
+<p>Time evolution generates a canonical transformation: if we consider all possible initial states of a Hamiltonian system and follow all the trajectories for the same time interval, then the map from the initial state to the final state of each trajectory is a canonical transformation. Hamilton&#x2013;Jacobi theory gives a mixed-variable generating function that generates this time-evolution transformation. For the few integrable systems for which we can solve the Hamilton&#x2013;Jacobi equation this transformation gets us action-angle coordinates, which form a starting point to study perturbations.</p>
 <section title="Hamilton&#x2013;Jacobi Equation">
 <h1 class="level1" id="h1-36"><a href="toc.html#Rh1-36"><strong>6.1&#160;&#160;&#160;Hamilton&#x2013;Jacobi Equation</strong></a></h1>
 
@@ -287,7 +285,7 @@
 
 <p class="noindent">where <epub:switch id="mathmlSwitch1541"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>=</mo><mi>m</mi><msup><mi>&#x03BC;</mi><mn>2</mn></msup><mo>/</mo><msup><mrow><mrow><mo>(</mo><mrow><msubsup><mi>p</mi><mn>0</mn><mo>&#x2032;</mo></msubsup></mrow><mo>)</mo></mrow></mrow><mn>3</mn></msup></mrow></math></epub:case></epub:switch> and where <em>&#x03B2;</em><sup>0</sup>, <em>&#x03B2;</em><sup>1</sup>, and <em>&#x03B2;</em><sup>2</sup> are the initial values of the components of <em>q</em>&#x2032;. Only one of the new variables changes with time.</p>
 
-<p>The canonical phase-space coordinates can be written in terms of the parameters that specify an orbit. We merely summarize the results; for further explanation see [<a href="bibliography001.html#bib_36">36</a>] or [<a href="bibliography001.html#bib_38">38</a>].</p>
+<p>The canonical phase-space coordinates can be written in terms of the parameters that specify an orbit. We merely summarize the results; for further explanation see [<a href="bibliography.html#bib_36">36</a>] or [<a href="bibliography.html#bib_38">38</a>].</p>
 
 <p>Assume we have a bound orbit with semimajor axis <em>a</em>, eccentricity <em>e</em>, inclination <em>i</em>, longitude of ascending node &#x03A9;, argument of pericenter <em>&#x03C9;</em>, and mean anomaly <em>M</em>. The three canonical momenta are <epub:switch id="mathmlSwitch1542"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>p</mi><mn>0</mn><mo>&#x2032;</mo></msubsup><mo>=</mo><msqrt><mrow><mi>m</mi><mi>&#x03BC;</mi><mi>a</mi></mrow></msqrt><mo>,</mo><msubsup><mi>p</mi><mn>1</mn><mo>&#x2032;</mo></msubsup><mo>=</mo><msqrt><mrow><mi>m</mi><mi>&#x03BC;</mi><mi>a</mi><mrow><mo>(</mo><mrow><mn>1</mn><mo>&#x2212;</mo><msup><mi>e</mi><mn>2</mn></msup></mrow><mo>)</mo></mrow></mrow></msqrt></mrow></math></epub:case></epub:switch>, and <epub:switch id="mathmlSwitch1543"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>p</mi><mn>2</mn><mo>&#x2032;</mo></msubsup><mo>=</mo><msqrt><mrow><mi>m</mi><mi>&#x03BC;</mi><mi>a</mi><mrow><mo>(</mo><mrow><mn>1</mn><mo>&#x2212;</mo><msup><mi>e</mi><mn>2</mn></msup></mrow><mo>)</mo></mrow></mrow></msqrt><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mi>i</mi></mrow></math></epub:case></epub:switch>. The first momentum is related to the energy, the second momentum is the total angular momentum, and the third momentum is the component of the angular momentum in the <em>&#x1E91;</em> direction. The conjugate canonical coordinates are (<em>q</em>&#x2032;)<sup>0</sup> &#x003D; <em>M</em>, (<em>q</em>&#x2032;)<sup>1</sup> &#x003D; <em>&#x03C9;</em>, and (<em>q</em>&#x2032;)<sup>2</sup> &#x003D; &#x03A9;.</p>
 </section>
@@ -1359,7 +1357,7 @@
 
 <p class="noindent">Symplectic integrators construct approximate solutions for the Hamiltonian <em>H</em> from those of <em>H</em><sub>0</sub> and <em>H</em><sub>1</sub>.</p>
 
-<p>We construct a map of the phase space onto itself in the following way (see [<a href="bibliography001.html#bib_47">47</a>, <a href="bibliography001.html#bib_48">48</a>, <a href="bibliography001.html#bib_49">49</a>]). Define <em>&#x03B4;</em><sub>2<em>&#x03C0;</em></sub>(<em>t</em>) to be an infinite sum of Dirac delta functions, with interval 2<em>&#x03C0;</em>,</p>
+<p>We construct a map of the phase space onto itself in the following way (see [<a href="bibliography.html#bib_47">47</a>, <a href="bibliography.html#bib_48">48</a>, <a href="bibliography.html#bib_49">49</a>]). Define <em>&#x03B4;</em><sub>2<em>&#x03C0;</em></sub>(<em>t</em>) to be an infinite sum of Dirac delta functions, with interval 2<em>&#x03C0;</em>,</p>
 
 <p class="eqtext" id="disp_6.163"><epub:switch id="mathmlSwitch1733"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><msub><mi>&#x03B4;</mi><mrow><mn>2</mn><mi>&#x03C0;</mi></mrow></msub><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow><mo>=</mo><mstyle displaystyle='true'><munderover><mo>&#x2211;</mo><mrow><mi>n</mi><mo>=</mo><mo>&#x2212;</mo><mi>&#x221E;</mi></mrow><mrow><mi>&#x221E;</mi></mrow></munderover><mrow><mi>&#x03B4;</mi><mrow><mo>(</mo><mrow><mi>t</mi><mo>&#x2212;</mo><mn>2</mn><mi>&#x03C0;</mi><mi>n</mi></mrow><mo>)</mo></mrow><mo>,</mo></mrow></mstyle></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mn>6.163</mn></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1483,16 +1481,3 @@
 
 <p class="ntx" id="endnote_13"><a epub:type="noteref" href="#endnote_ref_13"><sup>13</sup></a>The <span class="font1">Lie-transform</span> procedure here is also defined to be an operator, just like <span class="font1">Lie-derivative</span>.</p>
 </section>
-</section>
-</div>
-
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter005.html">previous</a></span><span>,
-    <a href="chapter007.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-</body>
-</html>

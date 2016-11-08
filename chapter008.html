@@ -1,38 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Structure and Interpretation of Classical Mechanics: Chapter 8</title>
-<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
-    <script type="text/javascript"
-            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-</head>
-<body>
+---
+title: Scheme
+chapter: 8
 
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter007.html">previous</a></span><span>,
-    <a href="chapter009.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-<div class="body">
+next:
+    title: Chapter 9
+    url: chapter009.html
+prev:
+    title: Chapter 7
+    url: chapter007.html
+
+layout: appendix
+---
 <a id="p497"></a>
-<section title="Appendix: Scheme" epub:type="bodymatter chapter">
-<h1 class="chapter-number"><a href="toc.html#chap-8"><strong>8</strong></a></h1>
-<h1 class="chapter-title"><a href="toc.html#chap-8"><strong>Appendix: Scheme</strong></a></h1>
-<div class="pull-quoteb">
 
-<p class="pq-noindent">Programming languages should be designed not by piling feature on top of feature, but by removing the weaknesses and restrictions that make additional features appear necessary. Scheme demonstrates that a very small number of rules for forming expressions, with no restrictions on how they are composed, suffice to form a practical and efficient programming language that is flexible enough to support most of the major programming paradigms in use today.</p>
+{% include appendix_title.html %}
 
-<p class="pq-noindent1-top"><em>IEEE Standard for the Scheme Programming Language</em> [<a href="bibliography001.html#bib_24">24</a>], <a href="chapter001.html#p3">p. 3</a></p>
-</div>
+<blockquote>
+    <p>Programming languages should be designed not by piling feature on top of
+    feature, but by removing the weaknesses and restrictions that make
+    additional features appear necessary. Scheme demonstrates that a very small
+    number of rules for forming expressions, with no restrictions on how they
+    are composed, suffice to form a practical and efficient programming
+    language that is flexible enough to support most of the major programming
+    paradigms in use today.</p>
 
-<p class="noindent">Here we give an elementary introduction to Scheme.<sup><a href="#endnote_1" id="endnote_ref_1">1</a></sup> For a more precise explanation of the language see the IEEE standard [<a href="bibliography001.html#bib_24">24</a>]; for a longer introduction see the textbook [<a href="bibliography001.html#bib_1">1</a>].</p>
+    <p class="quote-citation"><em>IEEE Standard for the Scheme Programming Language</em>
+    [<a href="bibliography.html#bib_24">24</a>], <a href="chapter001.html#p3">p. 3</a></p>
+</blockquote>
+
+<p class="noindent">Here we give an elementary introduction to Scheme.<sup><a href="#endnote_1" id="endnote_ref_1">1</a></sup> For a more precise explanation of the language see the IEEE standard [<a href="bibliography.html#bib_24">24</a>]; for a longer introduction see the textbook [<a href="bibliography.html#bib_1">1</a>].</p>
 
 <p>Scheme is a simple programming language based on expressions. An expression names a value. For example, the numeral <span class="font1">3.14</span> names an approximation to a familiar number. There are primitive expressions, such as numerals, that we directly recognize, and there are compound expressions of several kinds.</p>
-<section>
+
 <section title="Procedure calls">
 <h2 class="level2"><strong>Procedure calls</strong></h2>
 
@@ -547,7 +546,7 @@
 
 <p class="ntx" id="endnote_3"><a epub:type="noteref" href="#endnote_ref_3"><sup>3</sup></a>In Scheme every parenthesis is essential: you cannot add extra parentheses or remove any.</p>
 
-<p class="ntx" id="endnote_4"><a epub:type="noteref" href="#endnote_ref_4"><sup>4</sup></a>The logician Alonzo Church [<a href="bibliography001.html#bib_13">13</a>] invented <em>&#x03BB;</em>-notation to allow the specification of an anonymous function of a named parameter: <strong><em>&#x03BB;</em></strong><em>x</em>[expression in <em>x</em>]. This is read, &#x201C;That function of one argument that is obtained by substituting the argument for <em>x</em> in the indicated expression.&#x201D;</p>
+<p class="ntx" id="endnote_4"><a epub:type="noteref" href="#endnote_ref_4"><sup>4</sup></a>The logician Alonzo Church [<a href="bibliography.html#bib_13">13</a>] invented <em>&#x03BB;</em>-notation to allow the specification of an anonymous function of a named parameter: <strong><em>&#x03BB;</em></strong><em>x</em>[expression in <em>x</em>]. This is read, &#x201C;That function of one argument that is obtained by substituting the argument for <em>x</em> in the indicated expression.&#x201D;</p>
 
 <p class="ntx" id="endnote_5"><a epub:type="noteref" href="#endnote_ref_5"><sup>5</sup></a>The definition of <span class="font1">square</span> given here is not the definition of <span class="font1">square</span> in the Scmutils system. In Scmutils, <span class="font1">square</span> is extended for tuples to mean the sum of the squares of the components of the tuple. However, for arguments that are not tuples the Scmutils <span class="font1">square</span> does multiply the argument by itself.</p>
 
@@ -562,16 +561,3 @@
 <p class="ntx" id="endnote_10"><a epub:type="noteref" href="#endnote_ref_10"><sup>10</sup></a>The discipline of programming without assignments is called <em>functional programming</em>. Functional programs are generally easier to understand, and have fewer bugs than <em>imperative programs</em>.</p>
 </section>
 </section>
-</section>
-</section>
-</div>
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter007.html">previous</a></span><span>,
-    <a href="chapter009.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-</body>
-</html>

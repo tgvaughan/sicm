@@ -1,42 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Structure and Interpretation of Classical Mechanics: Chapter 9</title>
-<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
-    <script type="text/javascript"
-            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-</head>
-<body>
+---
+title: Our Notation
+chapter: 9
 
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter008.html">previous</a></span><span>,
-    <a href="bibliography001.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-<div class="body">
+next:
+    title: Bibliography
+    url: bibliography.html
+prev:
+    title: Chapter 8
+    url: chapter008.html
+
+layout: appendix
+---
 <a id="p509"></a>
-<section title="Appendix: Our Notation" epub:type="bodymatter chapter">
-<h1 class="chapter-number"><a href="toc.html#chap-9"><strong>9</strong></a></h1>
-<h1 class="chapter-title"><a href="toc.html#chap-9"><strong>Appendix: Our Notation</strong></a></h1>
-<div class="pull-quoteb">
 
-<p class="pq-noindent">An adequate notation should be understood by at least two people, one of whom may be the author.</p>
+{% include appendix_title.html %}
 
-<p class="pq-noindent1-top">Abdus Salam (1950).</p>
-</div>
+<blockquote>
+    <p>An adequate notation should be understood by at least two people, one of
+    whom may be the author.</p>
 
-<p class="cotx">We adopt a <em>functional mathematical notation</em> that is close to that used by Spivak in his <em>Calculus on Manifolds</em> [<a href="bibliography001.html#bib_40">40</a>]. The use of functional notation avoids many of the ambiguities of traditional mathematical notation; the ambiguities of traditional notation that can impede clear reasoning in classical mechanics. Functional notation carefully distinguishes the function from the value of the function when applied to particular arguments. In functional notation mathematical expressions are unambiguous and self-contained.</p>
+    <p class="quote-citation">Abdus Salam (1950).</p>
+</blockquote>
+
+<p>We adopt a <em>functional mathematical notation</em> that is close to that used by Spivak in his <em>Calculus on Manifolds</em> [<a href="bibliography.html#bib_40">40</a>]. The use of functional notation avoids many of the ambiguities of traditional mathematical notation; the ambiguities of traditional notation that can impede clear reasoning in classical mechanics. Functional notation carefully distinguishes the function from the value of the function when applied to particular arguments. In functional notation mathematical expressions are unambiguous and self-contained.</p>
 
 <p>We adopt a <em>generic arithmetic</em> in which the basic arithmetic operations, such as addition and multiplication, are extended to a wide variety of mathematical types. Thus, for example, the addition operator &#x002B; can be applied to numbers, tuples of numbers, matrices, functions, etc. Generic arithmetic formalizes the common informal practice used to manipulate mathematical objects.</p>
 
 <p>We often want to manipulate aggregate quantities, such as the collection of all of the rectangular coordinates of a collection of particles, without explicitly manipulating the component parts. Tensor arithmetic provides a traditional way of manipulating aggregate objects: Indices label the parts; conventions, such as the summation convention, are introduced to manipulate the indices. We introduce a <em>tuple arithmetic</em> as an alternative way of manipulating aggregate quantities that usually lets us avoid labeling the parts with indices. Tuple arithmetic is inspired by tensor arithmetic but it is more general: not all of the components of a tuple need to be of the same size or type.</p>
 
-<p>The mathematical notation is in one-to-one correspondence with expressions of the computer language <em>Scheme</em> [<a href="bibliography001.html#bib_24">24</a>]. Scheme is based on the <em>&#x03BB;</em>-calculus [<a href="bibliography001.html#bib_13">13</a>] and directly supports the manipulation of functions. We augment Scheme with symbolic, numerical, <a id="p510"></a>and generic features to support our applications. For a simple introduction to Scheme, see the Scheme appendix. The correspondence between the mathematical notation and Scheme requires that mathematical expressions be unambiguous and self-contained. Scheme provides immediate feedback in verification of mathematical deductions and facilitates the exploration of the behavior of systems.</p>
-<section>
+<p>The mathematical notation is in one-to-one correspondence with expressions of the computer language <em>Scheme</em> [<a href="bibliography.html#bib_24">24</a>]. Scheme is based on the <em>&#x03BB;</em>-calculus [<a href="bibliography.html#bib_13">13</a>] and directly supports the manipulation of functions. We augment Scheme with symbolic, numerical, <a id="p510"></a>and generic features to support our applications. For a simple introduction to Scheme, see the Scheme appendix. The correspondence between the mathematical notation and Scheme requires that mathematical expressions be unambiguous and self-contained. Scheme provides immediate feedback in verification of mathematical deductions and facilitates the exploration of the behavior of systems.</p>
 <section title="Functions">
 <h2 class="level2"><strong>Functions</strong></h2>
 
@@ -595,16 +587,3 @@
 <p class="ntx" id="endnote_3"><a epub:type="noteref" href="#endnote_ref_3"><sup>3</sup></a>Partial derivative operators such as <span class="font1">(partial 2)</span> are operators, so <span class="font1">(expt (partial 1) 2)</span> is a second partial derivative.</p>
 <a id="p524"></a>
 </section>
-</section>
-</section>
-</div>
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter008.html">previous</a></span><span>,
-    <a href="bibliography001.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-</body>
-</html>

@@ -1,35 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Structure and Interpretation of Classical Mechanics</title>
-<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
-    <script type="text/javascript"
-            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-</head>
-<body>
+---
+title: Canonical Perterbation Theory
+chapter: 7
 
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter006.html">previous</a></span><span>,
-    <a href="chapter008.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-<div class="body">
-<section title="Canonical Perturbation Theory" epub:type="bodymatter chapter">
+next:
+    title: Chapter 8
+    url: chapter008.html
+prev:
+    title: Chapter 6
+    url: chapter006.html
+
+layout: chapter
+---
 <a id="p457"></a>
-<h1 class="chapter-number"><a href="toc.html#chap-7"><strong>7</strong></a></h1>
-<h1 class="chapter-title"><a href="toc.html#chap-7"><strong>Canonical Perturbation Theory</strong></a></h1>
-<div class="pull-quoteb">
 
-<p class="pq-noindent">Having treated the motion of the moon about the earth, and having obtained an elliptical orbit, [Newton] considered the effect of the sun on the moon&#x2019;s orbit by taking into account the variations of the latter. However, the calculations caused him great difficulties &#x2026; Indeed, the problems he encountered were such that [Newton] was prompted to remark to the astronomer John Machin that &#x201C;&#x2026; his head never ached but with his studies on the moon.&#x201D;</p>
+{% include chapter_title.html %}
 
-<p class="pq-noindent1-top">June Barrow-Green, <em>Poincar&#x00E9; and the Three Body Problem</em> [<a href="bibliography001.html#bib_7">7</a>], <a href="chapter001.html#p15">p. 15</a></p>
+<blockquote>
+    <p>Having treated the motion of the moon about the earth, and having
+    obtained an elliptical orbit, [Newton] considered the effect of the sun on
+    the moon&#x2019;s orbit by taking into account the variations of the
+    latter. However, the calculations caused him great difficulties &#x2026;
+    Indeed, the problems he encountered were such that [Newton] was prompted to
+    remark to the astronomer John Machin that &#x201C;&#x2026; his head never
+    ached but with his studies on the moon.&#x201D;</p>
+
+    <p class="quote-citation">June Barrow-Green,
+    <em>Poincar&#x00E9; and the Three Body Problem</em>
+    [<a href="bibliography.html#bib_7">7</a>], <a href="chapter001.html#p15">p. 15</a></p>
 </div>
 
-<p class="cotx">Closed-form solutions of dynamical systems can be found only rarely. However, some systems differ from a solvable system by the addition of a small effect. The goal of perturbation theory is to relate aspects of the motion of the given system to those of the nearby solvable system. We can try to find a way to transform the exact solution of this approximate problem into an approximate solution to the original problem. We can also use perturbation theory to try to predict qualitative features of the solutions by describing the characteristic ways in which solutions of the solvable system are distorted by the additional effects. For instance, we might want to predict where the largest resonance regions are located or the locations and sizes of the largest chaotic zones. Being able to predict such features can give insight into the behavior of the particular system of interest.</p>
+<p>Closed-form solutions of dynamical systems can be found only rarely. However, some systems differ from a solvable system by the addition of a small effect. The goal of perturbation theory is to relate aspects of the motion of the given system to those of the nearby solvable system. We can try to find a way to transform the exact solution of this approximate problem into an approximate solution to the original problem. We can also use perturbation theory to try to predict qualitative features of the solutions by describing the characteristic ways in which solutions of the solvable system are distorted by the additional effects. For instance, we might want to predict where the largest resonance regions are located or the locations and sizes of the largest chaotic zones. Being able to predict such features can give insight into the behavior of the particular system of interest.</p>
 
 <p>Suppose, for example, we have a system characterized by a Hamiltonian that breaks up into two parts as follows:</p>
 
@@ -494,7 +494,7 @@
 
 <p class="noindent">Considering the fact that for any tuple of frequencies <em>&#x03C9;</em><sub>0</sub>(<em>p</em>&#x2032;) we can find a tuple of integers <em>k</em> such that <em>k</em>&#x00B7;<em>&#x03C9;</em>(<em>p</em>&#x2032;) is arbitrarily small, this problem of small divisors looks very serious.</p>
 
-<p>However, the problem, though serious, is not as bad as it may appear, for a couple of reasons. First, it may be that <em>A<sub>k</sub></em> &#x2260; 0 only for certain <em>k</em>. In this case, only the regions for these terms are excluded from the domain of applicability. Second, for analytic functions the magnitude of <em>A<sub>k</sub></em> decreases strongly with the size of <em>k</em> (see [<a href="bibliography001.html#bib_4">4</a>]):</p>
+<p>However, the problem, though serious, is not as bad as it may appear, for a couple of reasons. First, it may be that <em>A<sub>k</sub></em> &#x2260; 0 only for certain <em>k</em>. In this case, only the regions for these terms are excluded from the domain of applicability. Second, for analytic functions the magnitude of <em>A<sub>k</sub></em> decreases strongly with the size of <em>k</em> (see [<a href="bibliography.html#bib_4">4</a>]):</p>
 
 <p class="eqtext" id="disp_7.51"><epub:switch id="mathmlSwitch1810"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mrow><mo>|</mo><mrow><msub><mi>A</mi><mi>k</mi></msub><mrow><mo>(</mo><mi>p</mi><mo>&#x2032;</mo><mo>)</mo></mrow></mrow><mo>|</mo></mrow><mo>&#x2264;</mo><mi>C</mi><msup><mi>e</mi><mrow><mo>&#x2212;</mo><mi>&#x03B2;</mi><msub><mrow><mrow><mo>|</mo><mi>k</mi><mo>|</mo></mrow></mrow><mo>+</mo></msub></mrow></msup><mo>,</mo></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mn>7.51</mn></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -870,15 +870,3 @@
 
 <p class="ntx" id="endnote_4"><a epub:type="noteref" href="#endnote_ref_4"><sup>4</sup></a>For <em>W</em><sub>&#x002B;</sub> see equations <a href="chapter007.html#disp_7.74">7.74</a> and <a href="chapter007.html#disp_7.75">7.75</a>; for the general relationship between a term in the generator and the coordinate transformation generated see equations <a href="chapter007.html#disp_7.48">7.48</a> and <a href="chapter007.html#disp_7.49">7.49</a>.</p>
 </section>
-</section>
-</div>
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter006.html">previous</a></span><span>,
-    <a href="chapter008.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-</body>
-</html>

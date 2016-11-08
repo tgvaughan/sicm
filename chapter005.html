@@ -1,35 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Structure and Interpretation of Classical Mechanics: Chapter 5</title>
-<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
-    <script type="text/javascript"
-            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-</head>
-<body>
+---
+title: Canonical Transformations
+chapter: 5
 
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter004.html">previous</a></span><span>,
-    <a href="chapter006.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-<div class="body">
-<section title="Canonical Transformations" epub:type="bodymatter chapter">
+next:
+    title: Chapter 6
+    url: chapter006.html
+prev:
+    title: Chapter 4
+    url: chapter004.html
+
+layout: chapter
+---
 <a id="p335"></a>
-<h1 class="chapter-number"><a href="toc.html#chap-5"><strong>5</strong></a></h1>
-<h1 class="chapter-title"><a href="toc.html#chap-5"><strong>Canonical Transformations</strong></a></h1>
-<div class="pull-quoteb">
 
-<p class="pq-noindent">We have done considerable mountain climbing. Now we are in the rarefied atmosphere of theories of excessive beauty and we are nearing a high plateau on which geometry, optics, mechanics, and wave mechanics meet on common ground. Only concentrated thinking, and a considerable amount of re&#x2013;creation, will reveal the beauty of our subject in which the last word has not been spoken.</p>
+{% include chapter_title.html %}
 
-<p class="pq-noindent1-top">Cornelius Lanczos, <em>The Variational Principles of Mechanics</em> [<a href="bibliography001.html#bib_29">29</a>], <a href="chapter003.html#p229">p. 229</a></p>
-</div>
+<blockquote>
+    <p>We have done considerable mountain climbing. Now we are in the rarefied
+    atmosphere of theories of excessive beauty and we are nearing a high
+    plateau on which geometry, optics, mechanics, and wave mechanics meet on
+    common ground. Only concentrated thinking, and a considerable amount of
+    re&#x2013;creation, will reveal the beauty of our subject in which the last
+    word has not been spoken.</p>
 
-<p class="cotx">One way to simplify the analysis of a problem is to express it in a form in which the solution has a simple representation. However, it may not be easy to formulate the problem in such a way initially. It is often useful to start by formulating the problem in one way, and then transform it. For example, the formulation of the problem of the motion of a number of gravitating bodies is simple in rectangular coordinates, but it is easier to understand aspects of the motion in terms of orbital elements, such as the semimajor axes, eccentricities, and inclinations of the orbits. The semimajor axis and eccentricity of an orbit depend on both the configuration and the velocity of the body. Such transformations are more general than those that express changes in configuration coordinates. Here we investigate transformations of phase-space coordinates that involve both the generalized coordinates and the generalized momenta.</p>
+    <p class="quote-citation">Cornelius Lanczos,
+    <em>The Variational Principles of Mechanics</em>
+    [<a href="bibliography.html#bib_29">29</a>], <a href="chapter003.html#p229">p. 229</a></p>
+</blockquote>
+
+<p>One way to simplify the analysis of a problem is to express it in a form in which the solution has a simple representation. However, it may not be easy to formulate the problem in such a way initially. It is often useful to start by formulating the problem in one way, and then transform it. For example, the formulation of the problem of the motion of a number of gravitating bodies is simple in rectangular coordinates, but it is easier to understand aspects of the motion in terms of orbital elements, such as the semimajor axes, eccentricities, and inclinations of the orbits. The semimajor axis and eccentricity of an orbit depend on both the configuration and the velocity of the body. Such transformations are more general than those that express changes in configuration coordinates. Here we investigate transformations of phase-space coordinates that involve both the generalized coordinates and the generalized momenta.</p>
 
 <p>Suppose we have two different Hamiltonian systems, and suppose the trajectories of the two systems are in one-to-one correspondence. In this case both Hamiltonian systems can be mathematical models of the same physical system. Some questions about the physical system may be easier to answer by reference to one model and others may be easier to answer in the other model. For example, it may be easier to formulate the physical system in one model and to discover a conserved quantity in the other. Canonical transformations are maps between Hamiltonian systems that preserve the dynamics.</p>
 <a id="p336"></a>
@@ -2740,15 +2739,3 @@
 
 <p class="ntx" id="endnote_28"><a epub:type="noteref" href="#endnote_ref_28"><sup>28</sup></a>We could have chosen to reparameterize in terms of <em>&#x03C6;</em>, but then both <em>p<sub>r</sub></em> and <em>r</em> would occur in the resulting time-independent Hamiltonian. The path we have chosen takes advantage of the fact that <em>&#x03C6;</em> does not appear in our Hamiltonian, so <em>p<sub>&#x03C6;</sub></em> is a constant of the motion. This structure suggests that to solve this kind of problem we need to look ahead, as in playing chess.</p>
 </section>
-</section>
-</div>
-<div class=navigation>[Go to
-  <span>
-    <a href="book.html">first</a>,
-    <a href="chapter004.html">previous</a></span><span>,
-    <a href="chapter006.html">next</a></span> section<span>; &nbsp;&nbsp;</span><span>
-    <a href="toc.html">contents</a></span><span><span>; &nbsp;&nbsp;</span>
-    <a href="index.html">index</a></span>]
-</div>
-</body>
-</html>
