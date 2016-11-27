@@ -367,7 +367,7 @@ layout: appendix
 <section title="Symbols">
 <h2 class="level2"><strong>Symbols</strong></h2>
 
-<p class="noindent">Symbols are a very important kind of primitive data type that we use to make programs and algebraic expressions. You probably have noticed that Scheme programs look just like lists. In fact, they are lists. Some of the elements of the lists that make up programs are symbols, such as <span class="font1">&#x002B;</span> and <span class="font1">vector</span>.<sup><a class="footnote_link" href="#endnote_8" id="endnote_ref_8">8</a></sup> If we are to make programs that can manipulate programs, we need to be able to write an expression that names such a symbol. This is accomplished by the mechanism of <em>quotation</em>. The name of the symbol <a id="p505"></a><span class="font1">&#x002B;</span> is the expression <span class="font1">&#x2019;&#x002B;</span>, and in general the name of an expression is the expression preceded by a single quote character. Thus the name of the expression <span class="font1">(&#x002B; 3 a)</span> is <span class="font1">&#x2019;(&#x002B; 3 a)</span>.</p>
+<p class="noindent">Symbols are a very important kind of primitive data type that we use to make programs and algebraic expressions. You probably have noticed that Scheme programs look just like lists. In fact, they are lists. Some of the elements of the lists that make up programs are symbols, such as <span class="font1">&#x002B;</span> and <span class="font1">vector</span>.<sup><a class="footnote_link" href="#endnote_8" id="endnote_ref_8">8</a></sup> If we are to make programs that can manipulate programs, we need to be able to write an expression that names such a symbol. This is accomplished by the mechanism of <em>quotation</em>. The name of the symbol <a id="p505"></a><span class="font1">&#x002B;</span> is the expression <span class="font1">'&#x002B;</span>, and in general the name of an expression is the expression preceded by a single quote character. Thus the name of the expression <span class="font1">(&#x002B; 3 a)</span> is <span class="font1">'(&#x002B; 3 a)</span>.</p>
 
 <p>We can test if two symbols are identical by using the predicate <span class="font1">eq?</span>. For example, we can write a program to determine if an expression is a sum:</p>
 <div class="pull-quote">
@@ -376,20 +376,20 @@ layout: appendix
 
 <p class="pqp1"><span class="font1">(and (pair? expression)</span></p>
 
-<p class="pqp4"><span class="font1">(eq? (car expression) &#x2019;&#x002B;)))</span></p>
+<p class="pqp4"><span class="font1">(eq? (car expression) '&#x002B;)))</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">(sum? &#x2019;(&#x002B; 3 a))</span></p>
+<p class="pq-noindent1-top"><span class="font1">(sum? '(&#x002B; 3 a))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>&#x0023;t</em></span></p>
 
-<p class="pq-noindent1-top"><span class="font1">(sum? &#x2019;(<sub>&#x002A;</sub> 3 a))</span></p>
+<p class="pq-noindent1-top"><span class="font1">(sum? '(<sub>&#x002A;</sub> 3 a))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>&#x0023;f</em></span></p>
 </div>
 
 <p class="noindent">Here <span class="font1">&#x0023;t</span> and <span class="font1">&#x0023;f</span> are the printed representations of the boolean values true and false.</p>
 
-<p>Consider what would happen if we were to leave out the quote in the expression <span class="font1">(sum? &#x2019;(&#x002B; 3 a))</span>. If the variable <span class="font1">a</span> had the value 4 we would be asking if 7 is a sum. But what we wanted to know was whether the expression <span class="font1">(&#x002B; 3 a)</span> is a sum. That is why we need the quote.</p>
+<p>Consider what would happen if we were to leave out the quote in the expression <span class="font1">(sum? '(&#x002B; 3 a))</span>. If the variable <span class="font1">a</span> had the value 4 we would be asking if 7 is a sum. But what we wanted to know was whether the expression <span class="font1">(&#x002B; 3 a)</span> is a sum. That is why we need the quote.</p>
 </section>
 <section title="Effects">
 <h2 class="level2"><strong>Effects</strong></h2>
@@ -451,7 +451,7 @@ layout: appendix
 <p class="pqp3"><span class="font1">count)))</span></p>
 </div>
 
-<p>Let&#x2019;s make two counters:</p>
+<p>Let's make two counters:</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define c1 (make-counter))</span></p>
@@ -488,7 +488,7 @@ layout: appendix
 
 <p class="pq-noindent"><span class="font1">(define (make-collector)</span></p>
 
-<p class="pqp1"><span class="font1">(let ((lst &#x2019;()))</span></p>
+<p class="pqp1"><span class="font1">(let ((lst '()))</span></p>
 
 <p class="pqp2"><span class="font1">(cons (lambda (new)</span></p>
 
@@ -501,7 +501,7 @@ layout: appendix
 
 <p class="noindent">This procedure makes a pair of two procedures. The <span class="font1">car</span> of the pair is a procedure that adds to a list and the <span class="font1">cdr</span> of the pair is a procedure that reports the list that has been collected.</p>
 
-<p>Let&#x2019;s make two collectors and play with them:</p>
+<p>Let's make two collectors and play with them:</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define c3 (make-collector))</span></p>
@@ -512,7 +512,7 @@ layout: appendix
 
 <p class="pqp1"><span class="font1">42</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">((car c4) &#x2019;jerry)</span></p>
+<p class="pq-noindent1-top"><span class="font1">((car c4) 'jerry)</span></p>
 
 <p class="pqp1"><span class="font1">jerry</span></p>
 
@@ -525,7 +525,7 @@ layout: appendix
 <p class="pqp1"><span class="font1">14</span></p>
 <a id="p508"></a>
 
-<p class="pq-noindent1-top"><span class="font1">((car c4) &#x2019;jack)</span></p>
+<p class="pq-noindent1-top"><span class="font1">((car c4) 'jack)</span></p>
 
 <p class="pqp1"><span class="font1">jack</span></p>
 
@@ -538,7 +538,7 @@ layout: appendix
 <p class="pqp1"><span class="font1">(jack jerry)</span></p>
 </div>
 
-<p>It is also possible to assign to the elements of a data structure, such as a list or vector. This is unnecessary in our work so we won&#x2019;t tell you about how to do it&#x0021; In general, it is good practice to avoid assignments whenever possible, but if you need them they are available.<sup><a class="footnote_link" href="#endnote_10" id="endnote_ref_10">10</a></sup></p>
+<p>It is also possible to assign to the elements of a data structure, such as a list or vector. This is unnecessary in our work so we won't tell you about how to do it&#x0021; In general, it is good practice to avoid assignments whenever possible, but if you need them they are available.<sup><a class="footnote_link" href="#endnote_10" id="endnote_ref_10">10</a></sup></p>
 
 <p class="ntx" id="endnote_1"><a epub:type="noteref" href="#endnote_ref_1"><sup>1</sup></a>Many of the statements here are valid only assuming that no assignments are used.</p>
 

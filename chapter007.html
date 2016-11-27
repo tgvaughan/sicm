@@ -18,7 +18,7 @@ layout: chapter
 <blockquote>
     <p>Having treated the motion of the moon about the earth, and having
     obtained an elliptical orbit, [Newton] considered the effect of the sun on
-    the moon&#x2019;s orbit by taking into account the variations of the
+    the moon's orbit by taking into account the variations of the
     latter. However, the calculations caused him great difficulties &#x2026;
     Indeed, the problems he encountered were such that [Newton] was prompted to
     remark to the astronomer John Machin that &#x201C;&#x2026; his head never
@@ -38,7 +38,7 @@ layout: chapter
 <p class="noindent">where <em>H</em><sub>0</sub> is solvable and <em>&#x03F5;</em> is a small parameter. The difference between our system and a solvable system is then a small additive complication.</p>
 <a id="p458"></a>
 
-<p>There are a number of strategies for doing this. One strategy is to seek a canonical transformation that eliminates from the Hamiltonian the terms of order <em>&#x03F5;</em> that impede solution&#x2014;this typically introduces new terms of order <em>&#x03F5;</em><sup>2</sup>. Then one seeks another canonical transformation that eliminates the terms of order <em>&#x03F5;</em><sup>2</sup> impeding solution, leaving terms of order <em>&#x03F5;</em><sup>3</sup>. We can imagine repeating this process until the part that impedes solution is of such high order in <em>&#x03F5;</em> that it can be neglected. Having reduced the problem to a solvable problem, we can reverse the sequence of transformations to find an approximate solution of the original problem. Does this process converge? How do we know we can ever neglect the remaining terms? Let&#x2019;s follow this path and see where it goes.</p>
+<p>There are a number of strategies for doing this. One strategy is to seek a canonical transformation that eliminates from the Hamiltonian the terms of order <em>&#x03F5;</em> that impede solution&#x2014;this typically introduces new terms of order <em>&#x03F5;</em><sup>2</sup>. Then one seeks another canonical transformation that eliminates the terms of order <em>&#x03F5;</em><sup>2</sup> impeding solution, leaving terms of order <em>&#x03F5;</em><sup>3</sup>. We can imagine repeating this process until the part that impedes solution is of such high order in <em>&#x03F5;</em> that it can be neglected. Having reduced the problem to a solvable problem, we can reverse the sequence of transformations to find an approximate solution of the original problem. Does this process converge? How do we know we can ever neglect the remaining terms? Let's follow this path and see where it goes.</p>
 <section title="Perturbation Theory with Lie Series">
 <h1 class="level1" id="h1-42"><a href="toc.html#Rh1-42"><strong>7.1&#160;&#160;&#160;Perturbation Theory with Lie Series</strong></a></h1>
 
@@ -189,11 +189,11 @@ layout: chapter
 <p class="noindent">We check that <span class="font1">W</span> satisfies condition (<a href="chapter007.html#disp_7.7">7.7</a>):</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((&#x002B; ((Lie-derivative (W &#x2019;alpha &#x2019;beta)) (H0 &#x2019;alpha))</span></p>
+<p class="pq-noindent"><span class="font1">((&#x002B; ((Lie-derivative (W 'alpha 'beta)) (H0 'alpha))</span></p>
 
-<p class="pqp2"><span class="font1">(H1 &#x2019;beta))</span></p>
+<p class="pqp2"><span class="font1">(H1 'beta))</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t &#x2019;theta &#x2019;p))</span></p>
+<p class="pqp1"><span class="font1">(up 't 'theta 'p))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>0</em></span></p>
 </div>
@@ -205,11 +205,11 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">(series:sum</span></p>
 
-<p class="pqp2"><span class="font1">(((exp (<sub>&#x002A;</sub> &#x2019;epsilon (Lie-derivative (W &#x2019;alpha &#x2019;beta))))</span></p>
+<p class="pqp2"><span class="font1">(((exp (<sub>&#x002A;</sub> 'epsilon (Lie-derivative (W 'alpha 'beta))))</span></p>
 
-<p class="pqp3"><span class="font1">(H-pendulum-series &#x2019;alpha &#x2019;beta &#x2019;epsilon))</span></p>
+<p class="pqp3"><span class="font1">(H-pendulum-series 'alpha 'beta 'epsilon))</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t &#x2019;theta &#x2019;p))</span></p>
+<p class="pqp2"><span class="font1">(up 't 'theta 'p))</span></p>
 
 <p class="pqp1"><span class="font1">2))</span></p>
 </div>
@@ -260,7 +260,7 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">((C &#x2019;alpha &#x2019;beta &#x2019;epsilon 2) (up &#x2019;t &#x2019;theta &#x2019;p)))</span></p>
+<p class="pqp1"><span class="font1">((C 'alpha 'beta 'epsilon 2) (up 't 'theta 'p)))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -750,7 +750,7 @@ layout: chapter
 <p class="noindent">As the drive is increased, a variety of new islands emerge, which are not evident in the original Hamiltonian. To find approximations for motion in these regions we can use higher-order perturbation theory. The basic plan is the same as before. At any stage the Hamiltonian (which is perhaps a result of earlier stages of perturbation theory) is expressed as a Poisson series (a multiple-angle Fourier series). The terms that are not resonant in a region of interest are eliminated by a Lie transformation. The remaining resonance terms involve only a single combination of angle and are thus solvable by making a canonical transformation to resonance coordinates. We complete the solution and transform back to the original coordinates.</p>
 <a id="p490"></a>
 
-<p>Let&#x2019;s find a perturbative approximation for the second-order islands visible in <a href="chapter007.html#Fig_7-10">figure 7.10</a> between the <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; 0 resonance and the <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; &#x2212;<em>&#x03C9;</em> resonance. The details are messy, so we will just give a few intermediate results.</p>
+<p>Let's find a perturbative approximation for the second-order islands visible in <a href="chapter007.html#Fig_7-10">figure 7.10</a> between the <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; 0 resonance and the <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; &#x2212;<em>&#x03C9;</em> resonance. The details are messy, so we will just give a few intermediate results.</p>
 
 <p>This resonance is not near the three primary resonances, so we can use the full generator (<a href="chapter007.html#disp_7.56">7.56</a>) to eliminate those three primary resonance terms from the Hamiltonian. After this perturbation step the Hamiltonian is too hairy to look at.</p>
 

@@ -40,7 +40,7 @@ layout: chapter
 
 <p>The motion of a system can be described by giving the position of every piece of the system at each moment. Such a description of the motion of the system is called a <em>configuration path</em>; the configuration path specifies the configuration as a function of time. The juggling pin rotates as it flies through the air; the configuration of the juggling pin is specified by giving the position and orientation of the pin. The motion of the juggling pin is specified by giving the position and orientation of the pin as a function of time.</p>
 
-<p>The path-distinguishing function that we seek takes a configuration path as an input and produces some output. We want this function to have some characteristic behavior when its input is a realizable path. For example, the output could be a number, and we could try to arrange that this number be zero only on realizable paths. Newton&#x2019;s equations of motion are of this form; at each moment Newton&#x2019;s differential equations must be satisfied.</p>
+<p>The path-distinguishing function that we seek takes a configuration path as an input and produces some output. We want this function to have some characteristic behavior when its input is a realizable path. For example, the output could be a number, and we could try to arrange that this number be zero only on realizable paths. Newton's equations of motion are of this form; at each moment Newton's differential equations must be satisfied.</p>
 
 <p>However, there is an alternate strategy that provides more insight and power: we could look for a path-distinguishing function that has a minimum on the realizable paths&#x2014;on nearby unrealizable paths the value of the function is higher than it is on the realizable path. This is the <em>variational strategy</em>: for each physical system we invent a path-distinguishing function that distinguishes realizable motions of the system by having a stationary point for each realizable path.<sup><a class="footnote_link" href="#endnote_1" id="endnote_ref_1">1</a></sup> For a great variety of systems realizable motions of the system can be formulated in terms of a variational principle.<sup><a class="footnote_link" href="#endnote_2" id="endnote_ref_2">2</a></sup></p>
 <a id="p3"></a>
@@ -109,7 +109,7 @@ layout: chapter
 
 <p class="noindent">Our ordinary experience suggests that physical motion can be described by configuration paths that are continuous and smooth.<sup><a class="footnote_link" href="#endnote_11" id="endnote_ref_11">11</a></sup> We do not see the juggling pin jump from one place to another. Nor do we see the juggling pin suddenly change the way it is moving.</p>
 
-<p>Our ordinary experience suggests that the motion of physical systems does not depend upon the entire history of the system. If we enter the room after the juggling pin has been thrown into the air we cannot tell when it left the juggler&#x2019;s hand. The juggler could have thrown the pin from a variety of places at a variety of times with the same apparent result as we walk through the <a id="p9"></a>door.<sup><a class="footnote_link" href="#endnote_12" id="endnote_ref_12">12</a></sup> So the motion of the pin does not depend on the details of the history.</p>
+<p>Our ordinary experience suggests that the motion of physical systems does not depend upon the entire history of the system. If we enter the room after the juggling pin has been thrown into the air we cannot tell when it left the juggler's hand. The juggler could have thrown the pin from a variety of places at a variety of times with the same apparent result as we walk through the <a id="p9"></a>door.<sup><a class="footnote_link" href="#endnote_12" id="endnote_ref_12">12</a></sup> So the motion of the pin does not depend on the details of the history.</p>
 
 <p>Our ordinary experience suggests that the motion of physical systems is deterministic. In fact, a small number of parameters summarize the important aspects of the history of the system and determine its future evolution. For example, at any moment the position, velocity, orientation, and rate of change of the orientation of the juggling pin are enough to completely determine the future motion of the pin.</p>
 </section>
@@ -169,7 +169,7 @@ layout: chapter
 <section title="Computing Actions">
 <h1 class="level1" id="h1-5"><a href="toc.html#Rh1-5"><strong>1.4&#160;&#160;&#160;Computing Actions</strong></a></h1>
 
-<p class="noindent">To illustrate the above ideas, and to introduce their formulation as computer programs, we consider the simplest mechanical system&#x2014;a free particle moving in three dimensions. Euler and Lagrange discovered that for a free particle the time integral of the kinetic energy over the particle&#x2019;s actual path is smaller than the same integral along any alternative path between the same points: a free particle moves according to the principle of stationary action, provided we take the Lagrangian to be the kinetic energy. The kinetic energy for a particle of mass <em>m</em> and velocity <epub:switch id="mathmlSwitch10"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover></math></epub:case></epub:switch> is <epub:switch id="mathmlSwitch11"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow></math></epub:case></epub:switch>, where <em>v</em> is the magnitude of <epub:switch id="mathmlSwitch12"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover></math></epub:case></epub:switch>. In this case we can choose the generalized coordinates to be the ordinary rectangular coordinates.</p>
+<p class="noindent">To illustrate the above ideas, and to introduce their formulation as computer programs, we consider the simplest mechanical system&#x2014;a free particle moving in three dimensions. Euler and Lagrange discovered that for a free particle the time integral of the kinetic energy over the particle's actual path is smaller than the same integral along any alternative path between the same points: a free particle moves according to the principle of stationary action, provided we take the Lagrangian to be the kinetic energy. The kinetic energy for a particle of mass <em>m</em> and velocity <epub:switch id="mathmlSwitch10"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover></math></epub:case></epub:switch> is <epub:switch id="mathmlSwitch11"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow></math></epub:case></epub:switch>, where <em>v</em> is the magnitude of <epub:switch id="mathmlSwitch12"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover></math></epub:case></epub:switch>. In this case we can choose the generalized coordinates to be the ordinary rectangular coordinates.</p>
 
 <p>Following Euler and Lagrange, the Lagrangian for the free particle is<sup><a class="footnote_link" href="#endnote_24" id="endnote_ref_24">24</a></sup></p>
 
@@ -178,14 +178,11 @@ layout: chapter
 <p class="noindent">where the formal parameter <em>x</em> names a tuple of components of the position with respect to a given rectangular coordinate system, and the formal parameter <em>v</em> names a tuple of velocity components.<sup><a class="footnote_link" href="#endnote_25" id="endnote_ref_25">25</a></sup></p>
 
 <p>We can express this formula as a procedure:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-free-particle mass) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((v (velocity local)))</span></p>
-
-<p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> 1/2 mass (dot-product v v))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-free-particle mass) local)
+    (let ((v (velocity local)))
+    (* 1/2 mass (dot-product v v))))
+{% endhighlight %}</div>
 
 <p class="noindent">The definition indicates that <span class="font1">L-free-particle</span> is a procedure that takes mass as an argument and returns a procedure that takes a <a id="p15"></a>local tuple local, extracts the generalized velocity with the procedure <span class="font1">velocity</span>, and uses the velocity to compute the value of the Lagrangian.<sup><a class="footnote_link" href="#endnote_26" id="endnote_ref_26">26</a></sup></p>
 
@@ -194,24 +191,20 @@ layout: chapter
 <p class="eqtext" id="disp_1.7"><epub:switch id="mathmlSwitch14"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>q</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>z</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.7</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">We can make this definition<sup><a class="footnote_link" href="#endnote_28" id="endnote_ref_28">28</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define q</span></p>
-
-<p class="pqp1"><span class="font1">(up (literal-function &#x2019;x)</span></p>
-
-<p class="pqp4a"><span class="font1">(literal-function &#x2019;y)</span></p>
-
-<p class="pqp4a"><span class="font1">(literal-function &#x2019;z)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define q
+    (up (literal-function 'x)
+    (literal-function 'y)
+    (literal-function 'z)))
+{% endhighlight %}</div>
 
 <p class="noindent">where <span class="font1">literal-function</span> makes a procedure that represents a function of one argument that has no known properties other than the given symbolic name. The symbol q now names a procedure of one real argument (time) that produces a tuple of three components representing the coordinates at that time. For example, we can evaluate this procedure for a symbolic time <span class="font1">t</span> as follows:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(q &#x2019;t)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up (x t) (y t) (z t))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(q 't)
+{% endhighlight %}</div>
+<div class="result">{% highlight scheme %}
+(up (x t) (y t) (z t))
+{% endhighlight %}</div>
 <a id="p16"></a>
 
 <p>The derivative of the coordinate path <em>Dq</em> is the function that maps time to velocity components:</p>
@@ -219,75 +212,68 @@ layout: chapter
 <p class="eqtext"><epub:switch id="mathmlSwitch15"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>D</mi><mi>q</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mi>D</mi><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>D</mi><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>D</mi><mi>z</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent1-top">We can make and use the derivative of a function.<sup><a class="footnote_link" href="#endnote_29" id="endnote_ref_29">29</a></sup> For example, we can write:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((D q) &#x2019;t)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up ((D x) t) ((D y) t) ((D z) t))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((D q) 't)
+{% endhighlight %}</div>
+<div class="result">{% highlight scheme %}
+(up ((D x) t) ((D y) t) ((D z) t))
+{% endhighlight %}</div>
 
 <p>The function &#x0393; takes a coordinate path and returns a function of time that gives the local tuple (<em>t, q</em>(<em>t</em>), <em>Dq</em>(<em>t</em>), &#x2026;). We implement this &#x0393; with the procedure <span class="font1">Gamma.</span><sup><a class="footnote_link" href="#endnote_30" id="endnote_ref_30">30</a></sup> Here is what <span class="font1">Gamma</span> does:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((Gamma q) &#x2019;t)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up t</em></span></p>
-
-<p class="pqp2"><span class="font1"><em>(up (x t) (y t) (z t))</em></span></p>
-
-<p class="pqp2"><span class="font1"><em>(up ((D x) t) ((D y) t) ((D z) t)))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((Gamma q) 't)
+{% endhighlight %}</div>
+<div class="result">{% highlight scheme %}
+(up t
+    (up (x t) (y t) (z t))
+    (up ((D x) t) ((D y) t) ((D z) t)))
+{% endhighlight %}</div>
 
 <p>So the composition <em>L</em> &#x2218; &#x0393; is a function of time that returns the value of the Lagrangian for this point on the path:<sup><a class="footnote_link" href="#endnote_31" id="endnote_ref_31">31</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((compose (L-free-particle &#x2019;m) (Gamma q)) &#x2019;t)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> 1/2 m (expt ((D x) t) 2))</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(<sub>&#x002A;</sub> 1/2 m (expt ((D y) t) 2))</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(<sub>&#x002A;</sub> 1/2 m (expt ((D z) t) 2)))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((compose (L-free-particle 'm) (Gamma q)) 't)
+{% endhighlight %}</div>
+<div class="result">{% highlight scheme %}
+(+ (* 1/2 m (expt ((D x) t) 2))
+    (* 1/2 m (expt ((D y) t) 2))
+    (* 1/2 m (expt ((D z) t) 2)))
+{% endhighlight %}</div>
 
 <p class="noindent">The procedure <span class="font1">show-expression</span> simplifies the expression and uses T<sub>E</sub>X to display the result in traditional infix form. We use this method of display to make the boxed expressions in this book. <a id="p17"></a>The procedure <span class="font1">show-expression</span> also produces the prefix form, but we usually do not show this.<sup><a class="footnote_link" href="#endnote_32" id="endnote_ref_32">32</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1b"><span class="font1">((compose (L-free-particle &#x2019;m) (Gamma q)) &#x2019;t))</span></p>
-</div>
-<div class="pull-quotebox">
-
+<div class="code">{% highlight scheme %}
+(show-expression
+    ((compose (L-free-particle 'm) (Gamma q)) 't))
+{% endhighlight %}</div>
+<div class="result">
 <p class="eqtext"><epub:switch id="mathmlSwitch16"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>x</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>y</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>z</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p>According to equation (<a href="chapter001.html#disp_1.4">1.4</a>) we can compute the Lagrangian action from time <em>t</em><sub>1</sub> to time <em>t</em><sub>2</sub> as:</p>
 <a id="p18"></a>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (Lagrangian-action L q t1 t2)</span></p>
-
-<p class="pqp1"><span class="font1">(definite-integral (compose L (Gamma q)) t1 t2))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (Lagrangian-action L q t1 t2)
+    (definite-integral (compose L (Gamma q)) t1 t2))
+{% endhighlight %}</div>
 
 <p class="noindent"><span class="font1">Lagrangian-action</span> takes as arguments a procedure <span class="font1">L</span> that computes the Lagrangian, a procedure <span class="font1">q</span> that computes a coordinate path, and starting and ending times <span class="font1">t1</span> and <span class="font1">t2</span>. The <span class="font1">definite-integral</span> used here takes as arguments a function and two limits <span class="font1">t1</span> and <span class="font1">t2</span>, and computes the definite integral of the function over the interval from <span class="font1">t1</span> to <span class="font1">t2</span>.<sup><a class="footnote_link" href="#endnote_33" id="endnote_ref_33">33</a></sup> Notice that the definition of <span class="font1">Lagrangian-action</span> does not depend on any particular set of coordinates or even the dimension of the configuration space. The method of computing the action from the coordinate representation of a Lagrangian and a coordinate path does not depend on the coordinate system.</p>
 
 <p>We can now compute the action for the free particle along a path. For example, consider a particle moving at uniform speed along a straight line <em>t</em> &#x21A6; (4<em>t</em> &#x002B; 7, 3<em>t</em> &#x002B; 5, 2<em>t</em> &#x002B; 1).<sup><a class="footnote_link" href="#endnote_34" id="endnote_ref_34">34</a></sup> We represent the path as a procedure</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (test-path t)</span></p>
-
-<p class="pqp1"><span class="font1">(up (&#x002B; (<sub>&#x002A;</sub> 4 t) 7)</span></p>
-
-<p class="pqp4a"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 3 t) 5)</span></p>
-
-<p class="pqp4a"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 2 t) 1)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (test-path t)
+    (up (+ (* 4 t) 7)
+    (+ (* 3 t) 5)
+    (+ (* 2 t) 1)))
+{% endhighlight %}</div>
 
 <p class="noindent">For a particle of mass 3, we obtain the action between <em>t</em> &#x003D; 0 and <em>t</em> &#x003D; 10 as<sup><a class="footnote_link" href="#endnote_35" id="endnote_ref_35">35</a></sup></p>
 
-<p class="noindent1-top"><span class="font1">(Lagrangian-action (L-free-particle 3.0) test-path 0.0 10.0) <em>435.</em></span></p>
+<div class="code">{% highlight scheme %}
+(Lagrangian-action (L-free-particle 3.0)
+    test-path 0.0 10.0)
+{% endhighlight %}</div>
+<div class="result">{% highlight scheme %}
+435
+{% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_1-4"><strong>Exercise  1.4: Lagrangian actions</strong></p>
 
@@ -304,7 +290,7 @@ layout: chapter
 <p class="noindent">We already know that the actual path of a free particle is uniform motion in a straight line. According to Euler and Lagrange, the action is smaller along a straight-line test path than along nearby paths. Let <em>q</em> be a straight-line test path with action <em>S</em>[<em>q</em>](<em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>). Let <em>q</em> &#x002B; <em>&#x03F5;&#x03B7;</em> be a nearby path, obtained from <em>q</em> by adding a path variation <em>&#x03B7;</em> scaled by the real parameter <em>&#x03F5;</em>.<sup><a class="footnote_link" href="#endnote_37" id="endnote_ref_37">37</a></sup> The action on the varied path is <em>S</em>[<em>q</em> &#x002B; <em>&#x03F5;&#x03B7;</em>](<em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>). Euler and Lagrange found that <em>S</em>[<em>q</em> &#x002B; <em>&#x03F5;&#x03B7;</em>](<em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>) &#x003E; <em>S</em>[<em>q</em>](<em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>) for any <em>&#x03B7;</em> that is zero at the endpoints and for any small nonzero <em>&#x03F5;</em>.</p>
 <a id="p19"></a>
 
-<p>Let&#x2019;s check this numerically by varying the test path, adding some amount of a test function that is zero at the endpoints <em>t</em> &#x003D; <em>t</em><sub>1</sub> and <em>t</em> &#x003D; <em>t</em><sub>2</sub>. To make a function <em>&#x03B7;</em> that is zero at the endpoints, given a sufficiently well-behaved function <em>&#x03BD;</em>, we can use <em>&#x03B7;</em>(<em>t</em>) &#x003D; (<em>t</em> &#x2212; <em>t</em><sub>1</sub>)(<em>t</em> &#x2212; <em>t</em><sub>2</sub>)<em>&#x03BD;</em>(<em>t</em>). This can be implemented:</p>
+<p>Let's check this numerically by varying the test path, adding some amount of a test function that is zero at the endpoints <em>t</em> &#x003D; <em>t</em><sub>1</sub> and <em>t</em> &#x003D; <em>t</em><sub>2</sub>. To make a function <em>&#x03B7;</em> that is zero at the endpoints, given a sufficiently well-behaved function <em>&#x03BD;</em>, we can use <em>&#x03B7;</em>(<em>t</em>) &#x003D; (<em>t</em> &#x2212; <em>t</em><sub>1</sub>)(<em>t</em> &#x2212; <em>t</em><sub>2</sub>)<em>&#x03BD;</em>(<em>t</em>). This can be implemented:</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define ((make-eta nu t1 t2) t)</span></p>
@@ -505,11 +491,11 @@ layout: chapter
 
 <p class="noindent">Here <em>L</em> is a real-valued function of a local tuple; &#x2202;<sub>1</sub><em>L</em> and &#x2202;<sub>2</sub><em>L</em> denote the partial derivatives of <em>L</em> with respect to its generalized position argument and generalized velocity argument respectively.<sup><a class="footnote_link" href="#endnote_47" id="endnote_ref_47">47</a></sup> The function &#x2202;<sub>2</sub><em>L</em> maps a local tuple to a structure whose components are the derivatives of <em>L</em> with respect to each component of the generalized velocity. The function &#x0393;[<em>q</em>] maps time to the local tuple: &#x0393;[<em>q</em>](<em>t</em>) &#x003D; (<em>t</em>, <em>q</em>(<em>t</em>), <em>Dq</em>(<em>t</em>), &#x2026;). Thus the compositions &#x2202;<sub>1</sub><em>L</em> &#x2218; &#x0393;[<em>q</em>] and &#x2202;<sub>2</sub><em>L</em> &#x2218; &#x0393;[<em>q</em>] are functions of one argument, time. The Lagrange equations assert that the derivative of &#x2202;<sub>2</sub><em>L</em> &#x2218; &#x0393;[<em>q</em>] is equal to &#x2202;<sub>1</sub><em>L</em> &#x2218; &#x0393;[<em>q</em>], at any time. Given a Lagrangian, the Lagrange equations form a system of ordinary differential equations that must be satisfied by realizable paths.</p>
 
-<p>Lagrange&#x2019;s equations are traditionally written as a separate equation for each component of <em>q</em>:</p>
+<p>Lagrange's equations are traditionally written as a separate equation for each component of <em>q</em>:</p>
 
 <p class="eqtext"><epub:switch id="mathmlSwitch22"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mfrac><mrow><mo>&#x2202;</mo><mi>L</mi></mrow><mrow><mo>&#x2202;</mo><msup><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mi>i</mi></msup></mrow></mfrac><mo>&#x2212;</mo><mfrac><mrow><mo>&#x2202;</mo><mi>L</mi></mrow><mrow><mo>&#x2202;</mo><msup><mi>q</mi><mi>i</mi></msup></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></mtd><mtd columnalign='left'><mrow><mi>i</mi><mo>=</mo><mn>0</mn><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><mi>n</mi><mo>&#x2212;</mo><mn>1.</mn></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">In this way of writing Lagrange&#x2019;s equations the notation does not distinguish between <em>L</em>, which is a real-valued function of three variables (<em>t</em>, <em>q</em>, <epub:switch id="mathmlSwitch23"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></math></epub:case></epub:switch>), and <em>L</em> &#x2218; &#x0393;[<em>q</em>], which is a real-valued function of one real variable <em>t</em>. If we do not realize this notational pun, the equations don&#x2019;t make sense as written&#x2014;&#x2202;<em>L</em>/&#x2202;<epub:switch id="mathmlSwitch24"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></math></epub:case></epub:switch> is a function of three variables, so we must regard the arguments <em>q,</em>&#160;<epub:switch id="mathmlSwitch25"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></math></epub:case></epub:switch> as functions of <em>t</em> before taking <em>d</em>/<em>dt</em> of the expression. Similarly, &#x2202;<em>L</em>/&#x2202;<em>q</em> is a function of three variables, which we must view as a function of <em>t</em> before setting it equal to <epub:switch id="mathmlSwitch26"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>/</mo><mi>d</mi><mi>t</mi><mrow><mo>(</mo><mrow><mo>&#x2202;</mo><mi>L</mi><mo>/</mo><mo>&#x2202;</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch>.</p>
+<p class="noindent">In this way of writing Lagrange's equations the notation does not distinguish between <em>L</em>, which is a real-valued function of three variables (<em>t</em>, <em>q</em>, <epub:switch id="mathmlSwitch23"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></math></epub:case></epub:switch>), and <em>L</em> &#x2218; &#x0393;[<em>q</em>], which is a real-valued function of one real variable <em>t</em>. If we do not realize this notational pun, the equations don't make sense as written&#x2014;&#x2202;<em>L</em>/&#x2202;<epub:switch id="mathmlSwitch24"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></math></epub:case></epub:switch> is a function of three variables, so we must regard the arguments <em>q,</em>&#160;<epub:switch id="mathmlSwitch25"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></math></epub:case></epub:switch> as functions of <em>t</em> before taking <em>d</em>/<em>dt</em> of the expression. Similarly, &#x2202;<em>L</em>/&#x2202;<em>q</em> is a function of three variables, which we must view as a function of <em>t</em> before setting it equal to <epub:switch id="mathmlSwitch26"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>/</mo><mi>d</mi><mi>t</mi><mrow><mo>(</mo><mrow><mo>&#x2202;</mo><mi>L</mi><mo>/</mo><mo>&#x2202;</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch>.</p>
 <a id="p25"></a>
 
 <p>A correct use of the traditional notation is more explicit:</p>
@@ -547,7 +533,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.17"><epub:switch id="mathmlSwitch32"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo>&#x0394;</mo><mi>S</mi><mo>=</mo><mi mathvariant="italic">&#x03F5;</mi><mstyle displaystyle='true'><mrow><msubsup><mo>&#x222B;</mo><mrow><msub><mi>t</mi><mn>1</mn></msub></mrow><mrow><msub><mi>t</mi><mn>2</mn></msub></mrow></msubsup><mrow><mo>&#x007B;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mtext>&#x2009;</mtext><mo>&#x2212;</mo><mtext>&#x2009;</mtext><mi>D</mi><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>&#x007D;</mo></mrow></mrow></mstyle><mi>&#x03B7;</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.17</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">If &#x0394;<em>S</em> is zero the action is stationary. We retain enough freedom in the choice of the variation that the factor in the integrand multiplying <em>&#x03B7;</em> is forced to be zero at each point along the path. We argue by contradiction: Suppose this factor were nonzero at some particular time. Then it would have to be nonzero in at least one of its components. But if we choose our <em>&#x03B7;</em> to be a bump that is nonzero only in that component in a neighborhood of that time, and zero everywhere else, then the integral will be nonzero. So we may conclude that the factor in curly brackets is identically zero and thus obtain Lagrange&#x2019;s equations:<sup><a class="footnote_link" href="#endnote_48" id="endnote_ref_48">48</a></sup></p>
+<p class="noindent">If &#x0394;<em>S</em> is zero the action is stationary. We retain enough freedom in the choice of the variation that the factor in the integrand multiplying <em>&#x03B7;</em> is forced to be zero at each point along the path. We argue by contradiction: Suppose this factor were nonzero at some particular time. Then it would have to be nonzero in at least one of its components. But if we choose our <em>&#x03B7;</em> to be a bump that is nonzero only in that component in a neighborhood of that time, and zero everywhere else, then the integral will be nonzero. So we may conclude that the factor in curly brackets is identically zero and thus obtain Lagrange's equations:<sup><a class="footnote_link" href="#endnote_48" id="endnote_ref_48">48</a></sup></p>
 
 <p class="eqtext" id="disp_1.18"><epub:switch id="mathmlSwitch33"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mo>&#x2212;</mo><mtext>&#x2009;</mtext><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo>=</mo><mn>0.</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.18</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 </section>
@@ -620,7 +606,7 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">(compose</span></p>
 
-<p class="pqp2"><span class="font1">(literal-function &#x2019;F</span></p>
+<p class="pqp2"><span class="font1">(literal-function 'F</span></p>
 
 <p class="pqp9"><span class="font1">(-&#x003E; (UP Real (UP<sub>&#x002A;</sub> Real) (UP<sub>&#x002A;</sub> Real)) Real))</span></p>
 
@@ -629,7 +615,7 @@ layout: chapter
 
 <p class="noindent">This implements an <em>n</em>-degree-of-freedom path-dependent function that depends on the local tuple of the path at each moment. You can define a literal two-dimensional path by</p>
 
-<p class="noindent1-top"><span class="font1">(define q (literal-function &#x2019;q (-&#x003E; Real (UP Real Real))))</span></p>
+<p class="noindent1-top"><span class="font1">(define q (literal-function 'q (-&#x003E; Real (UP Real Real))))</span></p>
 
 <p class="noindent1-top">You should compute both sides of the equalities and subtract the results. The answer should be zero.</p>
 </section>
@@ -674,7 +660,7 @@ layout: chapter
 
 <p class="noindent">This is just what we set out to obtain, the Lagrange equations.</p>
 
-<p>A path satisfying Lagrange&#x2019;s equations is one for which the action is stationary, and the fact that the action is stationary depends only on the values of <em>L</em> at each point of the path (and at each point on nearby paths), not on the coordinate system we use to compute these values. So if the system&#x2019;s path satisfies Lagrange&#x2019;s equations in some particular coordinate system, it must satisfy Lagrange&#x2019;s equations in <em>any</em> coordinate system. Thus the equations of variational mechanics are derived the same way in any configuration space and any coordinate system.</p>
+<p>A path satisfying Lagrange's equations is one for which the action is stationary, and the fact that the action is stationary depends only on the values of <em>L</em> at each point of the path (and at each point on nearby paths), not on the coordinate system we use to compute these values. So if the system's path satisfies Lagrange's equations in some particular coordinate system, it must satisfy Lagrange's equations in <em>any</em> coordinate system. Thus the equations of variational mechanics are derived the same way in any configuration space and any coordinate system.</p>
 </section>
 <section title="Harmonic oscillator">
 <h2 class="level2"><strong>Harmonic oscillator</strong></h2>
@@ -742,7 +728,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.48"><epub:switch id="mathmlSwitch63"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mrow><mi>&#x03BC;</mi><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mrow><msup><mrow><mo stretchy='false'>(</mo><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo stretchy='false'>)</mo></mrow><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mrow><mi>&#x03BC;</mi><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mrow><msup><mrow><mo stretchy='false'>(</mo><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo stretchy='false'>)</mo></mrow><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow></mfrac><mo>=</mo><mn>0.</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.48</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent1-top-exe" id="Exe_1-9"><strong>Exercise  1.9: Lagrange&#x2019;s equations</strong></p>
+<p class="noindent1-top-exe" id="Exe_1-9"><strong>Exercise  1.9: Lagrange's equations</strong></p>
 
 <p class="noindent">Derive the Lagrange equations for the following systems, showing all of the intermediate steps as in the harmonic oscillator and orbital motion examples.</p>
 
@@ -754,15 +740,15 @@ layout: chapter
 
 <p class="noindent1-top-exe" id="Exe_1-10"><strong>Exercise  1.10: Higher-derivative Lagrangians</strong></p>
 
-<p class="noindent">Derive Lagrange&#x2019;s equations for Lagrangians that depend on accelerations. In particular, show that the Lagrange equations for Lagrangians of the form <em>L</em>(<em>t, q,</em>&#160;<epub:switch id="mathmlSwitch69"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></math></epub:case></epub:switch>, <epub:switch id="mathmlSwitch70"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x00A8;</mo></mover></math></math></epub:case></epub:switch>) with <epub:switch id="mathmlSwitch71"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x00A8;</mo></mover></math></math></epub:case></epub:switch> terms are<sup><a class="footnote_link" href="#endnote_55" id="endnote_ref_55">55</a></sup></p>
+<p class="noindent">Derive Lagrange's equations for Lagrangians that depend on accelerations. In particular, show that the Lagrange equations for Lagrangians of the form <em>L</em>(<em>t, q,</em>&#160;<epub:switch id="mathmlSwitch69"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></math></epub:case></epub:switch>, <epub:switch id="mathmlSwitch70"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x00A8;</mo></mover></math></math></epub:case></epub:switch>) with <epub:switch id="mathmlSwitch71"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><math><mover accent='true'><mi>q</mi><mo>&#x00A8;</mo></mover></math></math></epub:case></epub:switch> terms are<sup><a class="footnote_link" href="#endnote_55" id="endnote_ref_55">55</a></sup></p>
 
 <p class="eqtext" id="disp_1.49"><epub:switch id="mathmlSwitch72"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mi>D</mi><mn>2</mn></msup><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>3</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>D</mi><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>+</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>=</mo><mn>0.</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.49</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">In general, these equations, first derived by Poisson, will involve the fourth derivative of <em>q</em>. Note that the derivation is completely analogous <a id="p33"></a>to the derivation of the Lagrange equations without accelerations; it is just longer. What restrictions must we place on the variations so that the critical path satisfies a differential equation?</p>
-<section title="Computing Lagrange&#x2019;s Equations">
-<h3 class="level3" id="h3_1-5-2"><a href="toc.html#Rh3_1-5-2"><strong>1.5.2 Computing Lagrange&#x2019;s Equations</strong></a></h3>
+<section title="Computing Lagrange's Equations">
+<h3 class="level3" id="h3_1-5-2"><a href="toc.html#Rh3_1-5-2"><strong>1.5.2 Computing Lagrange's Equations</strong></a></h3>
 
-<p class="noindent">The procedure for computing Lagrange&#x2019;s equations mirrors the functional expression (<a href="chapter001.html#disp_1.12">1.12</a>), where the procedure <span class="font1">Gamma</span> implements &#x0393;:<sup><a class="footnote_link" href="#endnote_56" id="endnote_ref_56">56</a></sup></p>
+<p class="noindent">The procedure for computing Lagrange's equations mirrors the functional expression (<a href="chapter001.html#disp_1.12">1.12</a>), where the procedure <span class="font1">Gamma</span> implements &#x0393;:<sup><a class="footnote_link" href="#endnote_56" id="endnote_ref_56">56</a></sup></p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define ((Lagrange-equations Lagrangian) q)</span></p>
@@ -774,29 +760,29 @@ layout: chapter
 
 <p class="noindent">The argument of <span class="font1">Lagrange-equations</span> is a procedure that computes a Lagrangian. The <span class="font1">Lagrange-equations</span> procedure returns a procedure that when applied to a path <span class="font1">q</span> returns a procedure of one argument (time) that computes the left-hand side of the Lagrange equations (<a href="chapter001.html#disp_1.12">1.12</a>). These residual values are zero if <span class="font1">q</span> is a path for which the Lagrangian action is stationary.</p>
 
-<p>Observe that the <span class="font1">Lagrange-equations</span> procedure, like the Lagrange equations themselves, is valid for <em>any</em> generalized coordinate system. When we write programs to investigate particular systems, the procedures that implement the Lagrangian function and the path <em>q</em> will reflect the actual coordinates chosen to represent the system, but we use the same <span class="font1">Lagrange-equations</span> procedure in each case. This abstraction reflects the important fact that the method of derivation of Lagrange&#x2019;s equations from a Lagrangian is always the same; it is independent of the number of degrees of freedom, the topology of the configuration space, and the coordinate system used to describe points in the configuration space.</p>
+<p>Observe that the <span class="font1">Lagrange-equations</span> procedure, like the Lagrange equations themselves, is valid for <em>any</em> generalized coordinate system. When we write programs to investigate particular systems, the procedures that implement the Lagrangian function and the path <em>q</em> will reflect the actual coordinates chosen to represent the system, but we use the same <span class="font1">Lagrange-equations</span> procedure in each case. This abstraction reflects the important fact that the method of derivation of Lagrange's equations from a Lagrangian is always the same; it is independent of the number of degrees of freedom, the topology of the configuration space, and the coordinate system used to describe points in the configuration space.</p>
 </section>
 </section>
 <section title="The free particle">
 <h2 class="level2"><strong>The free particle</strong></h2>
 
-<p class="noindent">Consider again the case of a free particle. The Lagrangian is implemented by the procedure <span class="font1">L-free-particle</span>. Rather than numerically integrating and minimizing the action, as we did in <a href="chapter001.html#h1-5">section 1.4</a>, we can check Lagrange&#x2019;s equations for an arbitrary straight-line path <em>t</em> &#x21A6; (<em>at</em> &#x002B; <em>a</em><sub>0</sub>, <em>bt</em> &#x002B; <em>b</em><sub>0</sub>, <em>ct</em> &#x002B; <em>c</em><sub>0</sub>):</p>
+<p class="noindent">Consider again the case of a free particle. The Lagrangian is implemented by the procedure <span class="font1">L-free-particle</span>. Rather than numerically integrating and minimizing the action, as we did in <a href="chapter001.html#h1-5">section 1.4</a>, we can check Lagrange's equations for an arbitrary straight-line path <em>t</em> &#x21A6; (<em>at</em> &#x002B; <em>a</em><sub>0</sub>, <em>bt</em> &#x002B; <em>b</em><sub>0</sub>, <em>ct</em> &#x002B; <em>c</em><sub>0</sub>):</p>
 <a id="p34"></a>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define (test-path t)</span></p>
 
-<p class="pqp1"><span class="font1">(up (&#x002B; (<sub>&#x002A;</sub> &#x2019;a t) &#x2019;a0)</span></p>
+<p class="pqp1"><span class="font1">(up (&#x002B; (<sub>&#x002A;</sub> 'a t) 'a0)</span></p>
 
-<p class="pqp4a"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> &#x2019;b t) &#x2019;b0)</span></p>
+<p class="pqp4a"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 'b t) 'b0)</span></p>
 
-<p class="pqp4a"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> &#x2019;c t) &#x2019;c0)))</span></p>
+<p class="pqp4a"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 'c t) 'c0)))</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">(((Lagrange-equations (L-free-particle &#x2019;m))</span></p>
+<p class="pq-noindent1-top"><span class="font1">(((Lagrange-equations (L-free-particle 'm))</span></p>
 
 <p class="pqp1"><span class="font1">test-path)</span></p>
 
-<p class="pqp1"><span class="font1">&#x2019;t)</span></p>
+<p class="pqp1"><span class="font1">'t)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(down 0 0 0)</em></span></p>
 </div>
@@ -808,11 +794,11 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">(((Lagrange-equations (L-free-particle &#x2019;m))</span></p>
+<p class="pqp1"><span class="font1">(((Lagrange-equations (L-free-particle 'm))</span></p>
 
-<p class="pqp2"><span class="font1">(literal-function &#x2019;x))</span></p>
+<p class="pqp2"><span class="font1">(literal-function 'x))</span></p>
 
-<p class="pqp2"><span class="font1">&#x2019;t))</span></p>
+<p class="pqp2"><span class="font1">'t))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(<sub>&#x002A;</sub>(((expt D 2) x) t) m)</em></span></p>
 </div>
@@ -831,20 +817,20 @@ layout: chapter
 <p class="eqtext" id="disp_1.50"><epub:switch id="mathmlSwitch74"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>a</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03C9;</mi><mi>t</mi><mo>+</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.50</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p35"></a>
 
-<p class="noindent">Suppose we have forgotten how the constants in the solution relate to the mass <em>m</em> and spring constant <em>k</em> of the oscillator. Let&#x2019;s plug in the proposed solution and look at the residual:</p>
+<p class="noindent">Suppose we have forgotten how the constants in the solution relate to the mass <em>m</em> and spring constant <em>k</em> of the oscillator. Let's plug in the proposed solution and look at the residual:</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define (proposed-solution t)</span></p>
 
-<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> &#x2019;A (cos (&#x002B; (<sub>&#x002A;</sub> &#x2019;omega t) &#x2019;phi))))</span></p>
+<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> 'A (cos (&#x002B; (<sub>&#x002A;</sub> 'omega t) 'phi))))</span></p>
 
 <p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">(((Lagrange-equations (L-harmonic &#x2019;m &#x2019;k))</span></p>
+<p class="pqp1"><span class="font1">(((Lagrange-equations (L-harmonic 'm 'k))</span></p>
 
 <p class="pqp2"><span class="font1">proposed-solution)</span></p>
 
-<p class="pqp2"><span class="font1">&#x2019;t))</span></p>
+<p class="pqp2"><span class="font1">'t))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -853,7 +839,7 @@ layout: chapter
 
 <p class="noindent">The residual here shows that for nonzero amplitude, the only solutions allowed are ones where (<em>k</em> &#x2212; <em>m&#x03C9;</em><sup>2</sup>) &#x003D; 0 or <epub:switch id="mathmlSwitch76"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x03C9;</mi><mo>=</mo><msqrt><mrow><mi>k</mi><mo>/</mo><mi>m</mi></mrow></msqrt><mo>.</mo></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent1-top-exe" id="Exe_1-11"><strong>Exercise  1.11: Kepler&#x2019;s third law</strong></p>
+<p class="noindent1-top-exe" id="Exe_1-11"><strong>Exercise  1.11: Kepler's third law</strong></p>
 
 <p class="noindent">A Lagrangian suitable for studying the relative motion of two particles, of masses <em>m</em><sub>1</sub> and <em>m</em><sub>2</sub>, with potential energy <em>V</em>, is:</p>
 <div class="pull-quote">
@@ -889,16 +875,16 @@ layout: chapter
 
 <p class="noindent">where <span class="font1">r</span> is the distance between the two particles.</p>
 
-<p>Consider the simple situation of the particles in circular orbits around their common center of mass. Construct a circular orbit and plug it into the Lagrange equations. Show that the residual gives Kepler&#x2019;s law:</p>
+<p>Consider the simple situation of the particles in circular orbits around their common center of mass. Construct a circular orbit and plug it into the Lagrange equations. Show that the residual gives Kepler's law:</p>
 
 <p class="eqtext" id="disp_1.52"><epub:switch id="mathmlSwitch78"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mi>n</mi><mn>2</mn></msup><msup><mi>a</mi><mn>3</mn></msup><mo>=</mo><mi>G</mi><mo stretchy='false'>(</mo><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.52</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">where <em>n</em> is the angular frequency of the orbit and <em>a</em> is the distance between the particles.</p>
 <a id="p36"></a>
 
-<p class="noindent1-top-exe" id="Exe_1-12"><strong>Exercise  1.12: Lagrange&#x2019;s Equations</strong></p>
+<p class="noindent1-top-exe" id="Exe_1-12"><strong>Exercise  1.12: Lagrange's Equations</strong></p>
 
-<p class="noindent">Compute Lagrange&#x2019;s equations for the Lagrangians in <a href="chapter001.html#Exe_1-9">exercise 1.9</a> using the <span class="font1">Lagrange-equations</span> procedure. Additionally, use the computer to perform each of the steps in the <span class="font1">Lagrange-equations</span> procedure and show the intermediate results. Relate these steps to the ones you showed in the hand derivation of <a href="chapter001.html#Exe_1-9">exercise 1.9</a>.</p>
+<p class="noindent">Compute Lagrange's equations for the Lagrangians in <a href="chapter001.html#Exe_1-9">exercise 1.9</a> using the <span class="font1">Lagrange-equations</span> procedure. Additionally, use the computer to perform each of the steps in the <span class="font1">Lagrange-equations</span> procedure and show the intermediate results. Relate these steps to the ones you showed in the hand derivation of <a href="chapter001.html#Exe_1-9">exercise 1.9</a>.</p>
 
 <p class="noindent1-top-exe" id="Exe_1-13"><strong>Exercise  1.13: Higher-derivative Lagrangians</strong></p>
 
@@ -916,9 +902,9 @@ layout: chapter
 <section title="How to Find Lagrangians">
 <h1 class="level1" id="h1-6a"><a href="toc.html#Rh1-6a"><strong>1.6&#160;&#160;&#160;How to Find Lagrangians</strong></a></h1>
 
-<p class="noindent">Lagrange&#x2019;s equations are a system of second-order differential equations. In order to use them to compute the evolution of a mechanical system, we must find a suitable Lagrangian for the system. There is no general way to construct a Lagrangian for every system, but there is an important class of systems for which we can identify Lagrangians in a straightforward way in terms of kinetic and potential energy. The key idea is to construct a Lagrangian <em>L</em> such that Lagrange&#x2019;s equations are Newton&#x2019;s equations <epub:switch id="mathmlSwitch80"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mo>=</mo><mi>m</mi><mover accent='true'><mi>a</mi><mo stretchy="false">&#x2192;</mo></mover></mrow></math></epub:case></epub:switch>.</p>
+<p class="noindent">Lagrange's equations are a system of second-order differential equations. In order to use them to compute the evolution of a mechanical system, we must find a suitable Lagrangian for the system. There is no general way to construct a Lagrangian for every system, but there is an important class of systems for which we can identify Lagrangians in a straightforward way in terms of kinetic and potential energy. The key idea is to construct a Lagrangian <em>L</em> such that Lagrange's equations are Newton's equations <epub:switch id="mathmlSwitch80"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mo>=</mo><mi>m</mi><mover accent='true'><mi>a</mi><mo stretchy="false">&#x2192;</mo></mover></mrow></math></epub:case></epub:switch>.</p>
 
-<p>Suppose our system consists of <em>N</em> particles indexed by <em>&#x03B1;</em>, with mass <em>m<sub>&#x03B1;</sub></em> and vector position <epub:switch id="mathmlSwitch81"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch>. Suppose further that the forces acting on the particles can be written in terms of a gradient of a potential energy <epub:switch id="mathmlSwitch82"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch> that is a function of the positions of the <a id="p37"></a>particles and possibly time, but does not depend on the velocities. In other words, the force on particle <em>&#x03B1;</em> is <epub:switch id="mathmlSwitch83"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mi>&#x03B1;</mi></msub><mo>=</mo><mo>&#x2212;</mo><msub><mover accent='true'><mo>&#x2207;</mo><mo stretchy="false">&#x2192;</mo></mover><msub><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover></mrow><mi>&#x03B1;</mi></msub></msub><mtext>&#x2009;</mtext><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch>, where <epub:switch id="mathmlSwitch84"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mo>&#x2207;</mo><mo stretchy="false">&#x2192;</mo></mover><msub><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover></mrow><mi>&#x03B1;</mi></msub></msub><mtext>&#x2009;</mtext><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch> is the gradient of <epub:switch id="mathmlSwitch85"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch> with respect to the position of the particle with index <em>&#x03B1;</em>. We can write Newton&#x2019;s equations as</p>
+<p>Suppose our system consists of <em>N</em> particles indexed by <em>&#x03B1;</em>, with mass <em>m<sub>&#x03B1;</sub></em> and vector position <epub:switch id="mathmlSwitch81"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch>. Suppose further that the forces acting on the particles can be written in terms of a gradient of a potential energy <epub:switch id="mathmlSwitch82"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch> that is a function of the positions of the <a id="p37"></a>particles and possibly time, but does not depend on the velocities. In other words, the force on particle <em>&#x03B1;</em> is <epub:switch id="mathmlSwitch83"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mi>&#x03B1;</mi></msub><mo>=</mo><mo>&#x2212;</mo><msub><mover accent='true'><mo>&#x2207;</mo><mo stretchy="false">&#x2192;</mo></mover><msub><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover></mrow><mi>&#x03B1;</mi></msub></msub><mtext>&#x2009;</mtext><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch>, where <epub:switch id="mathmlSwitch84"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mo>&#x2207;</mo><mo stretchy="false">&#x2192;</mo></mover><msub><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover></mrow><mi>&#x03B1;</mi></msub></msub><mtext>&#x2009;</mtext><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch> is the gradient of <epub:switch id="mathmlSwitch85"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch> with respect to the position of the particle with index <em>&#x03B1;</em>. We can write Newton's equations as</p>
 
 <p class="eqtext" id="disp_1.53"><epub:switch id="mathmlSwitch86"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><msub><mi>m</mi><mi>&#x03B1;</mi></msub><mtext>&#x2009;</mtext><mi>D</mi><msub><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mi>&#x03B1;</mi></msub><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><msub><mover accent='true'><mo>&#x2207;</mo><mo stretchy="false">&#x2192;</mo></mover><msub><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover></mrow><mi>&#x03B1;</mi></msub></msub><mtext>&#x2009;</mtext><mi mathvariant='script'>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mn>0</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mrow><mi>N</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>=</mo><mn>0.</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.53</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -926,7 +912,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.54"><epub:switch id="mathmlSwitch88"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mn>0</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mrow><mi>N</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>=</mo><mi mathvariant='script'>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mn>0</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mrow><mi>N</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.54</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Newton&#x2019;s equations are</p>
+<p class="noindent">Newton's equations are</p>
 
 <p class="eqtext" id="disp_1.55"><epub:switch id="mathmlSwitch89"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><msub><mi>m</mi><mi>&#x03B1;</mi></msub><mtext>&#x2009;</mtext><mi>D</mi><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B1;</mi></msub><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mi>&#x03B1;</mi></mrow></msub><mi>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mn>0</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mrow><mi>N</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>=</mo><mn>0</mn><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.55</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -936,7 +922,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.56"><epub:switch id="mathmlSwitch90"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>x</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>x</mi><mo stretchy='false'>]</mo><mo>=</mo><mn>0.</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.56</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p>Observe that Newton&#x2019;s equations (<a href="chapter001.html#disp_1.55">1.55</a>) are just the components of the Lagrange equations (<a href="chapter001.html#disp_1.56">1.56</a>) if we choose <em>L</em> to have the properties</p>
+<p>Observe that Newton's equations (<a href="chapter001.html#disp_1.55">1.55</a>) are just the components of the Lagrange equations (<a href="chapter001.html#disp_1.56">1.56</a>) if we choose <em>L</em> to have the properties</p>
 
 <p class="eqtext" id="disp_1.57"><epub:switch id="mathmlSwitch91"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>x</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo stretchy='false'>[</mo><msub><mi>m</mi><mn>0</mn></msub><mi>D</mi><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mn>0</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><msub><mi>m</mi><mrow><mi>N</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msub><mi>D</mi><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mrow><mi>N</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>]</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>x</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo stretchy='false'>[</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msub><mi>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mi>N</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msub><mi>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>]</mo><mo>;</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.57</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -956,17 +942,17 @@ layout: chapter
 <p class="noindent">where <epub:switch id="mathmlSwitch95"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>v</mi><mi>&#x03B1;</mi><mn>2</mn></msubsup></mrow></math></epub:case></epub:switch> is the sum of the squares of the components of <strong>v</strong><sub><em>&#x03B1;</em></sub>.<sup><a class="footnote_link" href="#endnote_59" id="endnote_ref_59">59</a></sup></p>
 
 <p>The first term is the kinetic energy, conventionally denoted <em>T</em>. So this choice for the Lagrangian is <em>L</em>(<em>t</em>, <em>x</em>, <em>v</em>) &#x003D; <em>T</em> (<em>t</em>, <em>x</em>, <em>v</em>)&#x2212;<em>V</em> (<em>t</em>, <em>x</em>), the difference of the kinetic and potential energy. We will often extend the arguments of the potential energy function to include the velocities so that we can write <em>L</em> &#x003D; <em>T</em> &#x2212; <em>V</em>.<sup><a class="footnote_link" href="#endnote_60" id="endnote_ref_60">60</a></sup></p>
-<section title="Hamilton&#x2019;s principle">
-<h2 class="level2"><strong>Hamilton&#x2019;s principle</strong></h2>
+<section title="Hamilton's principle">
+<h2 class="level2"><strong>Hamilton's principle</strong></h2>
 
-<p class="noindent">Given a system of point particles for which we can identify the force as the (negative) derivative of a potential energy <em>V</em> that is independent of velocity, we have shown that the system evolves along a path that satisfies Lagrange&#x2019;s equations with <em>L</em> &#x003D; <em>T</em> &#x2212; <em>V</em>. Having identified a Lagrangian for this class of systems, we can restate the principle of stationary action in terms of energies. This statement is known as <em>Hamilton&#x2019;s principle</em>: A point-particle system for which the force is derived from a velocity-independent potential energy evolves along a path <em>q</em> for which the action</p>
+<p class="noindent">Given a system of point particles for which we can identify the force as the (negative) derivative of a potential energy <em>V</em> that is independent of velocity, we have shown that the system evolves along a path that satisfies Lagrange's equations with <em>L</em> &#x003D; <em>T</em> &#x2212; <em>V</em>. Having identified a Lagrangian for this class of systems, we can restate the principle of stationary action in terms of energies. This statement is known as <em>Hamilton's principle</em>: A point-particle system for which the force is derived from a velocity-independent potential energy evolves along a path <em>q</em> for which the action</p>
 
 <p class="eqtext"><epub:switch id="mathmlSwitch96"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><msub><mi>t</mi><mn>2</mn></msub><mo stretchy='false'>)</mo><mo>=</mo><mstyle displaystyle='true'><mrow><msubsup><mo>&#x222B;</mo><mrow><msub><mi>t</mi><mn>1</mn></msub></mrow><mrow><msub><mi>t</mi><mn>2</mn></msub></mrow></msubsup><mrow><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo></mrow></mrow></mstyle></mrow></math></epub:case></epub:switch></p>
 <a id="p39"></a>
 
 <p class="noindent">is stationary with respect to variations of the path <em>q</em> that leave the endpoints fixed, where <em>L</em> &#x003D; <em>T</em> &#x2212; <em>V</em> is the difference between kinetic and potential energy.<sup><a class="footnote_link" href="#endnote_61" id="endnote_ref_61">61</a></sup></p>
 
-<p>It might seem that we have reduced Lagrange&#x2019;s equations to nothing more than <epub:switch id="mathmlSwitch97"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mo>=</mo><mi>m</mi><mover accent='true'><mi>a</mi><mo stretchy="false">&#x2192;</mo></mover></mrow></math></epub:case></epub:switch>, and indeed, the principle is motivated by comparing the two equations for this special class of systems. However, the Lagrangian formulation of the equations of motion has an important advantage over <epub:switch id="mathmlSwitch98"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mo>=</mo><mi>m</mi><mover accent='true'><mi>a</mi><mo stretchy="false">&#x2192;</mo></mover></mrow></math></epub:case></epub:switch>. Our derivation used the rectangular components <strong>x</strong><sub><em>&#x03B1;</em></sub> of the positions of the constituent particles for the generalized coordinates, but if the system&#x2019;s path satisfies Lagrange&#x2019;s equations in some particular coordinate system, it must satisfy the equations in <em>any</em> coordinate system. Thus we see that <em>L</em> &#x003D; <em>T</em> &#x2212; <em>V</em> is suitable as a Lagrangian with <em>any</em> set of generalized coordinates. The equations of variational mechanics are derived the same way in any configuration space and any coordinate system. In contrast, the Newtonian formulation is based on elementary geometry: In order for <epub:switch id="mathmlSwitch99"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>D</mi><mn>2</mn></msup><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> to be meaningful as an acceleration, <epub:switch id="mathmlSwitch100"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> must be a vector in physical space. Lagrange&#x2019;s equations have no such restriction on the meaning of the coordinate <em>q</em>. The generalized coordinates can be any parameters that conveniently describe the configurations of the system.</p>
+<p>It might seem that we have reduced Lagrange's equations to nothing more than <epub:switch id="mathmlSwitch97"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mo>=</mo><mi>m</mi><mover accent='true'><mi>a</mi><mo stretchy="false">&#x2192;</mo></mover></mrow></math></epub:case></epub:switch>, and indeed, the principle is motivated by comparing the two equations for this special class of systems. However, the Lagrangian formulation of the equations of motion has an important advantage over <epub:switch id="mathmlSwitch98"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mo>=</mo><mi>m</mi><mover accent='true'><mi>a</mi><mo stretchy="false">&#x2192;</mo></mover></mrow></math></epub:case></epub:switch>. Our derivation used the rectangular components <strong>x</strong><sub><em>&#x03B1;</em></sub> of the positions of the constituent particles for the generalized coordinates, but if the system's path satisfies Lagrange's equations in some particular coordinate system, it must satisfy the equations in <em>any</em> coordinate system. Thus we see that <em>L</em> &#x003D; <em>T</em> &#x2212; <em>V</em> is suitable as a Lagrangian with <em>any</em> set of generalized coordinates. The equations of variational mechanics are derived the same way in any configuration space and any coordinate system. In contrast, the Newtonian formulation is based on elementary geometry: In order for <epub:switch id="mathmlSwitch99"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>D</mi><mn>2</mn></msup><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> to be meaningful as an acceleration, <epub:switch id="mathmlSwitch100"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> must be a vector in physical space. Lagrange's equations have no such restriction on the meaning of the coordinate <em>q</em>. The generalized coordinates can be any parameters that conveniently describe the configurations of the system.</p>
 <a id="p40"></a>
 </section>
 <section title="Constant acceleration">
@@ -989,13 +975,13 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
 
-<p class="pqp2"><span class="font1">(L-uniform-acceleration &#x2019;m &#x2019;g))</span></p>
+<p class="pqp2"><span class="font1">(L-uniform-acceleration 'm 'g))</span></p>
 
-<p class="pqp1a"><span class="font1">(up (literal-function &#x2019;x)</span></p>
+<p class="pqp1a"><span class="font1">(up (literal-function 'x)</span></p>
 
-<p class="pqp4a"><span class="font1">(literal-function &#x2019;y)))</span></p>
+<p class="pqp4a"><span class="font1">(literal-function 'y)))</span></p>
 
-<p class="pqp1"><span class="font1">&#x2019;t))</span></p>
+<p class="pqp1"><span class="font1">'t))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -1034,13 +1020,13 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
 
-<p class="pqp2"><span class="font1">(L-central-rectangular &#x2019;m (literal-function &#x2019;U)))</span></p>
+<p class="pqp2"><span class="font1">(L-central-rectangular 'm (literal-function 'U)))</span></p>
 
-<p class="pqp1a"><span class="font1">(up (literal-function &#x2019;x)</span></p>
+<p class="pqp1a"><span class="font1">(up (literal-function 'x)</span></p>
 
-<p class="pqp4"><span class="font1">(literal-function &#x2019;y)))</span></p>
+<p class="pqp4"><span class="font1">(literal-function 'y)))</span></p>
 
-<p class="pqp1"><span class="font1">&#x2019;t))</span></p>
+<p class="pqp1"><span class="font1">'t))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -1053,7 +1039,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.63"><epub:switch id="mathmlSwitch109"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo>&#x2212;</mo><mfrac><mrow><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mrow><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mfrac><mi>D</mi><mi>U</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.63</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">where <epub:switch id="mathmlSwitch110"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><msqrt><mrow><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></epub:case></epub:switch>. We can interpret these as follows. The particle is subject to a radially directed force with magnitude &#x2212;<em>DU</em>(<em>r</em>). Newton&#x2019;s equations equate the force with the product of the mass and the acceleration. The two Lagrange equations are just the rectangular components of Newton&#x2019;s equations.</p>
+<p class="noindent">where <epub:switch id="mathmlSwitch110"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><msqrt><mrow><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></epub:case></epub:switch>. We can interpret these as follows. The particle is subject to a radially directed force with magnitude &#x2212;<em>DU</em>(<em>r</em>). Newton's equations equate the force with the product of the mass and the acceleration. The two Lagrange equations are just the rectangular components of Newton's equations.</p>
 <a id="p42"></a>
 
 <p>We can describe the same system in polar coordinates. The relationship between rectangular coordinates (<em>x</em>, <em>y</em>) and polar coordinates (<em>r, &#x03C6;</em>) is</p>
@@ -1103,20 +1089,20 @@ layout: chapter
 <p class="pqp6"><span class="font1">(U r)))))</span></p>
 </div>
 
-<p class="noindent">Lagrange&#x2019;s equations are</p>
+<p class="noindent">Lagrange's equations are</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
 <p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
 
-<p class="pqp3"><span class="font1">(L-central-polar &#x2019;m (literal-function &#x2019;U)))</span></p>
+<p class="pqp3"><span class="font1">(L-central-polar 'm (literal-function 'U)))</span></p>
 
-<p class="pqp2"><span class="font1">(up (literal-function &#x2019;r)</span></p>
+<p class="pqp2"><span class="font1">(up (literal-function 'r)</span></p>
 
-<p class="pqp4"><span class="font1">(literal-function &#x2019;phi)))</span></p>
+<p class="pqp4"><span class="font1">(literal-function 'phi)))</span></p>
 
-<p class="pqp2"><span class="font1">&#x2019;t))</span></p>
+<p class="pqp2"><span class="font1">'t))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -1226,7 +1212,7 @@ layout: chapter
 
 <p class="pqp2"><span class="font1">((F-&#x003E;C p-&#x003E;r)</span></p>
 
-<p class="pqp3"><span class="font1">(up &#x2019;t (up &#x2019;r &#x2019;phi) (up &#x2019;rdot &#x2019;phidot)))))</span></p>
+<p class="pqp3"><span class="font1">(up 't (up 'r 'phi) (up 'rdot 'phidot)))))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -1242,9 +1228,9 @@ layout: chapter
 
 <p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">((L-central-polar &#x2019;m (literal-function &#x2019;U))</span></p>
+<p class="pqp1"><span class="font1">((L-central-polar 'm (literal-function 'U))</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t (up &#x2019;r &#x2019;phi) (up &#x2019;rdot &#x2019;phidot))))</span></p>
+<p class="pqp2"><span class="font1">(up 't (up 'r 'phi) (up 'rdot 'phidot))))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -1300,7 +1286,7 @@ layout: chapter
 <p class="pqp1"><span class="font1">(compose (L-free-polar m) (F-&#x003E;C (F Omega))))</span></p>
 </div>
 
-<p class="noindent">Now let&#x2019;s transform back to rectangular coordinates:</p>
+<p class="noindent">Now let's transform back to rectangular coordinates:</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define (L-rotating-rectangular m Omega)</span></p>
@@ -1311,9 +1297,9 @@ layout: chapter
 <p class="noindent">The new Lagrangian, in the rotating rectangular coordinate system is:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((L-rotating-rectangular &#x2019;m &#x2019;Omega)</span></p>
+<p class="pq-noindent"><span class="font1">((L-rotating-rectangular 'm 'Omega)</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t (up &#x2019;x_r &#x2019;y_r) (up &#x2019;xdot_r &#x2019;ydot_r)))</span></p>
+<p class="pqp1"><span class="font1">(up 't (up 'x_r 'y_r) (up 'xdot_r 'ydot_r)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> 1/2 (expt Omega 2) m (expt x_r 2))</em></span></p>
 
@@ -1333,11 +1319,11 @@ layout: chapter
 <p>The Lagrange equations for the free particle in the rotating coordinate system have force terms involving the angular velocity &#x03A9;:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(((Lagrange-equations (L-rotating-rectangular &#x2019;m &#x2019;Omega))</span></p>
+<p class="pq-noindent"><span class="font1">(((Lagrange-equations (L-rotating-rectangular 'm 'Omega))</span></p>
 
-<p class="pqp1"><span class="font1">(up (literal-function &#x2019;x r) (literal-function &#x2019;y r)))</span></p>
+<p class="pqp1"><span class="font1">(up (literal-function 'x r) (literal-function 'y r)))</span></p>
 
-<p class="pqp1b"><span class="font1">&#x2019;t)</span></p>
+<p class="pqp1b"><span class="font1">'t)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(down</em></span></p>
 
@@ -1456,18 +1442,18 @@ layout: chapter
 <p class="pq-noindent1-top"><span class="font1">(define L-pend (- T-pend V-pend))</span></p>
 </div>
 
-<p>Lagrange&#x2019;s equation for this system is</p>
+<p>Lagrange's equation for this system is</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
 <p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
 
-<p class="pqp4"><span class="font1">(L-pend &#x2019;m &#x2019;l &#x2019;g (literal-function &#x2019;y_s)))</span></p>
+<p class="pqp4"><span class="font1">(L-pend 'm 'l 'g (literal-function 'y_s)))</span></p>
 
-<p class="pqp3"><span class="font1">(literal-function &#x2019;theta))</span></p>
+<p class="pqp3"><span class="font1">(literal-function 'theta))</span></p>
 
-<p class="pqp2"><span class="font1">&#x2019;t))</span></p>
+<p class="pqp2"><span class="font1">'t))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -1484,7 +1470,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.89"><epub:switch id="mathmlSwitch155"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mi>y</mi><mn>2</mn></msup></mrow><mrow><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mi>z</mi><mn>2</mn></msup></mrow><mrow><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mn>1</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.89</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">for some constants <em>a</em>, <em>b</em>, and <em>c</em>. Identify suitable generalized coordinates, formulate a Lagrangian, and find Lagrange&#x2019;s equations.</p>
+<p class="noindent">for some constants <em>a</em>, <em>b</em>, and <em>c</em>. Identify suitable generalized coordinates, formulate a Lagrangian, and find Lagrange's equations.</p>
 <a id="p53"></a>
 <figure>
 <img src="images/Art_P146.jpg" alt="art"/>
@@ -1501,7 +1487,7 @@ layout: chapter
 
 <p class="noindent1-top-exe" id="Exe_1-20"><strong>Exercise  1.20: Sliding pendulum</strong></p>
 
-<p class="noindent">Consider a pendulum of length <em>l</em> attached to a support that is free to move horizontally, as shown in <a href="chapter001.html#Fig_1-4">figure 1.4</a>. Let the mass of the support be <em>m</em><sub>1</sub> and the mass of the pendulum bob be <em>m</em><sub>2</sub>. Formulate a Lagrangian and derive Lagrange&#x2019;s equations for this system.</p>
+<p class="noindent">Consider a pendulum of length <em>l</em> attached to a support that is free to move horizontally, as shown in <a href="chapter001.html#Fig_1-4">figure 1.4</a>. Let the mass of the support be <em>m</em><sub>1</sub> and the mass of the pendulum bob be <em>m</em><sub>2</sub>. Formulate a Lagrangian and derive Lagrange's equations for this system.</p>
 <a id="p54"></a>
 </section>
 <section title="Why it works">
@@ -1528,7 +1514,7 @@ layout: chapter
 
 <p class="noindent">where <em>F<sub>&#x03B1;&#x03B2;</sub></em>(<em>t</em>) is the scalar magnitude of the tension in the constraint at time <em>t</em>. Note that <epub:switch id="mathmlSwitch161"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow></msub><mo>=</mo><mo>&#x2212;</mo><msub><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mrow><mi>&#x03B2;</mi><mi>&#x03B1;</mi></mrow></msub></mrow></math></epub:case></epub:switch>. In general, the scalar constraint forces change as the system evolves.</p>
 
-<p>Formally, we can reproduce Newton&#x2019;s equations with the Lagrangian<sup><a class="footnote_link" href="#endnote_66" id="endnote_ref_66">66</a></sup></p>
+<p>Formally, we can reproduce Newton's equations with the Lagrangian<sup><a class="footnote_link" href="#endnote_66" id="endnote_ref_66">66</a></sup></p>
 
 <p class="eqtext" id="disp_1.93"><epub:switch id="mathmlSwitch162"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>x</mi><mo>,</mo><mi>F</mi><mo>;</mo><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mo>,</mo><mover accent='true'><mi>F</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo></mrow></mtd><mtd columnalign='left'><mrow><mstyle displaystyle='true'><munder><mo>&#x2211;</mo><mi>&#x03B1;</mi></munder><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>m</mi><mi>&#x03B1;</mi></msub><msubsup><mstyle mathvariant='bold'><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover></mstyle><mi>&#x03B1;</mi><mn>2</mn></msubsup><mo>&#x2212;</mo><mi>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>&#x2212;</mo><mstyle displaystyle='true'><munder><mo>&#x2211;</mo><mrow><mo>&#x007B;</mo><mi>&#x03B1;</mi><mo>,</mo><mi>&#x03B2;</mi><mo>&#x007C;</mo><mi>&#x03B1;</mi><mo>&#x003C;</mo><mi>&#x03B2;</mi><mo>,</mo><mi>&#x03B1;</mi><mo>&#x2194;</mo><mi>&#x03B2;</mi><mo>&#x007D;</mo></mrow></munder><mrow><mfrac><mrow><msub><mi>F</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow></msub></mrow><mrow><mn>2</mn><msub><mi>l</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow></msub></mrow></mfrac><mo stretchy='false'>[</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B2;</mi></msub><mo>&#x2212;</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B1;</mi></msub><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>&#x2212;</mo><msubsup><mi>l</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow><mn>2</mn></msubsup><mo stretchy='false'>]</mo></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.93</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1536,7 +1522,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.94"><epub:switch id="mathmlSwitch166"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mrow><mo stretchy='false'>(</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B2;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>&#x2212;</mo><msubsup><mi>l</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow><mn>2</mn></msubsup><mo>=</mo><mn>0</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.94</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">but this is just a restatement of the constraints. The Lagrange equations for the coordinates of the particles are Newton&#x2019;s equations (<a href="chapter001.html#disp_1.91">1.91</a>)</p>
+<p class="noindent">but this is just a restatement of the constraints. The Lagrange equations for the coordinates of the particles are Newton's equations (<a href="chapter001.html#disp_1.91">1.91</a>)</p>
 
 <p class="eqtext" id="disp_1.95"><epub:switch id="mathmlSwitch167"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><mi>m</mi><mi>D</mi><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B1;</mi></msub><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mi>&#x03B1;</mi></mrow></msub><mi>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>+</mo><mstyle displaystyle='true'><munder><mo>&#x2211;</mo><mrow><mo>&#x007B;</mo><mi>&#x03B2;</mi><mo>&#x007C;</mo><mi>&#x03B1;</mi><mo>&#x2194;</mo><mi>&#x03B2;</mi><mo>&#x007D;</mo></mrow></munder><mrow><msub><mi>F</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mfrac><mrow><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B2;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><msub><mstyle mathvariant='bold'><mi>x</mi></mstyle><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mrow><msub><mi>l</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow></msub></mrow></mfrac></mrow></mstyle><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.95</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p56"></a>
@@ -1562,7 +1548,7 @@ layout: chapter
 <p class="eqtext" id="disp_1.99"><epub:switch id="mathmlSwitch173"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>L</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>q</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>F</mi><mo>;</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mo>,</mo><mover accent='true'><mi>c</mi><mo>&#x02D9;</mo></mover><mo>,</mo><mover accent='true'><mi>F</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>=</mo><mstyle displaystyle='true'><munder><mo>&#x2211;</mo><mi>&#x03B1;</mi></munder><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>m</mi><mi>&#x03B1;</mi></msub><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><msub><mi>f</mi><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>c</mi><mo stretchy='false'>)</mo><mo>+</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>f</mi><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>c</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mo>+</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>f</mi><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>c</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mover accent='true'><mi>c</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>&#x2212;</mo><mi>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>c</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mstyle displaystyle='true'><munder><mo>&#x2211;</mo><mrow><mo>&#x007B;</mo><mi>&#x03B1;</mi><mo>,</mo><mi>&#x03B2;</mi><mo>&#x007C;</mo><mi>&#x03B1;</mi><mo>&#x003C;</mo><mi>&#x03B2;</mi><mo>,</mo><mi>&#x03B1;</mi><mo>&#x2194;</mo><mi>&#x03B2;</mi><mo>&#x007D;</mo></mrow></munder><mrow><mfrac><mrow><msub><mi>F</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow></msub></mrow><mrow><mn>2</mn><msub><mi>l</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow></msub></mrow></mfrac><mo stretchy='false'>[</mo><msubsup><mi>c</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow><mn>2</mn></msubsup><mo>&#x2212;</mo><msubsup><mi>l</mi><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow><mn>2</mn></msubsup><mo stretchy='false'>]</mo><mo>.</mo></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.99</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p57"></a>
 
-<p>The Lagrange equations are derived by the usual procedure. Rather than write out all the gory details, let&#x2019;s think about how it will go.</p>
+<p>The Lagrange equations are derived by the usual procedure. Rather than write out all the gory details, let's think about how it will go.</p>
 
 <p>The Lagrange equations associated with <em>F</em> just restate the constraints:</p>
 
@@ -1574,7 +1560,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.101"><epub:switch id="mathmlSwitch175"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>L</mi><mo>&#x2033;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mstyle displaystyle='true'><munder><mo>&#x2211;</mo><mi>&#x03B1;</mi></munder><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>m</mi><mi>&#x03B1;</mi></msub><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><msub><mi>f</mi><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>l</mi><mo stretchy='false'>)</mo><mo>+</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>f</mi><mi>&#x03B1;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>l</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>&#x2212;</mo><mi>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>l</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.101</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">but this is exactly <em>T</em> &#x2212; <em>V</em> where <em>T</em> and <em>V</em> are computed from the generalized coordinates <em>q</em>, with fixed constraints. Notice that the constraint forces do not appear in the Lagrange equations for <em>q</em> because in the Lagrange equations they are multiplied by a term that is identically zero on the solution paths. So the Lagrange equations for <em>T</em> &#x2212; <em>V</em> with irredundant generalized coordinates <em>q</em> and fixed constraints are equivalent to Newton&#x2019;s equations with vector constraint forces.</p>
+<p class="noindent">but this is exactly <em>T</em> &#x2212; <em>V</em> where <em>T</em> and <em>V</em> are computed from the generalized coordinates <em>q</em>, with fixed constraints. Notice that the constraint forces do not appear in the Lagrange equations for <em>q</em> because in the Lagrange equations they are multiplied by a term that is identically zero on the solution paths. So the Lagrange equations for <em>T</em> &#x2212; <em>V</em> with irredundant generalized coordinates <em>q</em> and fixed constraints are equivalent to Newton's equations with vector constraint forces.</p>
 
 <p>The Lagrange equations for <em>c</em> can be used to find the constraint forces. The Lagrange equations are a big mess so we will not show them explicitly, but in general they are equations in <em>D</em><sup>2</sup><em>c</em>, <em>Dc</em>, and <em>c</em> that will depend upon <em>q</em>, <em>Dq</em>, and <em>F</em>. The dependence on <em>F</em> is linear, so we can solve for <em>F</em> in terms of the solution path <em>q</em> and <em>Dq</em>, with <em>c</em> &#x003D; <em>l</em> and <em>Dc</em> &#x003D; <em>D</em><sup>2</sup><em>c</em> &#x003D; 0.</p>
 
@@ -1594,13 +1580,13 @@ layout: chapter
 
 <p>We can uniquely specify the configuration with the redundant coordinates of the particles, say <em>x</em><sub>0</sub>(<em>t</em>), <em>y</em><sub>0</sub>(<em>t</em>) and <em>x</em><sub>1</sub>(<em>t</em>), <em>y</em><sub>1</sub>(<em>t</em>). The constraint (<em>x</em><sub>1</sub>(<em>t</em>) &#x2212; <em>x</em><sub>0</sub>(<em>t</em>))<sup>2</sup> &#x002B; (<em>y</em><sub>1</sub>(<em>t</em>) &#x2212; <em>y</em><sub>0</sub>(<em>t</em>))<sup>2</sup> &#x003D; <em>l</em><sup>2</sup> eliminates one degree of freedom.</p>
 
-<p class="noindent"><strong>a.</strong> Write Newton&#x2019;s equations for the balance of forces for the four rectangular coordinates of the two particles, given that the scalar tension in the rod is <em>F</em>.</p>
+<p class="noindent"><strong>a.</strong> Write Newton's equations for the balance of forces for the four rectangular coordinates of the two particles, given that the scalar tension in the rod is <em>F</em>.</p>
 
 <p class="noindent1-topa"><strong>b.</strong> Write the formal Lagrangian</p>
 
 <p class="eqtext"><epub:switch id="mathmlSwitch177"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><mi>F</mi><mo>;</mo><msub><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>0</mn></msub><mo>,</mo><msub><mover accent='true'><mi>y</mi><mo>&#x02D9;</mo></mover><mn>0</mn></msub><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>1</mn></msub><mo>,</mo><msub><mover accent='true'><mi>y</mi><mo>&#x02D9;</mo></mover><mn>1</mn></msub><mo>,</mo><mover accent='true'><mi>F</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">such that Lagrange&#x2019;s equations will yield the Newton&#x2019;s equations you derived in part <strong>a</strong>.</p>
+<p class="noindent">such that Lagrange's equations will yield the Newton's equations you derived in part <strong>a</strong>.</p>
 
 <p class="noindent1-top"><strong>c.</strong> Make a change of coordinates to a coordinate system with center of mass coordinates <em>x</em><sub>CM</sub>, <em>y</em><sub>CM</sub>, angle <em>&#x03B8;</em>, distance between the particles <em>c</em>, and tension force <em>F</em>. Write the Lagrangian in these coordinates, and write the Lagrange equations.</p>
 <a id="p59"></a>
@@ -1697,9 +1683,9 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">((L-pend &#x2019;m &#x2019;l &#x2019;g (literal-function &#x2019;y_s))</span></p>
+<p class="pqp1"><span class="font1">((L-pend 'm 'l 'g (literal-function 'y_s))</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t &#x2019;theta &#x2019;thetadot)))</span></p>
+<p class="pqp2"><span class="font1">(up 't 'theta 'thetadot)))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -1733,9 +1719,9 @@ layout: chapter
 <p class="noindent">This second transformation can be implemented with the following code:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((compose (Rz (<sub>&#x002A;</sub> &#x2019;Omega &#x2019;t)) (Ry &#x2019;phi))</span></p>
+<p class="pq-noindent"><span class="font1">((compose (Rz (<sub>&#x002A;</sub> 'Omega 't)) (Ry 'phi))</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;x_0 &#x2019;y_0 &#x2019;z_0))</span></p>
+<p class="pqp1"><span class="font1">(up 'x_0 'y_0 'z_0))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up</em></span></p>
 
@@ -1765,7 +1751,7 @@ layout: chapter
 <section title="Total time derivatives">
 <h2 class="level2"><strong>Total time derivatives</strong></h2>
 
-<p class="noindent">Let&#x2019;s first explain what we mean by a &#x201C;total time derivative.&#x201D; Let <em>F</em> be a function of time and coordinates. The function <em>F</em> on the path at time <em>t</em> is</p>
+<p class="noindent">Let's first explain what we mean by a &#x201C;total time derivative.&#x201D; Let <em>F</em> be a function of time and coordinates. The function <em>F</em> on the path at time <em>t</em> is</p>
 
 <p class="eqtext" id="disp_1.106"><epub:switch id="mathmlSwitch184"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mi>F</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>F</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.106</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1857,7 +1843,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.120"><epub:switch id="mathmlSwitch201"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>L</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>l</mi><mn>2</mn></msup><msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mi>m</mi><mi>l</mi><mo stretchy='false'>(</mo><mi>g</mi><mo>+</mo><msup><mi>D</mi><mn>2</mn></msup><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.120</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">With this Lagrangian it is apparent that the effect of the accelerating pivot is to modify the acceleration of gravity. Note, however, that it is not the difference of the kinetic and potential energies. Let&#x2019;s compare the two Lagrangians for the driven pendulum. The difference &#x0394;<em>L</em> &#x003D; <em>L</em> &#x2212; <em>L</em>&#x2032; is</p>
+<p class="noindent">With this Lagrangian it is apparent that the effect of the accelerating pivot is to modify the acceleration of gravity. Note, however, that it is not the difference of the kinetic and potential energies. Let's compare the two Lagrangians for the driven pendulum. The difference &#x0394;<em>L</em> &#x003D; <em>L</em> &#x2212; <em>L</em>&#x2032; is</p>
 
 <p class="eqtext" id="disp_1.121"><epub:switch id="mathmlSwitch202"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo>&#x0394;</mo><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo></mrow></mtd><mtd columnalign='left'><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi>m</mi><mi>l</mi><mi>D</mi><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mtext>&#x2009;</mtext><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>&#x2212;</mo><mi>g</mi><mi>m</mi><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>m</mi><mi>l</mi><msup><mi>D</mi><mn>2</mn></msup><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.121</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1929,11 +1915,11 @@ layout: chapter
 <section title="Evolution of Dynamical State">
 <h1 class="level1" id="h1-6b"><a href="toc.html#Rh1-6b"><strong>1.7&#160;&#160;&#160;Evolution of Dynamical State</strong></a></h1>
 
-<p class="noindent">Lagrange&#x2019;s equations are ordinary differential equations that the path must satisfy. They can be used to test if a proposed path is a realizable path of the system. However, we can also use them to develop a path, starting with initial conditions.</p>
+<p class="noindent">Lagrange's equations are ordinary differential equations that the path must satisfy. They can be used to test if a proposed path is a realizable path of the system. However, we can also use them to develop a path, starting with initial conditions.</p>
 
 <p>The <em>state</em> of a system is defined to be the information that must be specified for the subsequent evolution to be determined. Remember our juggler: he or she must throw the pin in a certain way for it to execute the desired motion. The juggler has <a id="p69"></a>control of the initial position and orientation of the pin, and the initial velocity and spin of the pin. Our experience with juggling and similar systems suggests that the initial configuration and the rate of change of the configuration are sufficient to determine the subsequent motion. Other systems may require higher derivatives of the configuration.</p>
 
-<p>For Lagrangians that are written in terms of a set of generalized coordinates and velocities we have shown that Lagrange&#x2019;s equations are second-order ordinary differential equations. If the differential equations can be solved for the highest-order derivatives and if the differential equations satisfy the Lipschitz conditions,<sup><a class="footnote_link" href="#endnote_71" id="endnote_ref_71">71</a></sup> then there is a unique solution to the initial-value problem: given values of the solution and the lower derivatives of the solution at a particular moment, there is a unique solution function. Given irredundant coordinates the Lagrange equations satisfy these conditions.<sup><a class="footnote_link" href="#endnote_72" id="endnote_ref_72">72</a></sup> Thus a trajectory is determined by the generalized coordinates and the generalized velocities at any time. This is the information required to specify the dynamical state.</p>
+<p>For Lagrangians that are written in terms of a set of generalized coordinates and velocities we have shown that Lagrange's equations are second-order ordinary differential equations. If the differential equations can be solved for the highest-order derivatives and if the differential equations satisfy the Lipschitz conditions,<sup><a class="footnote_link" href="#endnote_71" id="endnote_ref_71">71</a></sup> then there is a unique solution to the initial-value problem: given values of the solution and the lower derivatives of the solution at a particular moment, there is a unique solution function. Given irredundant coordinates the Lagrange equations satisfy these conditions.<sup><a class="footnote_link" href="#endnote_72" id="endnote_ref_72">72</a></sup> Thus a trajectory is determined by the generalized coordinates and the generalized velocities at any time. This is the information required to specify the dynamical state.</p>
 
 <p>A complete local description of a path consists of the path and all of its derivatives at a moment. The complete local description of a path can be reconstructed from an initial segment of the local tuple, given a prescription for computing higher-order derivatives of the path in terms of lower-order derivatives. The state of the system is specified by that initial segment of the local tuple from which the rest of the complete local description can be deduced. The complete local description gives us the path near that moment. Actually, all we need is a rule for computing the next higher derivative; we can get all the rest from this. Assume that the state of a system is given by the tuple (<em>t</em>, <em>q</em>, <em>v</em>). If we are <a id="p70"></a>given a prescription for computing the acceleration <em>a</em> &#x003D; <em>A</em>(<em>t</em>, <em>q</em>, <em>v</em>), then</p>
 
@@ -2014,9 +2000,9 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">(Lagrangian-&#x003E;state-derivative (L-harmonic m k)))</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">((harmonic-state-derivative &#x2019;m &#x2019;k)</span></p>
+<p class="pq-noindent1-top"><span class="font1">((harmonic-state-derivative 'm 'k)</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t (up &#x2019;x &#x2019;y) (up &#x2019;v_x &#x2019;v_y)))</span></p>
+<p class="pqp1"><span class="font1">(up 't (up 'x 'y) (up 'v_x 'v_y)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up 1 (up v_x v_y) (up (/ (<sub>&#x002A;</sub> -1 k x) m) (/ (<sub>&#x002A;</sub> -1 k y) m)))</em></span></p>
 </div>
@@ -2044,17 +2030,17 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">(((Lagrange-equations-first-order (L-harmonic &#x2019;m &#x2019;k))</span></p>
+<p class="pqp1"><span class="font1">(((Lagrange-equations-first-order (L-harmonic 'm 'k))</span></p>
 
-<p class="pqp2"><span class="font1">(up (literal-function &#x2019;x)</span></p>
+<p class="pqp2"><span class="font1">(up (literal-function 'x)</span></p>
 
-<p class="pqp4"><span class="font1">(literal-function &#x2019;y))</span></p>
+<p class="pqp4"><span class="font1">(literal-function 'y))</span></p>
 
-<p class="pqp2"><span class="font1">(up (literal-function &#x2019;v_x)</span></p>
+<p class="pqp2"><span class="font1">(up (literal-function 'v_x)</span></p>
 
-<p class="pqp4"><span class="font1">(literal-function &#x2019;v_y)))</span></p>
+<p class="pqp4"><span class="font1">(literal-function 'v_y)))</span></p>
 
-<p class="pqp1"><span class="font1">&#x2019;t))</span></p>
+<p class="pqp1"><span class="font1">'t))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -2107,18 +2093,18 @@ layout: chapter
 </div>
 <a id="p75"></a>
 
-<p class="noindent">Lagrange&#x2019;s equation for this system is</p>
+<p class="noindent">Lagrange's equation for this system is</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
 <p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
 
-<p class="pqp3"><span class="font1">(L-periodically-driven-pendulum &#x2019;m &#x2019;l &#x2019;g &#x2019;A &#x2019;omega))</span></p>
+<p class="pqp3"><span class="font1">(L-periodically-driven-pendulum 'm 'l 'g 'A 'omega))</span></p>
 
-<p class="pqp2"><span class="font1">(literal-function &#x2019;theta))</span></p>
+<p class="pqp2"><span class="font1">(literal-function 'theta))</span></p>
 
-<p class="pqp1"><span class="font1">&#x2019;t))</span></p>
+<p class="pqp1"><span class="font1">'t))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -2136,9 +2122,9 @@ layout: chapter
 
 <p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">((pend-state-derivative &#x2019;m &#x2019;l &#x2019;g &#x2019;A &#x2019;omega)</span></p>
+<p class="pqp1"><span class="font1">((pend-state-derivative 'm 'l 'g 'A 'omega)</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t &#x2019;theta &#x2019;thetadot)))</span></p>
+<p class="pqp2"><span class="font1">(up 't 'theta 'thetadot)))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -2325,7 +2311,7 @@ layout: chapter
 <p class="eqtext" id="disp_1.139"><epub:switch id="mathmlSwitch243"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>=</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo>+</mo><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>q</mi><mo>+</mo><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><msup><mi>D</mi><mn>2</mn></msup><mi>q</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.139</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">Using Lagrange&#x2019;s equations to rewrite the second term yields</p>
+<p class="noindent">Using Lagrange's equations to rewrite the second term yields</p>
 
 <p class="eqtext" id="disp_1.140"><epub:switch id="mathmlSwitch244"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>L</mi><mo stretchy='false'>)</mo><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo>+</mo><mi>D</mi><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>q</mi><mo>+</mo><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><msup><mi>D</mi><mn>2</mn></msup><mi>q</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.140</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2369,7 +2355,7 @@ layout: chapter
 <p class="eqtext" id="disp_1.145"><epub:switch id="mathmlSwitch250"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi mathvariant='script'>P</mi><mover accent='true'><mi>Q</mi><mo>&#x02D9;</mo></mover><mo>=</mo><mrow><mo>(</mo><mrow><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>T</mi></mrow><mo>)</mo></mrow><mover accent='true'><mi>Q</mi><mo>&#x02D9;</mo></mover><mo>=</mo><mn>2</mn><mi>T</mi><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.145</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow>
 </math></epub:case></epub:switch></p>
 
-<p class="noindent">where the second equality follows from Euler&#x2019;s theorem on homogeneous functions.<sup><a class="footnote_link" href="#endnote_85" id="endnote_ref_85">85</a></sup> The energy state function is</p>
+<p class="noindent">where the second equality follows from Euler's theorem on homogeneous functions.<sup><a class="footnote_link" href="#endnote_85" id="endnote_ref_85">85</a></sup> The energy state function is</p>
 
 <p class="eqtext" id="disp_1.146"><epub:switch id="mathmlSwitch251"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>&#x2130;</mi><mo>=</mo><mi mathvariant='script'>P</mi><mover accent='true'><mi>Q</mi><mo>&#x02D9;</mo></mover><mo>&#x2212;</mo><mi>L</mi><mo>=</mo><mn>2</mn><mi>T</mi><mo>&#x2212;</mo><mi>T</mi><mo>+</mo><mi>V</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.146</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow>
 </math></epub:case></epub:switch></p>
@@ -2391,7 +2377,7 @@ layout: chapter
 
 <p class="noindent1-topa"><strong>b.</strong> By adding a total time derivative, show that the Lagrangian can be written in the form <em>L</em> &#x003D; <em>A</em> &#x2212; <em>B</em>, where <em>A</em> is a homogeneous quadratic form in the generalized velocities and <em>B</em> is independent of velocity.</p>
 
-<p class="noindent1-topa"><strong>c.</strong> Show, using Euler&#x2019;s theorem, that the energy function is <em>&#x2130;</em> &#x003D; <em>A</em>&#x002B;<em>B</em>.</p>
+<p class="noindent1-topa"><strong>c.</strong> Show, using Euler's theorem, that the energy function is <em>&#x2130;</em> &#x003D; <em>A</em>&#x002B;<em>B</em>.</p>
 
 <p class="noindent">An example in which terms that were linear in the velocity were removed from the Lagrangian by adding a total time derivative has already been given: the driven pendulum.</p>
 <a id="p84"></a>
@@ -2448,18 +2434,18 @@ layout: chapter
 <p class="pqp1"><span class="font1">(- (T3-spherical m) Vs))</span></p>
 </div>
 
-<p class="noindent">Let&#x2019;s first look at the generalized forces (the derivatives of the Lagrangian with respect to the generalized coordinates). We compute these with a partial derivative with respect to the coordinate argument of the Lagrangian:</p>
+<p class="noindent">Let's first look at the generalized forces (the derivatives of the Lagrangian with respect to the generalized coordinates). We compute these with a partial derivative with respect to the coordinate argument of the Lagrangian:</p>
 <a id="p85"></a><div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">(((partial 1) (L3-central &#x2019;m (literal-function &#x2019;V)))</span></p>
+<p class="pqp1"><span class="font1">(((partial 1) (L3-central 'm (literal-function 'V)))</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t</span></p>
+<p class="pqp2"><span class="font1">(up 't</span></p>
 
-<p class="pqp5"><span class="font1">(up &#x2019;r &#x2019;theta &#x2019;phi)</span></p>
+<p class="pqp5"><span class="font1">(up 'r 'theta 'phi)</span></p>
 
-<p class="pqp5"><span class="font1">(up &#x2019;rdot &#x2019;thetadot &#x2019;phidot))))</span></p>
+<p class="pqp5"><span class="font1">(up 'rdot 'thetadot 'phidot))))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -2471,13 +2457,13 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">(((partial 2) (L3-central &#x2019;m (literal-function &#x2019;V)))</span></p>
+<p class="pqp1"><span class="font1">(((partial 2) (L3-central 'm (literal-function 'V)))</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t</span></p>
+<p class="pqp2"><span class="font1">(up 't</span></p>
 
-<p class="pqp4"><span class="font1">(up &#x2019;r &#x2019;theta &#x2019;phi)</span></p>
+<p class="pqp4"><span class="font1">(up 'r 'theta 'phi)</span></p>
 
-<p class="pqp4"><span class="font1">(up &#x2019;rdot &#x2019;thetadot &#x2019;phidot))))</span></p>
+<p class="pqp4"><span class="font1">(up 'rdot 'thetadot 'phidot))))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -2517,13 +2503,13 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">((compose (ang-mom-z &#x2019;m) (F-&#x003E;C s-&#x003E;r))</span></p>
+<p class="pqp1"><span class="font1">((compose (ang-mom-z 'm) (F-&#x003E;C s-&#x003E;r))</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t</span></p>
+<p class="pqp2"><span class="font1">(up 't</span></p>
 
-<p class="pqp4"><span class="font1">(up &#x2019;r &#x2019;theta &#x2019;phi)</span></p>
+<p class="pqp4"><span class="font1">(up 'r 'theta 'phi)</span></p>
 
-<p class="pqp4"><span class="font1">(up &#x2019;rdot &#x2019;thetadot &#x2019;phidot))))</span></p>
+<p class="pqp4"><span class="font1">(up 'rdot 'thetadot 'phidot))))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -2537,13 +2523,13 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 
-<p class="pqp1"><span class="font1">((Lagrangian-&#x003E;energy (L3-central &#x2019;m (literal-function &#x2019;V)))</span></p>
+<p class="pqp1"><span class="font1">((Lagrangian-&#x003E;energy (L3-central 'm (literal-function 'V)))</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t</span></p>
+<p class="pqp2"><span class="font1">(up 't</span></p>
 
-<p class="pqp4"><span class="font1">(up &#x2019;r &#x2019;theta &#x2019;phi)</span></p>
+<p class="pqp4"><span class="font1">(up 'r 'theta 'phi)</span></p>
 
-<p class="pqp4"><span class="font1">(up &#x2019;rdot &#x2019;thetadot &#x2019;phidot))))</span></p>
+<p class="pqp4"><span class="font1">(up 'rdot 'thetadot 'phidot))))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -2580,7 +2566,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.148"><epub:switch id="mathmlSwitch263"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>M</mi><mn>1</mn></msub></mrow><mrow><msub><mi>M</mi><mn>0</mn></msub><mo>+</mo><msub><mi>M</mi><mn>1</mn></msub></mrow></mfrac><mi>a</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>and</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><msub><mi>M</mi><mn>0</mn></msub></mrow><mrow><msub><mi>M</mi><mn>0</mn></msub><mo>+</mo><msub><mi>M</mi><mn>1</mn></msub></mrow></mfrac><mi>a</mi></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.148</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Each massive particle revolves in a circle about their common center of mass with angular frequency &#x03A9;. The radii of the circles are the distances given above. Kepler&#x2019;s law gives the angular frequency of the orbit:</p>
+<p class="noindent">Each massive particle revolves in a circle about their common center of mass with angular frequency &#x03A9;. The radii of the circles are the distances given above. Kepler's law gives the angular frequency of the orbit:</p>
 
 <p class="eqtext" id="disp_1.149"><epub:switch id="mathmlSwitch264"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mo>&#x03A9;</mo><mn>2</mn></msup><msup><mi>a</mi><mn>3</mn></msup><mo>=</mo><mi>G</mi><mo stretchy='false'>(</mo><msub><mi>M</mi><mn>0</mn></msub><mo>+</mo><msub><mi>M</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.149</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2655,7 +2641,7 @@ layout: chapter
 <p class="pqp5b"><span class="font1">(/ (<sub>&#x002A;</sub> GM0 m) r0) (/ (<sub>&#x002A;</sub> GM1 m) r1))))))</span></p>
 </div>
 
-<p>Notice that the Lagrangian in rotating coordinates is independent of time. So the energy state function defined by this Lagrangian is a conserved quantity. Let&#x2019;s compute it. It is clearest if we express the result in terms of &#x03A9;, <em>a</em><sub>0</sub>, and <em>a</em><sub>1</sub>, so we make those into explicit parameters of the Lagrangian:</p>
+<p>Notice that the Lagrangian in rotating coordinates is independent of time. So the energy state function defined by this Lagrangian is a conserved quantity. Let's compute it. It is clearest if we express the result in terms of &#x03A9;, <em>a</em><sub>0</sub>, and <em>a</em><sub>1</sub>, so we make those into explicit parameters of the Lagrangian:</p>
 <a id="p89"></a><div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define ((LR3B1 m a0 a1 Omega GM0 GM1) local)</span></p>
@@ -2684,9 +2670,9 @@ layout: chapter
 <p class="noindent">And we compute the energy state function (with a bit of hand simplification):</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((Lagrangian-&#x003E;energy (LR3B1 &#x2019;m &#x2019;a_0 &#x2019;a_1 &#x2019;Omega &#x2019;GM_0 &#x2019;GM_1))</span></p>
+<p class="pq-noindent"><span class="font1">((Lagrangian-&#x003E;energy (LR3B1 'm 'a_0 'a_1 'Omega 'GM_0 'GM_1))</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t (up &#x2019;x_r &#x2019;y_r) (up &#x2019;v_r^x &#x2019;v_r^y)))</span></p>
+<p class="pqp1"><span class="font1">(up 't (up 'x_r 'y_r) (up 'v_r^x 'v_r^y)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> 1/2 m (expt v_r^x 2))</em></span></p>
 
@@ -2720,8 +2706,8 @@ layout: chapter
 
 <p class="noindent">Derive the Lagrange equations for the restricted three-body problem, given the Lagrangian (<a href="chapter001.html#disp_1.150">1.150</a>). Identify the Coriolis and centrifugal force terms in your equations of motion.</p>
 </section>
-<section title="Noether&#x2019;s Theorem">
-<h3 class="level3" id="h3_1-8-5"><a href="toc.html#Rh3_1-8-5"><strong>1.8.5 Noether&#x2019;s Theorem</strong></a></h3>
+<section title="Noether's Theorem">
+<h3 class="level3" id="h3_1-8-5"><a href="toc.html#Rh3_1-8-5"><strong>1.8.5 Noether's Theorem</strong></a></h3>
 
 <p class="noindent">We have seen that if a system has a symmetry and a coordinate system can be chosen so that the Lagrangian does not depend on the coordinate associated with that symmetry, then there is a conserved quantity associated with the symmetry. However, there are more general symmetries that no coordinate system can fully express. For example, motion in a central potential is spherically symmetric (the dynamical system is invariant under rotations about any axis), but the expression of the Lagrangian for the system in spherical coordinates exhibits symmetry around only one axis. More generally, a Lagrangian has a symmetry if there is a coordinate transformation that leaves the Lagrangian unchanged. A continuous symmetry is a parametric family of symmetries. Noether proved that for any continuous symmetry there is a conserved quantity.</p>
 
@@ -2764,7 +2750,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.161"><epub:switch id="mathmlSwitch297"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi mathvariant='script'>I</mi><mo>=</mo><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>D</mi><mover accent='true'><mi>F</mi><mo stretchy='true'>&#x02DC;</mo></mover><mo stretchy='false'>(</mo><mn>0</mn><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.161</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">is conserved along solution trajectories. This conserved quantity is called <em>Noether&#x2019;s integral</em>. It is the product of the momentum and a vector associated with the symmetry.</p>
+<p class="noindent">is conserved along solution trajectories. This conserved quantity is called <em>Noether's integral</em>. It is the product of the momentum and a vector associated with the symmetry.</p>
 <a id="p92"></a>
 </section>
 </section>
@@ -2837,17 +2823,17 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">(let ((L (L-central-rectangular</span></p>
 
-<p class="pqp7"><span class="font1">&#x2019;m (literal-function &#x2019;U))))</span></p>
+<p class="pqp7"><span class="font1">'m (literal-function 'U))))</span></p>
 
 <p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> ((partial 2) L) ((D F-tilde) 0 0 0))))</span></p>
 
 <p class="pq-noindent1-top"><span class="font1">(the-Noether-integral</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t</span></p>
+<p class="pqp1"><span class="font1">(up 't</span></p>
 
-<p class="pqp3"><span class="font1">(up &#x2019;x &#x2019;y &#x2019;z)</span></p>
+<p class="pqp3"><span class="font1">(up 'x 'y 'z)</span></p>
 
-<p class="pqp3"><span class="font1">(up &#x2019;vx &#x2019;vy &#x2019;vz)))</span></p>
+<p class="pqp3"><span class="font1">(up 'vx 'vy 'vz)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(down (&#x002B; (<sub>&#x002A;</sub> m vy z) (<sub>&#x002A;</sub> -1 m vz y))</em></span></p>
 
@@ -2936,7 +2922,7 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">((F-&#x003E;C p-&#x003E;r)</span></p>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t (up &#x2019;r &#x2019;theta) (up &#x2019;rdot &#x2019;thetadot))))</span></p>
+<p class="pqp2"><span class="font1">(up 't (up 'r 'theta) (up 'rdot 'thetadot))))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -3012,9 +2998,9 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">((Euler-Lagrange-operator</span></p>
 
-<p class="pqp1"><span class="font1">(L-harmonic &#x2019;m &#x2019;k))</span></p>
+<p class="pqp1"><span class="font1">(L-harmonic 'm 'k))</span></p>
 
-<p class="pqp1b"><span class="font1">(up &#x2019;t &#x2019;x &#x2019;v &#x2019;a))</span></p>
+<p class="pqp1b"><span class="font1">(up 't 'x 'v 'a))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> a m) (<sub>&#x002A;</sub> k x))</em></span></p>
 </div>
@@ -3024,11 +3010,11 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">((compose</span></p>
 
-<p class="pqp2"><span class="font1">(Euler-Lagrange-operator (L-harmonic &#x2019;m &#x2019;k))</span></p>
+<p class="pqp2"><span class="font1">(Euler-Lagrange-operator (L-harmonic 'm 'k))</span></p>
 
-<p class="pqp2"><span class="font1">(Gamma (literal-function &#x2019;x) 4))</span></p>
+<p class="pqp2"><span class="font1">(Gamma (literal-function 'x) 4))</span></p>
 
-<p class="pqp1"><span class="font1">&#x2019;t)</span></p>
+<p class="pqp1"><span class="font1">'t)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> k (x t)) (<sub>&#x002A;</sub> m (((expt D 2) x) t)))</em></span></p>
 </div>
@@ -3060,11 +3046,11 @@ layout: chapter
 
 <p>We can address the problem of formulating equations of motion for systems with redundant coordinates by returning to the action principle. Realizable paths are distinguished from other paths by having stationary action. Stationary refers to the fact that the action does not change with certain small variations of the <a id="p100"></a>path. What variations should be considered? We have seen that velocity-independent rigid constraints can be used to eliminate redundant coordinates. In the irredundant coordinates we distinguished realizable paths by using variations that by construction satisfy the constraints. Thus in the case where constraints can be used to eliminate redundant coordinates we can restrict the variations in the path to those that are consistent with the constraints.</p>
 
-<p>So how does the restriction of the possible variations affect the argument that led to Lagrange&#x2019;s equations (refer to <a href="chapter001.html#h1-6">section 1.5</a>)? Actually most of the calculation is unaffected. The condition that the action is stationary still reduces to the conditions (<a href="chapter001.html#disp_1.17">1.17</a>) or (<a href="chapter001.html#disp_1.34">1.34</a>):</p>
+<p>So how does the restriction of the possible variations affect the argument that led to Lagrange's equations (refer to <a href="chapter001.html#h1-6">section 1.5</a>)? Actually most of the calculation is unaffected. The condition that the action is stationary still reduces to the conditions (<a href="chapter001.html#disp_1.17">1.17</a>) or (<a href="chapter001.html#disp_1.34">1.34</a>):</p>
 
 <p class="eqtext" id="disp_1.182"><epub:switch id="mathmlSwitch343"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mn>0</mn><mo>=</mo><mstyle displaystyle='true'><mrow><msubsup><mo>&#x222B;</mo><mrow><msub><mi>t</mi><mn>1</mn></msub></mrow><mrow><msub><mi>t</mi><mn>2</mn></msub></mrow></msubsup><mrow><mrow><mo>{</mo><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>D</mi><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo></mrow><mo>}</mo></mrow><mi>&#x03B7;</mi><mo>.</mo></mrow></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.182</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">At this point we argued that because the variations <em>&#x03B7;</em> are arbitrary (except for conditions at the endpoints), the only way for the integral to be zero is for the integrand to be zero. Furthermore, the freedom in our choice of <em>&#x03B7;</em> allowed us to deduce that the factor multiplying <em>&#x03B7;</em> in the integrand must be identically zero, thereby deriving Lagrange&#x2019;s equations.</p>
+<p class="noindent">At this point we argued that because the variations <em>&#x03B7;</em> are arbitrary (except for conditions at the endpoints), the only way for the integral to be zero is for the integrand to be zero. Furthermore, the freedom in our choice of <em>&#x03B7;</em> allowed us to deduce that the factor multiplying <em>&#x03B7;</em> in the integrand must be identically zero, thereby deriving Lagrange's equations.</p>
 
 <p>Now the choice of <em>&#x03B7;</em> is not completely free. We can still deduce from the arbitrariness of <em>&#x03B7;</em> that the integrand must be zero,<sup><a class="footnote_link" href="#endnote_91" id="endnote_ref_91">91</a></sup> but we can no longer deduce that the factor multiplying <em>&#x03B7;</em> is zero (only that the projection of this factor onto acceptable variations is zero). So we have</p>
 
@@ -3094,7 +3080,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.186"><epub:switch id="mathmlSwitch349"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>&#x03C6;</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mi>&#x03B7;</mi><mo>=</mo><mn>0.</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.186</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Together, equations (<a href="chapter001.html#disp_1.183">1.183</a>) and (<a href="chapter001.html#disp_1.186">1.186</a>) should determine the motion, but how do we eliminate <em>&#x03B7;</em>? The residual of the Lagrange equations is orthogonal<sup><a class="footnote_link" href="#endnote_92" id="endnote_ref_92">92</a></sup> to any <em>&#x03B7;</em> that is orthogonal to the normal to the constraint surface. A vector that is orthogonal to all vectors orthogonal to a given vector is parallel to the given vector. Thus, the residual of Lagrange&#x2019;s equations is parallel to the normal to the constraint surface; the two must be proportional:</p>
+<p class="noindent">Together, equations (<a href="chapter001.html#disp_1.183">1.183</a>) and (<a href="chapter001.html#disp_1.186">1.186</a>) should determine the motion, but how do we eliminate <em>&#x03B7;</em>? The residual of the Lagrange equations is orthogonal<sup><a class="footnote_link" href="#endnote_92" id="endnote_ref_92">92</a></sup> to any <em>&#x03B7;</em> that is orthogonal to the normal to the constraint surface. A vector that is orthogonal to all vectors orthogonal to a given vector is parallel to the given vector. Thus, the residual of Lagrange's equations is parallel to the normal to the constraint surface; the two must be proportional:</p>
 
 <p class="eqtext" id="disp_1.187"><epub:switch id="mathmlSwitch350"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo>=</mo><mi>&#x03BB;</mi><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>&#x03C6;</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.187</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -3200,7 +3186,7 @@ layout: chapter
 <p>An alternative procedure is to break the system into several parts. In our spring-mass system we can choose two parts: one is a spring and mass attached to the wall, and the other is a spring and mass with its attachment point at an additional configuration coordinate <em>&#x03BE;</em>. We can formulate a Lagrangian for each part separately. We can then choose a Lagrangian for the composite system as the sum of the two component Lagrangians with a constraint <em>&#x03BE;</em> &#x003D; <em>X</em><sub>1</sub> &#x002B; <em>x</em><sub>1</sub> to accomplish the coupling.</p>
 <a id="p106"></a>
 
-<p>Let&#x2019;s see how this works. The Lagrangian for the subsystem attached to the wall is</p>
+<p>Let's see how this works. The Lagrangian for the subsystem attached to the wall is</p>
 
 <p class="eqtext" id="disp_1.204"><epub:switch id="mathmlSwitch370"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>L</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>1</mn></msub><mo stretchy='false'>)</mo><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>m</mi><mn>1</mn></msub><msubsup><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>1</mn><mn>2</mn></msubsup><mo>&#x2212;</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>k</mi><mn>1</mn></msub><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.204</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -3212,7 +3198,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.206"><epub:switch id="mathmlSwitch372"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>&#x03BE;</mi><mo>,</mo><mi>&#x03BB;</mi><mo>;</mo><msub><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>1</mn></msub><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msub><mo>,</mo><mover accent='true'><mi>&#x03BE;</mi><mo>&#x02D9;</mo></mover><mo>,</mo><mover accent='true'><mi>&#x03BB;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;</mtext><mo>=</mo><msub><mi>L</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>1</mn></msub><mo stretchy='false'>)</mo><mo>+</mo><msub><mi>L</mi><mn>2</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>&#x03BE;</mi><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>;</mo><mover accent='true'><mi>&#x03BE;</mi><mo>&#x02D9;</mo></mover><mo>,</mo><msub><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msub><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;</mtext><mtext>&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;&#x2009;</mtext><mo>+</mo><mi>&#x03BB;</mi><mo stretchy='false'>(</mo><mi>&#x03BE;</mi><mo>&#x2212;</mo><mo stretchy='false'>(</mo><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.206</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Thus we can write Lagrange&#x2019;s equations for the four configuration coordinates, in order, as follows:</p>
+<p class="noindent">Thus we can write Lagrange's equations for the four configuration coordinates, in order, as follows:</p>
 
 <p class="eqtext" id="disp_1.207"><epub:switch id="mathmlSwitch373"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='right'><mrow><msub><mi>m</mi><mn>1</mn></msub><msup><mi>D</mi><mn>2</mn></msup><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mo>&#x2212;</mo><msub><mi>k</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>&#x2212;</mo><mi>&#x03BB;</mi></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.207</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -3312,8 +3298,8 @@ layout: chapter
 <p class="noindent">Show that the augmented Lagrangian (<a href="chapter001.html#disp_1.219">1.219</a>) does lead to the Lagrange equations (<a href="chapter001.html#disp_1.220">1.220</a>), taking into account the fact that <em>&#x03C8;</em> is a total time derivative of <em>&#x03C6;</em>.</p>
 </section>
 </section>
-<section title="Goldstein&#x2019;s hoop">
-<h2 class="level2"><strong>Goldstein&#x2019;s hoop</strong></h2>
+<section title="Goldstein's hoop">
+<h2 class="level2"><strong>Goldstein's hoop</strong></h2>
 
 <p class="noindent">Here we consider a problem for which the constraint can be represented as a time derivative of a coordinate constraint: a hoop of mass <em>M</em> and radius <em>R</em> rolling, without slipping, down a (one-dimensional) inclined plane (see <a href="chapter001.html#Fig_1-10">figure 1.10</a>).<sup><a class="footnote_link" href="#endnote_96" id="endnote_ref_96">96</a></sup></p>
 
@@ -3328,7 +3314,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.222"><epub:switch id="mathmlSwitch388"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>x</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><mi>&#x03BB;</mi><mo>;</mo><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mo>,</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo>,</mo><mi>&#x03BB;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>M</mi><mtext>&#x2009;</mtext><msup><mi>R</mi><mn>2</mn></msup><msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>M</mi><mtext>&#x2009;</mtext><msup><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mi>M</mi><mtext>&#x2009;</mtext><mi>g</mi><mi>x</mi><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03C6;</mi><mo>+</mo><mi>&#x03BB;</mi><mo stretchy='false'>(</mo><mi>R</mi><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo>&#x2212;</mo><mover accent='true'><mi>x</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.222</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Lagrange&#x2019;s equations are</p>
+<p class="noindent">Lagrange's equations are</p>
 
 <p class="eqtext" id="disp_1.223"><epub:switch id="mathmlSwitch389"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>M</mi><mtext>&#x2009;</mtext><msup><mi>D</mi><mn>2</mn></msup><mi>x</mi><mo>&#x2212;</mo><mi>D</mi><mi>&#x03BB;</mi><mo>=</mo><mi>M</mi><mtext>&#x2009;</mtext><mi>g</mi><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03C6;</mi></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.223</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -3355,7 +3341,7 @@ layout: chapter
 <section title="Nonholonomic Systems">
 <h3 class="level3" id="h3_1-10-3"><a href="toc.html#Rh3_1-10-3"><strong>1.10.3 Nonholonomic Systems</strong></a></h3>
 
-<p class="noindent">Systems with constraints that are not integrable are termed <em>non-holonomic systems</em>. A constraint is not integrable if it cannot be written in terms of an equivalent coordinate constraint. An example of a nonholonomic system is a ball rolling without slipping in a bowl. As the ball rolls it must turn so that its surface does not move relative to the bowl at the point of contact. This looks as if it might establish a relation between the location of the ball in the bowl and the orientation of the ball, but it doesn&#x2019;t. The ball may return to the same place in the bowl with different orientations depending on the intervening path it has taken. As a consequence, the constraints cannot be used to eliminate any coordinates.</p>
+<p class="noindent">Systems with constraints that are not integrable are termed <em>non-holonomic systems</em>. A constraint is not integrable if it cannot be written in terms of an equivalent coordinate constraint. An example of a nonholonomic system is a ball rolling without slipping in a bowl. As the ball rolls it must turn so that its surface does not move relative to the bowl at the point of contact. This looks as if it might establish a relation between the location of the ball in the bowl and the orientation of the ball, but it doesn't. The ball may return to the same place in the bowl with different orientations depending on the intervening path it has taken. As a consequence, the constraints cannot be used to eliminate any coordinates.</p>
 
 <p>What are the equations of motion governing nonholonomic systems? For the restricted set of systems with nonholonomic constraints that are linear in the velocities, it is widely reported<sup><a class="footnote_link" href="#endnote_98" id="endnote_ref_98">98</a></sup> that the equations of motion are as follows. Let <em>&#x03C8;</em> have the form</p>
 
@@ -3392,7 +3378,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_1.236"><epub:switch id="mathmlSwitch403"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy='false'>(</mo><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>&#x03C8;</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mi>&#x03BE;</mi><mo>=</mo><mn>0.</mn></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.236</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">The &#x201C;principle of d&#x2019;Alembert&#x2013;Lagrange,&#x201D; according to Arnold, states that</p>
+<p class="noindent">The &#x201C;principle of d'Alembert&#x2013;Lagrange,&#x201D; according to Arnold, states that</p>
 
 <p class="eqtext" id="disp_1.237"><epub:switch id="mathmlSwitch404"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mi mathvariant='script'>E</mi><mo stretchy='false'>[</mo><mi>L</mi><mo stretchy='false'>]</mo><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mi>&#x03BE;</mi><mo>=</mo><mn>0</mn><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.237</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -3446,9 +3432,9 @@ layout: chapter
 
 <p class="eqtext"><epub:switch id="mathmlSwitch411"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo><mfrac><mi>m</mi><mn>2</mn></mfrac><msup><mrow><mo stretchy='false'>(</mo><mi>l</mi><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi>m</mi><mi>g</mi><mi>l</mi><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mo>.</mo></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">For the pendulum, the period of the motion depends on the amplitude. We wish to find trajectories of the pendulum with a given frequency. Three methods of doing this present themselves: (1) solution by the principle of least action, (2) numerical integration of Lagrange&#x2019;s equation, and (3) analytic solution (which requires some exposure to elliptic functions). We will carry out all three and compare the solution trajectories.</p>
+<p class="noindent">For the pendulum, the period of the motion depends on the amplitude. We wish to find trajectories of the pendulum with a given frequency. Three methods of doing this present themselves: (1) solution by the principle of least action, (2) numerical integration of Lagrange's equation, and (3) analytic solution (which requires some exposure to elliptic functions). We will carry out all three and compare the solution trajectories.</p>
 
-<p>Consider the parameters <em>m</em> &#x003D; 1 kg, <em>l</em> &#x003D; 1 m, <em>g</em> &#x003D; 9.8 m s<sup>&#x2212;2</sup>. The frequency of small-amplitude oscillations is <epub:switch id="mathmlSwitch412"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>&#x03C9;</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></msqrt></mrow></math></epub:case></epub:switch>. Let&#x2019;s find the nontrivial solution that has the frequency <epub:switch id="mathmlSwitch413"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>&#x03C9;</mi><mn>1</mn></msub><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>4</mn><mn>5</mn></mfrac></mstyle><msub><mi>&#x03C9;</mi><mn>0</mn></msub></mrow></math></epub:case></epub:switch>.</p>
+<p>Consider the parameters <em>m</em> &#x003D; 1 kg, <em>l</em> &#x003D; 1 m, <em>g</em> &#x003D; 9.8 m s<sup>&#x2212;2</sup>. The frequency of small-amplitude oscillations is <epub:switch id="mathmlSwitch412"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>&#x03C9;</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></msqrt></mrow></math></epub:case></epub:switch>. Let's find the nontrivial solution that has the frequency <epub:switch id="mathmlSwitch413"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>&#x03C9;</mi><mn>1</mn></msub><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>4</mn><mn>5</mn></mfrac></mstyle><msub><mi>&#x03C9;</mi><mn>0</mn></msub></mrow></math></epub:case></epub:switch>.</p>
 
 <p class="noindent1-topa"><strong>a.</strong> The angle is periodic in time, so a Fourier series representation is appropriate. We can choose the origin of time so that a zero crossing of the angle is at time zero. Since the potential is even in the angle, the angle is an odd function of time. Thus we need only a sine series. Since the angle returns to zero after one-half period, the angle is an odd function of time about the midpoint. Thus only odd terms of the series are present:</p>
 
@@ -3458,14 +3444,14 @@ layout: chapter
 
 <p>Find approximations to the first few coefficients <em>A</em><sub><em>n</em></sub> by minimizing the action. You will have to write a program similar to the <span class="font1">find-path</span> procedure in <a href="chapter001.html#h1-5">section 1.4</a>. Watch out: there is more than one trajectory that minimizes the action.</p>
 
-<p class="noindent1-topa"><strong>b.</strong> Write a program to numerically integrate Lagrange&#x2019;s equations for the trajectories of the pendulum. The trouble with using numerical integration to solve this problem is that we do not know how the frequency of the motion depends on the initial conditions. So we have to guess, and then gradually improve our guess. Define a function  <epub:switch id="mathmlSwitch416"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>&#x03A9;</mo><mo stretchy='false'>(</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> that numerically computes the frequency of the motion as a function of the initial angular velocity (with <em>&#x03B8;</em> &#x003D; 0). Find the trajectory by solving <epub:switch id="mathmlSwitch417"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>&#x03A9;</mo><mo stretchy='false'>(</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo><mi>&#x03C9;</mi></mrow></math></epub:case></epub:switch> for the initial angular velocity of the desired trajectory. Methods of solving this equation include successive bisection, minimizing the squared residual, etc.&#x2014;choose one.</p>
+<p class="noindent1-topa"><strong>b.</strong> Write a program to numerically integrate Lagrange's equations for the trajectories of the pendulum. The trouble with using numerical integration to solve this problem is that we do not know how the frequency of the motion depends on the initial conditions. So we have to guess, and then gradually improve our guess. Define a function  <epub:switch id="mathmlSwitch416"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>&#x03A9;</mo><mo stretchy='false'>(</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> that numerically computes the frequency of the motion as a function of the initial angular velocity (with <em>&#x03B8;</em> &#x003D; 0). Find the trajectory by solving <epub:switch id="mathmlSwitch417"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>&#x03A9;</mo><mo stretchy='false'>(</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo><mi>&#x03C9;</mi></mrow></math></epub:case></epub:switch> for the initial angular velocity of the desired trajectory. Methods of solving this equation include successive bisection, minimizing the squared residual, etc.&#x2014;choose one.</p>
 <a id="p117"></a>
 
-<p class="noindent1-topa"><strong>c.</strong> Now let&#x2019;s formulate the analytic solution for the frequency as a function of amplitude. The period of the motion is simply</p>
+<p class="noindent1-topa"><strong>c.</strong> Now let's formulate the analytic solution for the frequency as a function of amplitude. The period of the motion is simply</p>
 
 <p class="eqtext"><epub:switch id="mathmlSwitch418"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mo>=</mo><mn>4</mn><mstyle displaystyle='true'><mrow><msubsup><mo>&#x222B;</mo><mn>0</mn><mrow><mi>T</mi><mo>/</mo><mn>4</mn></mrow></msubsup><mrow><mi>d</mi><mi>t</mi><mo>=</mo><mn>4</mn></mrow></mrow></mstyle><mstyle displaystyle='true'><mrow><msubsup><mo>&#x222B;</mo><mn>0</mn><mi>A</mi></msubsup><mrow><mfrac><mn>1</mn><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover></mfrac></mrow></mrow></mstyle><mi>d</mi><mi>&#x03B8;</mi><mo>.</mo></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Using the energy, solve for <epub:switch id="mathmlSwitch419"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover></math></epub:case></epub:switch> in terms of the amplitude <em>A</em> and <em>&#x03B8;</em> to write the required integral explicitly. This integral can be written in terms of elliptic functions, but in a sense this does not solve the problem&#x2014;we still have to compute the elliptic functions. Let&#x2019;s avoid this excursion into elliptic functions and just do the integral numerically using the procedure <span class="font1">definite-integral</span>. We still have the problem that we can specify the amplitude <em>A</em> and get the frequency; to solve our problem we need to solve the inverse problem, but that can be done as in part <strong>b</strong>.</p>
+<p class="noindent">Using the energy, solve for <epub:switch id="mathmlSwitch419"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover></math></epub:case></epub:switch> in terms of the amplitude <em>A</em> and <em>&#x03B8;</em> to write the required integral explicitly. This integral can be written in terms of elliptic functions, but in a sense this does not solve the problem&#x2014;we still have to compute the elliptic functions. Let's avoid this excursion into elliptic functions and just do the integral numerically using the procedure <span class="font1">definite-integral</span>. We still have the problem that we can specify the amplitude <em>A</em> and get the frequency; to solve our problem we need to solve the inverse problem, but that can be done as in part <strong>b</strong>.</p>
 
 <p class="noindent1-top-exe" id="Exe_1-44"><strong>Exercise  1.44: Double pendulum behavior</strong></p>
 
@@ -3571,7 +3557,7 @@ layout: chapter
 
 <p class="noindent">What do you see here?</p>
 
-<p class="ntx" id="endnote_1"><a epub:type="noteref" href="#endnote_ref_1"><sup>1</sup></a>A <em>stationary point</em> of a function is a point where the function&#x2019;s value does not vary as the input is varied. Local maxima or minima are stationary points.</p>
+<p class="ntx" id="endnote_1"><a epub:type="noteref" href="#endnote_ref_1"><sup>1</sup></a>A <em>stationary point</em> of a function is a point where the function's value does not vary as the input is varied. Local maxima or minima are stationary points.</p>
 
 <p class="ntx" id="endnote_2"><a epub:type="noteref" href="#endnote_ref_2"><sup>2</sup></a>The variational formulation successfully describes all of the Newtonian mechanics of particles and rigid bodies. The variational formulation has also been usefully applied in the description of many other systems such as classical electrodynamics, the dynamics of inviscid fluids, and the design of mechanisms such as four-bar linkages. In addition, modern formulations of quantum mechanics and quantum field theory build on many of the same concepts. However, it appears that not all dynamical systems have a variational formulation. For example, there is no simple prescription to apply the variational apparatus to systems with dissipation, though in special cases variational methods can still be used.</p>
 
@@ -3613,9 +3599,9 @@ layout: chapter
 
 <p class="ntx" id="endnote_21"><a epub:type="noteref" href="#endnote_ref_21"><sup>21</sup></a>The principle becomes the &#x201C;principle of least action&#x201D; if the path is sufficiently short. In the more general case the action is stationary. The term &#x201C;principle of least action&#x201D; is also commonly used to refer to a result, due to Maupertuis, Euler, and Lagrange, which says that free particles move along paths for which the integral of the kinetic energy is minimized among all paths with the given endpoints. Correspondingly, the term &#x201C;action&#x201D; is sometimes used to refer specifically to the integral of the kinetic energy. (Actually, Euler and Lagrange used the <em>vis viva</em>, or twice the kinetic energy.)</p>
 
-<p class="ntx" id="endnote_22"><a epub:type="noteref" href="#endnote_ref_22"><sup>22</sup></a>Other ways of stating the principle of stationary action make it sound teleological and mysterious. For instance, one could imagine that the system considers all possible paths from its initial configuration to its final configuration and then chooses the one with the smallest action. Indeed, the underlying vision of a purposeful, economical, and rational universe played no small part in the philosophical considerations that accompanied the initial development of mechanics. The earliest action principle that remains part of modern physics is Fermat&#x2019;s principle, which states that the path traveled by a light ray between two points is the path that takes the least amount of time. Fermat formulated this principle around 1660 and used it to derive the laws of reflection and refraction. Motivated by this, the French mathematician and astronomer Pierre-Louis Moreau de Maupertuis enunciated the principle of least action as a grand unifying principle in physics. In his <em>Essai de cosmologie</em> (1750) Maupertuis appealed to this principle of &#x201C;economy in nature&#x201D; as evidence of the existence of God, asserting that it demonstrated &#x201C;God&#x2019;s intention to regulate physical phenomena by a general principle of the highest perfection.&#x201D; For a historical perspective on Maupertuis&#x2019;s, Euler&#x2019;s, and Lagrange&#x2019;s roles in the formulation of the principle of least action, see [<a href="bibliography.html#bib_28">28</a>].</p>
+<p class="ntx" id="endnote_22"><a epub:type="noteref" href="#endnote_ref_22"><sup>22</sup></a>Other ways of stating the principle of stationary action make it sound teleological and mysterious. For instance, one could imagine that the system considers all possible paths from its initial configuration to its final configuration and then chooses the one with the smallest action. Indeed, the underlying vision of a purposeful, economical, and rational universe played no small part in the philosophical considerations that accompanied the initial development of mechanics. The earliest action principle that remains part of modern physics is Fermat's principle, which states that the path traveled by a light ray between two points is the path that takes the least amount of time. Fermat formulated this principle around 1660 and used it to derive the laws of reflection and refraction. Motivated by this, the French mathematician and astronomer Pierre-Louis Moreau de Maupertuis enunciated the principle of least action as a grand unifying principle in physics. In his <em>Essai de cosmologie</em> (1750) Maupertuis appealed to this principle of &#x201C;economy in nature&#x201D; as evidence of the existence of God, asserting that it demonstrated &#x201C;God's intention to regulate physical phenomena by a general principle of the highest perfection.&#x201D; For a historical perspective on Maupertuis's, Euler's, and Lagrange's roles in the formulation of the principle of least action, see [<a href="bibliography.html#bib_28">28</a>].</p>
 
-<p class="ntx" id="endnote_23"><a epub:type="noteref" href="#endnote_ref_23"><sup>23</sup></a>For reflection the angle of incidence is equal to the angle of reflection. Refraction is described by Snell&#x2019;s law: when light passes from one medium to another, the ratio of the sines of the angles made to the normal to the interface is the inverse of the ratio of the refractive indices of the media. The refractive index is the ratio of the speed of light in the vacuum to the speed of light in the medium.</p>
+<p class="ntx" id="endnote_23"><a epub:type="noteref" href="#endnote_ref_23"><sup>23</sup></a>For reflection the angle of incidence is equal to the angle of reflection. Refraction is described by Snell's law: when light passes from one medium to another, the ratio of the sines of the angles made to the normal to the interface is the inverse of the ratio of the refractive indices of the media. The refractive index is the ratio of the speed of light in the vacuum to the speed of light in the medium.</p>
 
 <p class="ntx" id="endnote_24"><a epub:type="noteref" href="#endnote_ref_24"><sup>24</sup></a>Here we are making a function definition. A definition specifies the value of the function for arbitrarily chosen formal parameters. One may change the name of a formal parameter, so long as the new name does not conflict with any other symbol in the definition. For example, the following definition specifies exactly the same free-particle Lagrangian:</p>
 
@@ -3631,11 +3617,11 @@ layout: chapter
 
 <p>The constructor <span class="font1">up</span> is also used to package the time, the coordinates, and the velocities into a data structure representing a local tuple. The selectors <span class="font1">time</span>, <span class="font1">coordinate</span>, and <span class="font1">velocity</span> extract the appropriate pieces from the local structure. The procedure <span class="font1">time</span> is the same as the procedure <span class="font1">(component 0)</span>, and similarly <span class="font1">coordinate</span> is <span class="font1">(component 1)</span> and <span class="font1">velocity</span> is <span class="font1">(component 2)</span>.</p>
 
-<p class="ntx" id="endnote_29"><a epub:type="noteref" href="#endnote_ref_29"><sup>29</sup></a>Derivatives of functions yield functions. For example, <span class="font1">((D cube) 2) &#x003D;&#x003E; 12</span> and <span class="font1">((D cube) &#x2019;a) &#x003D;&#x003E; (<sub>&#x002A;</sub> 3 (expt a 2))</span>.</p>
+<p class="ntx" id="endnote_29"><a epub:type="noteref" href="#endnote_ref_29"><sup>29</sup></a>Derivatives of functions yield functions. For example, <span class="font1">((D cube) 2) &#x003D;&#x003E; 12</span> and <span class="font1">((D cube) 'a) &#x003D;&#x003E; (<sub>&#x002A;</sub> 3 (expt a 2))</span>.</p>
 
 <p class="ntx" id="endnote_30"><a epub:type="noteref" href="#endnote_ref_30"><sup>30</sup></a>Although &#x0393; produces an arbitrarily long local tuple, our procedure <span class="font1">Gamma</span> produces by default only the first three elements. If a longer local tuple is needed, <span class="font1">Gamma</span> can be given the length of the required tuple as an extra argument.</p>
 
-<p class="ntx" id="endnote_31"><a epub:type="noteref" href="#endnote_ref_31"><sup>31</sup></a>In our system, arithmetic operators are generic over symbolic expressions as well as numeric values; arithmetic procedures can work uniformly with numbers or expressions. For example, given the procedure <span class="font1">(define (cube x) (<sub>&#x002A;</sub> x x x))</span> we can obtain its value for a number <span class="font1">(cube 2) &#x003D;&#x003E; 8</span> or for a literal symbol <span class="font1">(cube &#x2019;a) &#x003D;&#x003E; (<sub>&#x002A;</sub> a a a)</span>.</p>
+<p class="ntx" id="endnote_31"><a epub:type="noteref" href="#endnote_ref_31"><sup>31</sup></a>In our system, arithmetic operators are generic over symbolic expressions as well as numeric values; arithmetic procedures can work uniformly with numbers or expressions. For example, given the procedure <span class="font1">(define (cube x) (<sub>&#x002A;</sub> x x x))</span> we can obtain its value for a number <span class="font1">(cube 2) &#x003D;&#x003E; 8</span> or for a literal symbol <span class="font1">(cube 'a) &#x003D;&#x003E; (<sub>&#x002A;</sub> a a a)</span>.</p>
 
 <p class="ntx" id="endnote_32"><a epub:type="noteref" href="#endnote_ref_32"><sup>32</sup></a>For very complicated expressions the prefix notation of Scheme is often better, but simplification is almost always useful. We can separate the functions of simplification and infix display. We will see examples of this later.</p>
 
@@ -3651,7 +3637,7 @@ layout: chapter
 
 <p class="ntx" id="endnote_38"><a epub:type="noteref" href="#endnote_ref_38"><sup>38</sup></a>Note that we are adding procedures. Paralleling our extension of arithmetic operations to functions, arithmetic operations are extended to compatible procedures.</p>
 
-<p class="ntx" id="endnote_39"><a epub:type="noteref" href="#endnote_ref_39"><sup>39</sup></a>The arguments to <span class="font1">minimize</span> are a procedure implementing the univariate function in question, and the lower and upper bounds of the region to be searched. Scmutils includes a choice of methods for numerical minimization; the one used here is Brent&#x2019;s algorithm, with an error tolerance of 10<sup>&#x2212;5</sup>. The value returned by <span class="font1">minimize</span> is a list of three numbers: the first is the argument at which the minimum occurred, the second is the minimum obtained, and the third is the number of iterations of the minimization algorithm required to obtain the minimum.</p>
+<p class="ntx" id="endnote_39"><a epub:type="noteref" href="#endnote_ref_39"><sup>39</sup></a>The arguments to <span class="font1">minimize</span> are a procedure implementing the univariate function in question, and the lower and upper bounds of the region to be searched. Scmutils includes a choice of methods for numerical minimization; the one used here is Brent's algorithm, with an error tolerance of 10<sup>&#x2212;5</sup>. The value returned by <span class="font1">minimize</span> is a list of three numbers: the first is the argument at which the minimum occurred, the second is the minimum obtained, and the third is the number of iterations of the minimization algorithm required to obtain the minimum.</p>
 
 <p class="ntx" id="endnote_40"><a epub:type="noteref" href="#endnote_ref_40"><sup>40</sup></a>Yes, <em><span class="font1">-1.5987211554602254e-14</span></em> is zero for the tolerance required of the minimizer. And <em><span class="font1">435.0000000000237</span></em> is arguably the same as <em><span class="font1">435</span></em> obtained before.</p>
 
@@ -3677,7 +3663,7 @@ layout: chapter
 
 <p class="ntx" id="endnote_43"><a epub:type="noteref" href="#endnote_ref_43"><sup>43</sup></a>The minimizer used here is the Nelder&#x2013;Mead downhill simplex method. As usual with numerical procedures, the interface to the <span class="font1">nelder-mead</span> procedure is complex, with lots of optional parameters to let the user control errors effectively. For this presentation we have specialized <span class="font1">nelder-mead</span> by wrapping it in the more palatable <span class="font1">multidimensional-minimize</span>. Unfortunately, you will have to learn to live with complicated numerical procedures someday.</p>
 
-<p class="ntx" id="endnote_44"><a epub:type="noteref" href="#endnote_ref_44"><sup>44</sup></a>Don&#x2019;t worry. We know that you don&#x2019;t yet know why this is the right Lagrangian. We will get to this in <a href="chapter001.html#h1-6a">section 1.6</a>.</p>
+<p class="ntx" id="endnote_44"><a epub:type="noteref" href="#endnote_ref_44"><sup>44</sup></a>Don't worry. We know that you don't yet know why this is the right Lagrangian. We will get to this in <a href="chapter001.html#h1-6a">section 1.6</a>.</p>
 
 <p class="ntx" id="endnote_45"><a epub:type="noteref" href="#endnote_ref_45"><sup>45</sup></a>The square of a structure of components is defined to be the sum of the squares of the individual components.</p>
 
@@ -3715,9 +3701,9 @@ layout: chapter
 
 <p class="ntx" id="endnote_60"><a epub:type="noteref" href="#endnote_ref_60"><sup>60</sup></a>We can always give a function extra arguments that are not used so that it can be algebraically combined with other functions of the same shape.</p>
 
-<p class="ntx" id="endnote_61"><a epub:type="noteref" href="#endnote_ref_61"><sup>61</sup></a>William Rowan Hamilton formulated the fundamental variational principle for time-independent systems in 1834&#x2013;1835. Jacobi gave this principle the name &#x201C;Hamilton&#x2019;s principle.&#x201D; For systems subject to generic, nonstationary constraints Hamilton&#x2019;s principle was investigated in 1848 by Ostrogradsky, and in the Russian literature Hamilton&#x2019;s principle is often called the Hamilton&#x2013;Ostrogradsky principle.</p>
+<p class="ntx" id="endnote_61"><a epub:type="noteref" href="#endnote_ref_61"><sup>61</sup></a>William Rowan Hamilton formulated the fundamental variational principle for time-independent systems in 1834&#x2013;1835. Jacobi gave this principle the name &#x201C;Hamilton's principle.&#x201D; For systems subject to generic, nonstationary constraints Hamilton's principle was investigated in 1848 by Ostrogradsky, and in the Russian literature Hamilton's principle is often called the Hamilton&#x2013;Ostrogradsky principle.</p>
 
-<p>Hamilton (1805&#x2013;1865) was a brilliant mathematician. His early work on geometric optics (based on Fermat&#x2019;s principle) was so impressive that he was elected to the post of Professor of Astronomy at Trinity College and Royal Astronomer of Ireland while he was still an undergraduate. He produced two monumental works of mathematics. His discovery of quaternions revitalized abstract algebra and sparked the development of vector techniques in physics. His 1835 memoir &#x201C;On a General Method in Dynamics&#x201D; put variational mechanics on a firm footing, finally giving substance to Maupertuis&#x2019;s vaguely stated Principle of Least Action of 100 years before. Hamilton also wrote poetry and carried on an extensive correspondence with Wordsworth, who advised him to put his energy into writing mathematics rather than poetry.</p>
+<p>Hamilton (1805&#x2013;1865) was a brilliant mathematician. His early work on geometric optics (based on Fermat's principle) was so impressive that he was elected to the post of Professor of Astronomy at Trinity College and Royal Astronomer of Ireland while he was still an undergraduate. He produced two monumental works of mathematics. His discovery of quaternions revitalized abstract algebra and sparked the development of vector techniques in physics. His 1835 memoir &#x201C;On a General Method in Dynamics&#x201D; put variational mechanics on a firm footing, finally giving substance to Maupertuis's vaguely stated Principle of Least Action of 100 years before. Hamilton also wrote poetry and carried on an extensive correspondence with Wordsworth, who advised him to put his energy into writing mathematics rather than poetry.</p>
 
 <p>In addition to the formulation of the fundamental variational principle, Hamilton also emphasized the analogy between geometric optics and mechanics, and stressed the importance of the momentum variables (which were earlier introduced by Lagrange and Cauchy), leading to the &#x201C;canonical&#x201D; form of mechanics discussed in chapter 3.</p>
 
@@ -3763,13 +3749,13 @@ layout: chapter
 
 <p class="ntx" id="endnote_81"><a epub:type="noteref" href="#endnote_ref_81"><sup>81</sup></a>For example, we may construct equivalent Lagrangians that differ only by a total time derivative. The momentum state functions for these Lagrangians are different.</p>
 
-<p class="ntx" id="endnote_82"><a epub:type="noteref" href="#endnote_ref_82"><sup>82</sup></a>In general, conserved quantities in a physical system are associated with continuous symmetries, whether or not one can find a coordinate system in which the symmetry is apparent. This powerful notion was formalized and a theorem linking conservation laws with symmetries was proved by Noether early in the 20th century. See <a href="chapter001.html#h3_1-8-5">section 1.8.5</a> on Noether&#x2019;s theorem.</p>
+<p class="ntx" id="endnote_82"><a epub:type="noteref" href="#endnote_ref_82"><sup>82</sup></a>In general, conserved quantities in a physical system are associated with continuous symmetries, whether or not one can find a coordinate system in which the symmetry is apparent. This powerful notion was formalized and a theorem linking conservation laws with symmetries was proved by Noether early in the 20th century. See <a href="chapter001.html#h3_1-8-5">section 1.8.5</a> on Noether's theorem.</p>
 
 <p class="ntx" id="endnote_83"><a epub:type="noteref" href="#endnote_ref_83"><sup>83</sup></a>The sign of the energy state function is a matter of convention.</p>
 
 <p class="ntx" id="endnote_84"><a epub:type="noteref" href="#endnote_ref_84"><sup>84</sup></a>We may construct equivalent Lagrangians that differ only by a total time derivative. The energy state functions for these Lagrangians are different.</p>
 
-<p class="ntx" id="endnote_85"><a epub:type="noteref" href="#endnote_ref_85"><sup>85</sup></a>A function <em>f</em> is homogenous of degree <em>n</em> if and only if <em>f</em>(<em>ax</em>) &#x003D; <em>a<sup>n</sup>f</em>(<em>x</em>). Euler&#x2019;s theorem says that if <em>f</em> is a homogeneous function of degree <em>n</em>, then <em>Df</em>(<em>x</em>)<em>x</em> &#x003D; <em>nf</em>(<em>x</em>). The proof is as follows: Let <em>g<sub>x</sub></em>(<em>a</em>) &#x003D; <em>f</em>(<em>ax</em>). Then <em>Dg<sub>x</sub></em>(<em>a</em>) &#x003D; <em>Df</em>(<em>ax</em>)<em>x</em>. But <em>g<sub>x</sub></em>(<em>a</em>) &#x003D; <em>a<sup>n</sup>f</em>(<em>x</em>) by the definition of homogeneity. Therefore <em>Dg<sub>x</sub></em>(<em>a</em>) &#x003D; <em>na</em><sup><em>n</em>&#x2212;1</sup><em>f</em>(<em>x</em>). Equating these, we find <em>Df</em>(<em>ax</em>)<em>x</em> &#x003D; <em>na</em><sup><em>n</em>&#x2212;1</sup><em>f</em>(<em>x</em>). Specializing to <em>a</em> &#x003D; 1 we obtain <em>Df</em>(<em>x</em>)<em>x</em> &#x003D; <em>nf</em>(<em>x</em>) as required.</p>
+<p class="ntx" id="endnote_85"><a epub:type="noteref" href="#endnote_ref_85"><sup>85</sup></a>A function <em>f</em> is homogenous of degree <em>n</em> if and only if <em>f</em>(<em>ax</em>) &#x003D; <em>a<sup>n</sup>f</em>(<em>x</em>). Euler's theorem says that if <em>f</em> is a homogeneous function of degree <em>n</em>, then <em>Df</em>(<em>x</em>)<em>x</em> &#x003D; <em>nf</em>(<em>x</em>). The proof is as follows: Let <em>g<sub>x</sub></em>(<em>a</em>) &#x003D; <em>f</em>(<em>ax</em>). Then <em>Dg<sub>x</sub></em>(<em>a</em>) &#x003D; <em>Df</em>(<em>ax</em>)<em>x</em>. But <em>g<sub>x</sub></em>(<em>a</em>) &#x003D; <em>a<sup>n</sup>f</em>(<em>x</em>) by the definition of homogeneity. Therefore <em>Dg<sub>x</sub></em>(<em>a</em>) &#x003D; <em>na</em><sup><em>n</em>&#x2212;1</sup><em>f</em>(<em>x</em>). Equating these, we find <em>Df</em>(<em>ax</em>)<em>x</em> &#x003D; <em>na</em><sup><em>n</em>&#x2212;1</sup><em>f</em>(<em>x</em>). Specializing to <em>a</em> &#x003D; 1 we obtain <em>Df</em>(<em>x</em>)<em>x</em> &#x003D; <em>nf</em>(<em>x</em>) as required.</p>
 
 <p class="ntx" id="endnote_86"><a epub:type="noteref" href="#endnote_ref_86"><sup>86</sup></a>Traditionally the Jacobi constant is defined as <em>C<sub>J</sub></em> &#x003D; &#x2212;2<em>&#x2130;</em>.</p>
 

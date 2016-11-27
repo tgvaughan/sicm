@@ -88,10 +88,10 @@ layout: appendix
 <section title="Symbolic values">
 <h2 class="level2"><strong>Symbolic values</strong></h2>
 
-<p class="noindent">As in usual mathematical notation, arithmetic is extended to allow the use of symbols that represent unknown or incompletely specified mathematical objects. These symbols are manipulated as if they had values of a known type. By default, a Scheme symbol is assumed to represent a real number. So the expression <span class="font1">&#x2019;a</span> is a literal Scheme symbol that represents an unspecified real number:</p>
+<p class="noindent">As in usual mathematical notation, arithmetic is extended to allow the use of symbols that represent unknown or incompletely specified mathematical objects. These symbols are manipulated as if they had values of a known type. By default, a Scheme symbol is assumed to represent a real number. So the expression <span class="font1">'a</span> is a literal Scheme symbol that represents an unspecified real number:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((compose cube sin) &#x2019;a)</span></p>
+<p class="pq-noindent"><span class="font1">((compose cube sin) 'a)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(expt (sin a) 3)</em></span></p>
 </div>
@@ -99,7 +99,7 @@ layout: appendix
 <p class="noindent">The default printer simplifies the expression and displays it in a readable form.<sup><a class="footnote_link" href="#endnote_1" id="endnote_ref_1">1</a></sup> We can use the simplifier to verify a trigonometric identity:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((- (&#x002B; (square sin) (square cos)) 1) &#x2019;a)</span></p>
+<p class="pq-noindent"><span class="font1">((- (&#x002B; (square sin) (square cos)) 1) 'a)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>0</em></span></p>
 </div>
@@ -108,11 +108,11 @@ layout: appendix
 <p>Just as it is useful to be able to manipulate symbolic numbers, it is useful to be able to manipulate symbolic functions. The procedure <span class="font1">literal-function</span> makes a procedure that acts as a function having no properties other than its name. By default, a literal function is defined to take one real argument and produce one real value. For example, we may want to work with a function <em>f</em> : <strong>R</strong> &#x2192; <strong>R</strong>:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((literal-function &#x2019;f) &#x2019;x)</span></p>
+<p class="pq-noindent"><span class="font1">((literal-function 'f) 'x)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(f x)</em></span></p>
 
-<p class="pq-noindent1-top"><span class="font1">((compose (literal-function &#x2019;f) (literal-function &#x2019;g)) &#x2019;x)</span></p>
+<p class="pq-noindent1-top"><span class="font1">((compose (literal-function 'f) (literal-function 'g)) 'x)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(f (g x))</em></span></p>
 </div>
@@ -120,9 +120,9 @@ layout: appendix
 <p>We can also make literal functions of multiple, possibly structured arguments that return structured values. For example, to denote a literal function named <span class="font1">g</span> that takes two real arguments and returns a real value (<em>g</em> : <strong>R</strong> &#x00D7; <strong>R</strong> &#x2192; <strong>R</strong>) we may write:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1"><span class="font1">(define g (literal-function &#x2019;g (-&#x003E; (X Real Real) Real)))</span></span></p>
+<p class="pq-noindent"><span class="font1"><span class="font1">(define g (literal-function 'g (-&#x003E; (X Real Real) Real)))</span></span></p>
 
-<p class="pq-noindent1-top"><span class="font1"><span class="font1">(g &#x2019;x &#x2019;y)</span></span></p>
+<p class="pq-noindent1-top"><span class="font1"><span class="font1">(g 'x 'y)</span></span></p>
 
 <p class="pq-noindent"><span class="font1"><span class="font1"><em>(g x y)</em></span></span></p>
 </div>
@@ -150,13 +150,13 @@ layout: appendix
 <p>We make tuples with the constructors <span class="font1">up</span> and <span class="font1">down</span>:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(define v (up &#x2019;v^0 &#x2019;v^1 &#x2019;v^2))</span></p>
+<p class="pq-noindent"><span class="font1">(define v (up 'v^0 'v^1 'v^2))</span></p>
 
 <p class="pq-noindent1-top"><span class="font1">v</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up v^0 v^1 v^2)</em></span></p>
 
-<p class="pq-noindent1-top"><span class="font1">(define p (down &#x2019;p_0 &#x2019;p_1 &#x2019;p_2))</span></p>
+<p class="pq-noindent1-top"><span class="font1">(define p (down 'p_0 'p_1 'p_2))</span></p>
 
 <p class="pq-noindent1-top"><span class="font1">p</span></p>
 
@@ -170,7 +170,7 @@ layout: appendix
 <p class="noindent">It is an up tuple of the time, the coordinates, and the momenta. The time <em>t</em> has no substructure. The coordinates are an up tuple of the coordinate components <em>x</em> and <em>y</em>. The momentum is a down tuple of the momentum components <em>p<sub>x</sub></em> and <em>p<sub>y</sub></em>. This is written:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(define s (up &#x2019;t (up &#x2019;x &#x2019;y) (down &#x2019;p_x &#x2019;p_y)))</span></p>
+<p class="pq-noindent"><span class="font1">(define s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
 </div>
 
 <p>In order to reference components of tuple structures there are selector functions, for example:</p>
@@ -183,7 +183,7 @@ layout: appendix
 <p>The procedure <span class="font1">component</span> is the general selector procedure that implements the selector functions. For example, <em>I</em><sub>0,1</sub> is implemented by <span class="font1">(component 0 1)</span>:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((component 0 1) (up (up &#x2019;a &#x2019;b) (up &#x2019;c &#x2019;d)))</span></p>
+<p class="pq-noindent"><span class="font1">((component 0 1) (up (up 'a 'b) (up 'c 'd)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>b</em></span></p>
 </div>
@@ -191,7 +191,7 @@ layout: appendix
 <p class="noindent">To access a component of a tuple we may also use the selector procedure <span class="font1">ref</span>, which takes a tuple and an index and returns the indicated element of the tuple:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(ref (up &#x2019;a &#x2019;b &#x2019;c) 1)</span></p>
+<p class="pq-noindent"><span class="font1">(ref (up 'a 'b 'c) 1)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>b</em></span></p>
 </div>
@@ -199,7 +199,7 @@ layout: appendix
 <p class="noindent">We use zero-based indexing everywhere. The procedure <span class="font1">ref</span> can be used to access any substructure of a tree of tuples:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(ref (up (up &#x2019;a &#x2019;b) (up &#x2019;c &#x2019;d)) 0 1)</span></p>
+<p class="pq-noindent"><span class="font1">(ref (up (up 'a 'b) (up 'c 'd)) 0 1)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>b</em></span></p>
 </div>
@@ -264,7 +264,7 @@ layout: appendix
 
 <p class="pq-noindent"><span class="font1">(define derivative-of-sine (D sin))</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">(derivative-of-sine &#x2019;x)</span></p>
+<p class="pq-noindent1-top"><span class="font1">(derivative-of-sine 'x)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(cos x)</em></span></p>
 </div>
@@ -298,7 +298,7 @@ layout: appendix
 <p><span class="font1">D</span> is an example of an <em>operator</em>. An operator is like a function except that multiplication of operators is interpreted as composition, whereas multiplication of functions is multiplication of the values (see equation <a href="chapter009.html#disp_9.3">9.3</a>). If <em>D</em> were an ordinary function, then the rule for multiplication would imply that <em>D</em><sup>2</sup><em>f</em> would just be the product of <em>Df</em> with itself, which is not what is intended. A product of a number and an operator scales the operator. So, for example</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(((<sub>&#x002A;</sub> 5 D) cos) &#x2019;x)</span></p>
+<p class="pq-noindent"><span class="font1">(((<sub>&#x002A;</sub> 5 D) cos) 'x)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(<sub>&#x002A;</sub> -5 (sin x))</em></span></p>
 </div>
@@ -306,7 +306,7 @@ layout: appendix
 <p class="noindent">Arithmetic is extended to allow manipulation of operators. A typical operator is (<em>D</em>&#x002B;<em>I</em>)(<em>D</em>&#x2212;<em>I</em>) &#x003D; <em>D</em><sup>2</sup>&#x2212;<em>I</em>, where <em>I</em> is the identity operator, which subtracts a function from its second derivative. Such an operator can be constructed and used as follows:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(((<sub>&#x002A;</sub> (&#x002B; D I) (- D I)) (literal-function &#x2019;f)) &#x2019;x)</span></p>
+<p class="pq-noindent"><span class="font1">(((<sub>&#x002A;</sub> (&#x002B; D I) (- D I)) (literal-function 'f)) 'x)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (((expt D 2) f) x) (<sub>&#x002A;</sub> -1 (f x)))</em></span></p>
 </div>
@@ -315,7 +315,7 @@ layout: appendix
 <section title="Derivatives of functions of multiple arguments">
 <h2 class="level2"><strong>Derivatives of functions of multiple arguments</strong></h2>
 
-<p class="noindent">The derivative generalizes to functions that take multiple arguments. The derivative of a real-valued function of multiple arguments is an object whose contraction with the tuple of increments in the arguments gives a linear approximation to the increment in the function&#x2019;s value.</p>
+<p class="noindent">The derivative generalizes to functions that take multiple arguments. The derivative of a real-valued function of multiple arguments is an object whose contraction with the tuple of increments in the arguments gives a linear approximation to the increment in the function's value.</p>
 
 <p>A function of multiple arguments can be thought of as a function of an up tuple of those arguments. Thus an incremental argument tuple is an up tuple of components, one for each argument position. The derivative of such a function is a down tuple of the partial derivatives of the function with respect to each argument position.</p>
 
@@ -327,7 +327,7 @@ layout: appendix
 <p class="noindent">Using the two-argument literal function <span class="font1">g</span> defined on <a href="chapter009.html#p512">page 512</a>, we have:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((D g) &#x2019;x &#x2019;y)</span></p>
+<p class="pq-noindent"><span class="font1">((D g) 'x 'y)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
 </div>
@@ -368,15 +368,15 @@ layout: appendix
 
 <p class="pqp1"><span class="font1">(g (ref s 0) (ref s 1)))</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">(h (up &#x2019;x &#x2019;y))</span></p>
+<p class="pq-noindent1-top"><span class="font1">(h (up 'x 'y))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(g x y)</em></span></p>
 
-<p class="pq-noindent1-top"><span class="font1">((D g) &#x2019;x &#x2019;y)</span></p>
+<p class="pq-noindent1-top"><span class="font1">((D g) 'x 'y)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
 
-<p class="pq-noindent1-top"><span class="font1">((D h) (up &#x2019;x &#x2019;y))</span></p>
+<p class="pq-noindent1-top"><span class="font1">((D h) (up 'x 'y))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
 </div>
@@ -390,7 +390,7 @@ layout: appendix
 
 <p>We often show a function of multiple arguments that include tuples by indicating the boundaries of the argument tuples with semicolons and separating their components with commas. If <em>H</em> is a function of phase-space states with arguments <em>t</em>, (<em>x</em>, <em>y</em>), and [<em>p<sub>x</sub></em>, <em>p<sub>y</sub></em>], we may write <em>H</em>(<em>t</em>; <em>x</em>, <em>y</em>; <em>p<sub>x</sub></em>, <em>p<sub>y</sub></em>). This notation loses the up/down distinction, but our semicolon-and-comma notation is convenient and reasonably unambiguous.</p>
 
-<p>The derivative of <em>H</em> is a function that produces an object that can be contracted with an increment in the argument structure to produce an increment in the function&#x2019;s value. The derivative is a down tuple of three partial derivatives. The first partial derivative is the partial derivative with respect to the numerical argument. The second partial derivative is a down tuple of partial derivatives with respect to each component of the up-tuple argument. The third partial derivative is an up tuple of partial derivatives with respect to each component of the down-tuple argument:</p>
+<p>The derivative of <em>H</em> is a function that produces an object that can be contracted with an increment in the argument structure to produce an increment in the function's value. The derivative is a down tuple of three partial derivatives. The first partial derivative is the partial derivative with respect to the numerical argument. The second partial derivative is a down tuple of partial derivatives with respect to each component of the up-tuple argument. The third partial derivative is an up tuple of partial derivatives with respect to each component of the down-tuple argument:</p>
 
 <p class="eqtext" id="disp_9.29"><epub:switch id="mathmlSwitch1895"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd columnalign='left'><mrow><mi>D</mi><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mrow><mo>[</mo><mrow><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow><mo>]</mo></mrow></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mrow><mo>[</mo><mrow><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><mrow><mo>[</mo><mrow><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow><mo>]</mo></mrow><mo>,</mo><mrow><mo>(</mo><mrow><msub><mo>&#x2202;</mo><mrow><mn>2</mn><mo>,</mo><mn>0</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mo>&#x2202;</mo><mrow><mn>2</mn><mo>,</mo><mn>1</mn></mrow></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow><mo>)</mo></mrow></mrow><mo>]</mo></mrow><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>9.29</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -410,7 +410,7 @@ layout: appendix
 
 <p class="pq-noindent"><span class="font1">(define H</span></p>
 
-<p class="pqp1"><span class="font1">(literal-function &#x2019;H</span></p>
+<p class="pqp1"><span class="font1">(literal-function 'H</span></p>
 
 <p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real) (DOWN Real Real)) Real)))</span></p>
 
@@ -464,7 +464,7 @@ layout: appendix
 <p class="noindent">Its derivative is just the up tuple of the derivatives of each component of the function:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((D helix) &#x2019;t)</span></p>
+<p class="pq-noindent"><span class="font1">((D helix) 't)</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up (<sub>&#x002A;</sub> -1 (sin t)) (cos t) 1)</em></span></p>
 </div>
@@ -484,7 +484,7 @@ layout: appendix
 
 <p class="pqp1"><span class="font1">(up (square (&#x002B; x y)) (cube (- y x)) (exp (&#x002B; x y))))</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">((D g) &#x2019;x &#x2019;y)</span></p>
+<p class="pq-noindent1-top"><span class="font1">((D g) 'x 'y)</span></p>
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><em>(down</em></td>
@@ -536,7 +536,7 @@ layout: appendix
 
 <p class="noindent1-top-exe" id="Exe_9-2"><strong>Exercise  9.2: Computing derivatives</strong></p>
 
-<p class="noindent">We can represent functions of multiple arguments as procedures in several ways, depending upon how we wish to use them. The simplest idea is to identify the procedure arguments with the function&#x2019;s arguments.</p>
+<p class="noindent">We can represent functions of multiple arguments as procedures in several ways, depending upon how we wish to use them. The simplest idea is to identify the procedure arguments with the function's arguments.</p>
 
 <p>For example, we could write implementations of the functions that occur in <a href="chapter009.html#Exe_9-1">exercise 9.1</a> as follows:</p>
 <div class="pull-quote">

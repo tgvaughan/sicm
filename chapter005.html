@@ -33,7 +33,7 @@ layout: chapter
 <p>Suppose we have two different Hamiltonian systems, and suppose the trajectories of the two systems are in one-to-one correspondence. In this case both Hamiltonian systems can be mathematical models of the same physical system. Some questions about the physical system may be easier to answer by reference to one model and others may be easier to answer in the other model. For example, it may be easier to formulate the physical system in one model and to discover a conserved quantity in the other. Canonical transformations are maps between Hamiltonian systems that preserve the dynamics.</p>
 <a id="p336"></a>
 
-<p>A <em>canonical transformation</em> is a phase-space coordinate transformation and an associated transformation of the Hamiltonian such that the dynamics given by Hamilton&#x2019;s equations in the two representations describe the same evolution of the system.</p>
+<p>A <em>canonical transformation</em> is a phase-space coordinate transformation and an associated transformation of the Hamiltonian such that the dynamics given by Hamilton's equations in the two representations describe the same evolution of the system.</p>
 <section title="Point Transformations">
 <h1 class="level1" id="h1-29"><a href="toc.html#Rh1-29"><strong>5.1&#160;&#160;&#160;Point Transformations</strong></a></h1>
 
@@ -143,14 +143,14 @@ layout: chapter
 <p class="pqp4"><span class="font1">(V (sqrt (square x))))))</span></p>
 </div>
 
-<p class="noindent">Let&#x2019;s look at this Hamiltonian in polar coordinates. The phase-space transformation is obtained by applying <span class="font1">F-&#x003E;CH</span> to the procedure <span class="font1">p-&#x003E;r</span> that takes a time and a polar tuple and returns a tuple of rectangular coordinates (see <a href="chapter001.html#h3_1-6-1">section 1.6.1</a>). The transformation is time independent so the Hamiltonian transforms by composition. In polar coordinates the Hamiltonian is</p>
+<p class="noindent">Let's look at this Hamiltonian in polar coordinates. The phase-space transformation is obtained by applying <span class="font1">F-&#x003E;CH</span> to the procedure <span class="font1">p-&#x003E;r</span> that takes a time and a polar tuple and returns a tuple of rectangular coordinates (see <a href="chapter001.html#h3_1-6-1">section 1.6.1</a>). The transformation is time independent so the Hamiltonian transforms by composition. In polar coordinates the Hamiltonian is</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(show-expression</span></p>
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1">((compose</span></td>
-<td class="td1" valign="top"><span class="font1">(H-central &#x2019;m (literal-function &#x2019;V))</span></td>
+<td class="td1" valign="top"><span class="font1">(H-central 'm (literal-function 'V))</span></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
@@ -158,7 +158,7 @@ layout: chapter
 </tr>
 </table>
 
-<p class="pqp2"><span class="font1">(up &#x2019;t (up &#x2019;r &#x2019;phi) (down &#x2019;p_r &#x2019;p_phi))))</span></p>
+<p class="pqp2"><span class="font1">(up 't (up 'r 'phi) (down 'p_r 'p_phi))))</span></p>
 </div>
 <div class="pull-quotebox">
 
@@ -201,16 +201,16 @@ layout: chapter
 <p class="noindent">We compute the additive adjustment required for the Hamiltonian:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((F-&#x003E;K (translating (up &#x2019;v^x &#x2019;v^y &#x2019;v^z)))</span></p>
+<p class="pq-noindent"><span class="font1">((F-&#x003E;K (translating (up 'v^x 'v^y 'v^z)))</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t (up &#x2019;x &#x2019;y &#x2019;z) (down &#x2019;p_x &#x2019;p_y &#x2019;p_z)))</span></p>
+<p class="pqp1"><span class="font1">(up 't (up 'x 'y 'z) (down 'p_x 'p_y 'p_z)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> -1 p_x v^x) (<sub>&#x002A;</sub> -1 p_y v^y) (<sub>&#x002A;</sub> -1 p_z v^z))</em></span></p>
 </div>
 
 <p class="noindent">Notice that this is the negation of the inner product of the momentum and the velocity of the coordinate system.</p>
 
-<p>Let&#x2019;s see how a simple free-particle Hamiltonian is transformed:</p>
+<p>Let's see how a simple free-particle Hamiltonian is transformed:</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define ((H-free m) s)</span></p>
@@ -225,25 +225,25 @@ layout: chapter
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1">(&#x002B; (compose</span></td>
-<td class="td1" valign="top"><span class="font1">(H-free &#x2019;m)</span></td>
+<td class="td1" valign="top"><span class="font1">(H-free 'm)</span></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(F-&#x003E;CH (translating (up &#x2019;v^x &#x2019;v^y &#x2019;v^z))))</span></td>
+<td class="td1" valign="top"><span class="font1">(F-&#x003E;CH (translating (up 'v^x 'v^y 'v^z))))</span></td>
 </tr>
 </table>
 
-<p class="pqp2"><span class="font1">(F-&#x003E;K (translating (up &#x2019;v^x &#x2019;v^y &#x2019;v^z)))))</span></p>
+<p class="pqp2"><span class="font1">(F-&#x003E;K (translating (up 'v^x 'v^y 'v^z)))))</span></p>
 </div>
 <a id="p341"></a><div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(H-prime</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t</span></p>
+<p class="pqp1"><span class="font1">(up 't</span></p>
 
-<p class="pqp3"><span class="font1">(up &#x2019;xprime &#x2019;yprime &#x2019;zprime)</span></p>
+<p class="pqp3"><span class="font1">(up 'xprime 'yprime 'zprime)</span></p>
 
-<p class="pqp3"><span class="font1">(down &#x2019;pprime_x &#x2019;pprime_y &#x2019;pprime_z)))</span></p>
+<p class="pqp3"><span class="font1">(down 'pprime_x 'pprime_y 'pprime_z)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> -1 pprime_x v^x)</em></span></p>
 
@@ -260,13 +260,13 @@ layout: chapter
 
 <p class="noindent1-top-exe" id="Exe_5-1"><strong>Exercise  5.1: Galilean invariance</strong></p>
 
-<p class="noindent">Is this result what you expected? Let&#x2019;s investigate.</p>
+<p class="noindent">Is this result what you expected? Let's investigate.</p>
 
 <p>Recall that in <a href="chapter001.html#Exe_1-29">exercise 1.29</a> we showed that if the kinetic energy is <epub:switch id="mathmlSwitch1078"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow></math></epub:case></epub:switch> then the translation to a uniformly moving coordinate system introduces extra terms that can be identified as a total time derivative. Since these terms do not affect the Lagrange equations, we can take the kinetic energy in the transformed coordinates to also be <epub:switch id="mathmlSwitch1079"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mrow><mrow><mo>(</mo><mi>v</mi><mo>&#x2032;</mo><mo>)</mo></mrow></mrow><mn>2</mn></msup></mrow></math></epub:case></epub:switch>.</p>
 
 <p>Let <em>C</em><sub>H</sub> be the phase space extension of the translation transformation, and <em>C</em> be the local tuple extension. The transformed Hamiltonian is <em>H</em>&#x2032; &#x003D; <em>H</em> &#x2218; <em>C</em><sub>H</sub> &#x002B; <em>K</em>; the transformed Lagrangian is <em>L</em>&#x2032; &#x003D; <em>L</em> &#x2218; <em>C</em>.</p>
 
-<p class="noindent1-topa"><strong>a.</strong> Derive the relationship between <em>p</em> and <em>p</em>&#x2032; both from <em>C</em><sub>H</sub> and from the Lagrangians. Are they the same? Derive the relationship between <em>v</em> and <em>v</em>&#x2032; by taking the derivative of the Hamiltonians with respect to the momenta (Hamilton&#x2019;s equation). Show that the Legendre transform of <em>L</em>&#x2032; gives the same <em>H</em>&#x2032;.</p>
+<p class="noindent1-topa"><strong>a.</strong> Derive the relationship between <em>p</em> and <em>p</em>&#x2032; both from <em>C</em><sub>H</sub> and from the Lagrangians. Are they the same? Derive the relationship between <em>v</em> and <em>v</em>&#x2032; by taking the derivative of the Hamiltonians with respect to the momenta (Hamilton's equation). Show that the Legendre transform of <em>L</em>&#x2032; gives the same <em>H</em>&#x2032;.</p>
 
 <p class="noindent1-topa"><strong>b.</strong> We have shown that <em>L</em> and <em>L</em>&#x2032; differ by a total time derivative. So for any uniformly moving coordinate system we can write the Lagrangian as <epub:switch id="mathmlSwitch1080"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow></math></epub:case></epub:switch>. Similarly, we would expect to always be able to write the Hamiltonian as <em>p</em><sup>2</sup>/(2<em>m</em>). Show that this differs from <em>H</em>&#x2032; by a total time derivative in the corresponding Lagrangians.</p>
 
@@ -279,14 +279,14 @@ layout: chapter
 <section title="General Canonical Transformations">
 <h1 class="level1" id="h1-29a"><a href="toc.html#Rh1-29a"><strong>5.2&#160;&#160;&#160;General Canonical Transformations</strong></a></h1>
 
-<p class="noindent">Although we have shown how to extend any coordinate transformation of the configuration space to a canonical transformation, there are other ways to construct canonical transformations. How do we know if we have a canonical transformation? To test if a transformation is canonical we may use the fact that if the transformation is canonical, then Hamilton&#x2019;s equations of motion for the transformed system and the original system will be equivalent.</p>
+<p class="noindent">Although we have shown how to extend any coordinate transformation of the configuration space to a canonical transformation, there are other ways to construct canonical transformations. How do we know if we have a canonical transformation? To test if a transformation is canonical we may use the fact that if the transformation is canonical, then Hamilton's equations of motion for the transformed system and the original system will be equivalent.</p>
 
 <p>Consider a Hamiltonian <em>H</em> and a phase-space transformation <em>C</em><sub>H</sub>. Let <em>D<sub>s</sub></em> be the function that takes a Hamiltonian and gives the Hamiltonian state-space derivative:<sup><a class="footnote_link" href="#endnote_5" id="endnote_ref_5">5</a></sup></p>
 
 <p class="eqtext" id="disp_5.13"><epub:switch id="mathmlSwitch1082"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>D</mi><mi>s</mi></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mn>1</mn><mo>,</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo stretchy='false'>)</mo><mo>,</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.13</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">Hamilton&#x2019;s equations are</p>
+<p class="noindent">Hamilton's equations are</p>
 
 <p class="eqtext" id="disp_5.14"><epub:switch id="mathmlSwitch1083"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mi>&#x03C3;</mi><mo>=</mo><msub><mi>D</mi><mi>s</mi></msub><mi>H</mi><mo>&#x2218;</mo><mi>&#x03C3;</mi><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.14</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -313,7 +313,7 @@ layout: chapter
 <a id="p343"></a>
 <figure>
 <img src="images/Art_P907.jpg" alt="art"/>
-<figcaption id="Fig_5-1"><strong>Figure 5.1</strong> A canonical transformation <em>C</em><sub>H</sub> relates the descriptions of a dynamical system in two phase-space coordinate systems. The transformation shows how Hamilton&#x2019;s equations in one coordinate system may be derived from Hamilton&#x2019;s equations in the other coordinate system.</figcaption>
+<figcaption id="Fig_5-1"><strong>Figure 5.1</strong> A canonical transformation <em>C</em><sub>H</sub> relates the descriptions of a dynamical system in two phase-space coordinate systems. The transformation shows how Hamilton's equations in one coordinate system may be derived from Hamilton's equations in the other coordinate system.</figcaption>
 </figure>
 
 <p class="noindent">With <em>&#x03C3;</em> &#x003D; <em>C</em><sub>H</sub> &#x2218; <em>&#x03C3;</em>&#x2032;, we find</p>
@@ -326,7 +326,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.20"><epub:switch id="mathmlSwitch1089"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>D</mi><mi>s</mi></msub><mi>H</mi><mo>&#x2218;</mo><msub><mi>C</mi><mtext>H</mtext></msub><mo>=</mo><mi>D</mi><msub><mi>C</mi><mtext>H</mtext></msub><mo>&#x00B7;</mo><msub><mi>D</mi><mi>s</mi></msub><mi>H</mi><mo>&#x2032;</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.20</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p>Any transformation that satisfies equation (<a href="chapter005.html#disp_5.20">5.20</a>) is a canonical transformation among phase-space representations of a dynamical system. In one phase-space representation the system&#x2019;s dynamics is characterized by the Hamiltonian <em>H</em>&#x2032; and in the other by <em>H</em>. The idea behind this equation is illustrated in <a href="chapter005.html#Fig_5-1">figure 5.1</a>.</p>
+<p>Any transformation that satisfies equation (<a href="chapter005.html#disp_5.20">5.20</a>) is a canonical transformation among phase-space representations of a dynamical system. In one phase-space representation the system's dynamics is characterized by the Hamiltonian <em>H</em>&#x2032; and in the other by <em>H</em>. The idea behind this equation is illustrated in <a href="chapter005.html#Fig_5-1">figure 5.1</a>.</p>
 <a id="p344"></a>
 
 <p>We can formalize this test as a program:</p>
@@ -352,7 +352,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.22"><epub:switch id="mathmlSwitch1091"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo>,</mo><msub><mi>p</mi><mi>x</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>x</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>k</mi><msup><mi>x</mi><mn>2</mn></msup><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.22</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">Hamilton&#x2019;s equations of motion are</p>
+<p class="noindent">Hamilton's equations of motion are</p>
 
 <p class="eqtext" id="disp_5.23"><epub:switch id="mathmlSwitch1092"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mi>x</mi><mo>=</mo><mrow><mrow><msub><mi>p</mi><mi>x</mi></msub><mo>/</mo><mi>m</mi></mrow></mrow></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><msub><mi>p</mi><mi>x</mi></msub><mo>=</mo><mo>&#x2212;</mo><mi>k</mi><mi>x</mi><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.23</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -418,24 +418,24 @@ layout: chapter
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1">((canonical?</span></td>
-<td class="td1" valign="top"><span class="font1">(polar-canonical &#x2019;alpha)</span></td>
+<td class="td1" valign="top"><span class="font1">(polar-canonical 'alpha)</span></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(H-harmonic &#x2019;m &#x2019;k)</span></td>
+<td class="td1" valign="top"><span class="font1">(H-harmonic 'm 'k)</span></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(compose (H-harmonic &#x2019;m &#x2019;k)</span></td>
+<td class="td1" valign="top"><span class="font1">(compose (H-harmonic 'm 'k)</span></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
 <td class="td1" valign="top">
-<p class="pqp5c"><span class="font1">(polar-canonical &#x2019;alpha)))</span></p></td>
+<p class="pqp5c"><span class="font1">(polar-canonical 'alpha)))</span></p></td>
 </tr>
 </table>
 
-<p class="pq-noindent"><span class="font1">(up &#x2019;t &#x2019;theta &#x2019;I))</span></p>
+<p class="pq-noindent"><span class="font1">(up 't 'theta 'I))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up 0 0 0)</em></span></p>
 </div>
@@ -443,7 +443,7 @@ layout: chapter
 <p class="noindent">So the transformation is canonical for the harmonic oscillator.<sup><a class="footnote_link" href="#endnote_7" id="endnote_ref_7">7</a></sup></p>
 <a id="p346"></a>
 
-<p>Let&#x2019;s use our polar-canonical transformation <em>C<sub>&#x03B1;</sub></em> to help us solve the harmonic oscillator. We substitute expressions (<a href="chapter005.html#disp_5.28">5.28</a>) and (<a href="chapter005.html#disp_5.29">5.29</a>) for <em>x</em> and <em>p<sub>x</sub></em> in the Hamiltonian, getting our new Hamiltonian:</p>
+<p>Let's use our polar-canonical transformation <em>C<sub>&#x03B1;</sub></em> to help us solve the harmonic oscillator. We substitute expressions (<a href="chapter005.html#disp_5.28">5.28</a>) and (<a href="chapter005.html#disp_5.29">5.29</a>) for <em>x</em> and <em>p<sub>x</sub></em> in the Hamiltonian, getting our new Hamiltonian:</p>
 
 <p class="eqtext" id="disp_5.30"><epub:switch id="mathmlSwitch1099"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><mi>I</mi><mo stretchy='false'>)</mo><mo>=</mo><mfrac><mrow><mi>&#x03B1;</mi><mi>I</mi></mrow><mi>m</mi></mfrac><msup><mrow><mo stretchy='false'>(</mo><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mfrac><mrow><mi>k</mi><mi>I</mi></mrow><mi>&#x03B1;</mi></mfrac><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.30</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -453,7 +453,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.31"><epub:switch id="mathmlSwitch1101"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><mi>I</mi><mo stretchy='false'>)</mo><mo>=</mo><msqrt><mrow><mfrac><mi>k</mi><mi>m</mi></mfrac></mrow></msqrt><mi>I</mi><mo>=</mo><mi>&#x03C9;</mi><mi>I</mi><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.31</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">and the new Hamiltonian no longer depends on the coordinate. Hamilton&#x2019;s equation for <em>I</em> is</p>
+<p class="noindent">and the new Hamiltonian no longer depends on the coordinate. Hamilton's equation for <em>I</em> is</p>
 
 <p class="eqtext" id="disp_5.32"><epub:switch id="mathmlSwitch1102"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mi>I</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>I</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>=</mo><mn>0</mn><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.32</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -610,15 +610,15 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(define H-arbitrary</span></p>
 
-<p class="pqp1"><span class="font1">(literal-function &#x2019;H</span></p>
+<p class="pqp1"><span class="font1">(literal-function 'H</span></p>
 
 <p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real Real) (DOWN Real Real Real))</span></p>
 
 <p class="pqp5"><span class="font1">Real)))</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">((canonical-H? (C-rotating &#x2019;Omega) H-arbitrary)</span></p>
+<p class="pq-noindent1-top"><span class="font1">((canonical-H? (C-rotating 'Omega) H-arbitrary)</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t (up &#x2019;xp &#x2019;yp &#x2019;zp) (down &#x2019;pp_x &#x2019;pp_y &#x2019;pp_z)))</span></p>
+<p class="pqp1"><span class="font1">(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up 0 (up 0 0 0) (down 0 0 0))</em></span></p>
 </div>
@@ -628,9 +628,9 @@ layout: chapter
 <p>Since we have a point transformation, we can compute the required adjustment to the Hamiltonian:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((F-&#x003E;K (rotating &#x2019;Omega))</span></p>
+<p class="pq-noindent"><span class="font1">((F-&#x003E;K (rotating 'Omega))</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t (up &#x2019;xp &#x2019;yp &#x2019;zp) (down &#x2019;pp_x &#x2019;pp_y &#x2019;pp_z)))</span></p>
+<p class="pqp1"><span class="font1">(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> Omega pp_x yp) (<sub>&#x002A;</sub> -1 Omega pp_y xp))</em></span></p>
 </div>
@@ -657,9 +657,9 @@ layout: chapter
 <p class="noindent">and apply the test. We find:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((canonical-K? (C-rotating &#x2019;Omega) (K &#x2019;Omega))</span></p>
+<p class="pq-noindent"><span class="font1">((canonical-K? (C-rotating 'Omega) (K 'Omega))</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t (up &#x2019;xp &#x2019;yp &#x2019;zp) (down &#x2019;pp_x &#x2019;pp_y &#x2019;pp_z)))</span></p>
+<p class="pqp1"><span class="font1">(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up 0 (up 0 0 0) (down 0 0 0))</em></span></p>
 </div>
@@ -671,7 +671,7 @@ layout: chapter
 
 <p class="noindent">We just saw that for the case of rotating coordinates the truth of equation (<a href="chapter005.html#disp_5.41">5.41</a>) did not depend on the details of the Hamiltonian. If <em>C</em><sub>H</sub> satisfies equation (<a href="chapter005.html#disp_5.41">5.41</a>) for any <em>H</em> then we can derive a condition on <em>C</em><sub>H</sub> that is independent of <em>H</em>.</p>
 
-<p>Let&#x2019;s start with an expanded version of equation (<a href="chapter005.html#disp_5.41">5.41</a>):</p>
+<p>Let's start with an expanded version of equation (<a href="chapter005.html#disp_5.41">5.41</a>):</p>
 
 <p class="eqtext" id="disp_5.46"><epub:switch id="mathmlSwitch1117"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi mathvariant='script'>D</mi><mi>H</mi><mo>&#x2218;</mo><msub><mi>C</mi><mtext>H</mtext></msub><mo>=</mo><mi>D</mi><msub><mi>C</mi><mtext>H</mtext></msub><mo>&#x00B7;</mo><mo stretchy='false'>(</mo><mo stretchy='false'>(</mo><mi mathvariant='script'>D</mi><mi>H</mi><mo>&#x2218;</mo><msub><mi>C</mi><mtext>H</mtext></msub><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><mi>D</mi><msub><mi>C</mi><mtext>H</mtext></msub><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.46</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -727,7 +727,7 @@ layout: chapter
 <p class="pqp2"><span class="font1">(- J (<sub>&#x002A;</sub> DCs J (transpose DCs s)))))</span></p>
 </div>
 
-<p>This condition, equation (<a href="chapter005.html#disp_5.52">5.52</a>), on <em>C</em><sub>H</sub>, called the <em>canonical condition</em>, does not depend on the details of <em>H</em>. This is a remarkable result: we can decide whether a phase-space transformation preserves the dynamics of Hamilton&#x2019;s equations without further reference to the details of the dynamical system. If the transformation is time dependent we can add a correction to the Hamiltonian to make it canonical.</p>
+<p>This condition, equation (<a href="chapter005.html#disp_5.52">5.52</a>), on <em>C</em><sub>H</sub>, called the <em>canonical condition</em>, does not depend on the details of <em>H</em>. This is a remarkable result: we can decide whether a phase-space transformation preserves the dynamics of Hamilton's equations without further reference to the details of the dynamical system. If the transformation is time dependent we can add a correction to the Hamiltonian to make it canonical.</p>
 </section>
 </section>
 <section title="Examples">
@@ -736,9 +736,9 @@ layout: chapter
 <p class="noindent">The polar-canonical transformation satisfies the canonical condition:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">((canonical-transform? (polar-canonical &#x2019;alpha))</span></p>
+<p class="pq-noindent"><span class="font1">((canonical-transform? (polar-canonical 'alpha))</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t &#x2019;theta &#x2019;I))</span></p>
+<p class="pqp1"><span class="font1">(up 't 'theta 'I))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up (up 0 0 0) (up 0 0 0) (up 0 0 0))</em></span></p>
 </div>
@@ -763,7 +763,7 @@ layout: chapter
 
 <p class="pq-noindent1-top"><span class="font1">((canonical-transform? a-non-canonical-transform)</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t &#x2019;theta &#x2019;p))</span></p>
+<p class="pqp1"><span class="font1">(up 't 'theta 'p))</span></p>
 
 <p class="pq-noindent"><span class="font1"><em>(up (up 0 0 0) (up 0 0 (&#x002B; -1 p)) (up 0 (&#x002B; 1 (<sub>&#x002A;</sub> -1 p)) 0))</em></span></p>
 </div>
@@ -818,7 +818,7 @@ layout: chapter
 <p class="noindent">It is convenient to reformulate the canonical condition in terms of matrices. We can obtain a matrix representation of a structure with the utility <span class="font1">s-&#x003E;m</span> that takes a structure that represents a multiplier of a linear transformation and returns a matrix representation of the multiplier. The procedure <span class="font1">s-&#x003E;m</span> takes three arguments: <span class="font1">(s-&#x003E;m ls A rs)</span>. The <span class="font1">ls</span> and <span class="font1">rs</span> specify the shapes of objects that multiply <span class="font1">A</span> on the left and right to give a numerical value. These specify the basis. So, the matrix representation of the multiplier corresponding to <epub:switch id="mathmlSwitch1138"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>J</mi><mo>&#x02DC;</mo></mover></math></epub:case></epub:switch> is</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up &#x2019;t (up &#x2019;x &#x2019;y) (down &#x2019;px &#x2019;py)))</span></p>
+<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up 't (up 'x 'y) (down 'px 'py)))</span></p>
 
 <p class="pqp3b"><span class="font1">(s<sub>&#x002A;</sub> (compatible-shape s))</span></p>
 
@@ -862,7 +862,7 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(define C-general</span></p>
 
-<p class="pqp1"><span class="font1">(literal-function &#x2019;C</span></p>
+<p class="pqp1"><span class="font1">(literal-function 'C</span></p>
 
 <p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real) (DOWN Real Real))</span></p>
 
@@ -876,7 +876,7 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">(let ((cs (C-general s)))</span></p>
 
-<p class="pqp2"><span class="font1">(up ((literal-function &#x2019;tau) (time s))</span></p>
+<p class="pqp2"><span class="font1">(up ((literal-function 'tau) (time s))</span></p>
 
 <p class="pqp5"><span class="font1">(coordinates cs)</span></p>
 
@@ -886,7 +886,7 @@ layout: chapter
 <p class="noindent">For this kind of transformation the first row and the first column of the residuals of the <span class="font1">canonical-transform?</span> test are identically zero:</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up &#x2019;t (up &#x2019;x &#x2019;y) (down &#x2019;p_x &#x2019;p_y)))</span></p>
+<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
 
 <p class="pqp4"><span class="font1">(s<sub>&#x002A;</sub> (compatible-shape s)))</span></p>
 
@@ -898,7 +898,7 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1"><em>(up 0 0 0 0 0)</em></span></p>
 
-<p class="pq-noindent1-top"><span class="font1">(let ((s (up &#x2019;t (up &#x2019;x &#x2019;y) (down &#x2019;p_x &#x2019;p_y)))</span></p>
+<p class="pq-noindent1-top"><span class="font1">(let ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
 
 <p class="pqp4"><span class="font1">(s<sub>&#x002A;</sub> (compatible-shape s)))</span></p>
 
@@ -959,7 +959,7 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(define (F s)</span></p>
 
-<p class="pqp1"><span class="font1">((literal-function &#x2019;F</span></p>
+<p class="pqp1"><span class="font1">((literal-function 'F</span></p>
 
 <p class="pqp3"><span class="font1">(-&#x003E; (X Real (UP Real Real)) (UP Real Real)))</span></p>
 
@@ -967,7 +967,7 @@ layout: chapter
 
 <p class="pq-noindent1-top"><span class="font1">((symplectic-transform? (F-&#x003E;CH F))</span></p>
 
-<p class="pqp1"><span class="font1">(up &#x2019;t (up &#x2019;x &#x2019;y) (down &#x2019;px &#x2019;py)))</span></p>
+<p class="pqp1"><span class="font1">(up 't (up 'x 'y) (down 'px 'py)))</span></p>
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1"><span class="font1"><em>(matrix-by-rows</em></span></span></td>
@@ -991,7 +991,7 @@ layout: chapter
 <p>More generally, the phase-space part of the canonical condition is equivalent to the symplectic condition (for two degrees of freedom) even in the case of an unrestricted phase-space transformation.</p>
 <div class="pull-quote">
 
-<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up &#x2019;t (up &#x2019;x &#x2019;y) (down &#x2019;p_x &#x2019;p_y)))</span></p>
+<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
 
 <p class="pqp3b"><span class="font1">(s<sub>&#x002A;</sub> (compatible-shape s)))</span></p>
 
@@ -1041,7 +1041,7 @@ layout: chapter
 <section title="Invariants of Canonical Transformations">
 <h1 class="level1" id="h1-30"><a href="toc.html#Rh1-30"><strong>5.3&#160;&#160;&#160;Invariants of Canonical Transformations</strong></a></h1>
 
-<p class="noindent">Canonical transformations allow us to change the phase-space coordinate system that we use to express a problem, preserving the form of Hamilton&#x2019;s equations. If we solve Hamilton&#x2019;s equations in one phase-space coordinate system we can use the transformation to carry the solution to the other coordinate system. What other properties are preserved by a canonical transformation?</p>
+<p class="noindent">Canonical transformations allow us to change the phase-space coordinate system that we use to express a problem, preserving the form of Hamilton's equations. If we solve Hamilton's equations in one phase-space coordinate system we can use the transformation to carry the solution to the other coordinate system. What other properties are preserved by a canonical transformation?</p>
 <section title="Noninvariance of pv">
 <h2 class="level2"><strong>Noninvariance of</strong> <em>pv</em></h2>
 
@@ -1091,7 +1091,7 @@ layout: chapter
 <p class="noindent">Thus, phase-space volume is preserved by symplectic transformations.</p>
 <a id="p359"></a>
 
-<p>Liouville&#x2019;s theorem shows that time evolution preserves phase-space volume. Here we see that canonical transformations also preserve phase volumes. Later, we will find that time evolution actually generates a canonical transformation.</p>
+<p>Liouville's theorem shows that time evolution preserves phase-space volume. Here we see that canonical transformations also preserve phase volumes. Later, we will find that time evolution actually generates a canonical transformation.</p>
 </section>
 <section title="The symplectic 2-form">
 <h2 class="level2"><strong>The symplectic 2-form</strong></h2>
@@ -1185,7 +1185,7 @@ layout: chapter
 
 <p class="pq-noindent"><span class="font1">(define (F s)</span></p>
 
-<p class="pqp1"><span class="font1">((literal-function &#x2019;F</span></p>
+<p class="pqp1"><span class="font1">((literal-function 'F</span></p>
 
 <p class="pqp2"><span class="font1">(-&#x003E; (X Real (UP Real Real)) (UP Real Real)))</span></p>
 
@@ -1193,11 +1193,11 @@ layout: chapter
 
 <p class="pqp1"><span class="font1">(coordinates s)))</span></p>
 
-<p class="pq-noindent1-top"><span class="font1">(let ((s (up &#x2019;t (up &#x2019;x &#x2019;y) (down &#x2019;p_x &#x2019;p_y)))</span></p>
+<p class="pq-noindent1-top"><span class="font1">(let ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
 
-<p class="pqp4"><span class="font1">(zeta1 (up 0 (up &#x2019;dx1 &#x2019;dy1) (down &#x2019;dp1_x &#x2019;dp1_y)))</span></p>
+<p class="pqp4"><span class="font1">(zeta1 (up 0 (up 'dx1 'dy1) (down 'dp1_x 'dp1_y)))</span></p>
 
-<p class="pqp4"><span class="font1">(zeta2 (up 0 (up &#x2019;dx2 &#x2019;dy2) (down &#x2019;dp2_x &#x2019;dp2_y))))</span></p>
+<p class="pqp4"><span class="font1">(zeta2 (up 0 (up 'dx2 'dy2) (down 'dp2_x 'dp2_y))))</span></p>
 
 <p class="pqp1"><span class="font1">(let ((DCs ((D (F-&#x003E;CH F)) s)))</span></p>
 
@@ -1270,7 +1270,7 @@ layout: chapter
 
 <a id="p364"></a>
 
-<p>The equality-of-areas relation (<a href="chapter005.html#disp_5.90">5.90</a>) can also be written as an equality of line integrals using Stokes&#x2019;s theorem, for simply-connected regions <epub:switch id="mathmlSwitch1186"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>R</mi><mrow><msup><mi>q</mi><mi>i</mi></msup><mo>,</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></msub></mrow></math></epub:case></epub:switch> and <epub:switch id="mathmlSwitch1187"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>R</mi><mrow><mi>q</mi><msup><mo>&#x2032;</mo><mi>i</mi></msup><mo>,</mo><msubsup><mi>p</mi><mi>i</mi><mo>&#x2032;</mo></msubsup></mrow><mo>&#x2032;</mo></msubsup></mrow></math></epub:case></epub:switch>:</p>
+<p>The equality-of-areas relation (<a href="chapter005.html#disp_5.90">5.90</a>) can also be written as an equality of line integrals using Stokes's theorem, for simply-connected regions <epub:switch id="mathmlSwitch1186"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>R</mi><mrow><msup><mi>q</mi><mi>i</mi></msup><mo>,</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></msub></mrow></math></epub:case></epub:switch> and <epub:switch id="mathmlSwitch1187"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>R</mi><mrow><mi>q</mi><msup><mo>&#x2032;</mo><mi>i</mi></msup><mo>,</mo><msubsup><mi>p</mi><mi>i</mi><mo>&#x2032;</mo></msubsup></mrow><mo>&#x2032;</mo></msubsup></mrow></math></epub:case></epub:switch>:</p>
 
 <p class="eqtext" id="disp_5.91"><epub:switch id="mathmlSwitch1188"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mstyle displaystyle='true'><munder><mo>&#x2211;</mo><mi>i</mi></munder><mrow><mstyle displaystyle='true'><mrow><msub><mo>&#x222E;</mo><mrow><mo>&#x2202;</mo><msub><mi>R</mi><mrow><msup><mi>q</mi><mi>i</mi></msup><mo>,</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></msub></mrow></msub><mrow><msub><mi>p</mi><mi>i</mi></msub><mi>d</mi><msup><mi>q</mi><mi>i</mi></msup><mo>=</mo><mstyle displaystyle='true'><munder><mo>&#x2211;</mo><mi>i</mi></munder><mrow><mstyle displaystyle='true'><mrow><msub><mo>&#x222E;</mo><mrow><mo>&#x2202;</mo><msubsup><mi>R</mi><mrow><mi>q</mi><msup><mo>&#x2032;</mo><mi>i</mi></msup><mo>,</mo><msubsup><mi>p</mi><mi>i</mi><mo>&#x2032;</mo></msubsup></mrow><mo>&#x2032;</mo></msubsup></mrow></msub><mrow><msubsup><mi>p</mi><mi>i</mi><mo>&#x2032;</mo></msubsup><mi>d</mi><mi>q</mi><msup><mo>&#x2032;</mo><mi>i</mi></msup><mo>.</mo></mrow></mrow></mstyle></mrow></mstyle></mrow></mrow></mstyle></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.91</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1382,7 +1382,7 @@ layout: chapter
 <section title="F1 Generates Canonical Transformations">
 <h3 class="level3" id="h3_5-4-1"><a href="toc.html#Rh3_5-4-1"><strong>5.4.1</strong> <em>F</em><sub>1</sub>&#160;<strong>Generates Canonical Transformations</strong></a></h3>
 
-<p class="noindent">We can prove directly that the transformation generated by an <em>F</em><sub>1</sub> is canonical by showing that if Hamilton&#x2019;s equations are satisfied in one set of coordinates then they will be satisfied in the other set of coordinates. Let <em>F</em><sub>1</sub> take arguments (<em>t</em>, <em>x</em>, <em>y</em>). The relations among the coordinates are</p>
+<p class="noindent">We can prove directly that the transformation generated by an <em>F</em><sub>1</sub> is canonical by showing that if Hamilton's equations are satisfied in one set of coordinates then they will be satisfied in the other set of coordinates. Let <em>F</em><sub>1</sub> take arguments (<em>t</em>, <em>x</em>, <em>y</em>). The relations among the coordinates are</p>
 
 <p class="eqtext" id="disp_5.110"><epub:switch id="mathmlSwitch1208"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>p</mi><mi>x</mi></msub><mo>=</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>p</mi><mi>y</mi></msub><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.110</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1403,7 +1403,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.113"><epub:switch id="mathmlSwitch1211"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo>&#x2212;</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>=</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>+</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mo>&#x2202;</mo><mn>0</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>&#x2212;</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>=</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>+</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mo>&#x2202;</mo><mn>0</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.113</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">where the arguments are unambiguous and have been suppressed. On solution paths we can use Hamilton&#x2019;s equations for the (<em>x</em>, <em>p<sub>x</sub></em>) system to replace the partial derivatives of <em>H</em> with derivatives of <em>x</em> and <em>p<sub>x</sub></em>, obtaining</p>
+<p class="noindent">where the arguments are unambiguous and have been suppressed. On solution paths we can use Hamilton's equations for the (<em>x</em>, <em>p<sub>x</sub></em>) system to replace the partial derivatives of <em>H</em> with derivatives of <em>x</em> and <em>p<sub>x</sub></em>, obtaining</p>
 
 <p class="eqtext" id="disp_5.114"><epub:switch id="mathmlSwitch1212"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo>&#x2212;</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>=</mo><mo>&#x2212;</mo><msub><mrow><mo stretchy='false'>(</mo><mi>D</mi><msub><mi>p</mi><mi>x</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>x</mi><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>+</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mo>&#x2202;</mo><mn>0</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>&#x2212;</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>=</mo><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>x</mi><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>+</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mo>&#x2202;</mo><mn>0</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.114</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1419,12 +1419,12 @@ layout: chapter
 <p class="eqtext" id="disp_5.116"><epub:switch id="mathmlSwitch1214"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo>&#x2212;</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>=</mo><mo>&#x2212;</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><msup><mrow><mo stretchy='false'>(</mo><msub><mi>D</mi><mi>y</mi></msub><mo stretchy='false'>)</mo></mrow><mi>j</mi></msup><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.116</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">Provided that &#x2202;<sub>2</sub>&#x2202;<sub>1</sub><em>F</em><sub>1</sub> is nonsingular,<sup><a class="footnote_link" href="#endnote_19" id="endnote_ref_19">19</a></sup> we have derived one of Hamilton&#x2019;s equations for the (<em>y</em>, <em>p<sub>y</sub></em>) system:</p>
+<p class="noindent">Provided that &#x2202;<sub>2</sub>&#x2202;<sub>1</sub><em>F</em><sub>1</sub> is nonsingular,<sup><a class="footnote_link" href="#endnote_19" id="endnote_ref_19">19</a></sup> we have derived one of Hamilton's equations for the (<em>y</em>, <em>p<sub>y</sub></em>) system:</p>
 
 <p class="eqtext" id="disp_5.117"><epub:switch id="mathmlSwitch1215"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>D</mi><mi>y</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.117</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">Hamilton&#x2019;s other equation,</p>
+<p class="noindent">Hamilton's other equation,</p>
 
 <p class="eqtext" id="disp_5.118"><epub:switch id="mathmlSwitch1216"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.118</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1499,7 +1499,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.128"><epub:switch id="mathmlSwitch1232"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mo>=</mo><mi>F</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><msub><mi>f</mi><mi>p</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.128</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">The function <em>F</em><sub>1</sub> has the same value as <em>F</em> but has different arguments. We will show that this <em>F</em><sub>1</sub> is in fact the generating function for canonical transformations introduced in <a href="chapter005.html#h1-31">section 5.4</a>. Let&#x2019;s be explicit about the definition of <em>F</em><sub>1</sub> in terms of a line integral:</p>
+<p class="noindent">The function <em>F</em><sub>1</sub> has the same value as <em>F</em> but has different arguments. We will show that this <em>F</em><sub>1</sub> is in fact the generating function for canonical transformations introduced in <a href="chapter005.html#h1-31">section 5.4</a>. Let's be explicit about the definition of <em>F</em><sub>1</sub> in terms of a line integral:</p>
 
 <p class="eqtext" id="disp_5.129"><epub:switch id="mathmlSwitch1233"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><msub><mi>q</mi><mn>0</mn></msub><mo>,</mo><msubsup><mi>q</mi><mn>0</mn><mo>&#x2032;</mo></msubsup><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>=</mo><mstyle displaystyle='true'><mrow><msubsup><mo>&#x222B;</mo><mrow><msub><mi>q</mi><mn>0</mn></msub><mo>,</mo><msubsup><mi>q</mi><mn>0</mn><mo>&#x2032;</mo></msubsup></mrow><mrow><mi>q</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo></mrow></msubsup><mrow><mo stretchy='false'>(</mo><msub><mi>f</mi><mi>p</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mi>d</mi><mi>q</mi><mo>&#x2212;</mo><msub><mi>f</mi><mrow><mi>p</mi><mo>&#x2032;</mo></mrow></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mi>d</mi><mi>q</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.129</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1786,7 +1786,7 @@ layout: chapter
 
 <p>Suppose that only certain combinations of the coordinates appear in the Hamiltonian. We make a canonical transformation to a new set of phase-space coordinates such that these combinations of the old phase-space coordinates are some of the new phase-space coordinates. We choose other independent combinations of the coordinates to complete the set. The advantage is that these other independent coordinates do not appear in the new Hamiltonian, so the momenta conjugate to them are conserved quantities.</p>
 
-<p>Let&#x2019;s see how this idea enables us to reduce the problem of two gravitating bodies to the simpler problem of the relative motion of the two bodies. In the process we will discover that the momentum of the center of mass is conserved. This simpler problem is an instance of the Kepler problem. The Kepler problem is also encountered in the formulation of the more general <em>n</em>-body problem.</p>
+<p>Let's see how this idea enables us to reduce the problem of two gravitating bodies to the simpler problem of the relative motion of the two bodies. In the process we will discover that the momentum of the center of mass is conserved. This simpler problem is an instance of the Kepler problem. The Kepler problem is also encountered in the formulation of the more general <em>n</em>-body problem.</p>
 
 <p>Consider the motion of two masses <em>m</em><sub>1</sub> and <em>m</em><sub>2</sub>, subject only to a mutual gravitational attraction described by the potential <em>V</em> (<em>r</em>). This problem has six degrees of freedom. The rectangular coordinates of the particles are <em>x</em><sub>1</sub> and <em>x</em><sub>2</sub>, with conjugate momenta <em>p</em><sub>1</sub> and <em>p</em><sub>2</sub>. Each of these is a structure of the three rectangular components. The distance between the particles is <em>r</em> &#x003D; &#x2016;<em>x</em><sub>1</sub> &#x2212; <em>x</em><sub>2</sub>&#x2016;. The Hamiltonian for the two-body problem is</p>
 
@@ -1886,7 +1886,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.195"><epub:switch id="mathmlSwitch1301"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mtext>&#x2009;</mtext><mi>x</mi><mo>,</mo><mtext>&#x2009;</mtext><mi>y</mi><mo>;</mo><msub><mi>p</mi><mi>x</mi></msub><mo>,</mo><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>x</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>p</mi><mi>y</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>+</mo><mi>V</mi><mo stretchy='false'>(</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.195</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">In this coordinate system Hamilton&#x2019;s equations are easy, and they are exactly what is needed to develop trajectories by numerical integration, but the expressions are not very illuminating:</p>
+<p class="noindent">In this coordinate system Hamilton's equations are easy, and they are exactly what is needed to develop trajectories by numerical integration, but the expressions are not very illuminating:</p>
 
 <p class="eqtext" id="disp_5.196"><epub:switch id="mathmlSwitch1302"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>D</mi><mi>x</mi><mtable><mtr><mtd><mrow><mo>=</mo><mfrac><mrow><msub><mi>p</mi><mi>x</mi></msub></mrow><mi>m</mi></mfrac></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.196</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1914,7 +1914,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.202"><epub:switch id="mathmlSwitch1308"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mtext>&#x2009;</mtext><mi>r</mi><mo>,</mo><mtext>&#x2009;</mtext><mi>&#x03C6;</mi><mo>;</mo><mtext>&#x2009;</mtext><msub><mi>p</mi><mi>r</mi></msub><mo>,</mo><mtext>&#x2009;</mtext><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>r</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><msubsup><mi>p</mi><mi>&#x03C6;</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>V</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.202</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">We can now write Hamilton&#x2019;s equations in these new coordinates, and they are much more illuminating than the equations expressed in rectangular coordinates:</p>
+<p class="noindent">We can now write Hamilton's equations in these new coordinates, and they are much more illuminating than the equations expressed in rectangular coordinates:</p>
 
 <p class="eqtext" id="disp_5.203"><epub:switch id="mathmlSwitch1309"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>r</mi><mo>=</mo><mfrac><mrow><msub><mi>p</mi><mi>r</mi></msub></mrow><mi>m</mi></mfrac></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.203</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1994,9 +1994,9 @@ layout: chapter
 
 <p class="eqtext" id="disp_5.222"><epub:switch id="mathmlSwitch1329"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mrow><mo>&#x2033;&#x2033;</mo></mrow><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mtext>&#x2009;</mtext><mi>&#x03BE;</mi><mo>,</mo><mtext>&#x2009;</mtext><mi>&#x03B7;</mi><mo>;</mo><msub><mi>p</mi><mi>&#x03BE;</mi></msub><mo>,</mo><msub><mi>p</mi><mi>&#x03B7;</mi></msub><mo stretchy='false'>)</mo><mo>=</mo></mrow></mtd><mtd columnalign='left'><mrow><mfrac><mrow><msubsup><mi>p</mi><mi>&#x03BE;</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>p</mi><mi>&#x03B7;</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>+</mo><mo>&#x03A9;</mo><mo stretchy='false'>(</mo><mi>&#x03B7;</mi><msub><mi>p</mi><mi>&#x03BE;</mi></msub><mo>&#x2212;</mo><mo stretchy='false'>(</mo><mi>&#x03BE;</mi><mo>+</mo><msub><mi>R</mi><mn>0</mn></msub><mo stretchy='false'>)</mo><msub><mi>p</mi><mi>&#x03B7;</mi></msub><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>+</mo><mi>V</mi><mo stretchy='false'>(</mo><msqrt><mrow><msup><mrow><mo stretchy='false'>(</mo><mi>&#x03BE;</mi><mo>+</mo><msub><mi>R</mi><mn>0</mn></msub><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>&#x03B7;</mi><mn>2</mn></msup></mrow></msqrt><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.222</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">and Hamilton&#x2019;s equations are uselessly complicated, but the next step is to consider only trajectories for which the coordinates <em>&#x03BE;</em> and <em>&#x03B7;</em> are small compared with <em>R</em><sub>0</sub>. Under this assumption we will be able to construct approximate equations of motion for these trajectories that are linear in the coordinates, thus yielding simple analyzable motion. To this point we have made no approximations. The equations above are perfectly accurate for any trajectories in a central field.</p>
+<p class="noindent">and Hamilton's equations are uselessly complicated, but the next step is to consider only trajectories for which the coordinates <em>&#x03BE;</em> and <em>&#x03B7;</em> are small compared with <em>R</em><sub>0</sub>. Under this assumption we will be able to construct approximate equations of motion for these trajectories that are linear in the coordinates, thus yielding simple analyzable motion. To this point we have made no approximations. The equations above are perfectly accurate for any trajectories in a central field.</p>
 
-<p>The idea is to expand the potential-energy term in the Hamiltonian as a series and to discard any term higher than second-order in the coordinates, thus giving us first-order-accurate Hamilton&#x2019;s equations:</p>
+<p>The idea is to expand the potential-energy term in the Hamiltonian as a series and to discard any term higher than second-order in the coordinates, thus giving us first-order-accurate Hamilton's equations:</p>
 
 <p class="eqtext" id="disp_5.223"><epub:switch id="mathmlSwitch1330"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>U</mi><mo stretchy='false'>(</mo><mi>&#x03BE;</mi><mo>,</mo><mi>&#x03B7;</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>V</mi><mo stretchy='false'>(</mo><msqrt><mrow><msup><mrow><mo stretchy='false'>(</mo><mi>&#x03BE;</mi><mo>+</mo><msub><mi>R</mi><mn>0</mn></msub><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>&#x03B7;</mi><mn>2</mn></msup></mrow></msqrt><mo stretchy='false'>)</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.223</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2014,7 +2014,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.227"><epub:switch id="mathmlSwitch1334"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>U</mi><mo stretchy='false'>(</mo><mi>&#x03BE;</mi><mo>,</mo><mi>&#x03B7;</mi><mo stretchy='false'>)</mo><mtable><mtr><mtd><mrow><mo>=</mo><mi>D</mi><mi>V</mi><mo stretchy='false'>(</mo><msub><mi>R</mi><mn>0</mn></msub><mo stretchy='false'>)</mo><mfrac><mi>&#x03B7;</mi><mrow><msub><mi>R</mi><mn>0</mn></msub></mrow></mfrac><mo>+</mo><mo>&#x22EF;</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.227</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p385"></a>
 
-<p class="noindent">With this expansion we obtain the linearized Hamilton&#x2019;s equations:</p>
+<p class="noindent">With this expansion we obtain the linearized Hamilton's equations:</p>
 
 <p class="eqtext" id="disp_5.228"><epub:switch id="mathmlSwitch1335"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>&#x03BE;</mi><mo>=</mo><mfrac><mrow><msub><mi>p</mi><mi>&#x03BE;</mi></msub></mrow><mi>m</mi></mfrac><mo>+</mo><mo>&#x03A9;</mo><mi>&#x03B7;</mi></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.228</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2109,7 +2109,7 @@ layout: chapter
 
 <p class="noindent1-top-exe" id="Exe_5-11"><strong>Exercise  5.11: Collapsing orbits</strong></p>
 
-<p class="noindent">What exactly happens as the force law becomes steeper? Investigate this by sketching the contours of the Hamiltonian in <em>r</em>, <em>p<sub>r</sub></em> space for various values of the force-law exponent, <em>n</em>. For what values of <em>n</em> are there stable circular orbits? In the case that there are no stable circular orbits, what happens to circular and other noncircular orbits? How are these results consistent with Liouville&#x2019;s theorem and the nonexistence of attractors in Hamiltonian systems?</p>
+<p class="noindent">What exactly happens as the force law becomes steeper? Investigate this by sketching the contours of the Hamiltonian in <em>r</em>, <em>p<sub>r</sub></em> space for various values of the force-law exponent, <em>n</em>. For what values of <em>n</em> are there stable circular orbits? In the case that there are no stable circular orbits, what happens to circular and other noncircular orbits? How are these results consistent with Liouville's theorem and the nonexistence of attractors in Hamiltonian systems?</p>
 <a id="p390"></a>
 <figure>
 <img src="images/Art_P1150.jpg" alt="art"/>
@@ -2118,9 +2118,9 @@ layout: chapter
 <section title="Total Time Derivatives">
 <h3 class="level3" id="h3_5-4-5"><a href="toc.html#Rh3_5-4-5"><strong>5.4.5 Total Time Derivatives</strong></a></h3>
 
-<p class="noindent">The addition of a total time derivative to a Lagrangian leads to the same Lagrange equations. However, the two Lagrangians have different momenta, and they lead to different Hamilton&#x2019;s equations. Here we find out how to represent the corresponding canonical transformation with a generating function.</p>
+<p class="noindent">The addition of a total time derivative to a Lagrangian leads to the same Lagrange equations. However, the two Lagrangians have different momenta, and they lead to different Hamilton's equations. Here we find out how to represent the corresponding canonical transformation with a generating function.</p>
 
-<p>Let&#x2019;s restate the result about total time derivatives and Lagrangians from the first chapter. Consider some function <em>G</em>(<em>t</em>, <em>q</em>) of time and coordinates. We have shown that if <em>L</em> and <em>L</em>&#x2032; are related by</p>
+<p>Let's restate the result about total time derivatives and Lagrangians from the first chapter. Consider some function <em>G</em>(<em>t</em>, <em>q</em>) of time and coordinates. We have shown that if <em>L</em> and <em>L</em>&#x2032; are related by</p>
 
 <p class="eqtext" id="disp_5.243"><epub:switch id="mathmlSwitch1350"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>L</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>+</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>G</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo stretchy='false'>)</mo><mo>+</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>G</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo stretchy='false'>)</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.243</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2188,7 +2188,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.255"><epub:switch id="mathmlSwitch1362"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><msub><mi>p</mi><mi>&#x03B8;</mi></msub><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>&#x03B8;</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi><msup><mi>l</mi><mn>2</mn></msup></mrow></mfrac><mo>&#x2212;</mo><mi>g</mi><mi>l</mi><mi>m</mi><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>+</mo><mi>g</mi><mi>m</mi><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msub><mi>p</mi><mi>&#x03B8;</mi></msub></mrow><mi>l</mi></mfrac><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mi>D</mi><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mi>m</mi><mn>2</mn></mfrac><msup><mrow><mo stretchy='false'>(</mo><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.255</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 
-<p class="noindent">where <em>y<sub>s</sub></em> is the drive function. The Hamiltonian is rather messy, and includes a term that is linear in the angular momentum with a coefficient that depends on both the angular coordinate and the time. Let&#x2019;s see what happens if we apply our transformation to the problem to eliminate the linear term. We can identify the transformation function <em>G</em> by requiring that the linear term in momentum be killed:</p>
+<p class="noindent">where <em>y<sub>s</sub></em> is the drive function. The Hamiltonian is rather messy, and includes a term that is linear in the angular momentum with a coefficient that depends on both the angular coordinate and the time. Let's see what happens if we apply our transformation to the problem to eliminate the linear term. We can identify the transformation function <em>G</em> by requiring that the linear term in momentum be killed:</p>
 
 <p class="eqtext" id="disp_5.256"><epub:switch id="mathmlSwitch1363"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>G</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo>=</mo><mo>&#x2212;</mo><mi>m</mi><mi>l</mi><mi>cos</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mi>D</mi><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>5.256</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2314,7 +2314,7 @@ layout: chapter
 
 <p class="noindent">So the extended momenta have the same values as the original momenta at the corresponding states. The momentum conjugate to the time coordinate is the negation of the energy plus <em>v<sub>&#x03BB;</sub></em>. The momentum conjugate to <em>&#x03BB;</em> is the constraint, which must be zero.</p>
 
-<p>Next we carry out the transformation to the corresponding Hamiltonian formulation. First, note that the Lagrangian <em>L<sub>e</sub></em> is a homogeneous form of degree one in the velocities. Thus, by Euler&#x2019;s theorem,</p>
+<p>Next we carry out the transformation to the corresponding Hamiltonian formulation. First, note that the Lagrangian <em>L<sub>e</sub></em> is a homogeneous form of degree one in the velocities. Thus, by Euler's theorem,</p>
 
 <p class="eqtext" id="disp_5.267"><epub:switch id="mathmlSwitch1379"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>L</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo>;</mo><msub><mi>q</mi><mi>e</mi></msub><mo>,</mo><mi>t</mi><mo>;</mo><msub><mi>v</mi><mi>e</mi></msub><mo>,</mo><msub><mi>v</mi><mi>t</mi></msub><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><mo stretchy='false'>(</mo><msub><mi>v</mi><mi>e</mi></msub><mo>,</mo><msub><mi>v</mi><mi>t</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><msub><mi>L</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo>;</mo><msub><mi>q</mi><mi>e</mi></msub><mo>,</mo><mi>t</mi><mo>;</mo><msub><mi>v</mi><mi>e</mi></msub><mo>,</mo><msub><mi>v</mi><mi>t</mi></msub><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.267</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p397"></a>
@@ -2337,26 +2337,26 @@ layout: chapter
 
 <p class="noindent">This extended Hamiltonian governs the evolution of the extended system, for arbitrary <em>f</em>.<sup><a class="footnote_link" href="#endnote_25" id="endnote_ref_25">25</a></sup></p>
 
-<p>Hamilton&#x2019;s equations reduce to</p>
+<p>Hamilton's equations reduce to</p>
 
 <p class="eqtext" id="disp_5.272"><epub:switch id="mathmlSwitch1389"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='right'><mrow><mi>D</mi><msub><mi>q</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mi>q</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mi>p</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='right'><mrow><mi>D</mi><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='right'><mrow><mi>D</mi><msub><mi>p</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mi>q</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mi>p</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='right'><mrow><mi>D</mi><msub><mi>p</mi><mi>t</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mi>q</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><msub><mi>p</mi><mi>e</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.272</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p398"></a>
 
-<p class="noindent">The second equation gives the required relation between <em>t</em> and <em>&#x03C4;</em>. The first and third equations are equivalent to Hamilton&#x2019;s equations in the original coordinates, as we can see by using <em>q<sub>e</sub></em> &#x003D; <em>q</em> &#x2218; <em>t</em> to rewrite them:</p>
+<p class="noindent">The second equation gives the required relation between <em>t</em> and <em>&#x03C4;</em>. The first and third equations are equivalent to Hamilton's equations in the original coordinates, as we can see by using <em>q<sub>e</sub></em> &#x003D; <em>q</em> &#x2218; <em>t</em> to rewrite them:</p>
 
 <p class="eqtext" id="disp_5.273"><epub:switch id="mathmlSwitch1390"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mi>q</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>=</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo><mi>p</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mi>p</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo><mi>p</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.273</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Using <em>Dt</em>(<em>&#x03C4;</em>) &#x003D; <em>Df</em>(<em>&#x03C4;</em>) and dividing these factors out, we recover Hamilton&#x2019;s equations.<sup><a class="footnote_link" href="#endnote_26" id="endnote_ref_26">26</a></sup></p>
+<p class="noindent">Using <em>Dt</em>(<em>&#x03C4;</em>) &#x003D; <em>Df</em>(<em>&#x03C4;</em>) and dividing these factors out, we recover Hamilton's equations.<sup><a class="footnote_link" href="#endnote_26" id="endnote_ref_26">26</a></sup></p>
 
 <p>Now consider the special case for which the time is the same as the independent variable: <em>f</em>(<em>&#x03C4;</em>) &#x003D; <em>&#x03C4;</em>, <em>Df</em>(<em>&#x03C4;</em>) &#x003D; 1. In this case <em>q</em> &#x003D; <em>q<sub>e</sub></em> and <em>p</em> &#x003D; <em>p<sub>e</sub></em>. The extended Hamiltonian becomes</p>
 
 <p class="eqtext" id="disp_5.274"><epub:switch id="mathmlSwitch1391"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msubsup><mi>H</mi><mi>e</mi><mo>&#x2032;</mo></msubsup><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo>;</mo><msub><mi>q</mi><mi>e</mi></msub><mo>,</mo><mi>t</mi><mo>;</mo><msub><mi>p</mi><mi>e</mi></msub><mo>,</mo><msub><mi>p</mi><mi>t</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><msub><mi>p</mi><mi>t</mi></msub><mo>+</mo><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><msub><mi>q</mi><mi>e</mi></msub><mo>,</mo><msub><mi>p</mi><mi>e</mi></msub><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.274</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Hamilton&#x2019;s equation for <em>t</em> becomes <em>Dt</em>(<em>&#x03C4;</em>) &#x003D; 1, restating the constraint. Hamilton&#x2019;s equations for <em>Dq<sub>e</sub></em> and <em>Dp<sub>e</sub></em> are directly Hamilton&#x2019;s equations:</p>
+<p class="noindent">Hamilton's equation for <em>t</em> becomes <em>Dt</em>(<em>&#x03C4;</em>) &#x003D; 1, restating the constraint. Hamilton's equations for <em>Dq<sub>e</sub></em> and <em>Dp<sub>e</sub></em> are directly Hamilton's equations:</p>
 
 <p class="eqtext" id="disp_5.275"><epub:switch id="mathmlSwitch1392"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mi>q</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>=</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>p</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mi>p</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>p</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.275</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">The extended Hamiltonian (<a href="chapter005.html#disp_5.274">5.274</a>) does not depend on the independent variable, so it is a conserved quantity. Thus, up to an additive constant <em>p<sub>t</sub></em> is equal to minus the energy. The Hamilton&#x2019;s equation for <em>Dp<sub>t</sub></em> relates the change of the energy to &#x2202;<sub>0</sub><em>H</em>. Note that in the more general case, the momentum conjugate to the time is not the negation of the energy. This choice, <em>t</em>(<em>&#x03C4;</em>) &#x003D; <em>&#x03C4;</em>, is useful for a number of applications.</p>
+<p class="noindent">The extended Hamiltonian (<a href="chapter005.html#disp_5.274">5.274</a>) does not depend on the independent variable, so it is a conserved quantity. Thus, up to an additive constant <em>p<sub>t</sub></em> is equal to minus the energy. The Hamilton's equation for <em>Dp<sub>t</sub></em> relates the change of the energy to &#x2202;<sub>0</sub><em>H</em>. Note that in the more general case, the momentum conjugate to the time is not the negation of the energy. This choice, <em>t</em>(<em>&#x03C4;</em>) &#x003D; <em>&#x03C4;</em>, is useful for a number of applications.</p>
 
 <p>The extension transformation is canonical in the sense that the two sets of equations of motion describe equivalent dynamics. However, the transformation is not symplectic; in fact, it does not even have the same number of input and output variables.</p>
 
@@ -2466,7 +2466,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_5.292"><epub:switch id="mathmlSwitch1413"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>E</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.292</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">For each solution path there is a conserved quantity <em>E</em>. Let&#x2019;s choose a coordinate <em>q<sup>n</sup></em> to be the time in a reduced phase space. We define the dynamical variables for the <em>n</em>-degree-of-freedom reduced phase space:</p>
+<p class="noindent">For each solution path there is a conserved quantity <em>E</em>. Let's choose a coordinate <em>q<sup>n</sup></em> to be the time in a reduced phase space. We define the dynamical variables for the <em>n</em>-degree-of-freedom reduced phase space:</p>
 
 <p class="eqtext" id="disp_5.293"><epub:switch id="mathmlSwitch1414"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>q</mi><mi>r</mi></msub><mo>=</mo><mo stretchy='false'>(</mo><msubsup><mi>q</mi><mi>r</mi><mn>0</mn></msubsup><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><msubsup><mi>q</mi><mi>r</mi><mrow><mi>n</mi><mo>&#x2212;</mo><mn>1</mn></mrow></msubsup><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mi>p</mi><mi>r</mi></msup><mo>=</mo><mo stretchy='false'>[</mo><msubsup><mi>p</mi><mn>0</mn><mi>r</mi></msubsup><mo>,</mo><mo>&#x2026;</mo><mo>,</mo><msubsup><mi>p</mi><mrow><mi>n</mi><mo>&#x2212;</mo><mn>1</mn></mrow><mi>r</mi></msubsup><mo stretchy='false'>]</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.293</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2483,7 +2483,7 @@ layout: chapter
 <p class="eqtext" id="disp_5.296"><epub:switch id="mathmlSwitch1417"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>H</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><msub><mi>q</mi><mi>r</mi></msub><mo>,</mo><msup><mi>p</mi><mi>r</mi></msup><mo stretchy='false'>)</mo><mo>=</mo><mo>&#x2212;</mo><mo stretchy='false'>(</mo><mtext>the</mtext><mtext>&#x2009;</mtext><msub><mi>p</mi><mi>x</mi></msub><mtext>&#x2009;</mtext><mtext>such&#x2009;that</mtext><mtext>&#x2009;</mtext><mi>f</mi><mo stretchy='false'>(</mo><msub><mi>q</mi><mi>r</mi></msub><mo>,</mo><mi>x</mi><mo>;</mo><msup><mi>p</mi><mi>r</mi></msup><mo>,</mo><msub><mi>p</mi><mi>x</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mi>E</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.296</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p404"></a>
 
-<p class="noindent">Note that in the reduced phase space we will have indices for the structured variables in the range 0 &#x2026; <em>n</em>&#x2212;1, whereas in the original phase space the indices are in the range 0 &#x2026; <em>n</em>. We will show that <em>H<sub>r</sub></em> is an appropriate Hamiltonian for the given dynamical system in the reduced phase space. To compute Hamilton&#x2019;s equations we must expand the implicit definition of <em>H<sub>r</sub></em>. We define an auxiliary function</p>
+<p class="noindent">Note that in the reduced phase space we will have indices for the structured variables in the range 0 &#x2026; <em>n</em>&#x2212;1, whereas in the original phase space the indices are in the range 0 &#x2026; <em>n</em>. We will show that <em>H<sub>r</sub></em> is an appropriate Hamiltonian for the given dynamical system in the reduced phase space. To compute Hamilton's equations we must expand the implicit definition of <em>H<sub>r</sub></em>. We define an auxiliary function</p>
 
 <p class="eqtext" id="disp_5.297"><epub:switch id="mathmlSwitch1418"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><msub><mi>q</mi><mi>r</mi></msub><mo>,</mo><msup><mi>p</mi><mi>r</mi></msup><mo stretchy='false'>)</mo><mo>=</mo><mi>f</mi><mo stretchy='false'>(</mo><msub><mi>q</mi><mi>r</mi></msub><mo>,</mo><mi>x</mi><mo>;</mo><msup><mi>p</mi><mi>r</mi></msup><mo>,</mo><mo>&#x2212;</mo><msub><mi>H</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><msub><mi>q</mi><mi>r</mi></msub><mo>,</mo><msup><mi>p</mi><mi>r</mi></msup><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.297</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2495,7 +2495,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_5.299"><epub:switch id="mathmlSwitch1420"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>H</mi><mi>r</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>=</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>f</mi><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>/</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>f</mi><mo stretchy='false'>)</mo></mrow><mi>n</mi></msup><mo>=</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>/</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>)</mo></mrow><mi>n</mi></msup></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>H</mi><mi>r</mi></msub><mo stretchy='false'>)</mo></mrow><mi>i</mi></msup><mo>=</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>f</mi><mo stretchy='false'>)</mo></mrow><mi>i</mi></msup><mo>/</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>f</mi><mo stretchy='false'>)</mo></mrow><mi>n</mi></msup><mo>=</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>)</mo></mrow><mi>i</mi></msup><mo>/</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>)</mo></mrow><mi>n</mi></msup><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.299</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">Using these relations, we can deduce the Hamilton&#x2019;s equations in the reduced phase space from the Hamilton&#x2019;s equations in the original phase space:</p>
+<p class="noindent">Using these relations, we can deduce the Hamilton's equations in the reduced phase space from the Hamilton's equations in the original phase space:</p>
 
 <p class="eqtext" id="disp_5.300"><epub:switch id="mathmlSwitch1421"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><msubsup><mi>q</mi><mi>r</mi><mi>i</mi></msubsup><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mfrac><mrow><mi>D</mi><msup><mi>q</mi><mi>i</mi></msup><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mrow><mi>D</mi><msup><mi>q</mi><mi>n</mi></msup><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></mfrac></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mfrac><mrow><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo><mi>p</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mi>i</mi></msup></mrow><mrow><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo><mi>p</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mi>n</mi></msup></mrow></mfrac></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>H</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><msub><mi>q</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>,</mo><msup><mi>p</mi><mi>r</mi></msup><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mi>i</mi></msup></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.300</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2508,7 +2508,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_5.302"><epub:switch id="mathmlSwitch1423"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>r</mi><mo>,</mo><mi>&#x03C6;</mi><mo>;</mo><msub><mi>p</mi><mi>r</mi></msub><mo>,</mo><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>r</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><msubsup><mi>p</mi><mi>&#x03C6;</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><mi>m</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>V</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.302</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<p class="noindent">There are two degrees of freedom and the Hamiltonian is time independent. Thus the energy, the value of the Hamiltonian, is conserved on realizable paths. Let&#x2019;s forget about time and reparameterize this system in terms of the orbital radius <em>r</em>.<sup><a class="footnote_link" href="#endnote_28" id="endnote_ref_28">28</a></sup> To do this we solve</p>
+<p class="noindent">There are two degrees of freedom and the Hamiltonian is time independent. Thus the energy, the value of the Hamiltonian, is conserved on realizable paths. Let's forget about time and reparameterize this system in terms of the orbital radius <em>r</em>.<sup><a class="footnote_link" href="#endnote_28" id="endnote_ref_28">28</a></sup> To do this we solve</p>
 
 <p class="eqtext" id="disp_5.303"><epub:switch id="mathmlSwitch1424"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>r</mi><mo>,</mo><mi>&#x03C6;</mi><mo>;</mo><msub><mi>p</mi><mi>r</mi></msub><mo>,</mo><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mi>E</mi></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.303</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2518,7 +2518,7 @@ layout: chapter
 
 <p class="noindent">which is the Hamiltonian in the reduced phase space.</p>
 
-<p>Hamilton&#x2019;s equations are now quite simple:</p>
+<p>Hamilton's equations are now quite simple:</p>
 
 <p class="eqtext" id="disp_5.305"><epub:switch id="mathmlSwitch1426"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mfrac><mrow><mi>d</mi><mi>&#x03C6;</mi></mrow><mrow><mi>d</mi><mi>r</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>&#x2202;</mo><mi>H</mi><mo>&#x2032;</mo></mrow><mrow><mo>&#x2202;</mo><msub><mi>p</mi><mi>&#x03C6;</mi></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><msub><mi>p</mi><mi>&#x03C6;</mi></msub></mrow><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac><msup><mrow><mrow><mo>(</mo><mrow><mn>2</mn><mi>m</mi><mo stretchy='false'>(</mo><mi>E</mi><mo>&#x2212;</mo><mi>V</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msubsup><mi>p</mi><mi>&#x03C6;</mi><mn>2</mn></msubsup></mrow><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo>)</mo></mrow></mrow><mrow><mo>&#x2212;</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle></mrow></msup></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.305</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2727,7 +2727,7 @@ layout: chapter
 
 <p class="ntx" id="endnote_22"><a epub:type="noteref" href="#endnote_ref_22"><sup>22</sup></a>There may be some singular cases and topological problems that prevent this from being rigorously true.</p>
 
-<p class="ntx" id="endnote_23"><a epub:type="noteref" href="#endnote_ref_23"><sup>23</sup></a>The various generating functions are traditionally known by the names <em>F</em><sub>1</sub>, <em>F</em><sub>2</sub>, <em>F</em><sub>3</sub>, and <em>F</em><sub>4</sub>. Please don&#x2019;t blame us.</p>
+<p class="ntx" id="endnote_23"><a epub:type="noteref" href="#endnote_ref_23"><sup>23</sup></a>The various generating functions are traditionally known by the names <em>F</em><sub>1</sub>, <em>F</em><sub>2</sub>, <em>F</em><sub>3</sub>, and <em>F</em><sub>4</sub>. Please don't blame us.</p>
 
 <p class="ntx" id="endnote_24"><a epub:type="noteref" href="#endnote_ref_24"><sup>24</sup></a>We augment the Lagrangian with the total time derivative of the constraint so that the Legendre transform will be well defined.</p>
 
