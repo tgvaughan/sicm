@@ -28,7 +28,7 @@ layout: appendix
     [<a href="bibliography.html#bib_24">24</a>], <a href="chapter001.html#p3">p. 3</a></p>
 </blockquote>
 
-<p class="noindent">Here we give an elementary introduction to Scheme.<sup><a href="#endnote_1" id="endnote_ref_1">1</a></sup> For a more precise explanation of the language see the IEEE standard [<a href="bibliography.html#bib_24">24</a>]; for a longer introduction see the textbook [<a href="bibliography.html#bib_1">1</a>].</p>
+<p class="noindent">Here we give an elementary introduction to Scheme.<sup><a class="footnote_link" href="#endnote_1" id="endnote_ref_1">1</a></sup> For a more precise explanation of the language see the IEEE standard [<a href="bibliography.html#bib_24">24</a>]; for a longer introduction see the textbook [<a href="bibliography.html#bib_1">1</a>].</p>
 
 <p>Scheme is a simple programming language based on expressions. An expression names a value. For example, the numeral <span class="font1">3.14</span> names an approximation to a familiar number. There are primitive expressions, such as numerals, that we directly recognize, and there are compound expressions of several kinds.</p>
 
@@ -47,16 +47,16 @@ layout: appendix
 <p class="pq-noindent"><span class="font1"><em>3.14</em></span></p>
 </div>
 
-<p class="noindent">are both compound expressions that name the same number as the numeral 3.14.<sup><a href="#endnote_2" id="endnote_ref_2">2</a></sup> In these cases the symbols <span class="font1">&#x002B;</span> and <sub><span class="font1">&#x002A;</span></sub> name procedures that add and multiply, respectively. If we replace any subexpression of any expression with an expression that names the same thing as the original subexpression, the thing named by the overall expression remains unchanged. In general, a procedure call is written</p>
+<p class="noindent">are both compound expressions that name the same number as the numeral 3.14.<sup><a class="footnote_link" href="#endnote_2" id="endnote_ref_2">2</a></sup> In these cases the symbols <span class="font1">&#x002B;</span> and <sub><span class="font1">&#x002A;</span></sub> name procedures that add and multiply, respectively. If we replace any subexpression of any expression with an expression that names the same thing as the original subexpression, the thing named by the overall expression remains unchanged. In general, a procedure call is written</p>
 
 <p class="noindent1-top"><span class="font1">(</span>   <em>operator   operand-1</em>  <span class="font1">&#x2026;</span>  <em>operand-n</em>  <span class="font1">)</span></p>
 
-<p class="noindent1-top">where <em>operator</em> names a procedure and <em>operand-i</em> names the <em>i</em>th argument.<sup><a href="#endnote_3" id="endnote_ref_3">3</a></sup></p>
+<p class="noindent1-top">where <em>operator</em> names a procedure and <em>operand-i</em> names the <em>i</em>th argument.<sup><a class="footnote_link" href="#endnote_3" id="endnote_ref_3">3</a></sup></p>
 </section>
 <section title="Lambda expressions">
 <h2 class="level2"><strong>Lambda expressions</strong></h2>
 
-<p class="noindent">Just as we use numerals to name numbers, we use <em>&#x03BB;</em>-expressions to name procedures.<sup><a href="#endnote_4" id="endnote_ref_4">4</a></sup> For example, the procedure that squares its input can be written:</p>
+<p class="noindent">Just as we use numerals to name numbers, we use <em>&#x03BB;</em>-expressions to name procedures.<sup><a class="footnote_link" href="#endnote_4" id="endnote_ref_4">4</a></sup> For example, the procedure that squares its input can be written:</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(lambda (x) (<sub>&#x002A;</sub> x x))</span></p>
@@ -80,7 +80,7 @@ layout: appendix
 <section title="Definitions">
 <h2 class="level2"><strong>Definitions</strong></h2>
 
-<p class="noindent">We can use the <span class="font1">define</span> construct to give a name to any object. For example, if we make the definitions<sup><a href="#endnote_5" id="endnote_ref_5">5</a></sup></p>
+<p class="noindent">We can use the <span class="font1">define</span> construct to give a name to any object. For example, if we make the definitions<sup><a class="footnote_link" href="#endnote_5" id="endnote_ref_5">5</a></sup></p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define pi 3.141592653589793)</span></p>
@@ -104,7 +104,7 @@ layout: appendix
 
 <p class="noindent">which we may read: &#x201C;To square <em>x</em> multiply <em>x</em> by <em>x</em>.&#x201D;</p>
 
-<p>In Scheme, procedures may be passed as arguments and returned as values. For example, it is possible to make a procedure that implements the mathematical notion of the composition of two functions:<sup><a href="#endnote_6" id="endnote_ref_6">6</a></sup></p>
+<p>In Scheme, procedures may be passed as arguments and returned as values. For example, it is possible to make a procedure that implements the mathematical notion of the composition of two functions:<sup><a class="footnote_link" href="#endnote_6" id="endnote_ref_6">6</a></sup></p>
 <a id="p500"></a><div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define compose</span></p>
@@ -305,7 +305,7 @@ layout: appendix
 <p class="pq-noindent"><span class="font1"><em>6</em></span></p>
 </div>
 
-<p>Lists are built from pairs. A pair is made using the constructor <span class="font1">cons</span>. The selectors for the two components of the pair are <span class="font1">car</span> and <span class="font1">cdr</span> (pronounced &#x201C;could-er&#x201D;).<sup><a href="#endnote_7" id="endnote_ref_7">7</a></sup> A list is a chain of pairs, such that the <span class="font1">car</span> of each pair is the list element and the <span class="font1">cdr</span> of each pair is the next pair, except for the last <span class="font1">cdr</span>, which is a distinguishable value called the empty list and is written <span class="font1">()</span>. Thus,</p>
+<p>Lists are built from pairs. A pair is made using the constructor <span class="font1">cons</span>. The selectors for the two components of the pair are <span class="font1">car</span> and <span class="font1">cdr</span> (pronounced &#x201C;could-er&#x201D;).<sup><a class="footnote_link" href="#endnote_7" id="endnote_ref_7">7</a></sup> A list is a chain of pairs, such that the <span class="font1">car</span> of each pair is the list element and the <span class="font1">cdr</span> of each pair is the next pair, except for the last <span class="font1">cdr</span>, which is a distinguishable value called the empty list and is written <span class="font1">()</span>. Thus,</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(car a-list)</span></p>
@@ -367,7 +367,7 @@ layout: appendix
 <section title="Symbols">
 <h2 class="level2"><strong>Symbols</strong></h2>
 
-<p class="noindent">Symbols are a very important kind of primitive data type that we use to make programs and algebraic expressions. You probably have noticed that Scheme programs look just like lists. In fact, they are lists. Some of the elements of the lists that make up programs are symbols, such as <span class="font1">&#x002B;</span> and <span class="font1">vector</span>.<sup><a href="#endnote_8" id="endnote_ref_8">8</a></sup> If we are to make programs that can manipulate programs, we need to be able to write an expression that names such a symbol. This is accomplished by the mechanism of <em>quotation</em>. The name of the symbol <a id="p505"></a><span class="font1">&#x002B;</span> is the expression <span class="font1">&#x2019;&#x002B;</span>, and in general the name of an expression is the expression preceded by a single quote character. Thus the name of the expression <span class="font1">(&#x002B; 3 a)</span> is <span class="font1">&#x2019;(&#x002B; 3 a)</span>.</p>
+<p class="noindent">Symbols are a very important kind of primitive data type that we use to make programs and algebraic expressions. You probably have noticed that Scheme programs look just like lists. In fact, they are lists. Some of the elements of the lists that make up programs are symbols, such as <span class="font1">&#x002B;</span> and <span class="font1">vector</span>.<sup><a class="footnote_link" href="#endnote_8" id="endnote_ref_8">8</a></sup> If we are to make programs that can manipulate programs, we need to be able to write an expression that names such a symbol. This is accomplished by the mechanism of <em>quotation</em>. The name of the symbol <a id="p505"></a><span class="font1">&#x002B;</span> is the expression <span class="font1">&#x2019;&#x002B;</span>, and in general the name of an expression is the expression preceded by a single quote character. Thus the name of the expression <span class="font1">(&#x002B; 3 a)</span> is <span class="font1">&#x2019;(&#x002B; 3 a)</span>.</p>
 
 <p>We can test if two symbols are identical by using the predicate <span class="font1">eq?</span>. For example, we can write a program to determine if an expression is a sum:</p>
 <div class="pull-quote">
@@ -394,7 +394,7 @@ layout: appendix
 <section title="Effects">
 <h2 class="level2"><strong>Effects</strong></h2>
 
-<p class="noindent">Sometimes it is necessary to perform some action, such as plot a point or print a value, in the process of a computation. Such an action is called an <em>effect</em>.<sup><a href="#endnote_9" id="endnote_ref_9">9</a></sup> For example, to see in more detail how the factorial program computes its answer we can interpolate a <span class="font1">write-line</span> statement in the body of the <span class="font1">factlp</span> internal procedure. This will print out a list of the count and the answer for each iteration:</p>
+<p class="noindent">Sometimes it is necessary to perform some action, such as plot a point or print a value, in the process of a computation. Such an action is called an <em>effect</em>.<sup><a class="footnote_link" href="#endnote_9" id="endnote_ref_9">9</a></sup> For example, to see in more detail how the factorial program computes its answer we can interpolate a <span class="font1">write-line</span> statement in the body of the <span class="font1">factlp</span> internal procedure. This will print out a list of the count and the answer for each iteration:</p>
 <div class="pull-quote">
 
 <p class="pq-noindent"><span class="font1">(define (factorial n)</span></p>
@@ -538,7 +538,7 @@ layout: appendix
 <p class="pqp1"><span class="font1">(jack jerry)</span></p>
 </div>
 
-<p>It is also possible to assign to the elements of a data structure, such as a list or vector. This is unnecessary in our work so we won&#x2019;t tell you about how to do it&#x0021; In general, it is good practice to avoid assignments whenever possible, but if you need them they are available.<sup><a href="#endnote_10" id="endnote_ref_10">10</a></sup></p>
+<p>It is also possible to assign to the elements of a data structure, such as a list or vector. This is unnecessary in our work so we won&#x2019;t tell you about how to do it&#x0021; In general, it is good practice to avoid assignments whenever possible, but if you need them they are available.<sup><a class="footnote_link" href="#endnote_10" id="endnote_ref_10">10</a></sup></p>
 
 <p class="ntx" id="endnote_1"><a epub:type="noteref" href="#endnote_ref_1"><sup>1</sup></a>Many of the statements here are valid only assuming that no assignments are used.</p>
 
