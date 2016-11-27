@@ -291,84 +291,43 @@ layout: chapter
 <a id="p19"></a>
 
 <p>Let's check this numerically by varying the test path, adding some amount of a test function that is zero at the endpoints <em>t</em> &#x003D; <em>t</em><sub>1</sub> and <em>t</em> &#x003D; <em>t</em><sub>2</sub>. To make a function <em>&#x03B7;</em> that is zero at the endpoints, given a sufficiently well-behaved function <em>&#x03BD;</em>, we can use <em>&#x03B7;</em>(<em>t</em>) &#x003D; (<em>t</em> &#x2212; <em>t</em><sub>1</sub>)(<em>t</em> &#x2212; <em>t</em><sub>2</sub>)<em>&#x03BD;</em>(<em>t</em>). This can be implemented:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((make-eta nu t1 t2) t)</span></p>
-
-<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> (- t t1) (- t t2) (nu t)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((make-eta nu t1 t2) t)
+    (* (- t t1) (- t t2) (nu t)))
+{% endhighlight %}</div>
 
 <p class="noindent">We can use this to compute the action for a free particle over a path varied from the given path, as a function of <em>&#x03F5;</em>:<sup><a class="footnote_link" href="#endnote_38" id="endnote_ref_38">38</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((varied-free-particle-action mass q nu t1 t2) eps)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((eta (make-eta nu t1 t2)))</span></p>
-<table class="tablei1">
-<tr>
-<td class="td1" valign="top"><span class="font1">(Lagrangian-action</span></td>
-<td class="td1" valign="top"><span class="font1">(L-free-particle mass)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(&#x002B; q (<sub>&#x002A;</sub> eps eta))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">t1</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">t2)))</span></td>
-</tr>
-</table>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((varied-free-particle-action mass q nu t1 t2) eps)
+    (let ((eta (make-eta nu t1 t2)))
+        (Lagrangian-action (L-free-particle mass)
+                           (+ q (* eps eta))
+                           t1
+                           t2)))
+{% endhighlight %}</div>
 
 <p class="noindent">The action for the varied path, with <em>&#x03BD;</em>(<em>t</em>) &#x003D; (sin <em>t,</em> cos <em>t</em>, <em>t</em><sup>2</sup>) and <em>&#x03F5;</em> &#x003D; 0.001, is, as expected, larger than for the test path:</p>
-<div class="pull-quote">
-<table class="table1">
-<tr>
-<td class="td1" valign="top">((varied-free-particle-action</td>
-<td class="td1" valign="top">3.0 test-path</td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top">(up sin cos square)</td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top">0.0 10.0)</td>
-</tr>
-</table>
-
-<p class="pq-noindent"><span class="font1">0.001)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>436.29121428571153</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((varied-free-particle-action 3.0 test-path
+                              (up sin cos square)
+                              0.0 10.0)
+0.001)
+{% endhighlight %}</div>
+<div class="result">{% highlight scheme %}
+436.29121428571153
+{% endhighlight %}</div>
 
 <p>We can numerically compute the value of <em>&#x03F5;</em> for which the action is minimized. We search between, say, &#x2212;2 and 1:<sup><a class="footnote_link" href="#endnote_39" id="endnote_ref_39">39</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(minimize</span></p>
-<table class="tablei2">
-<tr>
-<td class="td1" valign="top">(varied-free-particle-action</td>
-<td class="td1" valign="top">3.0 test-path</td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top">(up sin cos square)</td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top">0.0 10.0)</td>
-</tr>
-</table>
-
-<p class="pq-noindent"><span class="font1">-2.0 1.0)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(-1.5987211554602254e-14 435.0000000000237 5)</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(minimize
+(varied-free-particle-action 3.0 test-path
+                             (up sin cos square)
+                             0.0 10.0)
+-2.0 1.0)
+{% endhighlight %}</div>
+<div class="result">{% highlight scheme %}
+(-1.5987211554602254e-14 435.0000000000237 5)
+{% endhighlight %}</div>
 <a id="p20"></a>
 
 <p class="noindent">We find exactly what is expected&#x2014;that the best value for <em>&#x03F5;</em> is zero,<sup><a class="footnote_link" href="#endnote_40" id="endnote_ref_40">40</a></sup> and the minimum value of the action is the action along the straight path.</p>
@@ -382,32 +341,22 @@ layout: chapter
 <a id="p21"></a>
 
 <p>Having specified a parametric path, we can construct a parametric action that is just the action computed along the parametric path:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((parametric-path-action Lagrangian t0 q0 t1 q1) qs)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((path (make-path t0 q0 t1 q1 qs)))</span></p>
-
-<p class="pqp2"><span class="font1">(Lagrangian-action Lagrangian path t0 t1)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((parametric-path-action Lagrangian t0 q0 t1 q1) qs)
+    (let ((path (make-path t0 q0 t1 q1 qs)))
+        (Lagrangian-action Lagrangian path t0 t1)))
+{% endhighlight %}</div>
 
 <p>We can find approximate solution paths by finding parameters that minimize the action. We do this minimization with a canned multidimensional minimization procedure:<sup><a class="footnote_link" href="#endnote_43" id="endnote_ref_43">43</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (find-path Lagrangian t0 q0 t1 q1 n)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((initial-qs (linear-interpolants q0 q1 n)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((minimizing-qs</span></p>
-
-<p class="pqp6"><span class="font1">(multidimensional-minimize</span></p>
-
-<p class="pqp7"><span class="font1">(parametric-path-action Lagrangian t0 q0 t1 q1)</span></p>
-
-<p class="pqp7"><span class="font1">initial-qs)))</span></p>
-
-<p class="pqp4"><span class="font1">(make-path t0 q0 t1 q1 minimizing-qs))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (find-path Lagrangian t0 q0 t1 q1 n)
+    (let ((initial-qs (linear-interpolants q0 q1 n)))
+        (let ((minimizing-qs
+                (multidimensional-minimize
+                    (parametric-path-action Lagrangian t0 q0 t1 q1)
+                    initial-qs)))
+                (make-path t0 q0 t1 q1 minimizing-qs))))
+{% endhighlight %}</div>
 
 <p class="noindent">The procedure <span class="font1">multidimensional-minimize</span> takes a procedure (in this case the value of the call to <span class="font1">parametric-path-action</span>) that computes the function to be minimized (in this case the action) and an initial guess for the parameters. Here we choose the initial guess to be equally spaced points on a straight line between the two endpoints, computed with <span class="font1">linear-interpolants</span>.</p>
 
@@ -3643,23 +3592,16 @@ layout: chapter
 
 <p class="ntx" id="endnote_41"><a epub:type="noteref" href="#endnote_ref_41"><sup>41</sup></a>There are lots of good ways to make such a parametric set of approximating trajectories. One could use splines or higher-order interpolating polynomials; one could use Chebyshev polynomials; one could use Fourier components. The choice depends upon the kinds of trajectories one wants to approximate.</p>
 
-<p class="ntx" id="endnote_42"><a epub:type="noteref" href="#endnote_ref_42"><sup>42</sup></a>Here is one way to implement <span class="font1">make-path</span>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (make-path t0 q0 t1 q1 qs)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((n (length qs)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((ts (linear-interpolants t0 t1 n)))</span></p>
-
-<p class="pqp3"><span class="font1">(Lagrange-interpolation-function</span></p>
-
-<p class="pqp3a"><span class="font1">(append (list q0) qs (list q1))</span></p>
-
-<p class="pqp3a"><span class="font1">(append (list t0) ts (list t1))))))</span></p>
-</div>
-
-<p class="noindent">The procedure <span class="font1">linear-interpolants</span> produces a list of elements that linearly interpolate the first two arguments. We use this procedure here to specify <span class="font1">ts</span>, the <span class="font1">n</span> evenly spaced intermediate times between <span class="font1">t0</span> and <span class="font1">t1</span> at which the path will be specified. The parameters being adjusted, <span class="font1">qs</span>, are the positions at these intermediate times. The procedure <span class="font1">Lagrange-interpolation-function</span> takes a list of values and a list of times and produces a procedure that computes the Lagrange interpolation polynomial that passes through these points.</p>
+<div id="endnote_42"><p class="ntx"><a epub:type="noteref" href="#endnote_ref_42"><sup>42</sup></a>Here is one way to implement <span class="font1">make-path</span>:</p>
+<div class="code">{% highlight scheme %}
+(define (make-path t0 q0 t1 q1 qs)
+    (let ((n (length qs)))
+        (let ((ts (linear-interpolants t0 t1 n)))
+            (Lagrange-interpolation-function
+                (append (list q0) qs (list q1))
+                (append (list t0) ts (list t1))))))
+{% endhighlight %}</div>
+<p class="noindent">The procedure <span class="font1">linear-interpolants</span> produces a list of elements that linearly interpolate the first two arguments. We use this procedure here to specify <span class="font1">ts</span>, the <span class="font1">n</span> evenly spaced intermediate times between <span class="font1">t0</span> and <span class="font1">t1</span> at which the path will be specified. The parameters being adjusted, <span class="font1">qs</span>, are the positions at these intermediate times. The procedure <span class="font1">Lagrange-interpolation-function</span> takes a list of values and a list of times and produces a procedure that computes the Lagrange interpolation polynomial that passes through these points.</p></div>
 
 <p class="ntx" id="endnote_43"><a epub:type="noteref" href="#endnote_ref_43"><sup>43</sup></a>The minimizer used here is the Nelder&#x2013;Mead downhill simplex method. As usual with numerical procedures, the interface to the <span class="font1">nelder-mead</span> procedure is complex, with lots of optional parameters to let the user control errors effectively. For this presentation we have specialized <span class="font1">nelder-mead</span> by wrapping it in the more palatable <span class="font1">multidimensional-minimize</span>. Unfortunately, you will have to learn to live with complicated numerical procedures someday.</p>
 
