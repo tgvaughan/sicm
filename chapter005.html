@@ -111,44 +111,29 @@ layout: chapter
 <p class="noindent">The procedure <span class="font1">F-&#x003E;CH</span> takes a procedure <span class="font1">F</span> implementing a transformation of configuration coordinates and returns a procedure implementing a transformation of phase-space coordinates:<sup><a class="footnote_link" href="#endnote_4" id="endnote_ref_4">4</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define ((F->CH F) state)
-(up (time state)
-(F state)
-<table class="table1n">
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">(solve-linear-right</span></p></td>
-<td class="td1" valign="top"><span class="font1">(momentum state)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(((partial 1) F) state))))</span></td>
-</tr>
-</table>
+  (up (time state)
+      (F state)
+      (solve-linear-right
+        (momentum state)
+        (((partial 1) F) state))))
 {% endhighlight %}</div>
 
 <p>Consider a particle moving in a central field. In rectangular coordinates a Hamiltonian is</p>
 <div class="code">{% highlight scheme %}
 (define ((H-central m V) state)
-(let ((x (coordinate state))
-(p (momentum state)))
-(+ (/ (square p) (* 2 m))
-(V (sqrt (square x))))))
+  (let ((x (coordinate state))
+        (p (momentum state)))
+    (+ (/ (square p) (* 2 m))
+       (V (sqrt (square x))))))
 {% endhighlight %}</div>
 
 <p class="noindent">Let's look at this Hamiltonian in polar coordinates. The phase-space transformation is obtained by applying <span class="font1">F-&#x003E;CH</span> to the procedure <span class="font1">p-&#x003E;r</span> that takes a time and a polar tuple and returns a tuple of rectangular coordinates (see <a href="chapter001.html#h3_1-6-1">section 1.6.1</a>). The transformation is time independent so the Hamiltonian transforms by composition. In polar coordinates the Hamiltonian is</p>
 <div class="code">{% highlight scheme %}
 (show-expression
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1">((compose</span></td>
-<td class="td1" valign="top"><span class="font1">(H-central 'm (literal-function 'V))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(F->CH p->r))</span></td>
-</tr>
-</table>
-(up 't (up 'r 'phi) (down 'p_r 'p_phi))))
+  ((compose
+     (H-central 'm (literal-function 'V))
+     (F->CH p->r))
+   (up 't (up 'r 'phi) (down 'p_r 'p_phi))))
 {% endhighlight %}</div>
 <div class="result-math">
 
@@ -165,29 +150,22 @@ layout: chapter
 <p class="noindent">The correction is computed by</p>
 <div class="code">{% highlight scheme %}
 (define ((F->K F) state)
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1">(- (* (solve-linear-right</span></td>
-<td class="td1" valign="top"><span class="font1">(momentum state)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(((partial 1) F) state))</span></td>
-</tr>
-</table>
-(((partial 0) F) state))))
+  (- (* (solve-linear-right
+          (momentum state)
+          (((partial 1) F) state))
+        (((partial 0) F) state))))
 {% endhighlight %}</div>
 
 <p>For example, consider a transformation to coordinates translating with velocity <em>v</em>:</p>
 <div class="code">{% highlight scheme %}
 (define ((translating v) state)
-(+ (coordinates state) (* v (time state))))
+  (+ (coordinates state) (* v (time state))))
 {% endhighlight %}</div>
 
 <p class="noindent">We compute the additive adjustment required for the Hamiltonian:</p>
 <div class="code">{% highlight scheme %}
 ((F->K (translating (up 'v^x 'v^y 'v^z)))
-(up 't (up 'x 'y 'z) (down 'p_x 'p_y 'p_z)))
+ (up 't (up 'x 'y 'z) (down 'p_x 'p_y 'p_z)))
 {% endhighlight %}</div><div class="result">{% highlight scheme %}
 (+ (* -1 p_x v^x) (* -1 p_y v^y) (* -1 p_z v^z))
 {% endhighlight %}</div>
@@ -203,29 +181,21 @@ layout: chapter
 <p>The transformed Hamiltonian is:</p>
 <div class="code">{% highlight scheme %}
 (define H-prime
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1">(+ (compose</span></td>
-<td class="td1" valign="top"><span class="font1">(H-free 'm)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(F->CH (translating (up 'v^x 'v^y 'v^z))))</span></td>
-</tr>
-</table>
-(F->K (translating (up 'v^x 'v^y 'v^z)))))
+  (+ (compose (H-free 'm)
+              (F->CH (translating (up 'v^x 'v^y 'v^z))))
+     (F->K (translating (up 'v^x 'v^y 'v^z)))))
 {% endhighlight %}</div>
 <div class="code">{% highlight scheme %}
 (H-prime
-(up 't
-(up 'xprime 'yprime 'zprime)
-(down 'pprime_x 'pprime_y 'pprime_z)))
+  (up 't
+      (up 'xprime 'yprime 'zprime)
+      (down 'pprime_x 'pprime_y 'pprime_z)))
 (+ (* -1 pprime_x v^x)
-(* -1 pprime_y v^y)
-(* -1 pprime_z v^z)
-(/ (* 1/2 (expt pprime_x 2)) m)
-(/ (* 1/2 (expt pprime_y 2)) m)
-(/ (* 1/2 (expt pprime_z 2)) m))
+   (* -1 pprime_y v^y)
+   (* -1 pprime_z v^z)
+   (/ (* 1/2 (expt pprime_x 2)) m)
+   (/ (* 1/2 (expt pprime_y 2)) m)
+   (/ (* 1/2 (expt pprime_z 2)) m))
 {% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_5-1"><strong>Exercise  5.1: Galilean invariance</strong></p>
@@ -302,8 +272,8 @@ layout: chapter
 <p>We can formalize this test as a program:</p>
 <div class="code">{% highlight scheme %}
 (define (canonical? C H Hprime)
-(- (compose (Hamiltonian->state-derivative H) C)
-(* (D C) (Hamiltonian->state-derivative Hprime))))
+  (- (compose (Hamiltonian->state-derivative H) C)
+     (* (D C) (Hamiltonian->state-derivative Hprime))))
 {% endhighlight %}</div>
 
 <p class="noindent">where <span class="font1">Hamiltonian-&#x003E;state-derivative</span>, which was introduced in chapter 3, implements <em>D<sub>s</sub></em>. The transformation is canonical if these residuals are zero.</p>
@@ -357,40 +327,28 @@ layout: chapter
 <p class="noindent">Here <em>&#x03B1;</em> is an arbitrary parameter. We define:</p>
 <div class="code">{% highlight scheme %}
 (define ((polar-canonical alpha) state)
-(let ((t (time state))
-(theta (coordinate state))
-(I (momentum state)))
-(let ((x (* (sqrt (/ (* 2 I) alpha)) (sin theta)))
-(p_x (* (sqrt (* 2 alpha I)) (cos theta))))
-(up t x p_x))))
+  (let ((t (time state))
+        (theta (coordinate state))
+        (I (momentum state)))
+    (let ((x (* (sqrt (/ (* 2 I) alpha)) (sin theta)))
+          (p_x (* (sqrt (* 2 alpha I)) (cos theta))))
+      (up t x p_x))))
 {% endhighlight %}</div>
 
 <p class="noindent">And now we just run our test:</p>
 <div class="code">{% highlight scheme %}
 (define ((H-harmonic m k) s)
-(+ (/ (square (momentum s)) (* 2 m))
-(* 1/2 k (square (coordinate s)))))
-<p> </p>
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1">((canonical?</span></td>
-<td class="td1" valign="top"><span class="font1">(polar-canonical 'alpha)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(H-harmonic 'm 'k)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(compose (H-harmonic 'm 'k)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top">
-<p class="pqp5c"><span class="font1">(polar-canonical 'alpha)))</span></p></td>
-</tr>
-</table>
-(up 't 'theta 'I))
+  (+ (/ (square (momentum s)) (* 2 m))
+     (* 1/2 k (square (coordinate s)))))
+
+((canonical?
+   (polar-canonical 'alpha)
+   (H-harmonic 'm 'k)
+   (compose (H-harmonic 'm 'k)
+            (polar-canonical 'alpha)))
+ (up 't 'theta 'I))
+
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (up 0 0 0)
 {% endhighlight %}</div>
 
@@ -465,12 +423,12 @@ layout: chapter
 <p class="noindent">as code:<sup><a class="footnote_link" href="#endnote_9" id="endnote_ref_9">9</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define (T-func s)
-(up 1
-(zero-like (coordinates s))
-(zero-like (momenta s))))
+  (up 1
+      (zero-like (coordinates s))
+      (zero-like (momenta s))))
 
 (define ((D-phase-space H) s)
-(up 0 (((partial 2) H) s) (- (((partial 1) H) s))))
+  (up 0 (((partial 2) H) s) (- (((partial 1) H) s))))
 {% endhighlight %}</div>
 
 <p>If we assume that <em>H</em>&#x2032; &#x003D; <em>H</em> &#x2218; <em>C</em><sub>H</sub> &#x002B; <em>K</em>, then the canonical condition (<a href="chapter005.html#disp_5.20">5.20</a>) becomes</p>
@@ -497,14 +455,14 @@ layout: chapter
 <p>These can be implemented as follows:</p>
 <div class="code">{% highlight scheme %}
 (define (canonical-H? C H)
-(- (compose (D-phase-space H) C)
-(* (D C)
-(D-phase-space (compose H C)))))
+  (- (compose (D-phase-space H) C)
+     (* (D C)
+        (D-phase-space (compose H C)))))
 
 (define (canonical-K? C K)
-(- (compose T-func C)
-(* (D C)
-(+ T-func (D-phase-space K)))))
+  (- (compose T-func C)
+     (* (D C)
+        (+ T-func (D-phase-space K)))))
 {% endhighlight %}</div>
 </section>
 </section>
@@ -524,13 +482,13 @@ layout: chapter
 <p class="noindent">As a program this is</p>
 <div class="code">{% highlight scheme %}
 (define ((rotating Omega) state)
-(let ((t (time state)) (qp (coordinate state)))
-(let ((xp (ref qp 0)) (yp (ref qp 1)) (zp (ref qp 2)))
-(up (- (* (cos (* Omega t)) xp)
-(* (sin (* Omega t)) yp))
-(+ (* (sin (* Omega t)) xp)
-(* (cos (* Omega t)) yp))
-zp))))
+  (let ((t (time state)) (qp (coordinate state)))
+    (let ((xp (ref qp 0)) (yp (ref qp 1)) (zp (ref qp 2)))
+      (up (- (* (cos (* Omega t)) xp)
+             (* (sin (* Omega t)) yp))
+          (+ (* (sin (* Omega t)) xp)
+             (* (cos (* Omega t)) yp))
+          zp))))
 {% endhighlight %}</div>
 
 <p class="noindent">The extension of this transformation to a phase-space transformation is</p>
@@ -541,12 +499,12 @@ zp))))
 <p class="noindent">We first verify that this time-dependent transformation satisfies equation (<a href="chapter005.html#disp_5.41">5.41</a>). We will try it for an arbitrary Hamiltonian with three degrees of freedom:</p>
 <div class="code">{% highlight scheme %}
 (define H-arbitrary
-(literal-function 'H
-(-> (UP Real (UP Real Real Real) (DOWN Real Real Real))
-Real)))
+  (literal-function 'H
+                    (-> (UP Real (UP Real Real Real) (DOWN Real Real Real))
+                        Real)))
 
 ((canonical-H? (C-rotating 'Omega) H-arbitrary)
-(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
+ (up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
 (up 0 (up 0 0 0) (down 0 0 0))
 {% endhighlight %}</div>
 
@@ -555,7 +513,7 @@ Real)))
 <p>Since we have a point transformation, we can compute the required adjustment to the Hamiltonian:</p>
 <div class="code">{% highlight scheme %}
 ((F->K (rotating 'Omega))
-(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
+ (up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
 (+ (* Omega pp_x yp) (* -1 Omega pp_y xp))
 {% endhighlight %}</div>
 
@@ -567,16 +525,16 @@ Real)))
 <p class="noindent">which is minus the rate of rotation of the coordinate system multiplied by the angular momentum. We implement <em>K</em> as a procedure</p>
 <div class="code">{% highlight scheme %}
 (define ((K Omega) s)
-(let ((qp (coordinate s)) (pp (momentum s)))
-(let ((xp (ref qp 0)) (yp (ref qp 1))
-(ppx (ref pp 0)) (ppy (ref pp 1)))
-(* -1 Omega (- (* xp ppy) (* yp ppx))))))
+  (let ((qp (coordinate s)) (pp (momentum s)))
+    (let ((xp (ref qp 0)) (yp (ref qp 1))
+                          (ppx (ref pp 0)) (ppy (ref pp 1)))
+      (* -1 Omega (- (* xp ppy) (* yp ppx))))))
 {% endhighlight %}</div>
 
 <p class="noindent">and apply the test. We find:</p>
 <div class="code">{% highlight scheme %}
 ((canonical-K? (C-rotating 'Omega) (K 'Omega))
-(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
+ (up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
 (up 0 (up 0 0 0) (down 0 0 0))
 {% endhighlight %}</div>
 
@@ -630,12 +588,12 @@ Real)))
 <p>As a program, this is<sup><a class="footnote_link" href="#endnote_12" id="endnote_ref_12">12</a>,<a class="footnote_link" href="#endnote_13" id="endnote_ref_13">13</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define (J-func DHs)
-(up 0 (ref DHs 2) (- (ref DHs 1))))
+  (up 0 (ref DHs 2) (- (ref DHs 1))))
 
 (define ((canonical-transform? C) s)
-(let ((J ((D J-func) (compatible-shape s)))
-(DCs ((D C) s)))
-(- J (* DCs J (transpose DCs s)))))
+  (let ((J ((D J-func) (compatible-shape s)))
+        (DCs ((D C) s)))
+    (- J (* DCs J (transpose DCs s)))))
 {% endhighlight %}</div>
 
 <p>This condition, equation (<a href="chapter005.html#disp_5.52">5.52</a>), on <em>C</em><sub>H</sub>, called the <em>canonical condition</em>, does not depend on the details of <em>H</em>. This is a remarkable result: we can decide whether a phase-space transformation preserves the dynamics of Hamilton's equations without further reference to the details of the dynamical system. If the transformation is time dependent we can add a correction to the Hamiltonian to make it canonical.</p>
@@ -647,7 +605,7 @@ Real)))
 <p class="noindent">The polar-canonical transformation satisfies the canonical condition:</p>
 <div class="code">{% highlight scheme %}
 ((canonical-transform? (polar-canonical 'alpha))
-(up 't 'theta 'I))
+ (up 't 'theta 'I))
 (up (up 0 0 0) (up 0 0 0) (up 0 0 0))
 {% endhighlight %}</div>
 <a id="p352"></a>
@@ -655,15 +613,15 @@ Real)))
 <p>But not every transformation we might try satisfies the canonical condition. For example, we might try <em>x</em> &#x003D; <em>p</em> sin <em>&#x03B8;</em> and <em>p<sub>x</sub></em> &#x003D; <em>p</em> cos <em>&#x03B8;</em>. The implementation is</p>
 <div class="code">{% highlight scheme %}
 (define (a-non-canonical-transform state)
-(let ((t (time state))
-(theta (coordinate state))
-(p (momentum state)))
-(let ((x (* p (sin theta)))
-(p_x (* p (cos theta))))
-(up t x p_x))))
+  (let ((t (time state))
+        (theta (coordinate state))
+        (p (momentum state)))
+    (let ((x (* p (sin theta)))
+          (p_x (* p (cos theta))))
+      (up t x p_x))))
 
 ((canonical-transform? a-non-canonical-transform)
-(up 't 'theta 'p))
+ (up 't 'theta 'p))
 (up (up 0 0 0) (up 0 0 (+ -1 p)) (up 0 (+ 1 (* -1 p)) 0))
 {% endhighlight %}</div>
 
@@ -717,31 +675,16 @@ Real)))
 <p class="noindent">It is convenient to reformulate the canonical condition in terms of matrices. We can obtain a matrix representation of a structure with the utility <span class="font1">s-&#x003E;m</span> that takes a structure that represents a multiplier of a linear transformation and returns a matrix representation of the multiplier. The procedure <span class="font1">s-&#x003E;m</span> takes three arguments: <span class="font1">(s-&#x003E;m ls A rs)</span>. The <span class="font1">ls</span> and <span class="font1">rs</span> specify the shapes of objects that multiply <span class="font1">A</span> on the left and right to give a numerical value. These specify the basis. So, the matrix representation of the multiplier corresponding to <epub:switch id="mathmlSwitch1138"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>J</mi><mo>&#x02DC;</mo></mover></math></epub:case></epub:switch> is</p>
 <div class="code">{% highlight scheme %}
 (let* ((s (up 't (up 'x 'y) (down 'px 'py)))
-(s* (compatible-shape s))
-(J ((D J-func) s*)))
-(s->m s* J s*))
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(matrix-by-rows</em></span></span></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 1 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0 1)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 -1 0 0 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 -1 0 0))</em></span></span></td>
-</tr>
-</table>
+       (s* (compatible-shape s))
+       (J ((D J-func) s*)))
+  (s->m s* J s*))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+(matrix-by-rows
+  (list 0 0 0 0 0)
+  (list 0 0 0 1 0)
+  (list 0 0 0 0 1)
+  (list 0 -1 0 0 0)
+  (list 0 0 -1 0 0))
 {% endhighlight %}</div>
 
 <p class="noindent">This matrix, <strong>J</strong>, is useful, so we supply a procedure <span class="font1">J-matrix</span> so that <span class="font1">(J-matrix n)</span> gives this matrix for an <em>n</em> degree-of-freedom system.</p>
@@ -755,34 +698,37 @@ Real)))
 <p>There is a further simplification available. The elements of the first row and the first column of the matrix representation of <epub:switch id="mathmlSwitch1140"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>J</mi><mo>&#x02DC;</mo></mover></math></epub:case></epub:switch> are all zeros. This has simplifying consequences. Consider a general transformation of phase-space states (for two degrees of freedom):</p>
 <div class="code">{% highlight scheme %}
 (define C-general
-(literal-function 'C
-(-> (UP Real (UP Real Real) (DOWN Real Real))
-(UP Real (UP Real Real) (DOWN Real Real)))))
+  (literal-function 'C
+                    (-> (UP Real (UP Real Real) (DOWN Real Real))
+                        (UP Real (UP Real Real) (DOWN Real Real)))))
 {% endhighlight %}</div>
 
 <p class="noindent">Consider transformations for which the time does not depend on the coordinates or momenta<sup><a class="footnote_link" href="#endnote_14" id="endnote_ref_14">14</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define (C-simple-time s)
-(let ((cs (C-general s)))
-(up ((literal-function 'tau) (time s))
-(coordinates cs)
-(momenta cs))))
+  (let ((cs (C-general s)))
+    (up ((literal-function 'tau) (time s))
+        (coordinates cs)
+        (momenta cs))))
 {% endhighlight %}</div>
 
 <p class="noindent">For this kind of transformation the first row and the first column of the residuals of the <span class="font1">canonical-transform?</span> test are identically zero:</p>
 <div class="code">{% highlight scheme %}
 (let* ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))
-(s* (compatible-shape s)))
-(m:nth-row
-(s->m s* ((canonical-transform? C-simple-time) s) s*)
-0))
+       (s* (compatible-shape s)))
+  (m:nth-row
+    (s->m s* ((canonical-transform? C-simple-time) s) s*)
+    0))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (up 0 0 0 0 0)
-
+{% endhighlight %}</div>
+<div class="code">{% highlight scheme %}
 (let ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))
-(s* (compatible-shape s)))
-(m:nth-col
-(s->m s* ((canonical-transform? C-simple-time) s) s*)
-0))
+      (s* (compatible-shape s)))
+  (m:nth-col
+    (s->m s* ((canonical-transform? C-simple-time) s) s*)
+    0))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (up 0 0 0 0 0)
 {% endhighlight %}</div>
 <a id="p355"></a>
@@ -807,9 +753,9 @@ Real)))
 <p class="noindent">is called a <em>symplectic matrix</em>. We can determine whether a matrix is symplectic:</p>
 <div class="code">{% highlight scheme %}
 (define (symplectic-matrix? M)
-(let ((2n (m:dimension M)))
-(let ((J (symplectic-unit (quotient 2n 2))))
-(- J (* M J (transpose M))))))
+  (let ((2n (m:dimension M)))
+    (let ((J (symplectic-unit (quotient 2n 2))))
+      (- J (* M J (transpose M))))))
 {% endhighlight %}</div>
 
 <p class="noindent">An appropriate symplectic unit matrix of a given size is produced by the procedure <span class="font1">symplectic-unit</span>.</p>
@@ -817,7 +763,7 @@ Real)))
 <p>If the matrix representation of the derivative of a transformation is a symplectic matrix the transformation is a <em>symplectic transformation</em>. Here is a test for whether a transformation is symplectic:<sup><a class="footnote_link" href="#endnote_16" id="endnote_ref_16">16</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define ((symplectic-transform? C) s)
-(symplectic-matrix? (qp-submatrix ((D-as-matrix C) s))))
+  (symplectic-matrix? (qp-submatrix ((D-as-matrix C) s))))
 {% endhighlight %}</div>
 <a id="p356"></a>
 
@@ -826,57 +772,33 @@ Real)))
 <p>For example, the point transformations are symplectic. We can show this for a general possibly time-dependent two-degree-of-freedom point transformation:</p>
 <div class="code">{% highlight scheme %}
 (define (F s)
-((literal-function 'F
-(-> (X Real (UP Real Real)) (UP Real Real)))
-(time s) (coordinates s)))
+  ((literal-function 'F
+                     (-> (X Real (UP Real Real)) (UP Real Real)))
+   (time s) (coordinates s)))
 
 ((symplectic-transform? (F->CH F))
-(up 't (up 'x 'y) (down 'px 'py)))
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(matrix-by-rows</em></span></span></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0))</em></span></span></td>
-</tr>
-</table>
+ (up 't (up 'x 'y) (down 'px 'py)))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+(matrix-by-rows
+  (list 0 0 0 0)
+  (list 0 0 0 0)
+  (list 0 0 0 0)
+  (list 0 0 0 0))
 {% endhighlight %}</div>
 
 <p>More generally, the phase-space part of the canonical condition is equivalent to the symplectic condition (for two degrees of freedom) even in the case of an unrestricted phase-space transformation.</p>
 <div class="code">{% highlight scheme %}
 (let* ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))
-(s* (compatible-shape s)))
-(- (qp-submatrix
-(s->m s* ((canonical-transform? C-general) s) s*))
-((symplectic-transform? C-general) s)))
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(matrix-by-rows</em></span></span></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0)</em></span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0))</em></span></span></td>
-</tr>
-</table>
+       (s* (compatible-shape s)))
+  (- (qp-submatrix
+       (s->m s* ((canonical-transform? C-general) s) s*))
+     ((symplectic-transform? C-general) s)))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+(matrix-by-rows
+  (list 0 0 0 0)
+  (list 0 0 0 0)
+  (list 0 0 0 0)
+  (list 0 0 0 0))
 {% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_5-6"><strong>Exercise  5.6: Symplectic matrices</strong></p>
@@ -1032,24 +954,24 @@ Real)))
 <p>As a program, <em>&#x03C9;</em> is</p>
 <div class="code">{% highlight scheme %}
 (define (omega zeta1 zeta2)
-(- (* (momentum zeta2) (coordinate zeta1))
-(* (momentum zeta1) (coordinate zeta2))))
+  (- (* (momentum zeta2) (coordinate zeta1))
+     (* (momentum zeta1) (coordinate zeta2))))
 {% endhighlight %}</div>
 
 <p>On <a href="chapter005.html#p356">page 356</a> we showed that point transformations are sym-plectic. Here we can see that the 2-form is preserved under these transformations for two degrees of freedom:</p>
 <div class="code">{% highlight scheme %}
 (define (F s)
-((literal-function 'F
-(-> (X Real (UP Real Real)) (UP Real Real)))
-(time s)
-(coordinates s)))
+  ((literal-function 'F
+                     (-> (X Real (UP Real Real)) (UP Real Real)))
+   (time s)
+   (coordinates s)))
 
 (let ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))
-(zeta1 (up 0 (up 'dx1 'dy1) (down 'dp1_x 'dp1_y)))
-(zeta2 (up 0 (up 'dx2 'dy2) (down 'dp2_x 'dp2_y))))
-(let ((DCs ((D (F->CH F)) s)))
-(- (omega zeta1 zeta2)
-(omega (* DCs zeta1) (* DCs zeta2)))))
+      (zeta1 (up 0 (up 'dx1 'dy1) (down 'dp1_x 'dp1_y)))
+      (zeta2 (up 0 (up 'dx2 'dy2) (down 'dp2_x 'dp2_y))))
+  (let ((DCs ((D (F->CH F)) s)))
+    (- (omega zeta1 zeta2)
+       (omega (* DCs zeta1) (* DCs zeta2)))))
 0
 {% endhighlight %}</div>
 
@@ -2541,13 +2463,13 @@ Real)))
 <p class="ntx" id="endnote_15"><a epub:type="noteref" href="#endnote_ref_15"><sup>15</sup></a>The <em>qp</em> submatrix of a square matrix of dimension 2<em>n</em> &#x002B; 1 is the 2<em>n</em>-dimensional matrix obtained by deleting the first row and the first column of the given matrix. This can be computed by:</p>
 <div class="code">{% highlight scheme %}
 (define (qp-submatrix m)
-(m:submatrix m 1 (m:num-rows m) 1 (m:num-cols m)))
+  (m:submatrix m 1 (m:num-rows m) 1 (m:num-cols m)))
 {% endhighlight %}</div>
 
 <p class="ntx" id="endnote_16"><a epub:type="noteref" href="#endnote_ref_16"><sup>16</sup></a>The procedure <span class="font1">D-as-matrix</span> is defined as:</p>
 <div class="code">{% highlight scheme %}
 (define ((D-as-matrix F) s)
-(s->m (compatible-shape (F s)) ((D F) s) s)))
+  (s->m (compatible-shape (F s)) ((D F) s) s)))
 {% endhighlight %}</div>
 
 <p class="ntx" id="endnote_17"><a epub:type="noteref" href="#endnote_ref_17"><sup>17</sup></a>The <em>q<sup>i</sup></em>, <em>p<sub>i</sub></em> plane is the <em>i</em>th <em>canonical plane</em> in these phase-space variables.</p>
