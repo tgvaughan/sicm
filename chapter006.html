@@ -515,22 +515,22 @@ layout: chapter
 <p>Assume we have a procedure <span class="font1">C</span> such that <span class="font1">((C delta-t) state)</span> implements a time-evolution transformation <epub:switch id="mathmlSwitch1609"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi mathvariant='script'>C</mi><mo>&#x0394;</mo></msub></mrow></math></epub:case></epub:switch> of the state <span class="font1">state</span> with time interval <span class="font1">delta-t</span>; then the procedure <span class="font1">Cp</span> such that <span class="font1">((Cp delta-t) state)</span> implements <epub:switch id="mathmlSwitch1610"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi mathvariant='script'>C</mi><mo>&#x0394;</mo><mo>&#x2032;</mo></msubsup></mrow></math></epub:case></epub:switch> of the same state and time interval can be derived from the procedure <span class="font1">C</span> by using the procedure</p>
 <div class="code">{% highlight scheme %}
 (define ((C->Cp C) delta-t)
-(compose (C delta-t) (shift-t (- delta-t))))
+  (compose (C delta-t) (shift-t (- delta-t))))
 {% endhighlight %}</div>
 
 <p class="noindent">where <span class="font1">shift-t</span> implements <em>S</em><sub>&#x0394;</sub>:</p>
 <div class="code">{% highlight scheme %}
 (define ((shift-t delta-t) state)
-(up
-(+ (time state) delta-t)
-(coordinate state)
-(momentum state)))
+  (up
+    (+ (time state) delta-t)
+    (coordinate state)
+    (momentum state)))
 {% endhighlight %}</div>
 
 <p class="noindent">To complete the canonical transformation we have a procedure that transforms the Hamiltonian:</p>
 <div class="code">{% highlight scheme %}
 (define ((H->Hp delta-t) H)
-(compose H (shift-t (- delta-t))))
+  (compose H (shift-t (- delta-t))))
 {% endhighlight %}</div>
 <a id="p430"></a>
 
@@ -565,7 +565,7 @@ layout: chapter
 <p class="noindent"><strong>a.</strong> Fill in the details of the procedure</p>
 <div class="code">{% highlight scheme %}
 (define (((C* alpha omega omega0) delta-t) state)
-&#x2026; )
+  ... )
 {% endhighlight %}</div>
 
 <p class="noindent">that implements the time-evolution transformation of the driven harmonic oscillator. Let <span class="font1">C</span> be <span class="font1">(C<sub>&#x002A;</sub> alpha omega omega0)</span>.</p>
@@ -573,7 +573,7 @@ layout: chapter
 <p class="noindent"><strong>b.</strong> In terms of <span class="font1">C<sub>&#x002A;</sub></span>, the general solution emanating from a given state is</p>
 <div class="code">{% highlight scheme %}
 (define (((solution alpha omega omega0) state0) t)
-(((C* alpha omega omega0) (- t (time state0))) state0))
+  (((C* alpha omega omega0) (- t (time state0))) state0))
 {% endhighlight %}</div>
 <a id="p431"></a>
 
@@ -885,51 +885,51 @@ layout: chapter
 <p>The first thing to look at is the general Taylor expansion for an unknown literal function, expanded around <em>t</em>, with increment <em>&#x03F5;</em>. Understanding what we see in this simple problem will help us understand more complex problems later.</p>
 <div class="code">{% highlight scheme %}
 (series:for-each print-expression
-(((exp (* 'epsilon D))
-(literal-function 'f))
-'t)
-6)
-
+                 (((exp (* 'epsilon D))
+                   (literal-function 'f))
+                  't)
+                 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (f t)
 (* ((D f) t) epsilon)
 (* 1/2 (((expt D 2) f) t) (expt epsilon 2))
 (* 1/6 (((expt D 3) f) t) (expt epsilon 3))
 (* 1/24 (((expt D 4) f) t) (expt epsilon 4))
 (* 1/120 (((expt D 5) f) t) (expt epsilon 5))
-&#x2026;
+...
 {% endhighlight %}</div>
 
 <p>We can also look at the expansions of particular functions that we recognize, such as the expansion of sin around 0.</p>
 <div class="code">{% highlight scheme %}
 (series:for-each print-expression
-(((exp (* 'epsilon D)) sin) 0)
-6)
-
+                 (((exp (* 'epsilon D)) sin) 0)
+                 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 0
 epsilon
 0
 (* -1/6 (expt epsilon 3))
 0
 (* 1/120 (expt epsilon 5))
-&#x2026;
+...
 {% endhighlight %}</div>
 <a id="p445"></a>
 
 <p>It is often instructive to expand functions we usually don't remember, such as <epub:switch id="mathmlSwitch1699"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>f</mi><mrow><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mo>=</mo><msqrt><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow></msqrt></mrow></math></epub:case></epub:switch>.</p>
 <div class="code">{% highlight scheme %}
 (series:for-each print-expression
-(((exp (* 'epsilon D))
-(lambda (x) (sqrt (+ x 1))))
-0)
-6)
-
+                 (((exp (* 'epsilon D))
+                   (lambda (x) (sqrt (+ x 1))))
+                  0)
+                 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 1
 (* 1/2 epsilon)
 (* -1/8 (expt epsilon 2))
 (* 1/16 (expt epsilon 3))
 (* -5/128 (expt epsilon 4))
 (* 7/256 (expt epsilon 5))
-&#x2026;
+...
 {% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_6-7"><strong>Exercise  6.7: Binomial series</strong></p>
@@ -937,12 +937,12 @@ epsilon
 <p class="noindent">Develop the binomial expansion of (1 &#x002B; <em>x</em>)<sup><em>n</em></sup> as a Taylor expansion. Of course, it must be the case that for <em>n</em> a positive integer all of the coefficients except for the first <em>n</em> &#x002B; 1 are zero. However, in the general case, for symbolic <em>n</em>, the coefficients are rather complicated polynomials in <em>n</em>. For example, you will find that the eighth term is</p>
 <div class="code">{% highlight scheme %}
 (+ (* 1/5040 (expt n 7))
-(* -1/240 (expt n 6))
-(* 5/144 (expt n 5))
-(* -7/48 (expt n 4))
-(* 29/90 (expt n 3))
-(* -7/20 (expt n 2))
-(* 1/7 n))
+   (* -1/240 (expt n 6))
+   (* 5/144 (expt n 5))
+   (* -7/48 (expt n 4))
+   (* 29/90 (expt n 3))
+   (* -7/20 (expt n 2))
+   (* 1/7 n))
 {% endhighlight %}</div>
 
 <p class="noindent">These terms must evaluate to the entries in Pascal's triangle. In particular, this polynomial must be zero for <em>n</em> &#x003C; 7. How is this arranged?</p>
@@ -1024,37 +1024,37 @@ epsilon
 <p class="noindent">We can use the Lie transform as a computational tool to examine the local evolution of dynamical systems. We define the Lie derivative of <em>F</em> as a derivative-like operator relative to the given Hamiltonian function, <em>H</em>:<sup><a class="footnote_link" href="#endnote_12" id="endnote_ref_12">12</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define ((Lie-derivative H) F)
-(Poisson-bracket F H))
+  (Poisson-bracket F H))
 {% endhighlight %}</div>
 
 <p class="noindent">We also define a procedure to implement the Lie transform:<sup><a class="footnote_link" href="#endnote_13" id="endnote_ref_13">13</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define (Lie-transform H t)
-(exp (* t (Lie-derivative H))))
+  (exp (* t (Lie-derivative H))))
 {% endhighlight %}</div>
 
 <p>Let's start by examining the beginning of the Lie series for the position of a simple harmonic oscillator of mass <em>m</em> and spring constant <em>k</em>. We can implement the Hamiltonian as</p>
 <div class="code">{% highlight scheme %}
 (define ((H-harmonic m k) state)
-(+ (/ (square (momentum state)) (* 2 m))
-(* 1/2 k (square (coordinate state)))))
+  (+ (/ (square (momentum state)) (* 2 m))
+     (* 1/2 k (square (coordinate state)))))
 {% endhighlight %}</div>
 
 <p class="noindent">We make the Lie transform (series) by passing the <span class="font1">Lie-transform</span> operator an appropriate Hamiltonian function and an interval to evolve for. The resulting operator is then given the <span class="font1">coordinate</span> procedure, which selects the position coordinates from the phase-space state. The Lie transform operator returns a procedure that, when given a phase-space state composed of a dummy time, a <a id="p449"></a>position <span class="font1">x0</span>, and a momentum <span class="font1">p0</span>, returns the position resulting from advancing that state by the interval <span class="font1">dt</span>.</p>
 <div class="code">{% highlight scheme %}
 (series:for-each print-expression
-(((Lie-transform (H-harmonic 'm 'k) 'dt)
-coordinate)
-(up 0 'x0 'p0))
-6)
-
+                 (((Lie-transform (H-harmonic 'm 'k) 'dt)
+                   coordinate)
+                  (up 0 'x0 'p0))
+                 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 x0
 (/ (* dt p0) m)
 (/ (* -1/2 (expt dt 2) k x0) m)
 (/ (* -1/6 (expt dt 3) k p0) (expt m 2))
 (/ (* 1/24 (expt dt 4) (expt k 2) x0) (expt m 2))
 (/ (* 1/120 (expt dt 5) (expt k 2) p0) (expt m 3))
-&#x2026;
+...
 {% endhighlight %}</div>
 
 <p class="noindent">We should recognize the terms of this series. We start with the initial position <em>x</em><sub>0</sub>. The first-order correction (<em>p</em><sub>0</sub>/<em>m</em>)<em>dt</em> is due to the initial velocity. Next we find an acceleration term (&#x2212;<em>kx</em><sub>0</sub>/2<em>m</em>)<em>dt</em><sup>2</sup> due to the restoring force of the spring at the initial position.</p>
@@ -1062,18 +1062,18 @@ x0
 <p>The Lie transform is just as appropriate for showing us how the momentum evolves over the interval:</p>
 <div class="code">{% highlight scheme %}
 (series:for-each print-expression
-(((Lie-transform (H-harmonic 'm 'k) 'dt)
-momentum)
-(up 0 'x0 'p0))
-6)
-
+                 (((Lie-transform (H-harmonic 'm 'k) 'dt)
+                   momentum)
+                  (up 0 'x0 'p0))
+                 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 p0
 (* -1 dt k x0)
 (/ (* -1/2 (expt dt 2) k p0) m)
 (/ (* 1/6 (expt dt 3) (expt k 2) x0) m)
 (/ (* 1/24 (expt dt 4) (expt k 2) p0) (expt m 2))
 (/ (* -1/120 (expt dt 5) (expt k 3) x0) (expt m 2))
-&#x2026;
+...
 {% endhighlight %}</div>
 
 <p class="noindent">In this series we see how the initial momentum <em>p</em><sub>0</sub> is corrected by the effect of the restoring force &#x2212;<em>kx</em><sub>0</sub><em>dt</em>, etc.</p>
@@ -1081,18 +1081,18 @@ p0
 <p>What is a bit more fun is to see how a more complex phase-space function is treated by the Lie series expansion. In the experiment below we examine the Lie series developed by advancing the harmonic-oscillator Hamiltonian, by means of the transform generated by the same harmonic-oscillator Hamiltonian:</p>
 <div class="code">{% highlight scheme %}
 (series:for-each print-expression
-(((Lie-transform (H-harmonic 'm 'k) 'dt)
-(H-harmonic 'm 'k))
-(up 0 'x0 'p0))
-6)
-
+                 (((Lie-transform (H-harmonic 'm 'k) 'dt)
+                   (H-harmonic 'm 'k))
+                  (up 0 'x0 'p0))
+                 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (/ (+ (* 1/2 k m (expt x0 2)) (* 1/2 (expt p0 2))) m)
 0
 0
 0
 0
 0
-&#x2026;
+...
 {% endhighlight %}</div>
 
 <p class="noindent">As we would hope, the series shows us the original energy expression <epub:switch id="mathmlSwitch1716"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mi>k</mi><mo>/</mo><mn>2</mn></mrow><mo>)</mo></mrow><msubsup><mi>x</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn><mi>m</mi></mrow><mo>)</mo></mrow><msubsup><mi>p</mi><mn>0</mn><mn>2</mn></msubsup></mrow></math></epub:case></epub:switch> as the first term. Each subsequent correction term turns out to be zero&#x2014;because the energy is conserved.</p>
@@ -1100,37 +1100,38 @@ p0
 <p>Of course, the Lie series can be used in situations where we want to see the expansion of the motion of a system characterized by a more complex Hamiltonian. The planar motion of a particle in a general central field (see equation <a href="chapter003.html#disp_3.100">3.100</a>) is a simple problem for which the Lie series is instructive. In the following transcript we can see how rapidly the series becomes complicated. It is worth one's while to try to interpret the additive parts of the third (acceleration) term shown below:</p>
 <div class="code">{% highlight scheme %}
 (series:for-each print-expression
-(((Lie-transform
-(H-central-polar 'm (literal-function 'U))
-'dt)
-coordinate)
-(up 0
-(up 'r_0 'phi_0)
-(down 'p_r_0 'p_phi_0)))
-4)
+                 (((Lie-transform
+                     (H-central-polar 'm (literal-function 'U))
+                     'dt)
+                   coordinate)
+                  (up 0
+                      (up 'r_0 'phi_0)
+                      (down 'p_r_0 'p_phi_0)))
+                 4)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (up r_0 phi_0)
 (up (/ (* dt p_r_0) m)
-(/ (* dt p_phi_0) (* m (expt r_0 2))))
+    (/ (* dt p_phi_0) (* m (expt r_0 2))))
 (up
-(+ (/ (* -1/2 ((D U) r_0) (expt dt 2)) m)
-(/ (* 1/2 (expt dt 2) (expt p_phi_0 2))
-(* (expt m 2) (expt r_0 3))))
-(/ (* -1 (expt dt 2) p_phi_0 p_r_0)
-(* (expt m 2) (expt r_0 3))))
-<a id="p451"></a>
+  (+ (/ (* -1/2 ((D U) r_0) (expt dt 2)) m)
+     (/ (* 1/2 (expt dt 2) (expt p_phi_0 2))
+        (* (expt m 2) (expt r_0 3))))
+  (/ (* -1 (expt dt 2) p_phi_0 p_r_0)
+     (* (expt m 2) (expt r_0 3))))
 (up
-(+ (/ (* -1/6 (((expt D 2) U) r_0) (expt dt 3) p_r_0)
-(expt m 2))
-(/ (* -1/2 (expt dt 3) (expt p_phi_0 2) p_r_0)
-(* (expt m 3) (expt r_0 4)))))
+  (+ (/ (* -1/6 (((expt D 2) U) r_0) (expt dt 3) p_r_0)
+        (expt m 2))
+     (/ (* -1/2 (expt dt 3) (expt p_phi_0 2) p_r_0)
+        (* (expt m 3) (expt r_0 4)))))
 (+ (/ (* 1/3 ((D U) r_0) (expt dt 3) p_phi_0)
-(* (expt m 2) (expt r_0 3))))
+      (* (expt m 2) (expt r_0 3))))
 (/ (* -1/3 (expt dt 3) (expt p_phi_0 3))
-(* (expt m 3) (expt r_0 6)))
+   (* (expt m 3) (expt r_0 6)))
 (/ (* (expt dt 3) p_phi_0 (expt p_r_0 2))
-(* (expt m 3) (expt_r_0 4)))
-&#x2026;
+   (* (expt m 3) (expt_r_0 4)))
+...
 {% endhighlight %}</div>
+<a id="p451"></a>
 
 <p>Of course, if we know the closed-form Lie transform it is probably a good idea to take advantage of it, but when we do not know the closed form the Lie series representation of it can come in handy.</p>
 </section>
@@ -1274,28 +1275,28 @@ coordinate)
 <p class="noindent1-top"><strong>e.</strong> The generation of surfaces of section from these maps is complicated by the fact that these maps have to maintain their state even though a plotting point might be required between two samples. The maps you made in part <strong>c</strong> regularly sample the state with the integrator timestep. If we must plot a point between two steps we cannot restart the integrator at the state of the plotted point, because that would lose the phase of the integrator step. To make this work the map must plot points but keep its rhythm, so we have to work around the fact that <span class="font1">explore-map</span> restarts at each plotted point. Here is some code that can be used to construct a Poincar&#x00E9;-type map that can be used with the explorer:</p>
 <div class="code">{% highlight scheme %}
 (define ((HH-collector win advance E dt sec-eps n) x y done fail)
-(define (monitor last-crossing-state state)
-(plot-point win
-(ref (coordinate last-crossing-state) 1)
-(ref (momentum last-crossing-state) 1)))
-(define (pmap x y cont fail)
-(find-next-crossing y advance dt sec-eps cont))
-(define collector (default-collector monitor pmap n))
-(cond ((and (up? x) (up? y))      ;passed states
-(collector x y done fail))
-((and (number? x) (number? y))   ;initialization
-(let ((initial-state (section->state E x y)))
-(if (not initial-state)
-(fail)
-(collector initial-state initial-state done fail))))
-(else (error "bad input to HH-collector" x y))))
+  (define (monitor last-crossing-state state)
+    (plot-point win
+                (ref (coordinate last-crossing-state) 1)
+                (ref (momentum last-crossing-state) 1)))
+  (define (pmap x y cont fail)
+    (find-next-crossing y advance dt sec-eps cont))
+  (define collector (default-collector monitor pmap n))
+  (cond ((and (up? x) (up? y))      ;passed states
+         (collector x y done fail))
+        ((and (number? x) (number? y))   ;initialization
+         (let ((initial-state (section->state E x y)))
+           (if (not initial-state)
+             (fail)
+             (collector initial-state initial-state done fail))))
+        (else (error "bad input to HH-collector" x y))))
 {% endhighlight %}</div>
 
 <p>You will notice that the iteration of the map and the plotting of the points is included in this collector, so the map that this produces must replace these parts of the explorer. The <span class="font1">&#x0023;f</span> argument to <span class="font1">explore-map</span> allows us to replace the appropriate parts of the explorer with our combination map iterator and plotter <span class="font1">HH-collector</span>.</p>
 <div class="code">{% highlight scheme %}
 (explore-map win
-(HH-collector win 1st-order-map 0.125 0.1 1.e-10 1000)
-#f)
+             (HH-collector win 1st-order-map 0.125 0.1 1.e-10 1000)
+             #f)
 {% endhighlight %}</div>
 
 <p>Generate surfaces of section using the second-order map. Does the map preserve the chaotic or quasiperiodic character of trajectories?</p>
@@ -1325,9 +1326,9 @@ coordinate)
 <p class="ntx" id="endnote_12"><a epub:type="noteref" href="#endnote_ref_12"><sup>12</sup></a>Actually, we define the Lie derivative slightly differently, as follows:</p>
 <div class="code">{% highlight scheme %}
 (define ((Lie-derivative-procedure H) F)
-(Poisson-bracket F H))
+  (Poisson-bracket F H))
 (define Lie-derivative
-(make-operator Lie-derivative-procedure 'Lie-derivative))
+  (make-operator Lie-derivative-procedure 'Lie-derivative))
 {% endhighlight %}</div>
 
 <p class="noindent1-top">The reason is that we want <span class="font1">Lie-derivative</span> to be an <em>operator</em>, which is just like a function except that the product of operators is interpreted as composition, whereas the product of functions is the function computing the product of their values.</p>
