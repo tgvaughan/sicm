@@ -39,7 +39,7 @@ layout: appendix
 <p class="noindent">In Scheme we can write this as:</p>
 <div class="code">{% highlight scheme %}
 (define (d x1 y1 x2 y2)
-(sqrt (+ (square (- x2 x1)) (square (- y2 y1)))))
+  (sqrt (+ (square (- x2 x1)) (square (- y2 y1)))))
 {% endhighlight %}</div>
 
 <p>Functions may be composed if the range of one overlaps the domain of the other. The composition of functions is constructed by passing the output of one to the input of the other. We write the composition of two functions using the &#x2218; operation:</p>
@@ -58,6 +58,7 @@ layout: appendix
 <p class="noindent">which is the same as</p>
 <div class="code">{% highlight scheme %}
 (cube (sin 2))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 .7518269446689928
 {% endhighlight %}</div>
 <a id="p511"></a>
@@ -71,9 +72,11 @@ layout: appendix
 (define g (* cube sin))
 
 (g 2)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 7.274379414605454
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (* (cube 2) (sin 2))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 7.274379414605454
 {% endhighlight %}</div>
 </section>
@@ -89,6 +92,7 @@ layout: appendix
 <p class="noindent">The default printer simplifies the expression and displays it in a readable form.<sup><a class="footnote_link" href="#endnote_1" id="endnote_ref_1">1</a></sup> We can use the simplifier to verify a trigonometric identity:</p>
 <div class="code">{% highlight scheme %}
 ((- (+ (square sin) (square cos)) 1) 'a)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 0
 {% endhighlight %}</div>
 <a id="p512"></a>
@@ -96,18 +100,20 @@ layout: appendix
 <p>Just as it is useful to be able to manipulate symbolic numbers, it is useful to be able to manipulate symbolic functions. The procedure <span class="font1">literal-function</span> makes a procedure that acts as a function having no properties other than its name. By default, a literal function is defined to take one real argument and produce one real value. For example, we may want to work with a function <em>f</em> : <strong>R</strong> &#x2192; <strong>R</strong>:</p>
 <div class="code">{% highlight scheme %}
 ((literal-function 'f) 'x)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (f x)
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((compose (literal-function 'f) (literal-function 'g)) 'x)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (f (g x))
 {% endhighlight %}</div>
 
 <p>We can also make literal functions of multiple, possibly structured arguments that return structured values. For example, to denote a literal function named <span class="font1">g</span> that takes two real arguments and returns a real value (<em>g</em> : <strong>R</strong> &#x00D7; <strong>R</strong> &#x2192; <strong>R</strong>) we may write:</p>
 <div class="code">{% highlight scheme %}
-<span class="font1">(define g (literal-function 'g (-> (X Real Real) Real)))</span>
-
-<span class="font1">(g 'x 'y)</span>
-<span class="font1"><em>(g x y)</em></span>
+(define g (literal-function 'g (-> (X Real Real) Real)))
+(g 'x 'y)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+(g x y)
 {% endhighlight %}</div>
 
 <p class="noindent">We may use such a literal function anywhere that an explicit function of the same type may be used.</p>
@@ -135,11 +141,13 @@ layout: appendix
 (define v (up 'v^0 'v^1 'v^2))
 
 v
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (up v^0 v^1 v^2)
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (define p (down 'p_0 'p_1 'p_2))
 
 p
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (down p_0 p_1 p_2)
 {% endhighlight %}</div>
 
@@ -162,18 +170,21 @@ p
 <p>The procedure <span class="font1">component</span> is the general selector procedure that implements the selector functions. For example, <em>I</em><sub>0,1</sub> is implemented by <span class="font1">(component 0 1)</span>:</p>
 <div class="code">{% highlight scheme %}
 ((component 0 1) (up (up 'a 'b) (up 'c 'd)))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 b
 {% endhighlight %}</div>
 
 <p class="noindent">To access a component of a tuple we may also use the selector procedure <span class="font1">ref</span>, which takes a tuple and an index and returns the indicated element of the tuple:</p>
 <div class="code">{% highlight scheme %}
 (ref (up 'a 'b 'c) 1)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 b
 {% endhighlight %}</div>
 
 <p class="noindent">We use zero-based indexing everywhere. The procedure <span class="font1">ref</span> can be used to access any substructure of a tree of tuples:</p>
 <div class="code">{% highlight scheme %}
 (ref (up (up 'a 'b) (up 'c 'd)) 0 1)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 b
 {% endhighlight %}</div>
 
@@ -192,6 +203,7 @@ b
 <p class="noindent">So the product of tuples that are compatible for contraction is an inner product. Using the tuples <span class="font1">p</span> and <span class="font1">v</span> defined above gives us</p>
 <div class="code">{% highlight scheme %}
 (* p v)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (+ (* p_0 v^0) (* p_1 v^1) (* p_2 v^2))
 {% endhighlight %}</div>
 
@@ -235,6 +247,7 @@ b
 (define derivative-of-sine (D sin))
 
 (derivative-of-sine 'x)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (cos x)
 {% endhighlight %}</div>
 
@@ -267,12 +280,14 @@ b
 <p><span class="font1">D</span> is an example of an <em>operator</em>. An operator is like a function except that multiplication of operators is interpreted as composition, whereas multiplication of functions is multiplication of the values (see equation <a href="chapter009.html#disp_9.3">9.3</a>). If <em>D</em> were an ordinary function, then the rule for multiplication would imply that <em>D</em><sup>2</sup><em>f</em> would just be the product of <em>Df</em> with itself, which is not what is intended. A product of a number and an operator scales the operator. So, for example</p>
 <div class="code">{% highlight scheme %}
 (((* 5 D) cos) 'x)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (* -5 (sin x))
 {% endhighlight %}</div>
 
 <p class="noindent">Arithmetic is extended to allow manipulation of operators. A typical operator is (<em>D</em>&#x002B;<em>I</em>)(<em>D</em>&#x2212;<em>I</em>) &#x003D; <em>D</em><sup>2</sup>&#x2212;<em>I</em>, where <em>I</em> is the identity operator, which subtracts a function from its second derivative. Such an operator can be constructed and used as follows:</p>
 <div class="code">{% highlight scheme %}
 (((* (+ D I) (- D I)) (literal-function 'f)) 'x)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (+ (((expt D 2) f) x) (* -1 (f x)))
 {% endhighlight %}</div>
 <a id="p518"></a>
@@ -292,6 +307,7 @@ b
 <p class="noindent">Using the two-argument literal function <span class="font1">g</span> defined on <a href="chapter009.html#p512">page 512</a>, we have:</p>
 <div class="code">{% highlight scheme %}
 ((D g) 'x 'y)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (down (((partial 0) g) x y) (((partial 1) g) x y))
 {% endhighlight %}</div>
 
@@ -330,12 +346,15 @@ b
 (g (ref s 0) (ref s 1)))
 
 (h (up 'x 'y))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (g x y)
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((D g) 'x 'y)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (down (((partial 0) g) x y) (((partial 1) g) x y))
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((D h) (up 'x 'y))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (down (((partial 0) g) x y) (((partial 1) g) x y))
 {% endhighlight %}</div>
 
@@ -366,19 +385,21 @@ b
 <p>In Scheme we must make explicit choices. We usually assume that phase-space state functions are functions of the tuple. For example,</p>
 <div class="code">{% highlight scheme %}
 (define H
-(literal-function 'H
-(-> (UP Real (UP Real Real) (DOWN Real Real)) Real)))
+  (literal-function 'H
+                    (-> (UP Real (UP Real Real) (DOWN Real Real)) Real)))
 
 (H s)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (H (up t (up x y) (down p_x p_y)))
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((D H) s)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (down
-(((partial 0) H) (up t (up x y) (down p_x p_y)))
-(down (((partial 1 0) H) (up t (up x y) (down p_x p_y)))
-(((partial 1 1) H) (up t (up x y) (down p_x p_y))))
-(up (((partial 2 0) H) (up t (up x y) (down p_x p_y)))
-(((partial 2 1) H) (up t (up x y) (down p_x p_y)))))
+  (((partial 0) H) (up t (up x y) (down p_x p_y)))
+  (down (((partial 1 0) H) (up t (up x y) (down p_x p_y)))
+        (((partial 1 1) H) (up t (up x y) (down p_x p_y))))
+  (up (((partial 2 0) H) (up t (up x y) (down p_x p_y)))
+      (((partial 2 1) H) (up t (up x y) (down p_x p_y)))))
 {% endhighlight %}</div>
 </section>
 <section title="Structured results">
@@ -397,7 +418,7 @@ b
 <p>We can write</p>
 <div class="code">{% highlight scheme %}
 (define (helix t)
-(up (cos t) (sin t) t))
+  (up (cos t) (sin t) t))
 {% endhighlight %}</div>
 
 <p class="noindent">or just</p>
@@ -409,6 +430,7 @@ b
 <p class="noindent">Its derivative is just the up tuple of the derivatives of each component of the function:</p>
 <div class="code">{% highlight scheme %}
 ((D helix) 't)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (up (* -1 (sin t)) (cos t) 1)
 {% endhighlight %}</div>
 
@@ -426,38 +448,16 @@ b
 (up (square (+ x y)) (cube (- y x)) (exp (+ x y))))
 
 ((D g) 'x 'y)
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><em>(down</em></td>
-<td class="td1" valign="top"><em>(up</em></td>
-<td class="td1" valign="top"><em>(+ (* 2 x) (* 2 y))</em></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(+ (* -3 (expt x 2)) (* 6 x y) (* -3 (expt y 2)))</em></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(* (exp y) (exp x)))</em></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(up</em></td>
-<td class="td1" valign="top"><em>(+ (* 2 x) (* 2 y))</em></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(+ (* 3 (expt x 2)) (* -6 x y) (* 3 (expt y 2)))</em></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(* (exp y) (exp x))))</em></td>
-</tr>
-</table>
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+(down
+  (up
+    (+ (* 2 x) (* 2 y))
+    (+ (* -3 (expt x 2)) (* 6 x y) (* -3 (expt y 2)))
+    (* (exp y) (exp x)))
+  (
+    (+ (* 2 x) (* 2 y))
+    (+ (* 3 (expt x 2)) (* -6 x y) (* 3 (expt y 2)))
+    (* (exp y) (exp x))))
 {% endhighlight %}</div>
 
 <p>Caution must be exercised when taking the derivative of the product of functions that each produce structured results. The problem is that the usual product rule does not hold. Let <em>f</em> and <em>g</em> be functions of <em>x</em> whose results are compatible for contraction to a number. The increment of <em>f</em> for an increment &#x0394;<em>x</em> of <em>x</em> is <em>Df</em>(<em>x</em>)&#x0394;<em>x</em>, and similarly for <em>g</em>. The increment of the product <em>fg</em> is <em>D</em>(<em>fg</em>)(<em>x</em>)&#x0394;<em>x</em>, but expanded in terms of the derivative of <em>f</em> and <em>g</em> the increment is (<em>Df</em>(<em>x</em>)&#x0394;<em>x</em>)<em>g</em>(<em>x</em>) &#x002B; <em>f</em>(<em>x</em>)(<em>Dg</em>(<em>x</em>)&#x0394;<em>x</em>). It is not ((<em>Df</em>)(<em>x</em>)<em>g</em>(<em>x</em>) &#x002B; <em>f</em>(<em>x</em>)(<em>Dg</em>(<em>x</em>)))&#x0394;<em>x</em>. The reason is that the shape of the derivative of <em>f</em> is such that <em>Df</em>(<em>x</em>) should be multiplied by &#x0394;<em>x</em> rather than <em>g</em>(<em>x</em>).</p>
@@ -482,13 +482,13 @@ b
 <p>For example, we could write implementations of the functions that occur in <a href="chapter009.html#Exe_9-1">exercise 9.1</a> as follows:</p>
 <div class="code">{% highlight scheme %}
 (define (f x y)
-(* (square x) (cube y)))
+  (* (square x) (cube y)))
 
 (define (g x y)
-(up (f x y) y))
+  (up (f x y) y))
 
 (define (h x y)
-(f (f x y) y))
+  (f (f x y) y))
 {% endhighlight %}</div>
 
 <p>With this choice it is awkward to compose a function that takes multiple arguments, such as <em>f</em>, with a function that produces a tuple of those arguments, such as <em>g</em>. Alternatively, we can represent the function arguments as slots of a tuple data structure, and then composition with a function that produces such a data structure is easy. However, this choice requires the procedures to build and take apart structures.</p>
@@ -496,14 +496,14 @@ b
 <p>For example, we may define procedures that implement the functions above as follows:</p>
 <div class="code">{% highlight scheme %}
 (define (f v)
-(let ((x (ref v 0))
-(y (ref v 1)))
-(* (square x) (cube y))))
+  (let ((x (ref v 0))
+        (y (ref v 1)))
+    (* (square x) (cube y))))
 
 (define (g v)
-(let ((x (ref v 0))
-(y (ref v 1)))
-(up (f v) y)))
+  (let ((x (ref v 0))
+        (y (ref v 1)))
+    (up (f v) y)))
 
 (define h (compose f g))
 {% endhighlight %}</div>
