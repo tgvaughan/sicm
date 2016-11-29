@@ -159,48 +159,34 @@ layout: chapter
 <h2 class="level2"><strong>Implementation of angular velocity functions</strong></h2>
 
 <p class="noindent">The following procedure gives the components of the angular velocity as a function of time along the path:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (((M-of-q-&#x003E;omega-of-t M-of-q) q) t)</span></p>
-
-<p class="pqp1"><span class="font1">(define M-on-path (compose M-of-q q))</span></p>
-
-<p class="pqp1"><span class="font1">(define (omega-cross t)</span></p>
-
-<p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> ((D M-on-path) t)</span></p>
-
-<p class="pqp4"><span class="font1">(transpose (M-on-path t))))</span></p>
-
-<p class="pqp1"><span class="font1">(antisymmetric-&#x003E;column-matrix (omega-cross t)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (((M-of-q->omega-of-t M-of-q) q) t)
+  (define M-on-path (compose M-of-q q))
+  (define (omega-cross t)
+    (* ((D M-on-path) t)
+       (transpose (M-on-path t))))
+  (antisymmetric->column-matrix (omega-cross t)))
+{% endhighlight %}</div>
 
 <p class="noindent">The procedure <span class="font1">omega-cross</span> produces the matrix representation of <epub:switch id="mathmlSwitch499"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>&#x03C9;</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x00D7;</mo></math></epub:case></epub:switch>. The procedure <span class="font1">antisymmetric-&#x003E;column-matrix</span>, which corresponds to the function <epub:switch id="mathmlSwitch500"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi mathvariant='script'>A</mi><mrow><mo>&#x2212;</mo><mn>1</mn></mrow></msup></mrow></math></epub:case></epub:switch>, is used to extract the components of the angular velocity vector from the skew-symmetric <epub:switch id="mathmlSwitch501"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>&#x03C9;</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x00D7;</mo></math></epub:case></epub:switch> matrix.</p>
 
 <p>The components of the angular velocity vector on a basis fixed in the body, as a function of time, along the path are</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (((M-of-q-&#x003E;omega-body-of-t M-of-q) q) t)</span></p>
-
-<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> (transpose (M-of-q (q t)))</span></p>
-
-<p class="pqp2"><span class="font1">(((M-of-q-&#x003E;omega-of-t M-of-q) q) t)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (((M-of-q->omega-body-of-t M-of-q) q) t)
+  (* (transpose (M-of-q (q t)))
+     (((M-of-q->omega-of-t M-of-q) q) t)))
+{% endhighlight %}</div>
 
 <p>We can get the procedures of local state that give the angular velocity components by abstracting these procedures along arbitrary paths that have given coordinates and velocities. The abstraction of a procedure of a path to a procedure of state is accomplished by <span class="font1">Gamma-bar</span> (see <a href="chapter001.html#h1-6d">section 1.9</a>):</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (M->omega M-of-q)
+  (Gamma-bar
+    (M-of-q->omega-of-t M-of-q)))
 
-<p class="pq-noindent"><span class="font1">(define (M-&#x003E;omega M-of-q)</span></p>
-
-<p class="pqp1"><span class="font1">(Gamma-bar</span></p>
-
-<p class="pqp2"><span class="font1">(M-of-q-&#x003E;omega-of-t M-of-q)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (M-&#x003E;omega-body M-of-q)</span></p>
-
-<p class="pqp1"><span class="font1">(Gamma-bar</span></p>
-
-<p class="pqp2"><span class="font1">(M-of-q-&#x003E;omega-body-of-t M-of-q)))</span></p>
-</div>
+(define (M->omega-body M-of-q)
+  (Gamma-bar
+    (M-of-q->omega-body-of-t M-of-q)))
+{% endhighlight %}</div>
 
 <p class="noindent">These procedures give the angular velocities as a function of state. We will see them in action after we get some <span class="font1">M-of-q</span>'s to work with, starting in <a href="chapter002.html#h1-11">section 2.7</a>.</p>
 </section>
@@ -363,18 +349,13 @@ layout: chapter
 <p class="eqtext" id="disp_2.41"><epub:switch id="mathmlSwitch572"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><msub><mi>T</mi><mi mathvariant="normal">R</mi></msub><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mrow><mo>[</mo><mrow><mi>A</mi><msup><mrow><mrow><mo stretchy='false'>(</mo><mrow><msup><mi>&#x03C9;</mi><mi>a</mi></msup></mrow><mo stretchy='false'>)</mo></mrow></mrow><mn>2</mn></msup><mo>+</mo><mi>B</mi><msup><mrow><mrow><mo stretchy='false'>(</mo><mrow><msup><mi>&#x03C9;</mi><mi>b</mi></msup></mrow><mo stretchy='false'>)</mo></mrow></mrow><mn>2</mn></msup><mo>+</mo><mi>C</mi><msup><mrow><mrow><mo stretchy='false'>(</mo><mrow><msup><mi>&#x03C9;</mi><mi>c</mi></msup></mrow><mo stretchy='false'>)</mo></mrow></mrow><mn>2</mn></msup></mrow><mo>]</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mrow><mo stretchy='false'>(</mo><mrow><mn>2.41</mn></mrow><mo stretchy='false'>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">Or as a program:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((T-body A B C) omega-body)</span></p>
-
-<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> 1/2</span></p>
-
-<p class="pqp2"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> A (square (ref omega-body 0)))</span></p>
-
-<p class="pqp3b"><span class="font1">(<sub>&#x002A;</sub> B (square (ref omega-body 1)))</span></p>
-
-<p class="pqp3b"><span class="font1">(<sub>&#x002A;</sub> C (square (ref omega-body 2))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((T-body A B C) omega-body)
+  (* 1/2
+     (+ (* A (square (ref omega-body 0)))
+        (* B (square (ref omega-body 1)))
+        (* C (square (ref omega-body 2))))))
+{% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_2-5"><strong>Exercise  2.5: A constraint on the moments of inertia</strong></p>
 
@@ -447,16 +428,12 @@ layout: chapter
 <a id="p137"></a>
 
 <p>Since the angular momenta are the partial derivatives of <em>T<sub>R</sub></em> (see equation <a href="chapter002.html#disp_2.41">2.41</a>) with respect to the angular velocities, they must be grouped as a down tuple (in matrix language, a row matrix): <em>L</em>&#x2032; &#x003D; [<em>L<sub>a</sub></em>, <em>L<sub>b</sub></em>, <em>L<sub>c</sub></em>]. As a program:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-body A B C) omega-body)</span></p>
-
-<p class="pqp1"><span class="font1">(down (<sub>&#x002A;</sub> A (ref omega-body 0))</span></p>
-
-<p class="pqp4b"><span class="font1">(<sub>&#x002A;</sub> B (ref omega-body 1))</span></p>
-
-<p class="pqp4b"><span class="font1">(<sub>&#x002A;</sub> C (ref omega-body 2))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-body A B C) omega-body)
+  (down (* A (ref omega-body 0))
+        (* B (ref omega-body 1))
+        (* C (ref omega-body 2))))
+{% endhighlight %}</div>
 
 <p>If <strong>M</strong> is the matrix representation of the rotation that takes an angular-velocity vector <epub:switch id="mathmlSwitch590"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>&#x03C9;</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x2032;</mo></math></epub:case></epub:switch> to a rotated vector <epub:switch id="mathmlSwitch591"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>&#x03C9;</mi><mo stretchy="false">&#x2192;</mo></mover></math></epub:case></epub:switch>, the components transform as <strong><em>&#x03C9;</em></strong> &#x003D; <strong>M<em>&#x03C9;</em>&#x2032;</strong>.</p>
 
@@ -465,14 +442,11 @@ layout: chapter
 <p class="eqtext" id="disp_2.52"><epub:switch id="mathmlSwitch593"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mstyle mathvariant='bold'><mover accent='true'><mi>L</mi><mo>&#x00AF;</mo></mover></mstyle><mo>=</mo><mstyle mathvariant='bold'><mi>I</mi></mstyle><mi mathvariant="bold-italic">&#x03C9;</mi><mo>=</mo><mstyle mathvariant='bold'><mi>M</mi><mi>I</mi><mo>&#x2032;</mo></mstyle><mi mathvariant="bold-italic">&#x03C9;</mi><mo>&#x2032;</mo><mo>=</mo><mstyle mathvariant='bold'><mi>M</mi><mover accent='true'><mi>L</mi><mo>&#x00AF;</mo></mover><mo>&#x2032;</mo></mstyle><mo>.</mo></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mn>2.52</mn></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">Transposing this result, we see that the angular momentum components must transform as <epub:switch id="mathmlSwitch594"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle mathvariant='bold'><mi>L</mi></mstyle><mo>=</mo><mstyle mathvariant='bold'><mi>L</mi><mo>&#x2032;</mo></mstyle><msup><mstyle mathvariant='bold'><mi>M</mi></mstyle><mi mathvariant='script'>T</mi></msup></mrow></math></epub:case></epub:switch>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (((L-space M) A B C) omega-body)</span></p>
-
-<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> ((L-body A B C) omega-body)</span></p>
-
-<p class="pqp3"><span class="font1">(transpose M)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (((L-space M) A B C) omega-body)
+  (* ((L-body A B C) omega-body)
+     (transpose M)))
+{% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_2-8"><strong>Exercise  2.8: Rotational angular momentum</strong></p>
 
@@ -520,207 +494,98 @@ layout: chapter
 <p class="eqtext" id="disp_2.57"><epub:switch id="mathmlSwitch604"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mstyle mathvariant='bold'><mi>M</mi></mstyle><mrow><mo>(</mo><mrow><mi>&#x03B8;</mi><mo>,</mo><mi>&#x03C6;</mi><mo>,</mo><mi>&#x03C8;</mi></mrow><mo>)</mo></mrow><mo>=</mo><msub><mstyle mathvariant='bold'><mi>R</mi></mstyle><mi>z</mi></msub><mrow><mo>(</mo><mi>&#x03C6;</mi><mo>)</mo></mrow><msub><mstyle mathvariant='bold'><mi>R</mi></mstyle><mi>x</mi></msub><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><msub><mstyle mathvariant='bold'><mi>R</mi></mstyle><mi>z</mi></msub><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mn>2.57</mn></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p>The rotation matrices and their product can be constructed by simple programs:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (Rz-matrix angle)
+  (matrix-by-rows
+    (list (cos angle) (- (sin angle)) 0)
+    (list (sin angle) (cos angle) 0)
+    (list 0 0 1)))
 
-<p class="pq-noindent"><span class="font1">(define (Rz-matrix angle)</span></p>
+(define (Rx-matrix angle)
+  (matrix-by-rows
+    (list 1 0 0)
+    (list 0 (cos angle) (- (sin angle)))
+    (list 0 (sin angle) (cos angle))))
 
-<p class="pqp1"><span class="font1">(matrix-by-rows</span></p>
-<table class="table1n1">
-<tr>
-<td class="td1w" valign="top">
-<p class="pqp2"><span class="font1">(list</span></p></td>
-<td class="td1w" valign="top"><span class="font1">(cos angle)</span></td>
-<td class="td1w" valign="top"><span class="font1">(- (sin angle))</span></td>
-<td class="td1w" valign="top"><span class="font1">0)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">(list</span></p></td>
-<td class="td1" valign="top"><span class="font1">(sin angle)</span></td>
-<td class="td1" valign="top"><span class="font1">(cos angle)</span></td>
-<td class="td1" valign="top"><span class="font1">0)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">(list</span></p></td>
-<td class="td1" valign="top">
-<p class="center"><span class="font1">0</span></p></td>
-<td class="td1" valign="top">
-<p class="center"><span class="font1">0</span></p></td>
-<td class="td1" valign="top"><span class="font1">1)))</span></td>
-</tr>
-</table>
+(define (Euler->M angles)
+  (let ((theta (ref angles 0))
+        (phi (ref angles 1))
+        (psi (ref angles 2)))
 
-<p class="pq-noindent1-top"><span class="font1">(define (Rx-matrix angle)</span></p>
-
-<p class="pqp1"><span class="font1">(matrix-by-rows</span></p>
-<table class="table1n1">
-<tr>
-<td class="td1w" valign="top">
-<p class="pqp2"><span class="font1">(list</span></p></td>
-<td class="td1w" valign="top">
-<p class="center"><span class="font1">1</span></p></td>
-<td class="td1w" valign="top">
-<p class="center"><span class="font1">0</span></p></td>
-<td class="td1w" valign="top">
-<p class="center"><span class="font1">0)</span></p></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">(list</span></p></td>
-<td class="td1" valign="top">
-<p class="center"><span class="font1">0</span></p></td>
-<td class="td1" valign="top"><span class="font1">(cos angle)</span></td>
-<td class="td1" valign="top"><span class="font1">(- (sin angle)))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">(list</span></p></td>
-<td class="td1" valign="top">
-<p class="center"><span class="font1">0</span></p></td>
-<td class="td1" valign="top"><span class="font1">(sin angle)</span></td>
-<td class="td1" valign="top"><span class="font1">(cos angle))))</span></td>
-</tr>
-</table>
-
-<p class="pq-noindent1-top"><span class="font1">(define (Euler-&#x003E;M angles)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((theta (ref angles 0))</span></p>
-<table class="table1n">
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4b"><span class="font1">(phi</span></p></td>
-<td class="td1" valign="top"><span class="font1">(ref angles 1))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4b"><span class="font1">(psi</span></p></td>
-<td class="td1" valign="top"><span class="font1">(ref angles 2)))</span></td>
-</tr>
-</table>
-
-<p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> (Rz-matrix phi)</span></p>
-
-<p class="pqp3b"><span class="font1">(Rx-matrix theta)</span></p>
-
-<p class="pqp3b"><span class="font1">(Rz-matrix psi))))</span></p>
-</div>
+    (* (Rz-matrix phi)
+       (Rx-matrix theta)
+       (Rz-matrix psi))))
+{% endhighlight %}</div>
 
 <p>Now that we have a procedure that implements a sample <epub:switch id="mathmlSwitch605"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi mathvariant='script'>M</mi></mrow></math></epub:case></epub:switch>, we can find the components of the angular velocity vector and the body components of the angular velocity vector using the procedures <span class="font1">M-of-q-&#x003E;omega-of-t</span> and <span class="font1">M-of-q-&#x003E;omega-body-of-t</span> from <a href="chapter002.html#h1-8">section 2.2</a>. For example,</p>
-<a id="p140"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((M-of-q-&#x003E;omega-body-of-t Euler-&#x003E;M)</span></p>
-
-<p class="pqp2"><span class="font1">(up (literal-function 'theta)</span></p>
-
-<p class="pqp4b"><span class="font1">(literal-function 'phi)</span></p>
-
-<p class="pqp4b"><span class="font1">(literal-function 'psi)))</span></p>
-
-<p class="pqp2"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((M-of-q->omega-body-of-t Euler->M)
+    (up (literal-function 'theta)
+        (literal-function 'phi)
+        (literal-function 'psi)))
+   't))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch606"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>&#x03C6;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow><mi>sin</mi><mrow><mo>(</mo><mrow><mi>&#x03B8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow><mi>sin</mi><mrow><mo>(</mo><mrow><mi>&#x03C8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow><mo>+</mo><mi>cos</mi><mrow><mo>(</mo><mrow><mi>&#x03C8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow><mi>D</mi><mi>&#x03B8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>D</mi><mi>&#x03C6;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow><mi>sin</mi><mrow><mo>(</mo><mrow><mi>&#x03B8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow><mi>cos</mi><mrow><mo>(</mo><mrow><mi>&#x03C8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow><mo>&#x2212;</mo><mi>sin</mi><mrow><mo>(</mo><mrow><mi>&#x03C8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow><mi>D</mi><mi>&#x03B8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>cos</mi><mrow><mo>(</mo><mrow><mi>&#x03B8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow><mi>D</mi><mi>&#x03C6;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow><mo>+</mo><mi>D</mi><mi>&#x03C8;</mi><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p>To construct the kinetic energy we need the procedure of state that gives the body components of the angular velocity vector:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((M-&#x003E;omega-body Euler-&#x003E;M)</span></p>
-
-<p class="pqp2"><span class="font1">(up 't</span></p>
-
-<p class="pqp4"><span class="font1">(up 'theta 'phi 'psi)</span></p>
-
-<p class="pqp4"><span class="font1">(up 'thetadot 'phidot 'psidot))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  ((M->omega-body Euler->M)
+   (up 't
+       (up 'theta 'phi 'psi)
+       (up 'thetadot 'phidot 'psidot))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch607"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mi>sin</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mo>+</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mi>cos</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mi>sin</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mi>cos</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow><mo>&#x2212;</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mi>sin</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mi>cos</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mo>+</mo><mover accent='true'><mi>&#x03C8;</mi><mo>&#x02D9;</mo></mover></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">We capture this result as a procedure:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (Euler-state-&#x003E;omega-body local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local)) (qdot (velocity local)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((theta (ref q 0))</span></p>
-
-<p class="pqp5a"><span class="font1">(psi (ref q 2))</span></p>
-
-<p class="pqp5a"><span class="font1">(thetadot (ref qdot 0))</span></p>
-
-<p class="pqp5a"><span class="font1">(phidot (ref qdot 1))</span></p>
-
-<p class="pqp5a"><span class="font1">(psidot (ref qdot 2)))</span></p>
-<table class="table1n">
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3"><span class="font1">(let ((omega-a (&#x002B;</span></p></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> thetadot (cos psi))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> phidot (sin theta) (sin psi))))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp6a"><span class="font1">(omega-b (&#x002B;</span></p></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> -1 thetadot (sin psi))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> phidot (sin theta) (cos psi))))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp6a"><span class="font1">(omega-c (&#x002B;</span></p></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> phidot (cos theta)) psidot)))</span></td>
-</tr>
-</table>
-
-<p class="pqp4"><span class="font1">(up omega-a omega-b omega-c)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (Euler-state->omega-body local)
+  (let ((q (coordinate local)) (qdot (velocity local)))
+    (let ((theta (ref q 0))
+          (psi (ref q 2))
+          (thetadot (ref qdot 0))
+          (phidot (ref qdot 1))
+          (psidot (ref qdot 2)))
+      (let ((omega-a (+
+                       (* thetadot (cos psi))
+                       (* phidot (sin theta) (sin psi))))
+            (omega-b (+
+                       (* -1 thetadot (sin psi))
+                       (* phidot (sin theta) (cos psi))))
+            (omega-c (+
+                       (* phidot (cos theta)) psidot)))
+        (up omega-a omega-b omega-c)))))
+{% endhighlight %}</div>
 <a id="p141"></a>
 
 <p>The kinetic energy can now be written:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((T-body-Euler A B C) local)</span></p>
-
-<p class="pqp1"><span class="font1">((T-body A B C)</span></p>
-
-<p class="pqp2"><span class="font1">(Euler-state-&#x003E;omega-body local)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((T-body-Euler A B C) local)
+  ((T-body A B C)
+   (Euler-state->omega-body local)))
+{% endhighlight %}</div>
 
 <p>We can define procedures to calculate the components of the angular momentum on the principal axes:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-body-Euler A B C) local)</span></p>
-
-<p class="pqp1"><span class="font1">((L-body A B C)</span></p>
-
-<p class="pqp2"><span class="font1">(Euler-state-&#x003E;omega-body local)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-body-Euler A B C) local)
+  ((L-body A B C)
+   (Euler-state->omega-body local)))
+{% endhighlight %}</div>
 
 <p class="noindent">We then transform the components of the angular momentum on the principal axes to the components on the fixed basis <em>&#x00EA;<sub>i</sub></em>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-space-Euler A B C) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((angles (coordinate local)))</span></p>
-
-<p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> ((L-body-Euler A B C) local)</span></p>
-
-<p class="pqp3b"><span class="font1">(transpose (Euler-&#x003E;M angles)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-space-Euler A B C) local)
+  (let ((angles (coordinate local)))
+    (* ((L-body-Euler A B C) local)
+       (transpose (Euler->M angles)))))
+{% endhighlight %}</div>
 
 <p class="noindent">These procedures are local state functions, like Lagrangians.</p>
 </section>
@@ -735,23 +600,17 @@ layout: chapter
 <p class="noindent">The Lagrangian for a free rigid body has no explicit time dependence, so we can deduce that the energy, which is just the kinetic energy, is conserved by the motion.</p>
 
 <p>The Lagrangian does not depend on the Euler angle <em>&#x03C6;</em>, so we can deduce that the momentum conjugate to this coordinate is conserved. An explicit expression for the momentum conjugate to <em>&#x03C6;</em> is</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define Euler-state
+  (up 't
+      (up 'theta 'phi 'psi)
+      (up 'thetadot 'phidot 'psidot)))
 
-<p class="pqp1"><span class="font1">(define Euler-state</span></p>
-
-<p class="pqp2"><span class="font1">(up 't</span></p>
-
-<p class="pqp3"><span class="font1">(up 'theta 'phi 'psi)</span></p>
-
-<p class="pqp3"><span class="font1">(up 'thetadot 'phidot 'psidot)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(ref (((partial 2) (T-body-Euler 'A 'B 'C)) Euler-state)</span></p>
-
-<p class="pqp4"><span class="font1">1))</span></p>
-</div>
-<div class="pull-quotebox">
+(show-expression
+  (ref (((partial 2) (T-body-Euler 'A 'B 'C)) Euler-state)
+       1))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch608"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>A</mi><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><msup><mrow><mrow><mo>(</mo><mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><msup><mrow><mrow><mo>(</mo><mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mo>+</mo><mi>A</mi><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mi>cos</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>+</mo><mi>B</mi><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><msup><mrow><mrow><mo>(</mo><mrow><mi>cos</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><msup><mrow><mrow><mo>(</mo><mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mo>&#x2212;</mo><mi>B</mi><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mi>cos</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03C8;</mi><mo>)</mo></mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo>+</mo><mi>C</mi><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><msup><mrow><mrow><mo>(</mo><mrow><mi>cos</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mo>+</mo><mi>C</mi><mover accent='true'><mi>&#x03C8;</mi><mo>&#x02D9;</mo></mover><mi>cos</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -759,18 +618,14 @@ layout: chapter
 <p class="noindent">We know that this complicated quantity is conserved by the motion of the rigid body because of the symmetries of the Lagrangian.</p>
 
 <p>If there are no external torques, then we expect that the vector angular momentum will be conserved. We can verify this using the Lagrangian formulation of the problem. First, we note that <em>L<sub>z</sub></em> is the same as <em>p<sub>&#x03C6;</sub></em>. We can check this by direct calculation:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(- (ref ((L-space-Euler 'A 'B 'C) Euler-state)</span></p>
-
-<p class="pqp5"><span class="font1">2)</span></p>
-
-<p class="pqp2"><span class="font1">(ref (((partial 2) (T-body-Euler 'A 'B 'C)) Euler-state)</span></p>
-
-<p class="pqp5"><span class="font1">1))</span></p>
-
-<p class="pqp1"><span class="font1"><em>0</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(- (ref ((L-space-Euler 'A 'B 'C) Euler-state)
+        2)
+   (ref (((partial 2) (T-body-Euler 'A 'B 'C)) Euler-state)
+        1))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+0
+{% endhighlight %}</div>
 
 <p class="noindent">We know that <em>p<sub>&#x03C6;</sub></em> is conserved because the Lagrangian for the free rigid body did not mention <em>&#x03C6;</em>, so now we know that <em>L<sub>z</sub></em> is conserved. Since the orientation of the coordinate axes is arbitrary, we know that if any rectangular component is conserved then all <a id="p143"></a>of them are. So the vector angular momentum is conserved for the free rigid body.</p>
 
@@ -791,17 +646,13 @@ layout: chapter
 <p>Before doing this it is worth noting that the equations of motion in Euler angles are singular for some configurations, because for these configurations the Euler angles are not uniquely defined. If we set <em>&#x03B8;</em> &#x003D; 0 then an orientation does not correspond to a unique value of <em>&#x03C6;</em> and <em>&#x03C8;</em>; only their sum determines the orientation.</p>
 
 <p>The singularity arises in the explicit Lagrange equations when we attempt to solve for the second derivative of the generalized coordinates in terms of the generalized coordinates and the generalized velocities (see <a href="chapter001.html#h1-6b">section 1.7</a>). The isolation of the second derivative requires multiplying by the inverse of &#x2202;<sub>2</sub>&#x2202;<sub>2</sub><em>L</em>. The determinant of this quantity becomes zero when the Euler angle <em>&#x03B8;</em> is zero:</p>
-<a id="p144"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(determinant</span></p>
-
-<p class="pqp2"><span class="font1">(((square (partial 2)) (T-body-Euler 'A 'B 'C))</span></p>
-
-<p class="pqp3"><span class="font1">Euler-state)))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (determinant
+    (((square (partial 2)) (T-body-Euler 'A 'B 'C))
+     Euler-state)))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch609"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mi>B</mi><mi>C</mi><msup><mrow><mrow><mo>(</mo><mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -813,52 +664,37 @@ layout: chapter
 <p>We will compute some trajectories by numerical integration and check our integration process by seeing how well energy and angular momentum are conserved. Then, we will investigate the evolution of the components of angular momentum on the principal axis basis. We will discover that we can learn quite a bit about the qualitative behavior of rigid bodies by combining the information we get from the energy and angular momentum.</p>
 
 <p>To develop a trajectory from initial conditions we integrate the Lagrange equations, as we did in chapter 1. The system derivative is obtained from the Lagrangian:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (rigid-sysder A B C)</span></p>
-
-<p class="pqp1"><span class="font1">(Lagrangian-&#x003E;state-derivative (T-body-Euler A B C)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (rigid-sysder A B C)
+  (Lagrangian->state-derivative (T-body-Euler A B C)))
+{% endhighlight %}</div>
 
 <p class="noindent">The following program monitors the errors in the energy and in the components of the angular momentum:</p>
-<a id="p145"></a><div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((monitor-errors win A B C L0 E0) state)
+  (let ((t (time state))
+        (L ((L-space-Euler A B C) state))
+        (E ((T-body-Euler A B C) state)))
+    (plot-point win t (relative-error (ref L 0) (ref L0 0)))
+    (plot-point win t (relative-error (ref L 1) (ref L0 1)))
+    (plot-point win t (relative-error (ref L 2) (ref L0 2)))
+    (plot-point win t (relative-error E E0))))
 
-<p class="pq-noindent"><span class="font1">(define ((monitor-errors win A B C L0 E0) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time state))</span></p>
-
-<p class="pqp4"><span class="font1">(L ((L-space-Euler A B C) state))</span></p>
-
-<p class="pqp4"><span class="font1">(E ((T-body-Euler A B C) state)))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win t (relative-error (ref L 0) (ref L0 0)))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win t (relative-error (ref L 1) (ref L0 1)))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win t (relative-error (ref L 2) (ref L0 2)))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win t (relative-error E E0))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (relative-error value reference-value)</span></p>
-
-<p class="pqp1"><span class="font1">(if (zero? reference-value)</span></p>
-
-<p class="pqp3b"><span class="font1">(error &#x201C;Zero reference value -- RELATIVE-ERROR&#x201D;)</span></p>
-
-<p class="pqp3b"><span class="font1">(/ (- value reference-value) reference-value)))</span></p>
-</div>
+(define (relative-error value reference-value)
+  (if (zero? reference-value)
+    (error "Zero reference value -- RELATIVE-ERROR")
+    (/ (- value reference-value) reference-value)))
+{% endhighlight %}</div>
 
 <p class="noindent">We make a plot window to display the errors:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define win (frame 0.0 100.0 -1.0e-12 1.0e-12))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define win (frame 0.0 100.0 -1.0e-12 1.0e-12))
+{% endhighlight %}</div>
 
 <p class="noindent">The default integration method used by the system is Bulirsch&#x2013;Stoer (<span class="font1">bulirsch-stoer</span>), but here we set the integration method to be quality-controlled Runge&#x2013;Kutta (<span class="font1">qcrk4</span>), because the error plot is more interesting:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(set-ode-integration-method&#x0021; 'qcrk4)</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(set-ode-integration-method! 'qcrk4)
+{% endhighlight %}</div>
 
 <p class="noindent">We use <span class="font1">evolve</span> to investigate the evolution:</p>
 <table class="table1n">
@@ -1113,19 +949,14 @@ layout: chapter
 <p>We can take advantage of these symmetries by choosing appropriate coordinates, and we already have a coordinate system <a id="p159"></a>that does the job&#x2014;the Euler angles.<sup><a class="footnote_link" href="#endnote_14" id="endnote_ref_14">14</a></sup> We choose the reference orientation so that the symmetry axis is vertical. The first Euler angle, <em>&#x03C8;</em>, expresses a rotation about the symmetry axis. The next Euler angle, <em>&#x03B8;</em>, is the tilt of the symmetry axis of the top from the vertical. The third Euler angle, <em>&#x03C6;</em>, expresses a rotation of the top about the <em>&#x1E91;</em> axis. The symmetries of the problem imply that the first and third Euler angles do not appear in the Lagrangian. As a consequence the momenta conjugate to these angles are conserved quantities. Let's work out the details.</p>
 
 <p>First, we develop the Lagrangian explicitly. The general form of the kinetic energy about a fixed point is given by equation <a href="chapter002.html#disp_2.41">2.41</a>. The top is constrained so that it pivots about a fixed point that is not at the center of mass. So the moments of inertia that enter the kinetic energy are the moments of inertia of the top with respect to the pivot point, not with respect to the center of mass. If we know the moments of inertia about the center of mass we can write the moments of inertia about the pivot in terms of them (see <a href="chapter002.html#Exe_2-2">exercise 2.2</a> on Steiner's theorem). So let's assume the principal moments of inertia of the top about the pivot are <em>A</em>, <em>B</em>, and <em>C</em>, and <em>A</em> &#x003D; <em>B</em> because of the symmetry.<sup><a class="footnote_link" href="#endnote_15" id="endnote_ref_15">15</a></sup> We can use the computer to help us figure out the Lagrangian for this special case:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((T-body-Euler 'A 'A 'C)</span></p>
-
-<p class="pqp2"><span class="font1">(up 't</span></p>
-
-<p class="pqp4"><span class="font1">(up 'theta 'phi 'psi)</span></p>
-
-<p class="pqp4"><span class="font1">(up 'thetadot 'phidot 'psidot))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  ((T-body-Euler 'A 'A 'C)
+   (up 't
+       (up 'theta 'phi 'psi)
+       (up 'thetadot 'phidot 'psidot))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch648"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mrow><mrow><mo>(</mo><mrow><mi>sin</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mi>A</mi><msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mi>cos</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mrow><mo>(</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>cos</mi><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mi>C</mi><msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mi>C</mi><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mover accent='true'><mi>&#x03C8;</mi><mo>&#x02D9;</mo></mover></mrow><mo>)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>A</mi><msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>C</mi><msup><mover accent='true'><mi>&#x03C8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -1487,129 +1318,81 @@ layout: chapter
 
 <p>A procedure for making the rotation matrix is:</p>
 <a id="p184"></a>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (angle-axis-&#x003E;rotation-matrix theta n)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((nx (ref n 0)) (ny (ref n 1)) (nz (ref n 2)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((colatitude (acos nz)) (longitude (atan ny nx)))</span></p>
-
-<p class="pqp3"><span class="font1">(<sub>&#x002A;</sub> (Rz-matrix longitude)</span></p>
-
-<p class="pqp4c"><span class="font1">(Ry-matrix colatitude)</span></p>
-
-<p class="pqp4c"><span class="font1">(Rz-matrix theta)</span></p>
-
-<p class="pqp4c"><span class="font1">(transpose (Ry-matrix colatitude))</span></p>
-
-<p class="pqp4c"><span class="font1">(transpose (Rz-matrix longitude))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (angle-axis->rotation-matrix theta n)
+  (let ((nx (ref n 0)) (ny (ref n 1)) (nz (ref n 2)))
+    (let ((colatitude (acos nz)) (longitude (atan ny nx)))
+      (* (Rz-matrix longitude)
+         (Ry-matrix colatitude)
+         (Rz-matrix theta)
+         (transpose (Ry-matrix colatitude))
+         (transpose (Rz-matrix longitude))))))
+{% endhighlight %}</div>
 
 <p class="noindent">And a procedure for obtaining the angle and axis of a quaternion is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (quaternion-&#x003E;angle-axis q)</span></p>
-
-<p class="pqp1"><span class="font1">(let<sub>&#x002A;</sub> ((v (quaternion-&#x003E;3vector q))</span></p>
-
-<p class="pqp5"><span class="font1">(theta (<sub>&#x002A;</sub> 2 (atan (euclidean-norm v)</span></p>
-
-<p class="pqp10a"><span class="font1">(quaternion-&#x003E;real-part q))))</span></p>
-
-<p class="pqp5"><span class="font1">(axis (/ v (euclidean-norm v))))</span></p>
-
-<p class="pqp2"><span class="font1">(list theta axis)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (quaternion->angle-axis q)
+  (let* ((v (quaternion->3vector q))
+         (theta (* 2 (atan (euclidean-norm v)
+                           (quaternion->real-part q))))
+         (axis (/ v (euclidean-norm v))))
+    (list theta axis)))
+{% endhighlight %}</div>
 
 <p class="noindent">Combining these, we can compute the rotation matrix associated with a quaternion:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (quaternion-&#x003E;RM q)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((aa (quaternion-&#x003E;angle-axis q)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((theta (ref aa 0)) (n (ref aa 1)))</span></p>
-
-<p class="pqp3"><span class="font1">(angle-axis-&#x003E;rotation-matrix theta n))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (quaternion->RM q)
+  (let ((aa (quaternion->angle-axis q)))
+    (let ((theta (ref aa 0)) (n (ref aa 1)))
+      (angle-axis->rotation-matrix theta n))))
+{% endhighlight %}</div>
 
 <p class="noindent">The resulting matrix has the square of the magnitude of the quaternion dividing each term. For a unit quaternion this denominator has no effect, but the expression looks simpler if we multiply through:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(let ((v (up 'q_0 'q_1 'q_2 'q_3)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((m^2 (dot-product v v)))</span></p>
-
-<p class="pqp3"><span class="font1">(<sub>&#x002A;</sub> m^2 (quaternion-&#x003E;RM (make-quaternion v))))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (let ((v (up 'q_0 'q_1 'q_2 'q_3)))
+    (let ((m^2 (dot-product v v)))
+      (* m^2 (quaternion->RM (make-quaternion v))))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch727"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><msubsup><mi>q</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>1</mn><mn>2</mn></msubsup><mo>&#x2212;</mo><msubsup><mi>q</mi><mn>2</mn><mn>2</mn></msubsup><mo>&#x2212;</mo><msubsup><mi>q</mi><mn>3</mn><mn>2</mn></msubsup></mrow></mtd><mtd><mrow><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mi>q</mi><mn>3</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>1</mn></msub><msub><mi>q</mi><mn>2</mn></msub></mrow></mtd><mtd><mrow><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mi>q</mi><mn>2</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>1</mn></msub><msub><mi>q</mi><mn>3</mn></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mi>q</mi><mn>3</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>1</mn></msub><msub><mi>q</mi><mn>2</mn></msub></mrow></mtd><mtd><mrow><msubsup><mi>q</mi><mn>0</mn><mn>2</mn></msubsup><mo>&#x2212;</mo><msubsup><mi>q</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>2</mn><mn>2</mn></msubsup><mo>&#x2212;</mo><msubsup><mi>q</mi><mn>3</mn><mn>2</mn></msubsup></mrow></mtd><mtd><mrow><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mi>q</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>2</mn></msub><msub><mi>q</mi><mn>3</mn></msub></mrow></mtd></mtr><mtr><mtd><mrow><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mi>q</mi><mn>2</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>1</mn></msub><msub><mi>q</mi><mn>3</mn></msub></mrow></mtd><mtd><mrow><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mi>q</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>2</mn></msub><msub><mi>q</mi><mn>3</mn></msub></mrow></mtd><mtd><mrow><msubsup><mi>q</mi><mn>0</mn><mn>2</mn></msubsup><mo>&#x2212;</mo><msubsup><mi>q</mi><mn>1</mn><mn>2</mn></msubsup><mo>&#x2212;</mo><msubsup><mi>q</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>3</mn><mn>2</mn></msubsup></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">We then capture this result as a useful procedure (dividing through by the square of the magnitude). The resulting matrix is homogeneous <a id="p185"></a>of degree zero in the quaternion components, so the result is insensitive to the scale.</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (quaternion-&#x003E;rotation-matrix q)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q0 (quaternion-ref q 0)) (q1 (quaternion-ref q 1))</span></p>
-
-<p class="pqp3b"><span class="font1">(q2 (quaternion-ref q 2)) (q3 (quaternion-ref q 3)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((m^2</span></p>
-
-<p class="pqp5"><span class="font1">(&#x002B; (expt q0 2) (expt q1 2)</span></p>
-
-<p class="pqp6a"><span class="font1">(expt q2 2) (expt q3 2))))</span></p>
-
-<p class="pqp3"><span class="font1">(/ (matrix-by-rows</span></p>
-
-<p class="pqp5"><span class="font1">(list (- (&#x002B; (expt q0 2) (expt q1 2))</span></p>
-
-<p class="pqp10b"><span class="font1">(&#x002B; (expt q2 2) (expt q3 2)))</span></p>
-
-<p class="pqp8a"><span class="font1">(<sub>&#x002A;</sub> 2 (- (<sub>&#x002A;</sub> q1 q2) (<sub>&#x002A;</sub> q0 q3)))</span></p>
-
-<p class="pqp8a"><span class="font1">(<sub>&#x002A;</sub> 2 (&#x002B; (<sub>&#x002A;</sub> q1 q3) (<sub>&#x002A;</sub> q0 q2))))</span></p>
-
-<p class="pqp5"><span class="font1">(list (<sub>&#x002A;</sub> 2 (&#x002B; (<sub>&#x002A;</sub> q1 q2) (<sub>&#x002A;</sub> q0 q3)))</span></p>
-
-<p class="pqp8a"><span class="font1">(- (&#x002B; (expt q0 2) (expt q2 2))</span></p>
-
-<p class="pqp10b"><span class="font1">(&#x002B; (expt q1 2) (expt q3 2)))</span></p>
-
-<p class="pqp8a"><span class="font1">(<sub>&#x002A;</sub> 2 (- (<sub>&#x002A;</sub> q2 q3) (<sub>&#x002A;</sub> q0 q1))))</span></p>
-
-<p class="pqp5"><span class="font1">(list (<sub>&#x002A;</sub> 2 (- (<sub>&#x002A;</sub> q1 q3) (<sub>&#x002A;</sub> q0 q2)))</span></p>
-
-<p class="pqp8a"><span class="font1">(<sub>&#x002A;</sub> 2 (&#x002B; (<sub>&#x002A;</sub> q2 q3) (<sub>&#x002A;</sub> q0 q1)))</span></p>
-
-<p class="pqp8a"><span class="font1">(- (&#x002B; (expt q0 2) (expt q3 2))</span></p>
-
-<p class="pqp10b"><span class="font1">(&#x002B; (expt q1 2) (expt q2 2)))))</span></p>
-
-<p class="pqp4"><span class="font1">m^2))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (quaternion->rotation-matrix q)
+  (let ((q0 (quaternion-ref q 0)) (q1 (quaternion-ref q 1))
+                                  (q2 (quaternion-ref q 2)) (q3 (quaternion-ref q 3)))
+    (let ((m^2
+            (+ (expt q0 2) (expt q1 2)
+               (expt q2 2) (expt q3 2))))
+      (/ (matrix-by-rows
+           (list (- (+ (expt q0 2) (expt q1 2))
+                    (+ (expt q2 2) (expt q3 2)))
+                 (* 2 (- (* q1 q2) (* q0 q3)))
+                 (* 2 (+ (* q1 q3) (* q0 q2))))
+           (list (* 2 (+ (* q1 q2) (* q0 q3)))
+                 (- (+ (expt q0 2) (expt q2 2))
+                    (+ (expt q1 2) (expt q3 2)))
+                 (* 2 (- (* q2 q3) (* q0 q1))))
+           (list (* 2 (- (* q1 q3) (* q0 q2)))
+                 (* 2 (+ (* q2 q3) (* q0 q1)))
+                 (- (+ (expt q0 2) (expt q3 2))
+                    (+ (expt q1 2) (expt q2 2)))))
+         m^2))))
+{% endhighlight %}</div>
 
 <p>Next we determine the components of the angular velocity on the body using this result and the <span class="font1">M-&#x003E;omega-body</span> of <a href="chapter002.html#h1-8">section 2.2</a>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((M-&#x003E;omega-body</span></p>
-
-<p class="pqp2"><span class="font1">(compose quaternion-&#x003E;rotation-matrix make-quaternion))</span></p>
-
-<p class="pqp1a"><span class="font1">(up 't</span></p>
-
-<p class="pqp4"><span class="font1">(up 'q_0 'q_1 'q_2 'q_3)</span></p>
-
-<p class="pqp4"><span class="font1">(up 'qdot_0 'qdot_1 'qdot_2 'qdot_3))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  ((M->omega-body
+     (compose quaternion->rotation-matrix make-quaternion))
+   (up 't
+       (up 'q_0 'q_1 'q_2 'q_3)
+       (up 'qdot_0 'qdot_1 'qdot_2 'qdot_3))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch728"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mfrac><mrow><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>1</mn></msub><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>1</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>0</mn></msub><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>2</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>3</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>3</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msub></mrow><mrow><msubsup><mi>q</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>3</mn><mn>2</mn></msubsup></mrow></mfrac></mrow></mtd></mtr><mtr><mtd><mrow><mfrac><mrow><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>1</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>3</mn></msub><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>2</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>0</mn></msub><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>3</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>1</mn></msub></mrow><mrow><msubsup><mi>q</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>3</mn><mn>2</mn></msubsup></mrow></mfrac></mrow></mtd></mtr><mtr><mtd><mrow><mfrac><mrow><mn>2</mn><msub><mi>q</mi><mn>0</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>3</mn></msub><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>1</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msub><mo>+</mo><mn>2</mn><msub><mi>q</mi><mn>2</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>1</mn></msub><mo>&#x2212;</mo><mn>2</mn><msub><mi>q</mi><mn>3</mn></msub><msub><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mn>0</mn></msub></mrow><mrow><msubsup><mi>q</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>q</mi><mn>3</mn><mn>2</mn></msubsup></mrow></mfrac></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -1625,28 +1408,18 @@ layout: chapter
 <p class="eqtext" id="disp_2.126"><epub:switch id="mathmlSwitch731"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mi>&#x03C9;</mi><mi>a</mi></msup><mo>=</mo><mrow><mrow><mn>2</mn><msup><mi mathvariant='script'>q</mi><mi mathvariant='script'>T</mi></msup><mstyle mathvariant='bold'><mi>i</mi></mstyle><mover accent='true'><mi mathvariant='script'>q</mi><mo>&#x02D9;</mo></mover></mrow><mo>/</mo><mrow><msup><mrow><mrow><mo>&#x2016;</mo><mi mathvariant='script'>q</mi><mo>&#x2016;</mo></mrow></mrow><mn>2</mn></msup></mrow></mrow></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mi>&#x03C9;</mi><mi>b</mi></msup><mo>=</mo><mrow><mrow><mn>2</mn><msup><mi mathvariant='script'>q</mi><mi mathvariant='script'>T</mi></msup><mstyle mathvariant='bold'><mi>j</mi></mstyle><mover accent='true'><mi mathvariant='script'>q</mi><mo>&#x02D9;</mo></mover></mrow><mo>/</mo><mrow><msup><mrow><mrow><mo>&#x2016;</mo><mi mathvariant='script'>q</mi><mo>&#x2016;</mo></mrow></mrow><mn>2</mn></msup></mrow></mrow></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mi>&#x03C9;</mi><mi>c</mi></msup><mo>=</mo><mrow><mrow><mn>2</mn><msup><mi mathvariant='script'>q</mi><mi mathvariant='script'>T</mi></msup><mstyle mathvariant='bold'><mi>k</mi></mstyle><mover accent='true'><mi mathvariant='script'>q</mi><mo>&#x02D9;</mo></mover></mrow><mo>/</mo><mrow><msup><mrow><mrow><mo>&#x2016;</mo><mi mathvariant='script'>q</mi><mo>&#x2016;</mo></mrow></mrow><mn>2</mn></msup><mo>,</mo></mrow></mrow></mrow></mtd><mtd columnalign='left'><mrow><mrow><mo>(</mo><mrow><mn>2.126</mn></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">where <epub:switch id="mathmlSwitch732"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi mathvariant='script'>q</mi></mrow></math></epub:case></epub:switch> is a column matrix of the components of <em>q</em>. As a program:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (quaternion-state-&#x003E;omega-body s)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinates s)) (qdot (velocities s)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((m^2 (dot-product q q)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((omega^a</span></p>
-
-<p class="pqp6"><span class="font1">(/ (<sub>&#x002A;</sub> 2 (dot-product q (<sub>&#x002A;</sub> q:i qdot))) m^2))</span></p>
-
-<p class="pqp6"><span class="font1">(omega^b</span></p>
-
-<p class="pqp6"><span class="font1">(/ (<sub>&#x002A;</sub> 2 (dot-product q (<sub>&#x002A;</sub> q:j qdot))) m^2))</span></p>
-
-<p class="pqp6"><span class="font1">(omega^c</span></p>
-
-<p class="pqp6"><span class="font1">(/ (<sub>&#x002A;</sub> 2 (dot-product q (<sub>&#x002A;</sub> q:k qdot))) m^2)))</span></p>
-
-<p class="pqp4"><span class="font1">(up omega^a omega^b omega^c)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (quaternion-state->omega-body s)
+  (let ((q (coordinates s)) (qdot (velocities s)))
+    (let ((m^2 (dot-product q q)))
+      (let ((omega^a
+              (/ (* 2 (dot-product q (* q:i qdot))) m^2))
+            (omega^b
+              (/ (* 2 (dot-product q (* q:j qdot))) m^2))
+            (omega^c
+              (/ (* 2 (dot-product q (* q:k qdot))) m^2)))
+        (up omega^a omega^b omega^c)))))
+{% endhighlight %}</div>
 
 <p class="noindent">where <span class="font1">q:i</span>, <span class="font1">q:j</span>, and <span class="font1">q:k</span> implement <strong>i</strong>, <strong>j</strong>, and <strong>k</strong>.</p>
 <a id="p187"></a>
@@ -1662,18 +1435,13 @@ layout: chapter
 <h2 class="level2"><strong>Composition of rotations</strong></h2>
 
 <p class="noindent">What is the quaternion that represents the composition of two rotations?</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(let ((q (quaternion 'q_0 'q_1 'q_2 'q_3))</span></p>
-
-<p class="pqp3b"><span class="font1">(p (quaternion 'p_0 'p_1 'p_2 'p_3)))</span></p>
-
-<p class="pqp1"><span class="font1">(let ((Mq (quaternion-&#x003E;rotation-matrix q))</span></p>
-
-<p class="pqp4b"><span class="font1">(Mp (quaternion-&#x003E;rotation-matrix p)))</span></p>
-
-<p class="pqp2"><span class="font1">(rotation-matrix-&#x003E;quaternion (<sub>&#x002A;</sub> Mq Mp))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(let ((q (quaternion 'q_0 'q_1 'q_2 'q_3))
+      (p (quaternion 'p_0 'p_1 'p_2 'p_3)))
+  (let ((Mq (quaternion->rotation-matrix q))
+        (Mp (quaternion->rotation-matrix p)))
+    (rotation-matrix->quaternion (* Mq Mp))))
+{% endhighlight %}</div>
 
 <p class="noindent">Unfortunately, the result is messy because each component is scaled by a factor of &#x2016;<em>q</em>&#x2016;&#x2016;<em>p</em>&#x2016;, which is 1 for unit quaternions. For each rotation matrix there are many quaternions that can represent it. Indeed, a quaternion scaled by any nonzero number represents the same rotation matrix. So the process of choosing a quaternion to represent that matrix picks a unit quaternion. Here are the components of the chosen quaternion, eliminating the normalizing factor &#x2016;<em>q</em>&#x2016;&#x2016;<em>p</em>&#x2016;:</p>
 
@@ -1717,218 +1485,156 @@ layout: chapter
 <p class="noindent">This set of differential equations is driven by Euler's equations for the motion of the body components of the angular velocity (see equations <a href="chapter002.html#disp_2.69">2.69</a> on <a href="chapter002.html#p153">page 153</a>).<sup><a class="footnote_link" href="#endnote_24" id="endnote_ref_24">24</a></sup></p>
 
 <p>We construct a system derivative for the free rigid body with mixed coordinates. The configuration is represented by a quaternion that specifies the rotation that takes the body from the reference orientation to the actual orientation. The rate of change of the configuration is specified by the components of the angular velocities on the body.</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (qw-sysder A B C)
+  (let ((B-C/A (/ (- B C) A))
+        (C-A/B (/ (- C A) B))
+        (A-B/C (/ (- A B) C)))
+    (define (the-deriv qw-state)
+      (let ((t (time qw-state))
+            (q (coordinates qw-state))
+            (omega-body (ref qw-state 2)))
+        (let ((omega^a (ref omega-body 0))
+              (omega^b (ref omega-body 1))
+              (omega^c (ref omega-body 2)))
+          (let ((tdot 1)
+                (qdot      ;driven quaternion
+                  (* -1/2
+                     (+ (* omega^a q:i)
+                        (* omega^b q:j)
+                        (* omega^c q:k))
+                     q))
 
-<p class="pq-noindent"><span class="font1">(define (qw-sysder A B C)</span></p>
+                (omegadot ;Euler's equations
+                  (up (* B-C/A omega^b omega^c)
+                      (* C-A/B omega^c omega^a)
+                      (* A-B/C omega^a omega^b))))
 
-<p class="pqp1"><span class="font1">(let ((B-C/A (/ (- B C) A))</span></p>
-
-<p class="pqp4b"><span class="font1">(C-A/B (/ (- C A) B))</span></p>
-
-<p class="pqp4b"><span class="font1">(A-B/C (/ (- A B) C)))</span></p>
-
-<p class="pqp2"><span class="font1">(define (the-deriv qw-state)</span></p>
-
-<p class="pqp3"><span class="font1">(let ((t (time qw-state))</span></p>
-
-<p class="pqp6"><span class="font1">(q (coordinates qw-state))</span></p>
-
-<p class="pqp6"><span class="font1">(omega-body (ref qw-state 2)))</span></p>
-
-<p class="pqp4"><span class="font1">(let ((omega^a (ref omega-body 0))</span></p>
-
-<p class="pqp7"><span class="font1">(omega^b (ref omega-body 1))</span></p>
-
-<p class="pqp7"><span class="font1">(omega^c (ref omega-body 2)))</span></p>
-
-<p class="pqp5"><span class="font1">(let ((tdot 1)</span></p>
-
-<p class="pqp8"><span class="font1">(qdot&#160;&#160;&#160;&#160;&#160;&#160;;driven quaternion</span></p>
-
-<p class="pqp8"><span class="font1">(<sub>&#x002A;</sub> -1/2</span></p>
-<table class="table1n">
-<tr>
-<td class="td1" valign="top">
-<p class="pqp9"><span class="font1">(&#x002B;</span></p></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> omega^a q:i)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> omega^b q:j)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> omega^c q:k))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp9"><span class="font1">q))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-</table>
-
-<p class="pqp7"><span class="font1">(omegadot ;Euler's equations</span></p>
-<table class="table1n">
-<tr>
-<td class="td1" valign="top">
-<p class="pqp8"><span class="font1">(up</span></p></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> B-C/A omega^b omega^c)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> C-A/B omega^c omega^a)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(<sub>&#x002A;</sub> A-B/C omega^a omega^b))))</span></td>
-</tr>
-</table>
-
-<p class="pqp5"><span class="font1">(up tdot qdot omegadot)))))</span></p>
-
-<p class="pqp3"><span class="font1">the-deriv))</span></p>
-</div>
+            (up tdot qdot omegadot)))))
+    the-deriv))
+{% endhighlight %}</div>
 <a id="p190"></a>
 
 <p class="noindent">Note that this system derivative is not constructed by an automatic process: this was not derived from a Lagrangian. This is part of the price we pay for using redundant coordinates (the four quaternion components) to represent the configuration of a system with only three degrees of freedom. By using Euler's equations we avoid having to eliminate the constraint. However, the computations with quaternions are easier than the ones using Euler angles, because they do not involve evaluating transcendental functions or avoiding the singularities.</p>
 
 <p>Since we will monitor the errors in the conserved quantities, angular momentum and energy, we need to compute these quantites from the state. The kinetic energy and the angular momentum components on the body are exactly the same as we used before, because they depend on only the components of the angular velocities on the body. However, to get the components of the angular momentum on spatial axes we need the rotation computed from the quaternion coordinates:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((qw-state-&#x003E;L-space A B C) qw-state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinates qw-state)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((Lbody ((L-body A B C) (ref qw-state 2)))</span></p>
-
-<p class="pqp5a"><span class="font1">(M (quaternion-&#x003E;rotation-matrix</span></p>
-
-<p class="pqp7"><span class="font1">(make-quaternion q))))</span></p>
-
-<p class="pqp3"><span class="font1">(<sub>&#x002A;</sub> Lbody (transpose M)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((qw-state->L-space A B C) qw-state)
+  (let ((q (coordinates qw-state)))
+    (let ((Lbody ((L-body A B C) (ref qw-state 2)))
+          (M (quaternion->rotation-matrix
+               (make-quaternion q))))
+      (* Lbody (transpose M)))))
+{% endhighlight %}</div>
 
 <p>From the initial angular momentum and energy we can compute the relative error of these quantities, as we did in <a href="chapter002.html#h3_2-8-1">section 2.8.1</a>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((monitor-errors win A B C L0 E0) qw-state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time qw-state))</span></p>
-
-<p class="pqp4"><span class="font1">(L ((qw-state-&#x003E;L-space A B C) qw-state))</span></p>
-
-<p class="pqp4"><span class="font1">(E ((T-body A B C) (ref qw-state 2))))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win t (relative-error (ref L 0) (ref L0 0)))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win t (relative-error (ref L 1) (ref L0 1)))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win t (relative-error (ref L 2) (ref L0 2)))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win t (relative-error E E0))</span></p>
-
-<p class="pqp2"><span class="font1">qw-state))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((monitor-errors win A B C L0 E0) qw-state)
+  (let ((t (time qw-state))
+        (L ((qw-state->L-space A B C) qw-state))
+        (E ((T-body A B C) (ref qw-state 2))))
+    (plot-point win t (relative-error (ref L 0) (ref L0 0)))
+    (plot-point win t (relative-error (ref L 1) (ref L0 1)))
+    (plot-point win t (relative-error (ref L 2) (ref L0 2)))
+    (plot-point win t (relative-error E E0))
+    qw-state))
+{% endhighlight %}</div>
 
 <p>Below we set up the initial conditions and use <span class="font1">monitor-errors</span> to plot the errors. We use the same initial conditions that we did for Euler angles. We get the rotation matrix <span class="font1">M</span> that transforms the reference position to the initial Euler state and use that to construct the equivalent quaternion state for this evolution.</p>
-<a id="p191"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define win (frame 0.0 100.0 -1.0e-13 1.0e-13))</span></p>
-
-<p>&#160;</p>
+<div class="code">{% highlight scheme %}
+(define win (frame 0.0 100.0 -1.0e-13 1.0e-13))
+<p> </p>
 <table class="table1n">
 <tr>
-<td class="td1" valign="top"><span class="font1">(let<sub>&#x002A;</sub> ((A 1.0) (B (sqrt 2.0)) (C 2.0)</span></td>
-<td class="td1" valign="top"><span class="font1">; moments of inertia</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3b"><span class="font1">(Euler-state (up 0.0</span></p></td>
-<td class="td1" valign="top"><span class="font1">; initial state</span></td>
-</tr>
-
-<tr>
-<td class="td1" valign="top">
-<p class="pqp10"><span class="font1">(up 1.0 0.0 0.0)</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-
-<tr>
-<td class="td1" valign="top">
-<p class="pqp10"><span class="font1">(up 0.1 0.1 0.1)))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3b"><span class="font1">(M (Euler-&#x003E;M (coordinates Euler-state)))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3b"><span class="font1">(q (quaternion-&#x003E;vector (rotation-matrix-&#x003E;quaternion M)))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3b"><span class="font1">(qw-state0</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3b"><span class="font1">(up (time Euler-state)</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp5"><span class="font1">q</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp5"><span class="font1">(Euler-state-&#x003E;omega-body Euler-state))))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top"><span class="font1">(let ((L0 ((qw-state-&#x003E;L-space A B C) qw-state0))</span></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3"><span class="font1">(E0 ((T-body A B C) (ref qw-state0 2))))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">((evolve qw-sysder A B C)</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3"><span class="font1">qw-state0</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3"><span class="font1">(monitor-errors win A B C L0 E0)</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3"><span class="font1">0.1</span></p></td>
-<td class="td1" valign="top"><span class="font1">; step between plotted points</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3"><span class="font1">100.0</span></p></td>
-<td class="td1" valign="top"><span class="font1">; final time</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3"><span class="font1">1.0e-12)))</span></p></td>
+<td class="td1" valign="top"><span class="font1">(let* ((A 1.0) (B (sqrt 2.0)) (C 2.0)</span></td>
+                                                                <td class="td1" valign="top"><span class="font1">; moments of inertia</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <td class="td1" valign="top">
+                                                                <p class="pqp3b"><span class="font1">(Euler-state (up 0.0</span></p></td>
+                                                                                                                      <td class="td1" valign="top"><span class="font1">; initial state</span></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                      <td class="td1" valign="top">
+                                                                                                                      <p class="pqp10"><span class="font1">(up 1.0 0.0 0.0)</span></p></td>
+                                                                                                                      <td class="td1" valign="top"></td>
+                                                                                                                      </tr>
+                                                                                                                      <tr>
+                                                                                                                      <td class="td1" valign="top">
+                                                                                                                      <p class="pqp10"><span class="font1">(up 0.1 0.1 0.1)))</span></p></td>
+                                                                <td class="td1" valign="top"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <td class="td1" valign="top">
+                                                                <p class="pqp3b"><span class="font1">(M (Euler->M (coordinates Euler-state)))</span></p></td>
+                                                                <td class="td1" valign="top"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <td class="td1" valign="top">
+                                                                <p class="pqp3b"><span class="font1">(q (quaternion->vector (rotation-matrix->quaternion M)))</span></p></td>
+                                                                <td class="td1" valign="top"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <td class="td1" valign="top">
+                                                                <p class="pqp3b"><span class="font1">(qw-state0</span></p></td>
+                                                                                                       <td class="td1" valign="top"></td>
+                                                                                                       </tr>
+                                                                                                       <tr>
+                                                                                                       <td class="td1" valign="top">
+                                                                                                       <p class="pqp3b"><span class="font1">(up (time Euler-state)</span></p></td>
+                                                                                                                                                <td class="td1" valign="top"></td>
+                                                                                                                                                </tr>
+                                                                                                                                                <tr>
+                                                                                                                                                <td class="td1" valign="top">
+                                                                                                                                                <p class="pqp5"><span class="font1">q</span></p></td>
+                                                                                                                                                <td class="td1" valign="top"></td>
+                                                                                                                                                </tr>
+                                                                                                                                                <tr>
+                                                                                                                                                <td class="td1" valign="top">
+                                                                                                                                                <p class="pqp5"><span class="font1">(Euler-state->omega-body Euler-state))))</span></p></td>
+                                                   <td class="td1" valign="top"></td>
+                                                   </tr>
+                                                   <tr>
+                                                   <td class="td1" valign="top"><span class="font1">(let ((L0 ((qw-state->L-space A B C) qw-state0))</span></td>
+                                                                                                          <td class="td1" valign="top"></td>
+                                                                                                          </tr>
+                                                                                                          <tr>
+                                                                                                          <td class="td1" valign="top">
+                                                                                                          <p class="pqp3"><span class="font1">(E0 ((T-body A B C) (ref qw-state0 2))))</span></p></td>
+                                                                                                      <td class="td1" valign="top"></td>
+                                                                                                      </tr>
+                                                                                                      <tr>
+                                                                                                      <td class="td1" valign="top">
+                                                                                                      <p class="pqp2"><span class="font1">((evolve qw-sysder A B C)</span></p></td>
+                                                                                                                                           <td class="td1" valign="top"></td>
+                                                                                                                                           </tr>
+                                                                                                                                           <tr>
+                                                                                                                                           <td class="td1" valign="top">
+                                                                                                                                           <p class="pqp3"><span class="font1">qw-state0</span></p></td>
+                                                                                                                                           <td class="td1" valign="top"></td>
+                                                                                                                                           </tr>
+                                                                                                                                           <tr>
+                                                                                                                                           <td class="td1" valign="top">
+                                                                                                                                           <p class="pqp3"><span class="font1">(monitor-errors win A B C L0 E0)</span></p></td>
+                                                                                                                                           <td class="td1" valign="top"></td>
+                                                                                                                                           </tr>
+                                                                                                                                           <tr>
+                                                                                                                                           <td class="td1" valign="top">
+                                                                                                                                           <p class="pqp3"><span class="font1">0.1</span></p></td>
+                                                                                                                                           <td class="td1" valign="top"><span class="font1">; step between plotted points</span></td>
+                                                                                                                                           </tr>
+                                                                                                                                           <tr>
+                                                                                                                                           <td class="td1" valign="top">
+                                                                                                                                           <p class="pqp3"><span class="font1">100.0</span></p></td>
+                                                                                                                                           <td class="td1" valign="top"><span class="font1">; final time</span></td>
+                                                                                                                                           </tr>
+                                                                                                                                           <tr>
+                                                                                                                                           <td class="td1" valign="top">
+                                                                                                                                           <p class="pqp3"><span class="font1">1.0e-12)))</span></p></td>
 <td class="td1" valign="top"></td>
 </tr>
 </table>
-</div>
+{% endhighlight %}</div>
 
 <p class="noindent"><a href="#Fig_2-15">Figure 2.15</a> shows the relative errors in the energy and the spatial components of the angular momentum that arise in this integration. It is interesting to note that the errors incurred by integrating using Euler angles and quaternions are about a factor of ten smaller than the ones that appear when the coordinates are Euler angles.</p>
 </section>

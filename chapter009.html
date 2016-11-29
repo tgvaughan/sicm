@@ -37,34 +37,29 @@ layout: appendix
 <p class="eqtext" id="disp_9.1"><epub:switch id="mathmlSwitch1867"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>d</mi><mo stretchy='false'>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy='false'>)</mo><mo>=</mo><msqrt><mrow><msup><mrow><mrow><mo>(</mo><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>&#x2212;</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mrow><mo>(</mo><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>&#x2212;</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup></mrow></msqrt><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.1</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">In Scheme we can write this as:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (d x1 y1 x2 y2)</span></p>
-
-<p class="pqp1"><span class="font1">(sqrt (&#x002B; (square (- x2 x1)) (square (- y2 y1)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (d x1 y1 x2 y2)
+(sqrt (+ (square (- x2 x1)) (square (- y2 y1)))))
+{% endhighlight %}</div>
 
 <p>Functions may be composed if the range of one overlaps the domain of the other. The composition of functions is constructed by passing the output of one to the input of the other. We write the composition of two functions using the &#x2218; operation:</p>
 
 <p class="eqtext" id="disp_9.2"><epub:switch id="mathmlSwitch1868"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo>:</mo><mi>x</mi><mo>&#x21A6;</mo><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.2</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">A procedure <span class="font1">h</span> that computes the cube of the sine of its argument may be defined by composing the procedures <span class="font1">cube</span> and <span class="font1">sin</span>:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define h (compose cube sin))
 
-<p class="pq-noindent"><span class="font1">(define h (compose cube sin))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(h 2)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>.7518269446689928</em></span></p>
-</div>
+(h 2)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+.7518269446689928
+{% endhighlight %}</div>
 
 <p class="noindent">which is the same as</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(cube (sin 2))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>.7518269446689928</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(cube (sin 2))
+.7518269446689928
+{% endhighlight %}</div>
 <a id="p511"></a>
 
 <p>Arithmetic is extended to the manipulation of functions: the usual mathematical operations may be applied to functions. Examples are addition and multiplication; we may add or multiply two functions if they take the same kinds of arguments and if their values can be added or multiplied:</p>
@@ -72,60 +67,48 @@ layout: appendix
 <p class="eqtext" id="disp_9.3"><epub:switch id="mathmlSwitch1869"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='right'><mrow><mo stretchy='false'>(</mo><mi>f</mi><mo>+</mo><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>+</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr><mtd columnalign='right'><mrow><mo stretchy='false'>(</mo><mi>f</mi><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mi>f</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>9.3</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">A procedure <span class="font1">g</span> that multiplies the cube of its argument by the sine of its argument is</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define g (* cube sin))
 
-<p class="pq-noindent"><span class="font1">(define g (<sub>&#x002A;</sub> cube sin))</span></p>
+(g 2)
+7.274379414605454
 
-<p class="pq-noindent1-top"><span class="font1">(g 2)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>7.274379414605454</em></span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(<sub>&#x002A;</sub> (cube 2) (sin 2))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>7.274379414605454</em></span></p>
-</div>
+(* (cube 2) (sin 2))
+7.274379414605454
+{% endhighlight %}</div>
 </section>
 <section title="Symbolic values">
 <h2 class="level2"><strong>Symbolic values</strong></h2>
 
 <p class="noindent">As in usual mathematical notation, arithmetic is extended to allow the use of symbols that represent unknown or incompletely specified mathematical objects. These symbols are manipulated as if they had values of a known type. By default, a Scheme symbol is assumed to represent a real number. So the expression <span class="font1">'a</span> is a literal Scheme symbol that represents an unspecified real number:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((compose cube sin) 'a)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(expt (sin a) 3)</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((compose cube sin) 'a)
+(expt (sin a) 3)
+{% endhighlight %}</div>
 
 <p class="noindent">The default printer simplifies the expression and displays it in a readable form.<sup><a class="footnote_link" href="#endnote_1" id="endnote_ref_1">1</a></sup> We can use the simplifier to verify a trigonometric identity:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((- (&#x002B; (square sin) (square cos)) 1) 'a)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>0</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((- (+ (square sin) (square cos)) 1) 'a)
+0
+{% endhighlight %}</div>
 <a id="p512"></a>
 
 <p>Just as it is useful to be able to manipulate symbolic numbers, it is useful to be able to manipulate symbolic functions. The procedure <span class="font1">literal-function</span> makes a procedure that acts as a function having no properties other than its name. By default, a literal function is defined to take one real argument and produce one real value. For example, we may want to work with a function <em>f</em> : <strong>R</strong> &#x2192; <strong>R</strong>:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+((literal-function 'f) 'x)
+(f x)
 
-<p class="pq-noindent"><span class="font1">((literal-function 'f) 'x)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(f x)</em></span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((compose (literal-function 'f) (literal-function 'g)) 'x)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(f (g x))</em></span></p>
-</div>
+((compose (literal-function 'f) (literal-function 'g)) 'x)
+(f (g x))
+{% endhighlight %}</div>
 
 <p>We can also make literal functions of multiple, possibly structured arguments that return structured values. For example, to denote a literal function named <span class="font1">g</span> that takes two real arguments and returns a real value (<em>g</em> : <strong>R</strong> &#x00D7; <strong>R</strong> &#x2192; <strong>R</strong>) we may write:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+<span class="font1">(define g (literal-function 'g (-> (X Real Real) Real)))</span>
 
-<p class="pq-noindent"><span class="font1"><span class="font1">(define g (literal-function 'g (-&#x003E; (X Real Real) Real)))</span></span></p>
-
-<p class="pq-noindent1-top"><span class="font1"><span class="font1">(g 'x 'y)</span></span></p>
-
-<p class="pq-noindent"><span class="font1"><span class="font1"><em>(g x y)</em></span></span></p>
-</div>
+<span class="font1">(g 'x 'y)</span>
+<span class="font1"><em>(g x y)</em></span>
+{% endhighlight %}</div>
 
 <p class="noindent">We may use such a literal function anywhere that an explicit function of the same type may be used.</p>
 
@@ -148,30 +131,26 @@ layout: appendix
 <p class="noindent">A component of an up tuple is usually identified by a superscript. A component of a down tuple is usually identified by a subscript. We use zero-based indexing when referring to tuple elements. This notation follows the usual convention in tensor arithmetic.</p>
 
 <p>We make tuples with the constructors <span class="font1">up</span> and <span class="font1">down</span>:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define v (up 'v^0 'v^1 'v^2))
 
-<p class="pq-noindent"><span class="font1">(define v (up 'v^0 'v^1 'v^2))</span></p>
+v
+(up v^0 v^1 v^2)
 
-<p class="pq-noindent1-top"><span class="font1">v</span></p>
+(define p (down 'p_0 'p_1 'p_2))
 
-<p class="pq-noindent"><span class="font1"><em>(up v^0 v^1 v^2)</em></span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define p (down 'p_0 'p_1 'p_2))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">p</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(down p_0 p_1 p_2)</em></span></p>
-</div>
+p
+(down p_0 p_1 p_2)
+{% endhighlight %}</div>
 
 <p>Tuple arithmetic is different from the usual tensor arithmetic in that the components of a tuple may also be tuples and different components need not have the same structure. For example, a tuple structure <em>s</em> of phase-space states is</p>
 
 <p class="eqtext" id="disp_9.6"><epub:switch id="mathmlSwitch1872"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>s</mi><mo>=</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>,</mo><mo stretchy='false'>[</mo><msub><mi>p</mi><mi>x</mi></msub><mo>,</mo><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.6</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">It is an up tuple of the time, the coordinates, and the momenta. The time <em>t</em> has no substructure. The coordinates are an up tuple of the coordinate components <em>x</em> and <em>y</em>. The momentum is a down tuple of the momentum components <em>p<sub>x</sub></em> and <em>p<sub>y</sub></em>. This is written:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define s (up 't (up 'x 'y) (down 'p_x 'p_y)))
+{% endhighlight %}</div>
 
 <p>In order to reference components of tuple structures there are selector functions, for example:</p>
 
@@ -181,28 +160,22 @@ layout: appendix
 <a id="p514"></a>
 
 <p>The procedure <span class="font1">component</span> is the general selector procedure that implements the selector functions. For example, <em>I</em><sub>0,1</sub> is implemented by <span class="font1">(component 0 1)</span>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((component 0 1) (up (up 'a 'b) (up 'c 'd)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>b</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((component 0 1) (up (up 'a 'b) (up 'c 'd)))
+b
+{% endhighlight %}</div>
 
 <p class="noindent">To access a component of a tuple we may also use the selector procedure <span class="font1">ref</span>, which takes a tuple and an index and returns the indicated element of the tuple:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(ref (up 'a 'b 'c) 1)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>b</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(ref (up 'a 'b 'c) 1)
+b
+{% endhighlight %}</div>
 
 <p class="noindent">We use zero-based indexing everywhere. The procedure <span class="font1">ref</span> can be used to access any substructure of a tree of tuples:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(ref (up (up 'a 'b) (up 'c 'd)) 0 1)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>b</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(ref (up (up 'a 'b) (up 'c 'd)) 0 1)
+b
+{% endhighlight %}</div>
 
 <p>Two up tuples of the same length may be added or subtracted, elementwise, to produce an up tuple, if the components are compatible for addition. Similarly, two down tuples of the same length may be added or subtracted, elementwise, to produce a down tuple, if the components are compatible for addition.</p>
 
@@ -217,12 +190,10 @@ layout: appendix
 
 
 <p class="noindent">So the product of tuples that are compatible for contraction is an inner product. Using the tuples <span class="font1">p</span> and <span class="font1">v</span> defined above gives us</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(<sub>&#x002A;</sub> p v)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> p_0 v^0) (<sub>&#x002A;</sub> p_1 v^1) (<sub>&#x002A;</sub> p_2 v^2))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(* p v)
+(+ (* p_0 v^0) (* p_1 v^1) (* p_2 v^2))
+{% endhighlight %}</div>
 
 <p>Contraction of tuples is commutative: <em>pv</em> &#x003D; <em>vp</em>. Caution: Multiplication of tuples that are compatible for contraction is, in general, not associative. For example, let <em>u</em> &#x003D; (5, 2), <em>v</em> &#x003D; (11, 13), and <em>g</em> &#x003D; [[3, 5], [7, 9]]. Then <em>u</em>(<em>gv</em>) &#x003D; 964, but (<em>ug</em>)<em>v</em> &#x003D; 878. The expression <em>ugv</em> is ambiguous. An expression that has this ambiguity does not occur in this book.</p>
 
@@ -260,14 +231,12 @@ layout: appendix
 <p class="noindent">The derivative of a function <em>f</em> is a function, denoted by <em>Df</em>. Our notational convention is that <em>D</em> is a high-precedence operator. Thus <em>D</em> operates on the adjacent function before any other application occurs: <em>Df</em>(<em>x</em>) is the same as (<em>Df</em>)(<em>x</em>). Higher-order derivatives are described by exponentiating the derivative operator. Thus the <em>n</em>th derivative of a function <em>f</em> is notated as <em>D<sup>n</sup>f</em>.</p>
 
 <p>The procedure for producing the derivative of a function is named <span class="font1">D</span>. The derivative of the <span class="font1">sin</span> procedure is a procedure that computes <span class="font1">cos</span>:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define derivative-of-sine (D sin))
 
-<p class="pq-noindent"><span class="font1">(define derivative-of-sine (D sin))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(derivative-of-sine 'x)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(cos x)</em></span></p>
-</div>
+(derivative-of-sine 'x)
+(cos x)
+{% endhighlight %}</div>
 
 <p>The derivative of a function <em>f</em> is the function <em>Df</em> whose value for a particular argument is something that can be multiplied by an increment &#x0394;<em>x</em> in the argument to get a linear approximation to the increment in the value of <em>f</em>:</p>
 
@@ -296,20 +265,16 @@ layout: appendix
 <p class="eqtext" id="disp_9.19"><epub:switch id="mathmlSwitch1885"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mo stretchy='false'>(</mo><mi>D</mi><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><mi>D</mi><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.19</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p><span class="font1">D</span> is an example of an <em>operator</em>. An operator is like a function except that multiplication of operators is interpreted as composition, whereas multiplication of functions is multiplication of the values (see equation <a href="chapter009.html#disp_9.3">9.3</a>). If <em>D</em> were an ordinary function, then the rule for multiplication would imply that <em>D</em><sup>2</sup><em>f</em> would just be the product of <em>Df</em> with itself, which is not what is intended. A product of a number and an operator scales the operator. So, for example</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(((<sub>&#x002A;</sub> 5 D) cos) 'x)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(<sub>&#x002A;</sub> -5 (sin x))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(((* 5 D) cos) 'x)
+(* -5 (sin x))
+{% endhighlight %}</div>
 
 <p class="noindent">Arithmetic is extended to allow manipulation of operators. A typical operator is (<em>D</em>&#x002B;<em>I</em>)(<em>D</em>&#x2212;<em>I</em>) &#x003D; <em>D</em><sup>2</sup>&#x2212;<em>I</em>, where <em>I</em> is the identity operator, which subtracts a function from its second derivative. Such an operator can be constructed and used as follows:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(((<sub>&#x002A;</sub> (&#x002B; D I) (- D I)) (literal-function 'f)) 'x)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (((expt D 2) f) x) (<sub>&#x002A;</sub> -1 (f x)))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(((* (+ D I) (- D I)) (literal-function 'f)) 'x)
+(+ (((expt D 2) f) x) (* -1 (f x)))
+{% endhighlight %}</div>
 <a id="p518"></a>
 </section>
 <section title="Derivatives of functions of multiple arguments">
@@ -325,12 +290,10 @@ layout: appendix
 
 
 <p class="noindent">Using the two-argument literal function <span class="font1">g</span> defined on <a href="chapter009.html#p512">page 512</a>, we have:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((D g) 'x 'y)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((D g) 'x 'y)
+(down (((partial 0) g) x y) (((partial 1) g) x y))
+{% endhighlight %}</div>
 
 <p>In general, partial derivatives are just the components of the derivative of a function that takes multiple arguments (or structured arguments or both; see below). So a partial derivative of a function is a composition of a component selector and the derivative of that function.<sup><a class="footnote_link" href="#endnote_3" id="endnote_ref_3">3</a></sup> Indeed:</p>
 
@@ -362,24 +325,19 @@ layout: appendix
 <p class="eqtext" id="disp_9.27"><epub:switch id="mathmlSwitch1893"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mi>i</mi></msub><mo stretchy='false'>(</mo><mi>f</mi><mo>&#x2218;</mo><mi>g</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>D</mi><mi>f</mi><mo stretchy='false'>(</mo><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>&#x00B7;</mo><msub><mo>&#x2202;</mo><mi>i</mi></msub><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.27</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p>Mathematical notation usually does not distinguish functions of multiple arguments and functions of the tuple of arguments. Let <em>h</em>((<em>x</em>, <em>y</em>)) &#x003D; <em>g</em>(<em>x</em>, <em>y</em>). The function <em>h</em>, which takes a tuple of arguments <em>x</em> and <em>y</em>, is not distinguished from the function <em>g</em> that takes arguments <em>x</em> and <em>y</em>. We use both ways of defining functions of multiple arguments. The derivatives of both kinds of functions are compatible for contraction with a tuple of increments to the arguments. Scheme comes in handy here:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (h s)
+(g (ref s 0) (ref s 1)))
 
-<p class="pq-noindent"><span class="font1">(define (h s)</span></p>
+(h (up 'x 'y))
+(g x y)
 
-<p class="pqp1"><span class="font1">(g (ref s 0) (ref s 1)))</span></p>
+((D g) 'x 'y)
+(down (((partial 0) g) x y) (((partial 1) g) x y))
 
-<p class="pq-noindent1-top"><span class="font1">(h (up 'x 'y))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(g x y)</em></span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((D g) 'x 'y)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((D h) (up 'x 'y))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(down (((partial 0) g) x y) (((partial 1) g) x y))</em></span></p>
-</div>
+((D h) (up 'x 'y))
+(down (((partial 0) g) x y) (((partial 1) g) x y))
+{% endhighlight %}</div>
 
 <p>A phase-space state function is a function of time, coordinates, and momenta. Let <em>H</em> be such a function. The value of <em>H</em> is <em>H</em>(<em>t,</em> (<em>x</em>, <em>y</em>), [<em>p<sub>x</sub></em>, <em>p<sub>y</sub></em>]) for time <em>t</em>, coordinates (<em>x</em>, <em>y</em>), and momenta [<em>p<sub>x</sub></em>, <em>p<sub>y</sub></em>]. Let <em>s</em> be the phase-space state tuple as in (<a href="chapter009.html#disp_9.6">9.6</a>):</p>
 
@@ -406,32 +364,22 @@ layout: appendix
 <a id="p521"></a>
 
 <p>In Scheme we must make explicit choices. We usually assume that phase-space state functions are functions of the tuple. For example,</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define H
+(literal-function 'H
+(-> (UP Real (UP Real Real) (DOWN Real Real)) Real)))
 
-<p class="pq-noindent"><span class="font1">(define H</span></p>
+(H s)
+(H (up t (up x y) (down p_x p_y)))
 
-<p class="pqp1"><span class="font1">(literal-function 'H</span></p>
-
-<p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real) (DOWN Real Real)) Real)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(H s)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(H (up t (up x y) (down p_x p_y)))</em></span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((D H) s)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(down</em></span></p>
-
-<p class="pqp1"><span class="font1"><em>(((partial 0) H) (up t (up x y) (down p_x p_y)))</em></span></p>
-
-<p class="pqp1"><span class="font1"><em>(down (((partial 1 0) H) (up t (up x y) (down p_x p_y)))</em></span></p>
-
-<p class="pqp4"><span class="font1"><em>(((partial 1 1) H) (up t (up x y) (down p_x p_y))))</em></span></p>
-
-<p class="pqp1"><span class="font1"><em>(up (((partial 2 0) H) (up t (up x y) (down p_x p_y)))</em></span></p>
-
-<p class="pqp3"><span class="font1"><em>(((partial 2 1) H) (up t (up x y) (down p_x p_y)))))</em></span></p>
-</div>
+((D H) s)
+(down
+(((partial 0) H) (up t (up x y) (down p_x p_y)))
+(down (((partial 1 0) H) (up t (up x y) (down p_x p_y)))
+(((partial 1 1) H) (up t (up x y) (down p_x p_y))))
+(up (((partial 2 0) H) (up t (up x y) (down p_x p_y)))
+(((partial 2 1) H) (up t (up x y) (down p_x p_y)))))
+{% endhighlight %}</div>
 </section>
 <section title="Structured results">
 <h2 class="level2"><strong>Structured results</strong></h2>
@@ -447,27 +395,22 @@ layout: appendix
 <p class="eqtext" id="disp_9.33"><epub:switch id="mathmlSwitch1899"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>h</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mi>t</mi><mo>,</mo><mi>cos</mi><mo>&#x2061;</mo><mi>t</mi><mo>,</mo><mn>1</mn><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.33</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p>We can write</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (helix t)</span></p>
-
-<p class="pqp1"><span class="font1">(up (cos t) (sin t) t))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (helix t)
+(up (cos t) (sin t) t))
+{% endhighlight %}</div>
 
 <p class="noindent">or just</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define helix (up cos sin identity))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define helix (up cos sin identity))
+{% endhighlight %}</div>
 <a id="p522"></a>
 
 <p class="noindent">Its derivative is just the up tuple of the derivatives of each component of the function:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((D helix) 't)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up (<sub>&#x002A;</sub> -1 (sin t)) (cos t) 1)</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((D helix) 't)
+(up (* -1 (sin t)) (cos t) 1)
+{% endhighlight %}</div>
 
 <p>In general, a function that produces structured outputs is just treated as a structure of functions, one for each of the components. The derivative of a function of structured inputs that produces structured outputs is an object that when contracted with an incremental input structure produces a linear approximation to the incremental output. Thus, if we define function <em>g</em> by</p>
 
@@ -478,46 +421,44 @@ layout: appendix
 <p class="eqtext" id="disp_9.35"><epub:switch id="mathmlSwitch1901"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>g</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>=</mo><mrow><mo>[</mo><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mn>2</mn><mo stretchy='false'>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mo>&#x2212;</mo><mn>3</mn><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mo>&#x2212;</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mtd></mtr><mtr><mtd><mrow><msup><mi>e</mi><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow><mo>,</mo><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mn>2</mn><mo stretchy='false'>(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mn>3</mn><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mo>&#x2212;</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mtd></mtr><mtr><mtd><mrow><msup><mi>e</mi><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow><mo>]</mo></mrow><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>9.35</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">In Scheme:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (g x y)
+(up (square (+ x y)) (cube (- y x)) (exp (+ x y))))
 
-<p class="pq-noindent"><span class="font1">(define (g x y)</span></p>
-
-<p class="pqp1"><span class="font1">(up (square (&#x002B; x y)) (cube (- y x)) (exp (&#x002B; x y))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((D g) 'x 'y)</span></p>
+((D g) 'x 'y)
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><em>(down</em></td>
 <td class="td1" valign="top"><em>(up</em></td>
-<td class="td1" valign="top"><em>(&#x002B; (<sub>&#x002A;</sub> 2 x) (<sub>&#x002A;</sub> 2 y))</em></td>
+<td class="td1" valign="top"><em>(+ (* 2 x) (* 2 y))</em></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(&#x002B; (<sub>&#x002A;</sub> -3 (expt x 2)) (<sub>&#x002A;</sub> 6 x y) (<sub>&#x002A;</sub> -3 (expt y 2)))</em></td>
+<td class="td1" valign="top"><em>(+ (* -3 (expt x 2)) (* 6 x y) (* -3 (expt y 2)))</em></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(<sub>&#x002A;</sub> (exp y) (exp x)))</em></td>
+<td class="td1" valign="top"><em>(* (exp y) (exp x)))</em></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
 <td class="td1" valign="top"><em>(up</em></td>
-<td class="td1" valign="top"><em>(&#x002B; (<sub>&#x002A;</sub> 2 x) (<sub>&#x002A;</sub> 2 y))</em></td>
+<td class="td1" valign="top"><em>(+ (* 2 x) (* 2 y))</em></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(&#x002B; (<sub>&#x002A;</sub> 3 (expt x 2)) (<sub>&#x002A;</sub> -6 x y) (<sub>&#x002A;</sub> 3 (expt y 2)))</em></td>
+<td class="td1" valign="top"><em>(+ (* 3 (expt x 2)) (* -6 x y) (* 3 (expt y 2)))</em></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><em>(<sub>&#x002A;</sub> (exp y) (exp x))))</em></td>
+<td class="td1" valign="top"><em>(* (exp y) (exp x))))</em></td>
 </tr>
 </table>
-</div>
+{% endhighlight %}</div>
 
 <p>Caution must be exercised when taking the derivative of the product of functions that each produce structured results. The problem is that the usual product rule does not hold. Let <em>f</em> and <em>g</em> be functions of <em>x</em> whose results are compatible for contraction to a number. The increment of <em>f</em> for an increment &#x0394;<em>x</em> of <em>x</em> is <em>Df</em>(<em>x</em>)&#x0394;<em>x</em>, and similarly for <em>g</em>. The increment of the product <em>fg</em> is <em>D</em>(<em>fg</em>)(<em>x</em>)&#x0394;<em>x</em>, but expanded in terms of the derivative of <em>f</em> and <em>g</em> the increment is (<em>Df</em>(<em>x</em>)&#x0394;<em>x</em>)<em>g</em>(<em>x</em>) &#x002B; <em>f</em>(<em>x</em>)(<em>Dg</em>(<em>x</em>)&#x0394;<em>x</em>). It is not ((<em>Df</em>)(<em>x</em>)<em>g</em>(<em>x</em>) &#x002B; <em>f</em>(<em>x</em>)(<em>Dg</em>(<em>x</em>)))&#x0394;<em>x</em>. The reason is that the shape of the derivative of <em>f</em> is such that <em>Df</em>(<em>x</em>) should be multiplied by &#x0394;<em>x</em> rather than <em>g</em>(<em>x</em>).</p>
 <a id="p523"></a>
@@ -539,44 +480,33 @@ layout: appendix
 <p class="noindent">We can represent functions of multiple arguments as procedures in several ways, depending upon how we wish to use them. The simplest idea is to identify the procedure arguments with the function's arguments.</p>
 
 <p>For example, we could write implementations of the functions that occur in <a href="chapter009.html#Exe_9-1">exercise 9.1</a> as follows:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (f x y)
+(* (square x) (cube y)))
 
-<p class="pq-noindent"><span class="font1">(define (f x y)</span></p>
+(define (g x y)
+(up (f x y) y))
 
-<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> (square x) (cube y)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (g x y)</span></p>
-
-<p class="pqp1"><span class="font1">(up (f x y) y))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (h x y)</span></p>
-
-<p class="pqp1"><span class="font1">(f (f x y) y))</span></p>
-</div>
+(define (h x y)
+(f (f x y) y))
+{% endhighlight %}</div>
 
 <p>With this choice it is awkward to compose a function that takes multiple arguments, such as <em>f</em>, with a function that produces a tuple of those arguments, such as <em>g</em>. Alternatively, we can represent the function arguments as slots of a tuple data structure, and then composition with a function that produces such a data structure is easy. However, this choice requires the procedures to build and take apart structures.</p>
 
 <p>For example, we may define procedures that implement the functions above as follows:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (f v)
+(let ((x (ref v 0))
+(y (ref v 1)))
+(* (square x) (cube y))))
 
-<p class="pq-noindent"><span class="font1">(define (f v)</span></p>
+(define (g v)
+(let ((x (ref v 0))
+(y (ref v 1)))
+(up (f v) y)))
 
-<p class="pqp1"><span class="font1">(let ((x (ref v 0))</span></p>
-
-<p class="pqp4"><span class="font1">(y (ref v 1)))</span></p>
-
-<p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> (square x) (cube y))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (g v)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((x (ref v 0))</span></p>
-
-<p class="pqp4"><span class="font1">(y (ref v 1)))</span></p>
-
-<p class="pqp2"><span class="font1">(up (f v) y)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define h (compose f g))</span></p>
-</div>
+(define h (compose f g))
+{% endhighlight %}</div>
 
 <p>Repeat <a href="chapter009.html#Exe_9-1">exercise 9.1</a> using the computer. Explore both implementations of multiple-argument functions.</p>
 

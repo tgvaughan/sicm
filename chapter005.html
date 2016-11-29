@@ -109,13 +109,10 @@ layout: chapter
 <h2 class="level2"><strong>Implementing point transformations</strong></h2>
 
 <p class="noindent">The procedure <span class="font1">F-&#x003E;CH</span> takes a procedure <span class="font1">F</span> implementing a transformation of configuration coordinates and returns a procedure implementing a transformation of phase-space coordinates:<sup><a class="footnote_link" href="#endnote_4" id="endnote_ref_4">4</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((F-&#x003E;CH F) state)</span></p>
-
-<p class="pqp1"><span class="font1">(up (time state)</span></p>
-
-<p class="pqp2"><span class="font1">(F state)</span></p>
+<div class="code">{% highlight scheme %}
+(define ((F->CH F) state)
+(up (time state)
+(F state)
 <table class="table1n">
 <tr>
 <td class="td1" valign="top">
@@ -127,26 +124,20 @@ layout: chapter
 <td class="td1" valign="top"><span class="font1">(((partial 1) F) state))))</span></td>
 </tr>
 </table>
-</div>
+{% endhighlight %}</div>
 
 <p>Consider a particle moving in a central field. In rectangular coordinates a Hamiltonian is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((H-central m V) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((x (coordinate state))</span></p>
-
-<p class="pqp4"><span class="font1">(p (momentum state)))</span></p>
-
-<p class="pqp2"><span class="font1">(&#x002B; (/ (square p) (<sub>&#x002A;</sub> 2 m))</span></p>
-
-<p class="pqp4"><span class="font1">(V (sqrt (square x))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((H-central m V) state)
+(let ((x (coordinate state))
+(p (momentum state)))
+(+ (/ (square p) (* 2 m))
+(V (sqrt (square x))))))
+{% endhighlight %}</div>
 
 <p class="noindent">Let's look at this Hamiltonian in polar coordinates. The phase-space transformation is obtained by applying <span class="font1">F-&#x003E;CH</span> to the procedure <span class="font1">p-&#x003E;r</span> that takes a time and a polar tuple and returns a tuple of rectangular coordinates (see <a href="chapter001.html#h3_1-6-1">section 1.6.1</a>). The transformation is time independent so the Hamiltonian transforms by composition. In polar coordinates the Hamiltonian is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
+<div class="code">{% highlight scheme %}
+(show-expression
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1">((compose</span></td>
@@ -154,13 +145,12 @@ layout: chapter
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(F-&#x003E;CH p-&#x003E;r))</span></td>
+<td class="td1" valign="top"><span class="font1">(F->CH p->r))</span></td>
 </tr>
 </table>
-
-<p class="pqp2"><span class="font1">(up 't (up 'r 'phi) (down 'p_r 'p_phi))))</span></p>
-</div>
-<div class="pull-quotebox">
+(up 't (up 'r 'phi) (down 'p_r 'p_phi))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch1076"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>r</mi><mn>2</mn></msubsup></mrow><mi>m</mi></mfrac><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>&#x03C6;</mi><mn>2</mn></msubsup></mrow><mrow><mi>m</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -173,12 +163,11 @@ layout: chapter
 
 
 <p class="noindent">The correction is computed by</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((F-&#x003E;K F) state)</span></p>
+<div class="code">{% highlight scheme %}
+(define ((F->K F) state)
 <table class="table1n">
 <tr>
-<td class="td1" valign="top"><span class="font1">(- (<sub>&#x002A;</sub> (solve-linear-right</span></td>
+<td class="td1" valign="top"><span class="font1">(- (* (solve-linear-right</span></td>
 <td class="td1" valign="top"><span class="font1">(momentum state)</span></td>
 </tr>
 <tr>
@@ -186,77 +175,58 @@ layout: chapter
 <td class="td1" valign="top"><span class="font1">(((partial 1) F) state))</span></td>
 </tr>
 </table>
-
-<p class="pqp4"><span class="font1">(((partial 0) F) state))))</span></p>
-</div>
+(((partial 0) F) state))))
+{% endhighlight %}</div>
 
 <p>For example, consider a transformation to coordinates translating with velocity <em>v</em>:</p>
-<div class="pull-quote">
-
-<p class="pqp1"><span class="font1">(define ((translating v) state)</span></p>
-
-<p class="pqp2"><span class="font1">(&#x002B; (coordinates state) (<sub>&#x002A;</sub> v (time state))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((translating v) state)
+(+ (coordinates state) (* v (time state))))
+{% endhighlight %}</div>
 
 <p class="noindent">We compute the additive adjustment required for the Hamiltonian:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((F-&#x003E;K (translating (up 'v^x 'v^y 'v^z)))</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'x 'y 'z) (down 'p_x 'p_y 'p_z)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> -1 p_x v^x) (<sub>&#x002A;</sub> -1 p_y v^y) (<sub>&#x002A;</sub> -1 p_z v^z))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((F->K (translating (up 'v^x 'v^y 'v^z)))
+(up 't (up 'x 'y 'z) (down 'p_x 'p_y 'p_z)))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+(+ (* -1 p_x v^x) (* -1 p_y v^y) (* -1 p_z v^z))
+{% endhighlight %}</div>
 
 <p class="noindent">Notice that this is the negation of the inner product of the momentum and the velocity of the coordinate system.</p>
 
 <p>Let's see how a simple free-particle Hamiltonian is transformed:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((H-free m) s)</span></p>
-
-<p class="pqp1"><span class="font1">(/ (square (momentum s)) (<sub>&#x002A;</sub> 2 m)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((H-free m) s)
+(/ (square (momentum s)) (* 2 m)))
+{% endhighlight %}</div>
 
 <p>The transformed Hamiltonian is:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define H-prime</span></p>
+<div class="code">{% highlight scheme %}
+(define H-prime
 <table class="table1n">
 <tr>
-<td class="td1" valign="top"><span class="font1">(&#x002B; (compose</span></td>
+<td class="td1" valign="top"><span class="font1">(+ (compose</span></td>
 <td class="td1" valign="top"><span class="font1">(H-free 'm)</span></td>
 </tr>
 <tr>
 <td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">(F-&#x003E;CH (translating (up 'v^x 'v^y 'v^z))))</span></td>
+<td class="td1" valign="top"><span class="font1">(F->CH (translating (up 'v^x 'v^y 'v^z))))</span></td>
 </tr>
 </table>
-
-<p class="pqp2"><span class="font1">(F-&#x003E;K (translating (up 'v^x 'v^y 'v^z)))))</span></p>
-</div>
-<a id="p341"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(H-prime</span></p>
-
-<p class="pqp1"><span class="font1">(up 't</span></p>
-
-<p class="pqp3"><span class="font1">(up 'xprime 'yprime 'zprime)</span></p>
-
-<p class="pqp3"><span class="font1">(down 'pprime_x 'pprime_y 'pprime_z)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> -1 pprime_x v^x)</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(<sub>&#x002A;</sub> -1 pprime_y v^y)</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(<sub>&#x002A;</sub> -1 pprime_z v^z)</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(/ (<sub>&#x002A;</sub> 1/2 (expt pprime_x 2)) m)</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(/ (<sub>&#x002A;</sub> 1/2 (expt pprime_y 2)) m)</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(/ (<sub>&#x002A;</sub> 1/2 (expt pprime_z 2)) m))</em></span></p>
-</div>
+(F->K (translating (up 'v^x 'v^y 'v^z)))))
+{% endhighlight %}</div>
+<div class="code">{% highlight scheme %}
+(H-prime
+(up 't
+(up 'xprime 'yprime 'zprime)
+(down 'pprime_x 'pprime_y 'pprime_z)))
+(+ (* -1 pprime_x v^x)
+(* -1 pprime_y v^y)
+(* -1 pprime_z v^z)
+(/ (* 1/2 (expt pprime_x 2)) m)
+(/ (* 1/2 (expt pprime_y 2)) m)
+(/ (* 1/2 (expt pprime_z 2)) m))
+{% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_5-1"><strong>Exercise  5.1: Galilean invariance</strong></p>
 
@@ -330,14 +300,11 @@ layout: chapter
 <a id="p344"></a>
 
 <p>We can formalize this test as a program:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (canonical? C H Hprime)</span></p>
-
-<p class="pqp1"><span class="font1">(- (compose (Hamiltonian-&#x003E;state-derivative H) C)</span></p>
-
-<p class="pqp2a"><span class="font1">(<sub>&#x002A;</sub> (D C) (Hamiltonian-&#x003E;state-derivative Hprime))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (canonical? C H Hprime)
+(- (compose (Hamiltonian->state-derivative H) C)
+(* (D C) (Hamiltonian->state-derivative Hprime))))
+{% endhighlight %}</div>
 
 <p class="noindent">where <span class="font1">Hamiltonian-&#x003E;state-derivative</span>, which was introduced in chapter 3, implements <em>D<sub>s</sub></em>. The transformation is canonical if these residuals are zero.</p>
 
@@ -388,33 +355,22 @@ layout: chapter
 
 
 <p class="noindent">Here <em>&#x03B1;</em> is an arbitrary parameter. We define:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((polar-canonical alpha) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time state))</span></p>
-
-<p class="pqp4"><span class="font1">(theta (coordinate state))</span></p>
-
-<p class="pqp4"><span class="font1">(I (momentum state)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((x (<sub>&#x002A;</sub> (sqrt (/ (<sub>&#x002A;</sub> 2 I) alpha)) (sin theta)))</span></p>
-
-<p class="pqp5"><span class="font1">(p_x (<sub>&#x002A;</sub> (sqrt (<sub>&#x002A;</sub> 2 alpha I)) (cos theta))))</span></p>
-
-<p class="pqp3"><span class="font1">(up t x p_x))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((polar-canonical alpha) state)
+(let ((t (time state))
+(theta (coordinate state))
+(I (momentum state)))
+(let ((x (* (sqrt (/ (* 2 I) alpha)) (sin theta)))
+(p_x (* (sqrt (* 2 alpha I)) (cos theta))))
+(up t x p_x))))
+{% endhighlight %}</div>
 
 <p class="noindent">And now we just run our test:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((H-harmonic m k) s)</span></p>
-
-<p class="pqp1"><span class="font1">(&#x002B; (/ (square (momentum s)) (<sub>&#x002A;</sub> 2 m))</span></p>
-
-<p class="pqp3"><span class="font1">(<sub>&#x002A;</sub> 1/2 k (square (coordinate s)))))</span></p>
-
-<p>&#160;</p>
+<div class="code">{% highlight scheme %}
+(define ((H-harmonic m k) s)
+(+ (/ (square (momentum s)) (* 2 m))
+(* 1/2 k (square (coordinate s)))))
+<p> </p>
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1">((canonical?</span></td>
@@ -434,11 +390,9 @@ layout: chapter
 <p class="pqp5c"><span class="font1">(polar-canonical 'alpha)))</span></p></td>
 </tr>
 </table>
-
-<p class="pq-noindent"><span class="font1">(up 't 'theta 'I))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up 0 0 0)</em></span></p>
-</div>
+(up 't 'theta 'I))
+(up 0 0 0)
+{% endhighlight %}</div>
 
 <p class="noindent">So the transformation is canonical for the harmonic oscillator.<sup><a class="footnote_link" href="#endnote_7" id="endnote_ref_7">7</a></sup></p>
 <a id="p346"></a>
@@ -509,20 +463,15 @@ layout: chapter
 
 
 <p class="noindent">as code:<sup><a class="footnote_link" href="#endnote_9" id="endnote_ref_9">9</a></sup></p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (T-func s)
+(up 1
+(zero-like (coordinates s))
+(zero-like (momenta s))))
 
-<p class="pq-noindent"><span class="font1">(define (T-func s)</span></p>
-
-<p class="pqp1"><span class="font1">(up 1</span></p>
-
-<p class="pqp3"><span class="font1">(zero-like (coordinates s))</span></p>
-
-<p class="pqp3"><span class="font1">(zero-like (momenta s))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define ((D-phase-space H) s)</span></p>
-
-<p class="pqp1"><span class="font1">(up 0 (((partial 2) H) s) (- (((partial 1) H) s))))</span></p>
-</div>
+(define ((D-phase-space H) s)
+(up 0 (((partial 2) H) s) (- (((partial 1) H) s))))
+{% endhighlight %}</div>
 
 <p>If we assume that <em>H</em>&#x2032; &#x003D; <em>H</em> &#x2218; <em>C</em><sub>H</sub> &#x002B; <em>K</em>, then the canonical condition (<a href="chapter005.html#disp_5.20">5.20</a>) becomes</p>
 
@@ -546,24 +495,17 @@ layout: chapter
 <p class="noindent">The value of <em>T</em> &#x2218; <em>C</em><sub>H</sub> does not depend on <em>C</em><sub>H</sub>, so this term is really very simple. Notice that equation (<a href="chapter005.html#disp_5.41">5.41</a>) does not depend upon <em>K</em> and that equation (<a href="chapter005.html#disp_5.42">5.42</a>) does not depend upon <em>H</em>.</p>
 
 <p>These can be implemented as follows:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (canonical-H? C H)
+(- (compose (D-phase-space H) C)
+(* (D C)
+(D-phase-space (compose H C)))))
 
-<p class="pq-noindent"><span class="font1">(define (canonical-H? C H)</span></p>
-
-<p class="pqp1"><span class="font1">(- (compose (D-phase-space H) C)</span></p>
-
-<p class="pqp2a"><span class="font1">(<sub>&#x002A;</sub> (D C)</span></p>
-
-<p class="pqp4"><span class="font1">(D-phase-space (compose H C)))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (canonical-K? C K)</span></p>
-
-<p class="pqp1"><span class="font1">(- (compose T-func C)</span></p>
-
-<p class="pqp2a"><span class="font1">(<sub>&#x002A;</sub> (D C)</span></p>
-
-<p class="pqp4"><span class="font1">(&#x002B; T-func (D-phase-space K)))))</span></p>
-</div>
+(define (canonical-K? C K)
+(- (compose T-func C)
+(* (D C)
+(+ T-func (D-phase-space K)))))
+{% endhighlight %}</div>
 </section>
 </section>
 <section title="Rotating coordinates">
@@ -580,60 +522,42 @@ layout: chapter
 
 
 <p class="noindent">As a program this is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((rotating Omega) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time state)) (qp (coordinate state)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((xp (ref qp 0)) (yp (ref qp 1)) (zp (ref qp 2)))</span></p>
-
-<p class="pqp3"><span class="font1">(up (- (<sub>&#x002A;</sub> (cos (<sub>&#x002A;</sub> Omega t)) xp)</span></p>
-
-<p class="pqp7"><span class="font1">(<sub>&#x002A;</sub> (sin (<sub>&#x002A;</sub> Omega t)) yp))</span></p>
-
-<p class="pqp5c"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> (sin (<sub>&#x002A;</sub> Omega t)) xp)</span></p>
-
-<p class="pqp7"><span class="font1">(<sub>&#x002A;</sub> (cos (<sub>&#x002A;</sub> Omega t)) yp))</span></p>
-
-<p class="pqp5c"><span class="font1">zp))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((rotating Omega) state)
+(let ((t (time state)) (qp (coordinate state)))
+(let ((xp (ref qp 0)) (yp (ref qp 1)) (zp (ref qp 2)))
+(up (- (* (cos (* Omega t)) xp)
+(* (sin (* Omega t)) yp))
+(+ (* (sin (* Omega t)) xp)
+(* (cos (* Omega t)) yp))
+zp))))
+{% endhighlight %}</div>
 
 <p class="noindent">The extension of this transformation to a phase-space transformation is</p>
-<a id="p349"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (C-rotating Omega) (F-&#x003E;CH (rotating Omega)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (C-rotating Omega) (F->CH (rotating Omega)))
+{% endhighlight %}</div>
 
 <p class="noindent">We first verify that this time-dependent transformation satisfies equation (<a href="chapter005.html#disp_5.41">5.41</a>). We will try it for an arbitrary Hamiltonian with three degrees of freedom:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define H-arbitrary
+(literal-function 'H
+(-> (UP Real (UP Real Real Real) (DOWN Real Real Real))
+Real)))
 
-<p class="pq-noindent"><span class="font1">(define H-arbitrary</span></p>
-
-<p class="pqp1"><span class="font1">(literal-function 'H</span></p>
-
-<p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real Real) (DOWN Real Real Real))</span></p>
-
-<p class="pqp5"><span class="font1">Real)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((canonical-H? (C-rotating 'Omega) H-arbitrary)</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up 0 (up 0 0 0) (down 0 0 0))</em></span></p>
-</div>
+((canonical-H? (C-rotating 'Omega) H-arbitrary)
+(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
+(up 0 (up 0 0 0) (down 0 0 0))
+{% endhighlight %}</div>
 
 <p class="noindent">And it works. Note that this result did not depend on any details of the Hamiltonian, suggesting that we might be able to make a test that does not require a Hamiltonian. We will see that shortly.</p>
 
 <p>Since we have a point transformation, we can compute the required adjustment to the Hamiltonian:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((F-&#x003E;K (rotating 'Omega))</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> Omega pp_x yp) (<sub>&#x002A;</sub> -1 Omega pp_y xp))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((F->K (rotating 'Omega))
+(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
+(+ (* Omega pp_x yp) (* -1 Omega pp_y xp))
+{% endhighlight %}</div>
 
 <p class="noindent">So, for this transformation an appropriate correction to the Hamiltonian is</p>
 
@@ -641,28 +565,20 @@ layout: chapter
 
 
 <p class="noindent">which is minus the rate of rotation of the coordinate system multiplied by the angular momentum. We implement <em>K</em> as a procedure</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((K Omega) s)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((qp (coordinate s)) (pp (momentum s)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((xp (ref qp 0)) (yp (ref qp 1))</span></p>
-
-<p class="pqp5"><span class="font1">(ppx (ref pp 0)) (ppy (ref pp 1)))</span></p>
-
-<p class="pqp3"><span class="font1">(<sub>&#x002A;</sub> -1 Omega (- (<sub>&#x002A;</sub> xp ppy) (<sub>&#x002A;</sub> yp ppx))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((K Omega) s)
+(let ((qp (coordinate s)) (pp (momentum s)))
+(let ((xp (ref qp 0)) (yp (ref qp 1))
+(ppx (ref pp 0)) (ppy (ref pp 1)))
+(* -1 Omega (- (* xp ppy) (* yp ppx))))))
+{% endhighlight %}</div>
 
 <p class="noindent">and apply the test. We find:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((canonical-K? (C-rotating 'Omega) (K 'Omega))</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up 0 (up 0 0 0) (down 0 0 0))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((canonical-K? (C-rotating 'Omega) (K 'Omega))
+(up 't (up 'xp 'yp 'zp) (down 'pp_x 'pp_y 'pp_z)))
+(up 0 (up 0 0 0) (down 0 0 0))
+{% endhighlight %}</div>
 
 <p class="noindent">The residuals are zero so this <em>K</em> correctly completes the canonical transformation.</p>
 <a id="p350"></a>
@@ -712,20 +628,15 @@ layout: chapter
 
 
 <p>As a program, this is<sup><a class="footnote_link" href="#endnote_12" id="endnote_ref_12">12</a>,<a class="footnote_link" href="#endnote_13" id="endnote_ref_13">13</a></sup></p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (J-func DHs)
+(up 0 (ref DHs 2) (- (ref DHs 1))))
 
-<p class="pq-noindent"><span class="font1">(define (J-func DHs)</span></p>
-
-<p class="pqp1"><span class="font1">(up 0 (ref DHs 2) (- (ref DHs 1))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define ((canonical-transform? C) s)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((J ((D J-func) (compatible-shape s)))</span></p>
-
-<p class="pqp4"><span class="font1">(DCs ((D C) s)))</span></p>
-
-<p class="pqp2"><span class="font1">(- J (<sub>&#x002A;</sub> DCs J (transpose DCs s)))))</span></p>
-</div>
+(define ((canonical-transform? C) s)
+(let ((J ((D J-func) (compatible-shape s)))
+(DCs ((D C) s)))
+(- J (* DCs J (transpose DCs s)))))
+{% endhighlight %}</div>
 
 <p>This condition, equation (<a href="chapter005.html#disp_5.52">5.52</a>), on <em>C</em><sub>H</sub>, called the <em>canonical condition</em>, does not depend on the details of <em>H</em>. This is a remarkable result: we can decide whether a phase-space transformation preserves the dynamics of Hamilton's equations without further reference to the details of the dynamical system. If the transformation is time dependent we can add a correction to the Hamiltonian to make it canonical.</p>
 </section>
@@ -734,39 +645,27 @@ layout: chapter
 <h2 class="level2"><strong>Examples</strong></h2>
 
 <p class="noindent">The polar-canonical transformation satisfies the canonical condition:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((canonical-transform? (polar-canonical 'alpha))</span></p>
-
-<p class="pqp1"><span class="font1">(up 't 'theta 'I))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up (up 0 0 0) (up 0 0 0) (up 0 0 0))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((canonical-transform? (polar-canonical 'alpha))
+(up 't 'theta 'I))
+(up (up 0 0 0) (up 0 0 0) (up 0 0 0))
+{% endhighlight %}</div>
 <a id="p352"></a>
 
 <p>But not every transformation we might try satisfies the canonical condition. For example, we might try <em>x</em> &#x003D; <em>p</em> sin <em>&#x03B8;</em> and <em>p<sub>x</sub></em> &#x003D; <em>p</em> cos <em>&#x03B8;</em>. The implementation is</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (a-non-canonical-transform state)
+(let ((t (time state))
+(theta (coordinate state))
+(p (momentum state)))
+(let ((x (* p (sin theta)))
+(p_x (* p (cos theta))))
+(up t x p_x))))
 
-<p class="pq-noindent"><span class="font1">(define (a-non-canonical-transform state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time state))</span></p>
-
-<p class="pqp4b"><span class="font1">(theta (coordinate state))</span></p>
-
-<p class="pqp4b"><span class="font1">(p (momentum state)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((x (<sub>&#x002A;</sub> p (sin theta)))</span></p>
-
-<p class="pqp5a"><span class="font1">(p_x (<sub>&#x002A;</sub> p (cos theta))))</span></p>
-
-<p class="pqp3"><span class="font1">(up t x p_x))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((canonical-transform? a-non-canonical-transform)</span></p>
-
-<p class="pqp1"><span class="font1">(up 't 'theta 'p))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up (up 0 0 0) (up 0 0 (&#x002B; -1 p)) (up 0 (&#x002B; 1 (<sub>&#x002A;</sub> -1 p)) 0))</em></span></p>
-</div>
+((canonical-transform? a-non-canonical-transform)
+(up 't 'theta 'p))
+(up (up 0 0 0) (up 0 0 (+ -1 p)) (up 0 (+ 1 (* -1 p)) 0))
+{% endhighlight %}</div>
 
 <p class="noindent">So this transformation does not satisfy the canonical condition.</p>
 </section>
@@ -816,15 +715,11 @@ layout: chapter
 <h2 class="level2"><strong>Symplectic matrices</strong></h2>
 
 <p class="noindent">It is convenient to reformulate the canonical condition in terms of matrices. We can obtain a matrix representation of a structure with the utility <span class="font1">s-&#x003E;m</span> that takes a structure that represents a multiplier of a linear transformation and returns a matrix representation of the multiplier. The procedure <span class="font1">s-&#x003E;m</span> takes three arguments: <span class="font1">(s-&#x003E;m ls A rs)</span>. The <span class="font1">ls</span> and <span class="font1">rs</span> specify the shapes of objects that multiply <span class="font1">A</span> on the left and right to give a numerical value. These specify the basis. So, the matrix representation of the multiplier corresponding to <epub:switch id="mathmlSwitch1138"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>J</mi><mo>&#x02DC;</mo></mover></math></epub:case></epub:switch> is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up 't (up 'x 'y) (down 'px 'py)))</span></p>
-
-<p class="pqp3b"><span class="font1">(s<sub>&#x002A;</sub> (compatible-shape s))</span></p>
-
-<p class="pqp3b"><span class="font1">(J ((D J-func) s<sub>&#x002A;</sub>)))</span></p>
-
-<p class="pqp1"><span class="font1">(s-&#x003E;m s<sub>&#x002A;</sub> J s<sub>&#x002A;</sub>))</span></p>
+<div class="code">{% highlight scheme %}
+(let* ((s (up 't (up 'x 'y) (down 'px 'py)))
+(s* (compatible-shape s))
+(J ((D J-func) s*)))
+(s->m s* J s*))
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1"><span class="font1"><em>(matrix-by-rows</em></span></span></td>
@@ -847,7 +742,7 @@ layout: chapter
 <td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 -1 0 0))</em></span></span></td>
 </tr>
 </table>
-</div>
+{% endhighlight %}</div>
 
 <p class="noindent">This matrix, <strong>J</strong>, is useful, so we supply a procedure <span class="font1">J-matrix</span> so that <span class="font1">(J-matrix n)</span> gives this matrix for an <em>n</em> degree-of-freedom system.</p>
 <a id="p354"></a>
@@ -858,58 +753,38 @@ layout: chapter
 
 
 <p>There is a further simplification available. The elements of the first row and the first column of the matrix representation of <epub:switch id="mathmlSwitch1140"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>J</mi><mo>&#x02DC;</mo></mover></math></epub:case></epub:switch> are all zeros. This has simplifying consequences. Consider a general transformation of phase-space states (for two degrees of freedom):</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define C-general</span></p>
-
-<p class="pqp1"><span class="font1">(literal-function 'C</span></p>
-
-<p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real) (DOWN Real Real))</span></p>
-
-<p class="pqp4b"><span class="font1">(UP Real (UP Real Real) (DOWN Real Real)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define C-general
+(literal-function 'C
+(-> (UP Real (UP Real Real) (DOWN Real Real))
+(UP Real (UP Real Real) (DOWN Real Real)))))
+{% endhighlight %}</div>
 
 <p class="noindent">Consider transformations for which the time does not depend on the coordinates or momenta<sup><a class="footnote_link" href="#endnote_14" id="endnote_ref_14">14</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (C-simple-time s)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((cs (C-general s)))</span></p>
-
-<p class="pqp2"><span class="font1">(up ((literal-function 'tau) (time s))</span></p>
-
-<p class="pqp5"><span class="font1">(coordinates cs)</span></p>
-
-<p class="pqp5"><span class="font1">(momenta cs))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (C-simple-time s)
+(let ((cs (C-general s)))
+(up ((literal-function 'tau) (time s))
+(coordinates cs)
+(momenta cs))))
+{% endhighlight %}</div>
 
 <p class="noindent">For this kind of transformation the first row and the first column of the residuals of the <span class="font1">canonical-transform?</span> test are identically zero:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(let* ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))
+(s* (compatible-shape s)))
+(m:nth-row
+(s->m s* ((canonical-transform? C-simple-time) s) s*)
+0))
+(up 0 0 0 0 0)
 
-<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
-
-<p class="pqp4"><span class="font1">(s<sub>&#x002A;</sub> (compatible-shape s)))</span></p>
-
-<p class="pqp1"><span class="font1">(m:nth-row</span></p>
-
-<p class="pqp2"><span class="font1">(s-&#x003E;m s<sub>&#x002A;</sub> ((canonical-transform? C-simple-time) s) s<sub>&#x002A;</sub>)</span></p>
-
-<p class="pqp2"><span class="font1">0))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up 0 0 0 0 0)</em></span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(let ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
-
-<p class="pqp4"><span class="font1">(s<sub>&#x002A;</sub> (compatible-shape s)))</span></p>
-
-<p class="pqp1"><span class="font1">(m:nth-col</span></p>
-
-<p class="pqp2"><span class="font1">(s-&#x003E;m s<sub>&#x002A;</sub> ((canonical-transform? C-simple-time) s) s<sub>&#x002A;</sub>)</span></p>
-
-<p class="pqp2"><span class="font1">0))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up 0 0 0 0 0)</em></span></p>
-</div>
+(let ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))
+(s* (compatible-shape s)))
+(m:nth-col
+(s->m s* ((canonical-transform? C-simple-time) s) s*)
+0))
+(up 0 0 0 0 0)
+{% endhighlight %}</div>
 <a id="p355"></a>
 
 <p class="noindent">But for <span class="font1">C-general</span> these are not zero. Since the transformations we are considering at most shift time, we need to consider only the submatrix associated with the coordinates and the momenta.</p>
@@ -930,44 +805,33 @@ layout: chapter
 
 
 <p class="noindent">is called a <em>symplectic matrix</em>. We can determine whether a matrix is symplectic:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (symplectic-matrix? M)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((2n (m:dimension M)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((J (symplectic-unit (quotient 2n 2))))</span></p>
-
-<p class="pqp3"><span class="font1">(- J (<sub>&#x002A;</sub> M J (transpose M))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (symplectic-matrix? M)
+(let ((2n (m:dimension M)))
+(let ((J (symplectic-unit (quotient 2n 2))))
+(- J (* M J (transpose M))))))
+{% endhighlight %}</div>
 
 <p class="noindent">An appropriate symplectic unit matrix of a given size is produced by the procedure <span class="font1">symplectic-unit</span>.</p>
 
 <p>If the matrix representation of the derivative of a transformation is a symplectic matrix the transformation is a <em>symplectic transformation</em>. Here is a test for whether a transformation is symplectic:<sup><a class="footnote_link" href="#endnote_16" id="endnote_ref_16">16</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((symplectic-transform? C) s)</span></p>
-
-<p class="pqp1"><span class="font1">(symplectic-matrix? (qp-submatrix ((D-as-matrix C) s))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((symplectic-transform? C) s)
+(symplectic-matrix? (qp-submatrix ((D-as-matrix C) s))))
+{% endhighlight %}</div>
 <a id="p356"></a>
 
 <p class="noindent">The procedure <span class="font1">symplectic-transform?</span> returns a zero matrix if and only if the transformation being tested passes the symplectic matrix test.</p>
 
 <p>For example, the point transformations are symplectic. We can show this for a general possibly time-dependent two-degree-of-freedom point transformation:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (F s)
+((literal-function 'F
+(-> (X Real (UP Real Real)) (UP Real Real)))
+(time s) (coordinates s)))
 
-<p class="pq-noindent"><span class="font1">(define (F s)</span></p>
-
-<p class="pqp1"><span class="font1">((literal-function 'F</span></p>
-
-<p class="pqp3"><span class="font1">(-&#x003E; (X Real (UP Real Real)) (UP Real Real)))</span></p>
-
-<p class="pqp2"><span class="font1">(time s) (coordinates s)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((symplectic-transform? (F-&#x003E;CH F))</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'x 'y) (down 'px 'py)))</span></p>
+((symplectic-transform? (F->CH F))
+(up 't (up 'x 'y) (down 'px 'py)))
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1"><span class="font1"><em>(matrix-by-rows</em></span></span></td>
@@ -986,20 +850,15 @@ layout: chapter
 <td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0))</em></span></span></td>
 </tr>
 </table>
-</div>
+{% endhighlight %}</div>
 
 <p>More generally, the phase-space part of the canonical condition is equivalent to the symplectic condition (for two degrees of freedom) even in the case of an unrestricted phase-space transformation.</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(let<sub>&#x002A;</sub> ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
-
-<p class="pqp3b"><span class="font1">(s<sub>&#x002A;</sub> (compatible-shape s)))</span></p>
-
-<p class="pqp1"><span class="font1">(- (qp-submatrix</span></p>
-
-<p class="pqp3"><span class="font1">(s-&#x003E;m s<sub>&#x002A;</sub> ((canonical-transform? C-general) s) s<sub>&#x002A;</sub>))</span></p>
-
-<p class="pqp2"><span class="font1">((symplectic-transform? C-general) s)))</span></p>
+<div class="code">{% highlight scheme %}
+(let* ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))
+(s* (compatible-shape s)))
+(- (qp-submatrix
+(s->m s* ((canonical-transform? C-general) s) s*))
+((symplectic-transform? C-general) s)))
 <table class="table1n">
 <tr>
 <td class="td1" valign="top"><span class="font1"><span class="font1"><em>(matrix-by-rows</em></span></span></td>
@@ -1018,7 +877,7 @@ layout: chapter
 <td class="td1" valign="top"><span class="font1"><span class="font1"><em>(list 0 0 0 0))</em></span></span></td>
 </tr>
 </table>
-</div>
+{% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_5-6"><strong>Exercise  5.6: Symplectic matrices</strong></p>
 
@@ -1171,42 +1030,28 @@ layout: chapter
 <a id="p361"></a>
 
 <p>As a program, <em>&#x03C9;</em> is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (omega zeta1 zeta2)</span></p>
-
-<p class="pqp1"><span class="font1">(- (<sub>&#x002A;</sub> (momentum zeta2) (coordinate zeta1))</span></p>
-
-<p class="pqp3"><span class="font1">(<sub>&#x002A;</sub> (momentum zeta1) (coordinate zeta2))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (omega zeta1 zeta2)
+(- (* (momentum zeta2) (coordinate zeta1))
+(* (momentum zeta1) (coordinate zeta2))))
+{% endhighlight %}</div>
 
 <p>On <a href="chapter005.html#p356">page 356</a> we showed that point transformations are sym-plectic. Here we can see that the 2-form is preserved under these transformations for two degrees of freedom:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (F s)
+((literal-function 'F
+(-> (X Real (UP Real Real)) (UP Real Real)))
+(time s)
+(coordinates s)))
 
-<p class="pq-noindent"><span class="font1">(define (F s)</span></p>
-
-<p class="pqp1"><span class="font1">((literal-function 'F</span></p>
-
-<p class="pqp2"><span class="font1">(-&#x003E; (X Real (UP Real Real)) (UP Real Real)))</span></p>
-
-<p class="pqp1"><span class="font1">(time s)</span></p>
-
-<p class="pqp1"><span class="font1">(coordinates s)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(let ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))</span></p>
-
-<p class="pqp4"><span class="font1">(zeta1 (up 0 (up 'dx1 'dy1) (down 'dp1_x 'dp1_y)))</span></p>
-
-<p class="pqp4"><span class="font1">(zeta2 (up 0 (up 'dx2 'dy2) (down 'dp2_x 'dp2_y))))</span></p>
-
-<p class="pqp1"><span class="font1">(let ((DCs ((D (F-&#x003E;CH F)) s)))</span></p>
-
-<p class="pqp2"><span class="font1">(- (omega zeta1 zeta2)</span></p>
-
-<p class="pqp4"><span class="font1">(omega (<sub>&#x002A;</sub> DCs zeta1) (<sub>&#x002A;</sub> DCs zeta2)))))</span></p>
-
-<p class="pqp1"><span class="font1"><em>0</em></span></p>
-</div>
+(let ((s (up 't (up 'x 'y) (down 'p_x 'p_y)))
+(zeta1 (up 0 (up 'dx1 'dy1) (down 'dp1_x 'dp1_y)))
+(zeta2 (up 0 (up 'dx2 'dy2) (down 'dp2_x 'dp2_y))))
+(let ((DCs ((D (F->CH F)) s)))
+(- (omega zeta1 zeta2)
+(omega (* DCs zeta1) (* DCs zeta2)))))
+0
+{% endhighlight %}</div>
 
 <p>Alternatively, let <strong>z</strong><sub>1</sub> and <strong>z</strong><sub>2</sub> be the matrix representations of the <em>qp</em> parts of <em>&#x03B6;</em><sub>1</sub> and <em>&#x03B6;</em><sub>2</sub>. The matrix representation of <em>&#x03C9;</em> is</p>
 
@@ -1600,7 +1445,7 @@ layout: chapter
 <h3 class="level3" id="h3_5-4-3"><a href="toc.html#Rh3_5-4-3"><strong>5.4.3 Types of Generating Functions</strong></a></h3>
 
 <p class="noindent">We have used generating functions of the form <em>F</em><sub>1</sub>(<em>t</em>, <em>q</em>, <em>q</em>&#x2032;) to construct canonical transformations:</p>
-<div class="pull-quotebox">
+<div class="result-math">
 
 <p class="eqtext" id="disp_5.148"><epub:switch id="mathmlSwitch1252"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>p</mi><mo>=</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>1</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.148</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1615,7 +1460,7 @@ layout: chapter
 
 <p class="noindent">We can also construct canonical transformations with generating functions of the form <em>F</em><sub>2</sub>(<em>t</em>, <em>q</em>, <em>p</em>&#x2032;), where the third argument of <em>F</em><sub>2</sub> is the momentum in the primed system.<sup><a class="footnote_link" href="#endnote_23" id="endnote_ref_23">23</a></sup></p>
 <a id="p374"></a>
-<div class="pull-quotebox">
+<div class="result-math">
 
 <p class="eqtext" id="disp_5.151"><epub:switch id="mathmlSwitch1255"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>p</mi><mo>=</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>2</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.151</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1630,7 +1475,7 @@ layout: chapter
 <p class="noindent">As in the <em>F</em><sub>1</sub> case, to put the transformation in explicit form requires that appropriate inverse functions be constructed to allow the solution of the equations.</p>
 
 <p>Similarly, we can construct two other forms for generating functions, named mnemonically enough <em>F</em><sub>3</sub> and <em>F</em><sub>4</sub>:</p>
-<div class="pull-quotebox">
+<div class="result-math">
 
 <p class="eqtext" id="disp_5.154"><epub:switch id="mathmlSwitch1258"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>q</mi><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>3</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.154</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -1642,7 +1487,7 @@ layout: chapter
 </div>
 
 <p class="noindent">and</p>
-<div class="pull-quotebox">
+<div class="result-math">
 
 <p class="eqtext" id="disp_5.157"><epub:switch id="mathmlSwitch1261"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>q</mi><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>F</mi><mn>4</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>p</mi><mo>,</mo><mi>p</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.157</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
@@ -2694,20 +2539,16 @@ layout: chapter
 <p class="ntx" id="endnote_14"><a epub:type="noteref" href="#endnote_ref_14"><sup>14</sup></a>Actually, this is more interesting: we allow transformations that arbitrarily distort time, as <span class="font1">tau</span> is an arbitrary literal function. The canonical condition is concerned only with the possibly time-dependent transformation of coordinates and momenta.</p>
 
 <p class="ntx" id="endnote_15"><a epub:type="noteref" href="#endnote_ref_15"><sup>15</sup></a>The <em>qp</em> submatrix of a square matrix of dimension 2<em>n</em> &#x002B; 1 is the 2<em>n</em>-dimensional matrix obtained by deleting the first row and the first column of the given matrix. This can be computed by:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (qp-submatrix m)</span></p>
-
-<p class="pqp1"><span class="font1">(m:submatrix m 1 (m:num-rows m) 1 (m:num-cols m)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (qp-submatrix m)
+(m:submatrix m 1 (m:num-rows m) 1 (m:num-cols m)))
+{% endhighlight %}</div>
 
 <p class="ntx" id="endnote_16"><a epub:type="noteref" href="#endnote_ref_16"><sup>16</sup></a>The procedure <span class="font1">D-as-matrix</span> is defined as:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((D-as-matrix F) s)</span></p>
-
-<p class="pqp1"><span class="font1">(s-&#x003E;m (compatible-shape (F s)) ((D F) s) s)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((D-as-matrix F) s)
+(s->m (compatible-shape (F s)) ((D F) s) s)))
+{% endhighlight %}</div>
 
 <p class="ntx" id="endnote_17"><a epub:type="noteref" href="#endnote_ref_17"><sup>17</sup></a>The <em>q<sup>i</sup></em>, <em>p<sub>i</sub></em> plane is the <em>i</em>th <em>canonical plane</em> in these phase-space variables.</p>
 

@@ -278,6 +278,14 @@ div.result {
     background: #f0f0f0;
 }
 
+div.result-math {
+    padding-left: 0.5em;
+    margin-top: -1em;
+    border: 1px solid gray;
+    background: #f0f0f0;
+}
+
+
 
 figcaption {
   display: table;

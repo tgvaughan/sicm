@@ -151,69 +151,49 @@ layout: chapter
 <p>The approximate solution for given initial conditions (<em>t</em><sub>0</sub>, <em>&#x03B8;</em><sub>0</sub>, <em>p</em><sub>0</sub>) is obtained by finding the corresponding <epub:switch id="mathmlSwitch1778"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>,</mo><msubsup><mi>&#x03B8;</mi><mn>0</mn><mo>&#x2032;</mo></msubsup><mo>,</mo><msubsup><mi>p</mi><mn>0</mn><mo>&#x2032;</mo></msubsup></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch> using the transformation (<a href="chapter007.html#disp_7.20">7.20</a>) and (<a href="chapter007.html#disp_7.21">7.21</a>). Then the system is evolved using the solutions (<a href="chapter007.html#disp_7.17">7.17</a>). The phase-space coordinates of the evolved point are transformed back to the original variables using the transformation (<a href="chapter007.html#disp_7.18">7.18</a>) and (<a href="chapter007.html#disp_7.19">7.19</a>).</p>
 
 <p>We define the two parts of the pendulum Hamiltonian:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((H0 alpha) state)
+(let ((p (momentum state)))
+(/ (square p) (* 2 alpha))))
 
-<p class="pq-noindent"><span class="font1">(define ((H0 alpha) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((p (momentum state)))</span></p>
-
-<p class="pqp2"><span class="font1">(/ (square p) (<sub>&#x002A;</sub> 2 alpha))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define ((H1 beta) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((theta (coordinate state)))</span></p>
-
-<p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> -1 beta (cos theta))))</span></p>
-</div>
+(define ((H1 beta) state)
+(let ((theta (coordinate state)))
+(* -1 beta (cos theta))))
+{% endhighlight %}</div>
 
 <p class="noindent">The Hamiltonian for the pendulum can be expressed as a series expansion in the parameter <em>&#x03F5;</em> by</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (H-pendulum-series alpha beta epsilon)</span></p>
-
-<p class="pqp1"><span class="font1">(series (H0 alpha) (<sub>&#x002A;</sub> epsilon (H1 beta))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (H-pendulum-series alpha beta epsilon)
+(series (H0 alpha) (* epsilon (H1 beta))))
+{% endhighlight %}</div>
 
 <p class="noindent">where the <span class="font1">series</span> procedure is a constructor for a series whose first terms are given and all further terms are zero. The Lie generator that eliminates the order <em>&#x03F5;</em> terms is</p>
-<a id="p463"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((W alpha beta) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((theta (coordinate state))</span></p>
-
-<p class="pqp4b"><span class="font1">(p (momentum state)))</span></p>
-
-<p class="pqp2"><span class="font1">(/ (<sub>&#x002A;</sub> -1 alpha beta (sin theta)) p)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((W alpha beta) state)
+(let ((theta (coordinate state))
+(p (momentum state)))
+(/ (* -1 alpha beta (sin theta)) p)))
+{% endhighlight %}</div>
 
 <p class="noindent">We check that <span class="font1">W</span> satisfies condition (<a href="chapter007.html#disp_7.7">7.7</a>):</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((&#x002B; ((Lie-derivative (W 'alpha 'beta)) (H0 'alpha))</span></p>
-
-<p class="pqp2"><span class="font1">(H1 'beta))</span></p>
-
-<p class="pqp1"><span class="font1">(up 't 'theta 'p))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>0</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((+ ((Lie-derivative (W 'alpha 'beta)) (H0 'alpha))
+(H1 'beta))
+(up 't 'theta 'p))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+0
+{% endhighlight %}</div>
 
 <p class="noindent">and that it has the desired effect on the Hamiltonian:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(series:sum</span></p>
-
-<p class="pqp2"><span class="font1">(((exp (<sub>&#x002A;</sub> 'epsilon (Lie-derivative (W 'alpha 'beta))))</span></p>
-
-<p class="pqp3"><span class="font1">(H-pendulum-series 'alpha 'beta 'epsilon))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't 'theta 'p))</span></p>
-
-<p class="pqp1"><span class="font1">2))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+(series:sum
+(((exp (* 'epsilon (Lie-derivative (W 'alpha 'beta))))
+(H-pendulum-series 'alpha 'beta 'epsilon))
+(up 't 'theta 'p))
+2))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch1779"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msup><mi>p</mi><mn>2</mn></msup></mrow><mi>&#x03B1;</mi></mfrac><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>&#x03B1;</mi><msup><mi>&#x03B2;</mi><mn>2</mn></msup><msup><mi mathvariant="italic">&#x03F5;</mi><mn>2</mn></msup><msup><mrow><mrow><mo stretch='false'>(</mo><mrow><mi>sin</mi><mo>&#x2061;</mo><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mo stretch='false'>)</mo></mrow></mrow><mn>2</mn></msup></mrow><mrow><msup><mi>p</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -221,71 +201,50 @@ layout: chapter
 <p class="noindent">Indeed, the order <em>&#x03F5;</em> term has been removed and an order <em>&#x03F5;</em><sup>2</sup> term has been introduced.</p>
 
 <p>Ignoring the <em>&#x03F5;</em><sup>2</sup> terms in the new Hamiltonian, the solution is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (((solution0 alpha beta) t) state0)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t0 (time state0))</span></p>
-
-<p class="pqp4b"><span class="font1">(theta0 (coordinate state0))</span></p>
-
-<p class="pqp4b"><span class="font1">(p0 (momentum state0)))</span></p>
-
-<p class="pqp2"><span class="font1">(up t</span></p>
-
-<p class="pqp4b"><span class="font1">(&#x002B; theta0 (/ (<sub>&#x002A;</sub> (- t t0) p0) alpha))</span></p>
-
-<p class="pqp4b"><span class="font1">p0)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (((solution0 alpha beta) t) state0)
+(let ((t0 (time state0))
+(theta0 (coordinate state0))
+(p0 (momentum state0)))
+(up t
+(+ theta0 (/ (* (- t t0) p0) alpha))
+p0)))
+{% endhighlight %}</div>
 
 <p>The transformation from primed to unprimed phase-space coordinates is, including terms up to <span class="font1">order</span>,</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((C alpha beta epsilon order) state)</span></p>
-
-<p class="pqp1"><span class="font1">(series:sum</span></p>
-
-<p class="pqp2"><span class="font1">(((Lie-transform (W alpha beta) epsilon)</span></p>
-
-<p class="pqp3"><span class="font1">identity)</span></p>
-
-<p class="pqp2"><span class="font1">state)</span></p>
-
-<p class="pqp1"><span class="font1">order))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((C alpha beta epsilon order) state)
+(series:sum
+(((Lie-transform (W alpha beta) epsilon)
+identity)
+state)
+order))
+{% endhighlight %}</div>
 <a id="p464"></a>
 
 <p class="noindent">To second order in <em>&#x03F5;</em> the transformation generated by <span class="font1">W</span> is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((C 'alpha 'beta 'epsilon 2) (up 't 'theta 'p)))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+((C 'alpha 'beta 'epsilon 2) (up 't 'theta 'p)))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch1780"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mi>t</mi></mtd></mtr><mtr><mtd><mrow><mo>&#x2212;</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msup><mi>&#x03B1;</mi><mn>2</mn></msup><msup><mi>&#x03B2;</mi><mn>2</mn></msup><msup><mi mathvariant="italic">&#x03F5;</mi><mn>2</mn></msup><mi>cos</mi><mo>&#x2061;</mo><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mtext>&#x2009;</mtext><mi>sin</mi><mo>&#x2061;</mo><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mrow><msup><mi>p</mi><mn>4</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi><mi mathvariant="italic">&#x03F5;</mi><mi>sin</mi><mo>&#x2061;</mo><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mrow><msup><mi>p</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>&#x03B8;</mi></mrow></mtd></mtr><mtr><mtd><mrow><mo>&#x2212;</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msup><mi>&#x03B1;</mi><mn>2</mn></msup><msup><mi>&#x03B2;</mi><mn>2</mn></msup><msup><mi mathvariant="italic">&#x03F5;</mi><mn>2</mn></msup></mrow><mrow><msup><mi>p</mi><mn>3</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi><mi mathvariant="italic">&#x03F5;</mi><mi>cos</mi><mo>&#x2061;</mo><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow></mrow><mi>p</mi></mfrac><mo>+</mo><mi>p</mi></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">The inverse transformation is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (C-inv alpha beta epsilon order)</span></p>
-
-<p class="pqp1"><span class="font1">(C alpha beta (- epsilon) order))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (C-inv alpha beta epsilon order)
+(C alpha beta (- epsilon) order))
+{% endhighlight %}</div>
 
 <p>With these components, the perturbative solution (equation <a href="chapter007.html#disp_7.9">7.9</a>) is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (((solution epsilon order) alpha beta) delta-t)</span></p>
-
-<p class="pqp1"><span class="font1">(compose (C alpha beta epsilon order)</span></p>
-
-<p class="pqp6a"><span class="font1">((solution0 alpha beta) delta-t)</span></p>
-
-<p class="pqp6a"><span class="font1">(C-inv alpha beta epsilon order)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (((solution epsilon order) alpha beta) delta-t)
+(compose (C alpha beta epsilon order)
+((solution0 alpha beta) delta-t)
+(C-inv alpha beta epsilon order)))
+{% endhighlight %}</div>
 
 <p class="noindent">The resulting procedure maps an initial state to the solution state advanced by <span class="font1">delta-t</span>.</p>
 

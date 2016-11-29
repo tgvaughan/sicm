@@ -180,7 +180,7 @@ layout: chapter
 <p>We can express this formula as a procedure:</p>
 <div class="code">{% highlight scheme %}
 (define ((L-free-particle mass) local)
-    (let ((v (velocity local)))
+  (let ((v (velocity local)))
     (* 1/2 mass (dot-product v v))))
 {% endhighlight %}</div>
 
@@ -193,9 +193,9 @@ layout: chapter
 <p class="noindent">We can make this definition<sup><a class="footnote_link" href="#endnote_28" id="endnote_ref_28">28</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define q
-    (up (literal-function 'x)
-    (literal-function 'y)
-    (literal-function 'z)))
+  (up (literal-function 'x)
+      (literal-function 'y)
+      (literal-function 'z)))
 {% endhighlight %}</div>
 
 <p class="noindent">where <span class="font1">literal-function</span> makes a procedure that represents a function of one argument that has no known properties other than the given symbolic name. The symbol q now names a procedure of one real argument (time) that produces a tuple of three components representing the coordinates at that time. For example, we can evaluate this procedure for a symbolic time <span class="font1">t</span> as follows:</p>
@@ -242,7 +242,7 @@ layout: chapter
 <p class="noindent">The procedure <span class="font1">show-expression</span> simplifies the expression and uses T<sub>E</sub>X to display the result in traditional infix form. We use this method of display to make the boxed expressions in this book. <a id="p17"></a>The procedure <span class="font1">show-expression</span> also produces the prefix form, but we usually do not show this.<sup><a class="footnote_link" href="#endnote_32" id="endnote_ref_32">32</a></sup></p>
 <div class="code">{% highlight scheme %}
 (show-expression
-    ((compose (L-free-particle 'm) (Gamma q)) 't))
+  ((compose (L-free-particle 'm) (Gamma q)) 't))
 {% endhighlight %}</div>
 <div class="result">
 <p class="eqtext"><epub:switch id="mathmlSwitch16"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>x</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>y</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>z</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></math></epub:case></epub:switch></p>
@@ -252,7 +252,7 @@ layout: chapter
 <a id="p18"></a>
 <div class="code">{% highlight scheme %}
 (define (Lagrangian-action L q t1 t2)
-    (definite-integral (compose L (Gamma q)) t1 t2))
+  (definite-integral (compose L (Gamma q)) t1 t2))
 {% endhighlight %}</div>
 
 <p class="noindent"><span class="font1">Lagrangian-action</span> takes as arguments a procedure <span class="font1">L</span> that computes the Lagrangian, a procedure <span class="font1">q</span> that computes a coordinate path, and starting and ending times <span class="font1">t1</span> and <span class="font1">t2</span>. The <span class="font1">definite-integral</span> used here takes as arguments a function and two limits <span class="font1">t1</span> and <span class="font1">t2</span>, and computes the definite integral of the function over the interval from <span class="font1">t1</span> to <span class="font1">t2</span>.<sup><a class="footnote_link" href="#endnote_33" id="endnote_ref_33">33</a></sup> Notice that the definition of <span class="font1">Lagrangian-action</span> does not depend on any particular set of coordinates or even the dimension of the configuration space. The method of computing the action from the coordinate representation of a Lagrangian and a coordinate path does not depend on the coordinate system.</p>
@@ -260,16 +260,16 @@ layout: chapter
 <p>We can now compute the action for the free particle along a path. For example, consider a particle moving at uniform speed along a straight line <em>t</em> &#x21A6; (4<em>t</em> &#x002B; 7, 3<em>t</em> &#x002B; 5, 2<em>t</em> &#x002B; 1).<sup><a class="footnote_link" href="#endnote_34" id="endnote_ref_34">34</a></sup> We represent the path as a procedure</p>
 <div class="code">{% highlight scheme %}
 (define (test-path t)
-    (up (+ (* 4 t) 7)
-    (+ (* 3 t) 5)
-    (+ (* 2 t) 1)))
+  (up (+ (* 4 t) 7)
+      (+ (* 3 t) 5)
+      (+ (* 2 t) 1)))
 {% endhighlight %}</div>
 
 <p class="noindent">For a particle of mass 3, we obtain the action between <em>t</em> &#x003D; 0 and <em>t</em> &#x003D; 10 as<sup><a class="footnote_link" href="#endnote_35" id="endnote_ref_35">35</a></sup></p>
 
 <div class="code">{% highlight scheme %}
 (Lagrangian-action (L-free-particle 3.0)
-    test-path 0.0 10.0)
+                   test-path 0.0 10.0)
 {% endhighlight %}</div>
 <div class="result">{% highlight scheme %}
 435
@@ -293,17 +293,17 @@ layout: chapter
 <p>Let's check this numerically by varying the test path, adding some amount of a test function that is zero at the endpoints <em>t</em> &#x003D; <em>t</em><sub>1</sub> and <em>t</em> &#x003D; <em>t</em><sub>2</sub>. To make a function <em>&#x03B7;</em> that is zero at the endpoints, given a sufficiently well-behaved function <em>&#x03BD;</em>, we can use <em>&#x03B7;</em>(<em>t</em>) &#x003D; (<em>t</em> &#x2212; <em>t</em><sub>1</sub>)(<em>t</em> &#x2212; <em>t</em><sub>2</sub>)<em>&#x03BD;</em>(<em>t</em>). This can be implemented:</p>
 <div class="code">{% highlight scheme %}
 (define ((make-eta nu t1 t2) t)
-    (* (- t t1) (- t t2) (nu t)))
+  (* (- t t1) (- t t2) (nu t)))
 {% endhighlight %}</div>
 
 <p class="noindent">We can use this to compute the action for a free particle over a path varied from the given path, as a function of <em>&#x03F5;</em>:<sup><a class="footnote_link" href="#endnote_38" id="endnote_ref_38">38</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define ((varied-free-particle-action mass q nu t1 t2) eps)
-    (let ((eta (make-eta nu t1 t2)))
-        (Lagrangian-action (L-free-particle mass)
-                           (+ q (* eps eta))
-                           t1
-                           t2)))
+  (let ((eta (make-eta nu t1 t2)))
+    (Lagrangian-action (L-free-particle mass)
+                       (+ q (* eps eta))
+                       t1
+                       t2)))
 {% endhighlight %}</div>
 
 <p class="noindent">The action for the varied path, with <em>&#x03BD;</em>(<em>t</em>) &#x003D; (sin <em>t,</em> cos <em>t</em>, <em>t</em><sup>2</sup>) and <em>&#x03F5;</em> &#x003D; 0.001, is, as expected, larger than for the test path:</p>
@@ -311,7 +311,7 @@ layout: chapter
 ((varied-free-particle-action 3.0 test-path
                               (up sin cos square)
                               0.0 10.0)
-0.001)
+ 0.001)
 {% endhighlight %}</div>
 <div class="result">{% highlight scheme %}
 436.29121428571153
@@ -320,10 +320,10 @@ layout: chapter
 <p>We can numerically compute the value of <em>&#x03F5;</em> for which the action is minimized. We search between, say, &#x2212;2 and 1:<sup><a class="footnote_link" href="#endnote_39" id="endnote_ref_39">39</a></sup></p>
 <div class="code">{% highlight scheme %}
 (minimize
-(varied-free-particle-action 3.0 test-path
-                             (up sin cos square)
-                             0.0 10.0)
--2.0 1.0)
+  (varied-free-particle-action 3.0 test-path
+                               (up sin cos square)
+                               0.0 10.0)
+  -2.0 1.0)
 {% endhighlight %}</div>
 <div class="result">{% highlight scheme %}
 (-1.5987211554602254e-14 435.0000000000237 5)
@@ -343,19 +343,19 @@ layout: chapter
 <p>Having specified a parametric path, we can construct a parametric action that is just the action computed along the parametric path:</p>
 <div class="code">{% highlight scheme %}
 (define ((parametric-path-action Lagrangian t0 q0 t1 q1) qs)
-    (let ((path (make-path t0 q0 t1 q1 qs)))
-        (Lagrangian-action Lagrangian path t0 t1)))
+  (let ((path (make-path t0 q0 t1 q1 qs)))
+    (Lagrangian-action Lagrangian path t0 t1)))
 {% endhighlight %}</div>
 
 <p>We can find approximate solution paths by finding parameters that minimize the action. We do this minimization with a canned multidimensional minimization procedure:<sup><a class="footnote_link" href="#endnote_43" id="endnote_ref_43">43</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define (find-path Lagrangian t0 q0 t1 q1 n)
-    (let ((initial-qs (linear-interpolants q0 q1 n)))
-        (let ((minimizing-qs
-                (multidimensional-minimize
-                    (parametric-path-action Lagrangian t0 q0 t1 q1)
-                    initial-qs)))
-                (make-path t0 q0 t1 q1 minimizing-qs))))
+  (let ((initial-qs (linear-interpolants q0 q1 n)))
+    (let ((minimizing-qs
+            (multidimensional-minimize
+              (parametric-path-action Lagrangian t0 q0 t1 q1)
+              initial-qs)))
+      (make-path t0 q0 t1 q1 minimizing-qs))))
 {% endhighlight %}</div>
 
 <p class="noindent">The procedure <span class="font1">multidimensional-minimize</span> takes a procedure (in this case the value of the call to <span class="font1">parametric-path-action</span>) that computes the function to be minimized (in this case the action) and an initial guess for the parameters. Here we choose the initial guess to be equally spaced points on a straight line between the two endpoints, computed with <span class="font1">linear-interpolants</span>.</p>
@@ -370,24 +370,18 @@ layout: chapter
 <img src="images/Art_P19.jpg" alt="art"/>
 <figcaption id="Fig_1-1"><strong>Figure 1.1</strong> The difference between the polynomial approximation with minimum action and the actual trajectory taken by the harmonic oscillator. The abscissa is the time and the ordinate is the error.</figcaption>
 </figure>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-harmonic m k) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local))</span></p>
-
-<p class="pqp5"><span class="font1">(v (velocity local)))</span></p>
-
-<p class="pqp2"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m (square v)) (<sub>&#x002A;</sub> 1/2 k (square q)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-harmonic m k) local)
+  (let ((q (coordinate local))
+        (v (velocity local)))
+    (- (* 1/2 m (square v)) (* 1/2 k (square q)))))
+{% endhighlight %}</div>
 
 <p>We can find an approximate path taken by the harmonic oscillator for <em>m</em> &#x003D; 1 and <em>k</em> &#x003D; 1 between <em>q</em>(0) &#x003D; 1 and <em>q</em>(<em>&#x03C0;</em>/2) &#x003D; 0 as follows:<sup><a class="footnote_link" href="#endnote_46" id="endnote_ref_46">46</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define q</span></p>
-
-<p class="pqp1"><span class="font1">(find-path (L-harmonic 1.0 1.0) 0.0 1.0 :pi/2 0.0 3))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define q
+  (find-path (L-harmonic 1.0 1.0) 0.0 1.0 :pi/2 0.0 3))
+{% endhighlight %}</div>
 
 <p>We know that the trajectories of this harmonic oscillator, for <em>m</em> &#x003D; 1 and <em>k</em> &#x003D; 1, are</p>
 
@@ -398,28 +392,20 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_1-5"><strong>Exercise  1.5: Solution process</strong></p>
 
 <p class="noindent">We can watch the progress of the minimization by modifying the procedure <span class="font1">parametric-path-action</span> to plot the path each time the action is computed. Try this:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define win2 (frame 0.0 :pi/2 0.0 1.2))
 
-<p class="pq-noindent"><span class="font1">(define win2 (frame 0.0 :pi/2 0.0 1.2))</span></p>
+(define ((parametric-path-action Lagrangian t0 q0 t1 q1)
+         intermediate-qs)
+  (let ((path (make-path t0 q0 t1 q1 intermediate-qs)))
+    ;; display path
+    (graphics-clear win2)
+    (plot-function win2 path t0 t1 (/ (- t1 t0) 100))
+    ;; compute action
+    (Lagrangian-action Lagrangian path t0 t1)))
 
-<p class="pq-noindent1-top"><span class="font1">(define ((parametric-path-action Lagrangian t0 q0 t1 q1)</span></p>
-
-<p class="pqp5"><span class="font1">intermediate-qs)</span></p>
-
-<p class="pqp2"><span class="font1">(let ((path (make-path t0 q0 t1 q1 intermediate-qs)))</span></p>
-
-<p class="pqp4"><span class="font1">;; display path</span></p>
-
-<p class="pqp4"><span class="font1">(graphics-clear win2)</span></p>
-
-<p class="pqp4"><span class="font1">(plot-function win2 path t0 t1 (/ (- t1 t0) 100))</span></p>
-
-<p class="pqp4"><span class="font1">;; compute action</span></p>
-
-<p class="pqp4"><span class="font1">(Lagrangian-action Lagrangian path t0 t1)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(find-path (L-harmonic 1.0 1.0) 0.0 1.0 :pi/2 0.0 2)</span></p>
-</div>
+(find-path (L-harmonic 1.0 1.0) 0.0 1.0 :pi/2 0.0 2)
+{% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_1-6"><strong>Exercise  1.6: Minimizing action</strong></p>
 
@@ -539,28 +525,20 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_1-8"><strong>Exercise  1.8: Implementation of</strong> <em>&#x03B4;</em></p>
 
 <p class="noindent"><strong>a.</strong> Suppose we have a procedure <span class="font1">f</span> that implements a path-dependent function: for path <span class="font1">q</span> and time <span class="font1">t</span> it has the value <span class="font1">((f q) t)</span>. The procedure <span class="font1">delta</span> computes the variation (<em>&#x03B4;<sub>&#x03B7;</sub>f</em>)[<em>q</em>](<em>t</em>) as the value of the expression <span class="font1">((((delta eta) f) q) t)</span>. Complete the definition of <span class="font1">delta</span>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (((delta eta) f) q)</span></p>
-
-<p class="pqp1"><span class="font1">&#x2026;</span></p>
-
-<p class="pqp1"><span class="font1">)</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (((delta eta) f) q)
+&#x2026;
+)
+{% endhighlight %}</div>
 
 <p class="noindent"><strong>b.</strong> Use your <span class="font1">delta</span> procedure to verify the properties of <em>&#x03B4;</em> listed in <a href="chapter001.html#Exe_1-7">exercise 1.7</a> for simple functions such as implemented by the procedure <span class="font1">f</span>:<sup><a class="footnote_link" href="#endnote_51" id="endnote_ref_51">51</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (f q)</span></p>
-
-<p class="pqp1"><span class="font1">(compose</span></p>
-
-<p class="pqp2"><span class="font1">(literal-function 'F</span></p>
-
-<p class="pqp9"><span class="font1">(-&#x003E; (UP Real (UP<sub>&#x002A;</sub> Real) (UP<sub>&#x002A;</sub> Real)) Real))</span></p>
-
-<p class="pqp2"><span class="font1">(Gamma q)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (f q)
+  (compose
+    (literal-function 'F
+                      (-> (UP Real (UP* Real) (UP* Real)) Real))
+    (Gamma q)))
+{% endhighlight %}</div>
 
 <p class="noindent">This implements an <em>n</em>-degree-of-freedom path-dependent function that depends on the local tuple of the path at each moment. You can define a literal two-dimensional path by</p>
 
@@ -698,14 +676,11 @@ layout: chapter
 <h3 class="level3" id="h3_1-5-2"><a href="toc.html#Rh3_1-5-2"><strong>1.5.2 Computing Lagrange's Equations</strong></a></h3>
 
 <p class="noindent">The procedure for computing Lagrange's equations mirrors the functional expression (<a href="chapter001.html#disp_1.12">1.12</a>), where the procedure <span class="font1">Gamma</span> implements &#x0393;:<sup><a class="footnote_link" href="#endnote_56" id="endnote_ref_56">56</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((Lagrange-equations Lagrangian) q)</span></p>
-
-<p class="pqp1"><span class="font1">(- (D (compose ((partial 2) Lagrangian) (Gamma q)))</span></p>
-
-<p class="pqp4a"><span class="font1">(compose ((partial 1) Lagrangian) (Gamma q))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((Lagrange-equations Lagrangian) q)
+  (- (D (compose ((partial 2) Lagrangian) (Gamma q)))
+     (compose ((partial 1) Lagrangian) (Gamma q))))
+{% endhighlight %}</div>
 
 <p class="noindent">The argument of <span class="font1">Lagrange-equations</span> is a procedure that computes a Lagrangian. The <span class="font1">Lagrange-equations</span> procedure returns a procedure that when applied to a path <span class="font1">q</span> returns a procedure of one argument (time) that computes the left-hand side of the Lagrange equations (<a href="chapter001.html#disp_1.12">1.12</a>). These residual values are zero if <span class="font1">q</span> is a path for which the Lagrangian action is stationary.</p>
 
@@ -717,41 +692,30 @@ layout: chapter
 
 <p class="noindent">Consider again the case of a free particle. The Lagrangian is implemented by the procedure <span class="font1">L-free-particle</span>. Rather than numerically integrating and minimizing the action, as we did in <a href="chapter001.html#h1-5">section 1.4</a>, we can check Lagrange's equations for an arbitrary straight-line path <em>t</em> &#x21A6; (<em>at</em> &#x002B; <em>a</em><sub>0</sub>, <em>bt</em> &#x002B; <em>b</em><sub>0</sub>, <em>ct</em> &#x002B; <em>c</em><sub>0</sub>):</p>
 <a id="p34"></a>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (test-path t)
+  (up (+ (* 'a t) 'a0)
+      (+ (* 'b t) 'b0)
+      (+ (* 'c t) 'c0)))
 
-<p class="pq-noindent"><span class="font1">(define (test-path t)</span></p>
-
-<p class="pqp1"><span class="font1">(up (&#x002B; (<sub>&#x002A;</sub> 'a t) 'a0)</span></p>
-
-<p class="pqp4a"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 'b t) 'b0)</span></p>
-
-<p class="pqp4a"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 'c t) 'c0)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(((Lagrange-equations (L-free-particle 'm))</span></p>
-
-<p class="pqp1"><span class="font1">test-path)</span></p>
-
-<p class="pqp1"><span class="font1">'t)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(down 0 0 0)</em></span></p>
-</div>
+(((Lagrange-equations (L-free-particle 'm))
+  test-path)
+ 't)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+(down 0 0 0)
+{% endhighlight %}</div>
 
 <p class="noindent">That the residuals are zero indicates that the test path satisfies the Lagrange equations.<sup><a class="footnote_link" href="#endnote_57" id="endnote_ref_57">57</a></sup></p>
 
 <p>We can also apply the <span class="font1">Lagrange-equations</span> procedure to an arbitrary function:<sup><a class="footnote_link" href="#endnote_58" id="endnote_ref_58">58</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Lagrange-equations (L-free-particle 'm))</span></p>
-
-<p class="pqp2"><span class="font1">(literal-function 'x))</span></p>
-
-<p class="pqp2"><span class="font1">'t))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(<sub>&#x002A;</sub>(((expt D 2) x) t) m)</em></span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((Lagrange-equations (L-free-particle 'm))
+    (literal-function 'x))
+   't))
+(*(((expt D 2) x) t) m)
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch73"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -767,21 +731,16 @@ layout: chapter
 <a id="p35"></a>
 
 <p class="noindent">Suppose we have forgotten how the constants in the solution relate to the mass <em>m</em> and spring constant <em>k</em> of the oscillator. Let's plug in the proposed solution and look at the residual:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (proposed-solution t)
+  (* 'A (cos (+ (* 'omega t) 'phi))))
 
-<p class="pq-noindent"><span class="font1">(define (proposed-solution t)</span></p>
-
-<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> 'A (cos (&#x002B; (<sub>&#x002A;</sub> 'omega t) 'phi))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Lagrange-equations (L-harmonic 'm 'k))</span></p>
-
-<p class="pqp2"><span class="font1">proposed-solution)</span></p>
-
-<p class="pqp2"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+(show-expression
+  (((Lagrange-equations (L-harmonic 'm 'k))
+    proposed-solution)
+   't))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch75"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03C9;</mi><mi>t</mi><mo>+</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>A</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>k</mi><mo>&#x2212;</mo><mi>m</mi><msup><mi>&#x03C9;</mi><mn>2</mn></msup><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -791,36 +750,26 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_1-11"><strong>Exercise  1.11: Kepler's third law</strong></p>
 
 <p class="noindent">A Lagrangian suitable for studying the relative motion of two particles, of masses <em>m</em><sub>1</sub> and <em>m</em><sub>2</sub>, with potential energy <em>V</em>, is:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-central-polar m V) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local))</span></p>
-
-<p class="pqp5"><span class="font1">(qdot (velocity local)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((r (ref q 0))&#160;&#160;&#160;&#160;&#160;(phi (ref q 1))</span></p>
-
-<p class="pqp6"><span class="font1">(rdot (ref qdot 0)) (phidot (ref qdot 1)))</span></p>
-
-<p class="pqp4"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m</span></p>
-
-<p class="pqp7"><span class="font1">(&#x002B; (square rdot) (square (<sub>&#x002A;</sub> r phidot))) )</span></p>
-
-<p class="pqp4"><span class="font1">(V r)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-central-polar m V) local)
+  (let ((q (coordinate local))
+        (qdot (velocity local)))
+    (let ((r (ref q 0))     (phi (ref q 1))
+                            (rdot (ref qdot 0)) (phidot (ref qdot 1)))
+      (- (* 1/2 m
+            (+ (square rdot) (square (* r phidot))) )
+         (V r)))))
+{% endhighlight %}</div>
 
 <p class="noindent">The argument <span class="font1">m</span> is the <em>reduced mass</em> of the system</p>
 
 <p class="eqtext" id="disp_1.51"><epub:switch id="mathmlSwitch77"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub></mrow><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.51</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p>For gravity, the potential energy function is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((gravitational-energy G m1 m2) r)</span></p>
-
-<p class="pqp1"><span class="font1">(- (/ (<sub>&#x002A;</sub> G m1 m2) r)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((gravitational-energy G m1 m2) r)
+  (- (/ (* G m1 m2) r)))
+{% endhighlight %}</div>
 
 <p class="noindent">where <span class="font1">r</span> is the distance between the two particles.</p>
 
@@ -908,31 +857,21 @@ layout: chapter
 <h2 class="level2"><strong>Constant acceleration</strong></h2>
 
 <p class="noindent">Consider a particle of mass <em>m</em> in a uniform gravitational field with acceleration <em>g</em>. The potential energy is <em>mgh</em> where <em>h</em> is the height of the particle. The kinetic energy is just <epub:switch id="mathmlSwitch101"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow></math></epub:case></epub:switch>. A Lagrangian for the system is the difference of the kinetic and potential energies. In rectangular coordinates, with <em>y</em> measuring the vertical position and <em>x</em> measuring the horizontal position, the Lagrangian is <epub:switch id="mathmlSwitch102"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>;</mo><msub><mi>v</mi><mi>x</mi></msub><mo>,</mo><msub><mi>v</mi><mi>y</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><mrow><mo>(</mo><mrow><msubsup><mi>v</mi><mi>x</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>v</mi><mi>y</mi><mn>2</mn></msubsup></mrow><mo>)</mo></mrow><mo>&#x2212;</mo><mi>m</mi><mi>g</mi><mi>y</mi></mrow></math></epub:case></epub:switch>. We have<sup><a class="footnote_link" href="#endnote_62" id="endnote_ref_62">62</a></sup></p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((L-uniform-acceleration m g) local)
+  (let ((q (coordinate local))
+        (v (velocity local)))
+    (let ((y (ref q 1)))
+      (- (* 1/2 m (square v)) (* m g y)))))
 
-<p class="pq-noindent"><span class="font1">(define ((L-uniform-acceleration m g) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local))</span></p>
-
-<p class="pqp4"><span class="font1">(v (velocity local)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((y (ref q 1)))</span></p>
-
-<p class="pqp3"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m (square v)) (<sub>&#x002A;</sub> m g y)))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
-
-<p class="pqp2"><span class="font1">(L-uniform-acceleration 'm 'g))</span></p>
-
-<p class="pqp1a"><span class="font1">(up (literal-function 'x)</span></p>
-
-<p class="pqp4a"><span class="font1">(literal-function 'y)))</span></p>
-
-<p class="pqp1"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+(show-expression
+  (((Lagrange-equations
+      (L-uniform-acceleration 'm 'g))
+    (up (literal-function 'x)
+        (literal-function 'y)))
+   't))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch103"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>[</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mrow><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>x</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mi>g</mi><mi>m</mi><mo>+</mo><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>y</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -949,35 +888,24 @@ layout: chapter
 <p class="eqtext" id="disp_1.61"><epub:switch id="mathmlSwitch106"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>;</mo><msub><mi>v</mi><mi>x</mi></msub><mo>,</mo><msub><mi>v</mi><mi>y</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><mrow><mo>(</mo><mrow><msubsup><mi>v</mi><mi>x</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>v</mi><mi>y</mi><mn>2</mn></msubsup></mrow><mo>)</mo></mrow><mo>&#x2212;</mo><mi>U</mi><mo stretchy='false'>(</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.61</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">As a procedure:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-central-rectangular m U) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local))</span></p>
-
-<p class="pqp4"><span class="font1">(v (velocity local)))</span></p>
-
-<p class="pqp3"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m (square v))</span></p>
-
-<p class="pqp4"><span class="font1">(U (sqrt (square q))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-central-rectangular m U) local)
+  (let ((q (coordinate local))
+        (v (velocity local)))
+    (- (* 1/2 m (square v))
+       (U (sqrt (square q))))))
+{% endhighlight %}</div>
 
 <p class="noindent">The Lagrange equations are</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
-
-<p class="pqp2"><span class="font1">(L-central-rectangular 'm (literal-function 'U)))</span></p>
-
-<p class="pqp1a"><span class="font1">(up (literal-function 'x)</span></p>
-
-<p class="pqp4"><span class="font1">(literal-function 'y)))</span></p>
-
-<p class="pqp1"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((Lagrange-equations
+      (L-central-rectangular 'm (literal-function 'U)))
+    (up (literal-function 'x)
+        (literal-function 'y)))
+   't))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch107"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>[</mo><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mrow><mi>D</mi><mi>U</mi><mrow><mo>(</mo><mrow><msqrt><mrow><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow><mo>)</mo></mrow><mtext>&#x2009;</mtext><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mrow><msqrt><mrow><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></mfrac></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mrow><mi>D</mi><mi>U</mi><mrow><mo>(</mo><mrow><msqrt><mrow><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow><mo>)</mo></mrow><mtext>&#x2009;</mtext><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mrow><msqrt><mrow><msup><mrow><mo stretchy='false'>(</mo><mi>x</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy='false'>(</mo><mi>y</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></mfrac></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -1017,43 +945,28 @@ layout: chapter
 <a id="p43"></a>
 
 <p class="noindent">We express this Lagrangian as follows:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-central-polar m U) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local))</span></p>
-
-<p class="pqp5"><span class="font1">(qdot (velocity local)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((r (ref q 0)) (phi (ref q 1))</span></p>
-
-<p class="pqp5"><span class="font1">(rdot (ref qdot 0)) (phidot (ref qdot 1)))</span></p>
-
-<p class="pqp4"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m</span></p>
-
-<p class="pqp7"><span class="font1">(&#x002B; (square rdot)</span></p>
-
-<p class="pqp9"><span class="font1">(square (<sub>&#x002A;</sub> r phidot))) )</span></p>
-
-<p class="pqp6"><span class="font1">(U r)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-central-polar m U) local)
+  (let ((q (coordinate local))
+        (qdot (velocity local)))
+    (let ((r (ref q 0)) (phi (ref q 1))
+                        (rdot (ref qdot 0)) (phidot (ref qdot 1)))
+      (- (* 1/2 m
+            (+ (square rdot)
+               (square (* r phidot))) )
+         (U r)))))
+{% endhighlight %}</div>
 
 <p class="noindent">Lagrange's equations are</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
-
-<p class="pqp3"><span class="font1">(L-central-polar 'm (literal-function 'U)))</span></p>
-
-<p class="pqp2"><span class="font1">(up (literal-function 'r)</span></p>
-
-<p class="pqp4"><span class="font1">(literal-function 'phi)))</span></p>
-
-<p class="pqp2"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((Lagrange-equations
+      (L-central-polar 'm (literal-function 'U)))
+    (up (literal-function 'r)
+        (literal-function 'phi)))
+   't))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch127"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>[</mo><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>r</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>m</mi><mi>r</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><mi>&#x03C6;</mi><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi>D</mi><mi>U</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>r</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='left'><mrow><mn>2</mn><mi>m</mi><mi>D</mi><mi>r</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>r</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>D</mi><mi>&#x03C6;</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><mi>m</mi><msup><mi>D</mi><mn>2</mn></msup><mi>&#x03C6;</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>r</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -1118,70 +1031,49 @@ layout: chapter
 <p class="noindent">Show by direct calculation that the Lagrange equations for <em>L</em>&#x2032; are satisfied if the Lagrange equations for <em>L</em> are satisfied.</p>
 
 <p class="space-break">Given a coordinate transformation <em>F</em>, we can use (<a href="chapter001.html#disp_1.77">1.77</a>) to find the function <em>C</em> that transforms local tuples. The procedure <span class="font1">F-&#x003E;C</span> implements this:<sup><a class="footnote_link" href="#endnote_63" id="endnote_ref_63">63</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((F-&#x003E;C F) local)</span></p>
-
-<p class="pqp1"><span class="font1">(up (time local)</span></p>
-
-<p class="pqp3a"><span class="font1">(F local)</span></p>
-
-<p class="pqp3a"><span class="font1">(&#x002B; (((partial 0) F) local)</span></p>
-
-<p class="pqp5"><span class="font1">(<sub>&#x002A;</sub> (((partial 1) F) local)</span></p>
-
-<p class="pqp6a"><span class="font1">(velocity local)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((F->C F) local)
+  (up (time local)
+      (F local)
+      (+ (((partial 0) F) local)
+         (* (((partial 1) F) local)
+            (velocity local)))))
+{% endhighlight %}</div>
 
 <p>As an illustration, consider the transformation from polar to rectangular coordinates, <em>x</em> &#x003D; <em>r</em> cos <em>&#x03C6;</em> and <em>y</em> &#x003D; <em>r</em> sin <em>&#x03C6;</em>, with the following implementation:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (p-&#x003E;r local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((polar-tuple (coordinate local)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((r (ref polar-tuple 0))</span></p>
-
-<p class="pqp5"><span class="font1">(phi (ref polar-tuple 1)))</span></p>
-
-<p class="pqp4"><span class="font1">(let ((x (<sub>&#x002A;</sub> r (cos phi)))</span></p>
-
-<p class="pqp7"><span class="font1">(y (<sub>&#x002A;</sub> r (sin phi))))</span></p>
-
-<p class="pqp5"><span class="font1">(up x y)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (p->r local)
+  (let ((polar-tuple (coordinate local)))
+    (let ((r (ref polar-tuple 0))
+          (phi (ref polar-tuple 1)))
+      (let ((x (* r (cos phi)))
+            (y (* r (sin phi))))
+        (up x y)))))
+{% endhighlight %}</div>
 
 <p class="noindent">In terms of the polar coordinates and the rates of change of the polar coordinates, the rates of change of the rectangular components are<sup><a class="footnote_link" href="#endnote_64" id="endnote_ref_64">64</a></sup></p>
 <a id="p47"></a>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(velocity</span></p>
-
-<p class="pqp2"><span class="font1">((F-&#x003E;C p-&#x003E;r)</span></p>
-
-<p class="pqp3"><span class="font1">(up 't (up 'r 'phi) (up 'rdot 'phidot)))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (velocity
+    ((F->C p->r)
+     (up 't (up 'r 'phi) (up 'rdot 'phidot)))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch137"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mrow><mo>&#x2212;</mo><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mi>r</mi><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo><mo>+</mo><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mi>r</mi><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo><mo>+</mo><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03C6;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">We can use <span class="font1">F-&#x003E;C</span> to find the Lagrangian for central force motion in polar coordinates from the Lagrangian in rectangular components, using equation (<a href="chapter001.html#disp_1.72">1.72</a>):</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (L-central-polar m U)
+  (compose (L-central-rectangular m U) (F->C p->r)))
 
-<p class="pq-noindent"><span class="font1">(define (L-central-polar m U)</span></p>
-
-<p class="pqp1"><span class="font1">(compose (L-central-rectangular m U) (F-&#x003E;C p-&#x003E;r)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((L-central-polar 'm (literal-function 'U))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't (up 'r 'phi) (up 'rdot 'phidot))))</span></p>
-</div>
-<div class="pull-quotebox">
+(show-expression
+  ((L-central-polar 'm (literal-function 'U))
+   (up 't (up 'r 'phi) (up 'rdot 'phidot))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch138"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>&#x2212;</mo><mi>U</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -1197,97 +1089,65 @@ layout: chapter
 <h2 class="level2"><strong>Coriolis and centrifugal forces</strong></h2>
 
 <p class="noindent">The equations of motion of a free particle in a rotating coordinate system have additional terms. Consider a free particle moving in two dimensions. A Lagrangian is:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-free-rectangular m) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((vx (ref (velocities local) 0))</span></p>
-
-<p class="pqp5"><span class="font1">(vy (ref (velocities local) 1)))</span></p>
-
-<p class="pqp3"><span class="font1">(<sub>&#x002A;</sub> 1/2 m (&#x002B; (square vx) (square vy)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-free-rectangular m) local)
+  (let ((vx (ref (velocities local) 0))
+        (vy (ref (velocities local) 1)))
+    (* 1/2 m (+ (square vx) (square vy)))))
+{% endhighlight %}</div>
 
 <p class="noindent">The rotation will be easy to describe in polar coordinates, so we transform to polar coordinates:</p>
 <a id="p48"></a>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (L-free-polar m)</span></p>
-
-<p class="pqp1"><span class="font1">(compose (L-free-rectangular m) (F-&#x003E;C p-&#x003E;r)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (L-free-polar m)
+  (compose (L-free-rectangular m) (F->C p->r)))
+{% endhighlight %}</div>
 
 <p class="noindent">Now we can make a simple time-dependent transformation to rotating coordinates, with rate of rotation <span class="font1">Omega</span>:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((F Omega) local)
+  (let ((t (time local))
+        (r (ref (coordinates local) 0))
+        (theta (ref (coordinates local) 1)))
+    (up r (+ theta (* Omega t)))))
 
-<p class="pq-noindent"><span class="font1">(define ((F Omega) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time local))</span></p>
-
-<p class="pqp4b"><span class="font1">(r (ref (coordinates local) 0))</span></p>
-
-<p class="pqp4b"><span class="font1">(theta (ref (coordinates local) 1)))</span></p>
-
-<p class="pqp3"><span class="font1">(up r (&#x002B; theta (<sub>&#x002A;</sub> Omega t)))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (L-rotating-polar m Omega)</span></p>
-
-<p class="pqp1"><span class="font1">(compose (L-free-polar m) (F-&#x003E;C (F Omega))))</span></p>
-</div>
+(define (L-rotating-polar m Omega)
+  (compose (L-free-polar m) (F->C (F Omega))))
+{% endhighlight %}</div>
 
 <p class="noindent">Now let's transform back to rectangular coordinates:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (L-rotating-rectangular m Omega)</span></p>
-
-<p class="pqp1"><span class="font1">(compose (L-rotating-polar m Omega) (F-&#x003E;C r-&#x003E;p)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (L-rotating-rectangular m Omega)
+  (compose (L-rotating-polar m Omega) (F->C r->p)))
+{% endhighlight %}</div>
 
 <p class="noindent">The new Lagrangian, in the rotating rectangular coordinate system is:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((L-rotating-rectangular 'm 'Omega)</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'x_r 'y_r) (up 'xdot_r 'ydot_r)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> 1/2 (expt Omega 2) m (expt x_r 2))</em></span></p>
-
-<p class="pqp2"><span class="font1"><em>(<sub>&#x002A;</sub> 1/2 (expt Omega 2) m (expt y_r 2))</em></span></p>
-
-<p class="pqp2"><span class="font1"><em>(<sub>&#x002A;</sub> -1 Omega m xdot_r y_r)</em></span></p>
-
-<p class="pqp2"><span class="font1"><em>(<sub>&#x002A;</sub> Omega m ydot_r x_r)</em></span></p>
-
-<p class="pqp2"><span class="font1"><em>(<sub>&#x002A;</sub> 1/2 m (expt xdot_r 2))</em></span></p>
-
-<p class="pqp2"><span class="font1"><em>(<sub>&#x002A;</sub> 1/2 m (expt ydot_r 2)))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((L-rotating-rectangular 'm 'Omega)
+ (up 't (up 'x_r 'y_r) (up 'xdot_r 'ydot_r)))
+(+ (* 1/2 (expt Omega 2) m (expt x_r 2))
+   (* 1/2 (expt Omega 2) m (expt y_r 2))
+   (* -1 Omega m xdot_r y_r)
+   (* Omega m ydot_r x_r)
+   (* 1/2 m (expt xdot_r 2))
+   (* 1/2 m (expt ydot_r 2)))
+{% endhighlight %}</div>
 
 <p class="noindent">Although the transformation of coordinates is time dependent the resulting Lagrangian is independent of time.</p>
 
 <p>The Lagrange equations for the free particle in the rotating coordinate system have force terms involving the angular velocity &#x03A9;:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(((Lagrange-equations (L-rotating-rectangular 'm 'Omega))</span></p>
-
-<p class="pqp1"><span class="font1">(up (literal-function 'x r) (literal-function 'y r)))</span></p>
-
-<p class="pqp1b"><span class="font1">'t)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(down</em></span></p>
-
-<p class="pqp1b"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> -1 (expt Omega 2) m (x_r t))</em></span></p>
-
-<p class="pqp2a"><span class="font1"><em>(<sub>&#x002A;</sub> -2 Omega m ((D y_r) t))</em></span></p>
-
-<p class="pqp2a"><span class="font1"><em>(<sub>&#x002A;</sub> m (((expt D 2) x_r) t)))</em></span></p>
-
-<p class="pqp1b"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> -1 (expt Omega 2) m (y_r t))</em></span></p>
-
-<p class="pqp2a"><span class="font1"><em>(<sub>&#x002A;</sub> 2 Omega m ((D x_r) t))</em></span></p>
-
-<p class="pqp2a"><span class="font1"><em>(<sub>&#x002A;</sub> m (((expt D 2) y_r) t))))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(((Lagrange-equations (L-rotating-rectangular 'm 'Omega))
+  (up (literal-function 'x r) (literal-function 'y r)))
+ 't)
+(down
+  (+ (* -1 (expt Omega 2) m (x_r t))
+     (* -2 Omega m ((D y_r) t))
+     (* m (((expt D 2) x_r) t)))
+  (+ (* -1 (expt Omega 2) m (y_r t))
+     (* 2 Omega m ((D x_r) t))
+     (* m (((expt D 2) y_r) t))))
+{% endhighlight %}</div>
 <a id="p49"></a>
 
 <p class="noindent">The terms that are proportional to &#x03A9;<sup>2</sup> are called <em>centrifugal force</em> terms, and the ones that are proportional to &#x03A9; are called <em>Coriolis</em> force terms. Note that the centrifugal force terms are radial, pointing away from the center of rotation. These additional force terms are derived from the corresponding terms in the Lagrangian. The terms in the Lagrangian that are proportional to &#x03A9;<sup>2</sup> can be thought of as the negation of a <em>centrifugal potential energy</em>.</p>
@@ -1360,51 +1220,34 @@ layout: chapter
 <a id="p52"></a>
 
 <p>The Lagrangian is expressed as</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((T-pend m l g ys) local)
+  (let ((t (time local))
+        (theta (coordinate local))
+        (thetadot (velocity local)))
+    (let ((vys (D ys)))
+      (* 1/2 m
+         (+ (square (* l thetadot))
+            (square (vys t))
+            (* 2 l (vys t) thetadot (sin theta)))))))
 
-<p class="pq-noindent"><span class="font1">(define ((T-pend m l g ys) local)</span></p>
+(define ((V-pend m l g ys) local)
+  (let ((t (time local))
+        (theta (coordinate local)))
+    (* m g (- (ys t) (* l (cos theta))))))
 
-<p class="pqp1"><span class="font1">(let ((t (time local))</span></p>
-
-<p class="pqp5"><span class="font1">(theta (coordinate local))</span></p>
-
-<p class="pqp5"><span class="font1">(thetadot (velocity local)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((vys (D ys)))</span></p>
-
-<p class="pqp4"><span class="font1">(<sub>&#x002A;</sub> 1/2 m</span></p>
-
-<p class="pqp5"><span class="font1">(&#x002B; (square (<sub>&#x002A;</sub> l thetadot))</span></p>
-
-<p class="pqp7"><span class="font1">(square (vys t))</span></p>
-
-<p class="pqp7"><span class="font1">(<sub>&#x002A;</sub> 2 l (vys t) thetadot (sin theta)))))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define ((V-pend m l g ys) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time local))</span></p>
-
-<p class="pqp5"><span class="font1">(theta (coordinate local)))</span></p>
-
-<p class="pqp3"><span class="font1">(<sub>&#x002A;</sub> m g (- (ys t) (<sub>&#x002A;</sub> l (cos theta))))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define L-pend (- T-pend V-pend))</span></p>
-</div>
+(define L-pend (- T-pend V-pend))
+{% endhighlight %}</div>
 
 <p>Lagrange's equation for this system is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
-
-<p class="pqp4"><span class="font1">(L-pend 'm 'l 'g (literal-function 'y_s)))</span></p>
-
-<p class="pqp3"><span class="font1">(literal-function 'theta))</span></p>
-
-<p class="pqp2"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((Lagrange-equations
+      (L-pend 'm 'l 'g (literal-function 'y_s)))
+    (literal-function 'theta))
+   't))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch154"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>D</mi><mn>2</mn></msup><mi>&#x03B8;</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><msup><mi>l</mi><mn>2</mn></msup><mi>m</mi><mo>+</mo><msup><mi>D</mi><mn>2</mn></msup><msub><mi>y</mi><mi>s</mi></msub><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mi>l</mi><mi>m</mi><mo>+</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>g</mi><mi>l</mi><mi>m</mi></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -1587,56 +1430,39 @@ layout: chapter
 <p class="eqtext" id="disp_1.105"><epub:switch id="mathmlSwitch181"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>L</mi><mi>f</mi></msub><mrow><mo>(</mo><mrow><mi>t</mi><mo>;</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>;</mo><msub><mi>v</mi><mi>x</mi></msub><mo>,</mo><msub><mi>v</mi><mi>y</mi></msub></mrow><mo>)</mo></mrow><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><mo stretchy='false'>(</mo><msubsup><mi>v</mi><mi>x</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>v</mi><mi>y</mi><mn>2</mn></msubsup><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>m</mi><mi>g</mi><mi>y</mi><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.105</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">where <em>y</em> measures the height of the point mass. A program that computes this Lagrangian is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-uniform-acceleration m g) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local))</span></p>
-
-<p class="pqp5"><span class="font1">(v (velocity local)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((y (ref q 1)))</span></p>
-
-<p class="pqp4"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m (square v)) (<sub>&#x002A;</sub> m g y)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-uniform-acceleration m g) local)
+  (let ((q (coordinate local))
+        (v (velocity local)))
+    (let ((y (ref q 1)))
+      (- (* 1/2 m (square v)) (* m g y)))))
+{% endhighlight %}</div>
 
 <p class="noindent">The coordinate transformation from generalized coordinate <em>&#x03B8;</em> to rectangular coordinates is <em>x</em> &#x003D; <em>l</em> sin <em>&#x03B8;</em>, <em>y</em> &#x003D; <em>y<sub>s</sub></em>(<em>t</em>) &#x2212; <em>l</em> cos <em>&#x03B8;</em>, where <em>l</em> is the length of the pendulum and <em>y<sub>s</sub></em> gives the height of the support as a function of time. It is interesting that the drive enters only through the specification of the constraints. A program implementing this coordinate transformation is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((dp-coordinates l y_s) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time local))</span></p>
-
-<p class="pqp5"><span class="font1">(theta (coordinate local)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((x (<sub>&#x002A;</sub> l (sin theta)))</span></p>
-
-<p class="pqp6"><span class="font1">(y (- (y_s t) (<sub>&#x002A;</sub> l (cos theta)))))</span></p>
-
-<p class="pqp4"><span class="font1">(up x y))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((dp-coordinates l y_s) local)
+  (let ((t (time local))
+        (theta (coordinate local)))
+    (let ((x (* l (sin theta)))
+          (y (- (y_s t) (* l (cos theta)))))
+      (up x y))))
+{% endhighlight %}</div>
 
 <p class="noindent">Using <span class="font1">F-&#x003E;C</span> we can deduce the local-tuple transformation and define the Lagrangian for the driven pendulum by composition:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (L-pend m l g y_s)</span></p>
-
-<p class="pqp1"><span class="font1">(compose (L-uniform-acceleration m g)</span></p>
-
-<p class="pqp7"><span class="font1">(F-&#x003E;C (dp-coordinates l y_s))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (L-pend m l g y_s)
+  (compose (L-uniform-acceleration m g)
+           (F->C (dp-coordinates l y_s))))
+{% endhighlight %}</div>
 <a id="p62"></a>
 
 <p class="noindent">The Lagrangian is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((L-pend 'm 'l 'g (literal-function 'y_s))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't 'theta 'thetadot)))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  ((L-pend 'm 'l 'g (literal-function 'y_s))
+   (up 't 'theta 'thetadot)))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch182"><epub:case display='block' required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>g</mi><mi>l</mi><mi>m</mi><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>g</mi><mi>m</mi><msub><mi>y</mi><mi>s</mi></msub><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>l</mi><mn>2</mn></msup><mi>m</mi><msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mi>l</mi><mi>m</mi><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mi>D</mi><msub><mi>y</mi><mi>s</mi></msub><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mi>sin</mi><mo>&#x2061;</mo><mrow><mo>(</mo><mi>&#x03B8;</mi><mo>)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mrow><mo stretchy='false'>(</mo><mi>D</mi><msub><mi>y</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -1666,28 +1492,18 @@ layout: chapter
 <a id="p63"></a>
 
 <p class="noindent">This second transformation can be implemented with the following code:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((compose (Rz (<sub>&#x002A;</sub> 'Omega 't)) (Ry 'phi))</span></p>
-
-<p class="pqp1"><span class="font1">(up 'x_0 'y_0 'z_0))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up</em></span></p>
-
-<p class="pqp1"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> x_0 (cos phi) (cos (<sub>&#x002A;</sub> Omega t)))</em></span></p>
-
-<p class="pqp3"><span class="font1"><em>(<sub>&#x002A;</sub> z_0 (sin phi) (cos (<sub>&#x002A;</sub> Omega t)))</em></span></p>
-
-<p class="pqp3"><span class="font1"><em>(<sub>&#x002A;</sub> -1 y_0 (sin (<sub>&#x002A;</sub> Omega t))))</em></span></p>
-
-<p class="pqp1"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> x_0 (cos phi) (sin (<sub>&#x002A;</sub> Omega t)))</em></span></p>
-
-<p class="pqp3"><span class="font1"><em>(<sub>&#x002A;</sub> z_0 (sin phi) (sin (<sub>&#x002A;</sub> Omega t)))</em></span></p>
-
-<p class="pqp3"><span class="font1"><em>(<sub>&#x002A;</sub> y_0 (cos (<sub>&#x002A;</sub> Omega t))))</em></span></p>
-
-<p class="pqp1"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> -1 x_0 (sin phi)) (<sub>&#x002A;</sub> z_0 (cos phi))))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((compose (Rz (* 'Omega 't)) (Ry 'phi))
+ (up 'x_0 'y_0 'z_0))
+(up
+  (+ (* x_0 (cos phi) (cos (* Omega t)))
+     (* z_0 (sin phi) (cos (* Omega t)))
+     (* -1 y_0 (sin (* Omega t))))
+  (+ (* x_0 (cos phi) (sin (* Omega t)))
+     (* z_0 (sin phi) (sin (* Omega t)))
+     (* y_0 (cos (* Omega t))))
+  (+ (* -1 x_0 (sin phi)) (* z_0 (cos phi))))
+{% endhighlight %}</div>
 
 <p>Construct a coordinate transformation <span class="font1">F</span> from these parts that you can use with <span class="font1">F-&#x003E;C</span> to compose with the free Lagrangian for a particle in a gravitational potential to make a Lagrangian for the Foucault pendulum. The Newtonian potential energy is &#x2212;<em>GMm/r</em>, where <em>r</em> is the distance of the bob from the center of the Earth, and <em>M</em> is the mass of the Earth.</p>
 </section>
@@ -1906,92 +1722,62 @@ layout: chapter
 <p>That initial segment of the local tuple that specifies the state is called the local state tuple, or, more simply, the state tuple.<sup><a class="footnote_link" href="#endnote_74" id="endnote_ref_74">74</a></sup></p>
 
 <p>We can express the function that gives the acceleration as a function of the state tuple as the following procedure. It takes a procedure that computes the Lagrangian, and returns a procedure that takes a state tuple as its argument and returns the acceleration.<sup><a class="footnote_link" href="#endnote_75" id="endnote_ref_75">75</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (Lagrangian-&#x003E;acceleration L)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((P ((partial 2) L)) (F ((partial 1) L)))</span></p>
-
-<p class="pqp2"><span class="font1">(solve-linear-left</span></p>
-
-<p class="pqp3"><span class="font1">((partial 2) P)</span></p>
-
-<p class="pqp3"><span class="font1">(- F</span></p>
-
-<p class="pqp5"><span class="font1">(&#x002B; ((partial 0) P)</span></p>
-
-<p class="pqp7"><span class="font1">(<sub>&#x002A;</sub> ((partial 1) P) velocity))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (Lagrangian->acceleration L)
+  (let ((P ((partial 2) L)) (F ((partial 1) L)))
+    (solve-linear-left
+      ((partial 2) P)
+      (- F
+         (+ ((partial 0) P)
+            (* ((partial 1) P) velocity))))))
+{% endhighlight %}</div>
 
 <p>Once we have a way of computing the acceleration from the coordinates and the velocities, we can give a prescription for computing the derivative of the state as a function of the state. For the state (<em>t</em>, <em>q</em>(<em>t</em>), <em>Dq</em>(<em>t</em>)) at the moment <em>t</em> the derivative of the state is (1, <em>Dq</em>(<em>t</em>), <em>D</em><sup>2</sup><em>q</em>(<em>t</em>)) &#x003D; (1, <em>Dq</em>(<em>t</em>), <em>A</em>(<em>t</em>, <em>q</em>(<em>t</em>), <em>Dq</em>(<em>t</em>))). The procedure <span class="font1">Lagrangian-&#x003E;state-derivative</span> takes a Lagrangian and returns a procedure that takes a state and returns the derivative of the state:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (Lagrangian-&#x003E;state-derivative L)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((acceleration (Lagrangian-&#x003E;acceleration L)))</span></p>
-
-<p class="pqp2"><span class="font1">(lambda (state)</span></p>
-
-<p class="pqp3"><span class="font1">(up 1</span></p>
-
-<p class="pqp5"><span class="font1">(velocity state)</span></p>
-
-<p class="pqp5"><span class="font1">(acceleration state)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (Lagrangian->state-derivative L)
+  (let ((acceleration (Lagrangian->acceleration L)))
+    (lambda (state)
+      (up 1
+          (velocity state)
+          (acceleration state)))))
+{% endhighlight %}</div>
 
 <p class="noindent">We represent a state by an up tuple of the components of that initial segment of the local tuple that determine the state.</p>
 <a id="p72"></a>
 
 <p>For example, the parametric state derivative for a harmonic oscillator is</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (harmonic-state-derivative m k)
+  (Lagrangian->state-derivative (L-harmonic m k)))
 
-<p class="pq-noindent"><span class="font1">(define (harmonic-state-derivative m k)</span></p>
-
-<p class="pqp1"><span class="font1">(Lagrangian-&#x003E;state-derivative (L-harmonic m k)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((harmonic-state-derivative 'm 'k)</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'x 'y) (up 'v_x 'v_y)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up 1 (up v_x v_y) (up (/ (<sub>&#x002A;</sub> -1 k x) m) (/ (<sub>&#x002A;</sub> -1 k y) m)))</em></span></p>
-</div>
+((harmonic-state-derivative 'm 'k)
+ (up 't (up 'x 'y) (up 'v_x 'v_y)))
+(up 1 (up v_x v_y) (up (/ (* -1 k x) m) (/ (* -1 k y) m)))
+{% endhighlight %}</div>
 
 <p>The Lagrange equations are a second-order system of differential equations that constrain realizable paths <em>q</em>. We can use the state derivative to express the Lagrange equations as a first-order system of differential equations that constrain realizable coordinate paths <em>q</em> and velocity paths <em>v</em>:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((Lagrange-equations-first-order L) q v)
+  (let ((state-path (qv->state-path q v)))
+    (- (D state-path)
+       (compose (Lagrangian->state-derivative L)
+                state-path))))
 
-<p class="pq-noindent"><span class="font1">(define ((Lagrange-equations-first-order L) q v)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((state-path (qv-&#x003E;state-path q v)))</span></p>
-
-<p class="pqp2"><span class="font1">(- (D state-path)</span></p>
-
-<p class="pqp4"><span class="font1">(compose (Lagrangian-&#x003E;state-derivative L)</span></p>
-
-<p class="pqp9"><span class="font1">state-path))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define ((qv-&#x003E;state-path q v) t)</span></p>
-
-<p class="pqp1"><span class="font1">(up t (q t) (v t)))</span></p>
-</div>
+(define ((qv->state-path q v) t)
+  (up t (q t) (v t)))
+{% endhighlight %}</div>
 
 <p class="noindent">For example, we can find the first-order form of the equations of motion of a two-dimensional harmonic oscillator:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Lagrange-equations-first-order (L-harmonic 'm 'k))</span></p>
-
-<p class="pqp2"><span class="font1">(up (literal-function 'x)</span></p>
-
-<p class="pqp4"><span class="font1">(literal-function 'y))</span></p>
-
-<p class="pqp2"><span class="font1">(up (literal-function 'v_x)</span></p>
-
-<p class="pqp4"><span class="font1">(literal-function 'v_y)))</span></p>
-
-<p class="pqp1"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((Lagrange-equations-first-order (L-harmonic 'm 'k))
+    (up (literal-function 'x)
+        (literal-function 'y))
+    (up (literal-function 'v_x)
+        (literal-function 'v_y)))
+   't))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch222"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mn>0</mn></mtd></mtr><mtr><mtd columnalign='center'><mrow><mrow><mo>(</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mrow><mi>D</mi><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><msub><mi>v</mi><mi>x</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mi>D</mi><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><msub><mi>v</mi><mi>y</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mrow><mo>(</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mrow><mfrac><mrow><mi>k</mi><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mi>m</mi></mfrac><mo>+</mo><mi>D</mi><msub><mi>v</mi><mi>x</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mfrac><mrow><mi>k</mi><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mi>m</mi></mfrac><mo>+</mo><mi>D</mi><msub><mi>v</mi><mi>y</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -2008,147 +1794,79 @@ layout: chapter
 <p class="noindent">A set of first-order ordinary differential equations that give the state derivative in terms of the state can be integrated to find the state path that emanates from a given initial state. Numerical integrators find approximate solutions of such differential equations by a process illustrated in <a href="chapter001.html#Fig_1-6">figure 1.6</a>. The state derivative produced by <span class="font1">Lagrangian-&#x003E;state-derivative</span> can be used by a <a id="p74"></a>package that numerically integrates systems of first-order ordinary differential equations.</p>
 
 <p>The procedure <span class="font1">state-advancer</span> can be used to find the state of a system at a specified time, given an initial state, which includes the initial time, and a parametric state-derivative procedure.<sup><a class="footnote_link" href="#endnote_76" id="endnote_ref_76">76</a></sup> For example, to advance the state of a two-dimensional harmonic oscillator we write<sup><a class="footnote_link" href="#endnote_77" id="endnote_ref_77">77</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((state-advancer harmonic-state-derivative 2.0 1.0)</span></p>
-
-<p class="pqp1"><span class="font1">(up 1.0 (up 1.0 2.0) (up 3.0 4.0))</span></p>
-
-<p class="pqp1"><span class="font1">10.0</span></p>
-
-<p class="pqp1"><span class="font1">1.0e-12)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(up 11.0</em></span></p>
-
-<p class="pqp3"><span class="font1"><em>(up 3.7127916645844437 5.420620823651583)</em></span></p>
-
-<p class="pqp3"><span class="font1"><em>(up 1.6148030925459782 1.8189103724750855))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((state-advancer harmonic-state-derivative 2.0 1.0)
+ (up 1.0 (up 1.0 2.0) (up 3.0 4.0))
+ 10.0
+ 1.0e-12)
+(up 11.0
+    (up 3.7127916645844437 5.420620823651583)
+    (up 1.6148030925459782 1.8189103724750855))
+{% endhighlight %}</div>
 
 <p class="noindent">The arguments to <span class="font1">state-advancer</span> are a parametric state derivative, <span class="font1">harmonic-state-derivative</span>, and the state-derivative parameters (mass <span class="font1">2</span> and spring constant <span class="font1">1</span>). A procedure is returned that takes an initial state, <span class="font1">(up 1 (up 1 2) (up 3 4))</span>; a time increment, <span class="font1">10</span>; and a relative error tolerance, <span class="font1">1.0e-12</span>. The output is an approximation to the state at the specified final time.</p>
 
 <p>Consider the driven pendulum described in <a href="chapter001.html#h3_1-6-2">section 1.6.2</a> with a periodic drive. We choose <em>y<sub>s</sub></em>(<em>t</em>) &#x003D; <em>A</em> cos <em>&#x03C9;t</em>.</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((periodic-drive amplitude frequency phase) t)
+  (* amplitude (cos (+ (* frequency t) phase))))
 
-<p class="pq-noindent"><span class="font1">(define ((periodic-drive amplitude frequency phase) t)</span></p>
-
-<p class="pqp1"><span class="font1">(<sub>&#x002A;</sub> amplitude (cos (&#x002B; (<sub>&#x002A;</sub> frequency t) phase))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (L-periodically-driven-pendulum m l g A omega)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((ys (periodic-drive A omega 0)))</span></p>
-
-<p class="pqp2"><span class="font1">(L-pend m l g ys)))</span></p>
-</div>
+(define (L-periodically-driven-pendulum m l g A omega)
+  (let ((ys (periodic-drive A omega 0)))
+    (L-pend m l g ys)))
+{% endhighlight %}</div>
 <a id="p75"></a>
 
 <p class="noindent">Lagrange's equation for this system is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Lagrange-equations</span></p>
-
-<p class="pqp3"><span class="font1">(L-periodically-driven-pendulum 'm 'l 'g 'A 'omega))</span></p>
-
-<p class="pqp2"><span class="font1">(literal-function 'theta))</span></p>
-
-<p class="pqp1"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((Lagrange-equations
+      (L-periodically-driven-pendulum 'm 'l 'g 'A 'omega))
+    (literal-function 'theta))
+   't))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch223"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>D</mi><mn>2</mn></msup><mi>&#x03B8;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><msup><mi>l</mi><mn>2</mn></msup><mi>m</mi><mo>&#x2212;</mo><mi>cos</mi><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03C9;</mi><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>sin</mi><mtext>&#x2009;</mtext><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>A</mi><mi>l</mi><mi>m</mi><msup><mi>&#x03C9;</mi><mn>2</mn></msup><mo>+</mo><mi>sin</mi><mtext>&#x2009;</mtext><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>g</mi><mi>l</mi><mi>m</mi></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">The parametric state derivative for the periodically driven pendulum is</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (pend-state-derivative m l g A omega)
+  (Lagrangian->state-derivative
+    (L-periodically-driven-pendulum m l g A omega)))
 
-<p class="pq-noindent"><span class="font1">(define (pend-state-derivative m l g A omega)</span></p>
-
-<p class="pqp1"><span class="font1">(Lagrangian-&#x003E;state-derivative</span></p>
-
-<p class="pqp2"><span class="font1">(L-periodically-driven-pendulum m l g A omega)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((pend-state-derivative 'm 'l 'g 'A 'omega)</span></p>
-
-<p class="pqp2"><span class="font1">(up 't 'theta 'thetadot)))</span></p>
-</div>
-<div class="pull-quotebox">
+(show-expression
+  ((pend-state-derivative 'm 'l 'g 'A 'omega)
+   (up 't 'theta 'thetadot)))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch224"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mn>1</mn></mtd></mtr><mtr><mtd columnalign='center'><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover></mtd></mtr><mtr><mtd columnalign='center'><mrow><mfrac><mrow><mi>A</mi><msup><mi>&#x03C9;</mi><mn>2</mn></msup><mi>cos</mi><mtext>&#x2009;</mtext><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03C9;</mi><mi>t</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>sin</mi><mtext>&#x2009;</mtext><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow><mi>l</mi></mfrac><mo>&#x2212;</mo><mfrac><mrow><mi>g</mi><mi>sin</mi><mtext>&#x2009;</mtext><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow><mi>l</mi></mfrac></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p>To examine the evolution of the driven pendulum we need a mechanism that evolves a system for some interval while monitoring aspects of the system as it evolves. The procedure <span class="font1">evolve</span> provides this service, using <span class="font1">state-advancer</span> repeatedly to advance the state to the required moments. The procedure <span class="font1">evolve</span> takes a parametric state derivative and its parameters and returns a procedure that evolves the system from a specified initial state to a number of other times, monitoring some aspect of the state at those times. To generate a plot of the angle versus time we make <a id="p76"></a>a monitor procedure that generates the plot as the evolution proceeds:<sup><a class="footnote_link" href="#endnote_78" id="endnote_ref_78">78</a></sup></p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((monitor-theta win) state)
+  (let ((theta ((principal-value :pi) (coordinate state))))
+    (plot-point win (time state) theta)))
 
-<p class="pq-noindent"><span class="font1">(define ((monitor-theta win) state)</span></p>
+(define plot-win (frame 0.0 100.0 :-pi :pi))
 
-<p class="pqp1"><span class="font1">(let ((theta ((principal-value :pi) (coordinate state))))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win (time state) theta)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define plot-win (frame 0.0 100.0 :-pi :pi))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">((evolve pend-state-derivative</span></p>
-<table class="table1n">
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4"><span class="font1">1.0</span></p></td>
-<td class="td1" valign="top"><span class="font1">;m&#x003D;1kg</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4"><span class="font1">1.0</span></p></td>
-<td class="td1" valign="top"><span class="font1">;l&#x003D;1m</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4"><span class="font1">9.8</span></p></td>
-<td class="td1" valign="top"><span class="font1">;g&#x003D;9.8m/s<sup>2</sup></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4"><span class="font1">0.1</span></p></td>
-<td class="td1" valign="top"><span class="font1">;a&#x003D;1/10 m</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4"><span class="font1">(<sub>&#x002A;</sub> 2.0 (sqrt 9.8)) )</span></p></td>
-<td class="td1" valign="top"><span class="font1">;omega</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"><span class="font1">(up 0.0</span></td>
-<td class="td1" valign="top"><span class="font1">;t<sub>0</sub>&#x003D;0</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2a"><span class="font1">1.0</span></p></td>
-<td class="td1" valign="top"><span class="font1">;theta<sub>0</sub>&#x003D;1 radian</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2a"><span class="font1">0.0)</span></p></td>
-<td class="td1" valign="top"><span class="font1">;thetadot<sub>0</sub>&#x003D;0 radians/s</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"><span class="font1">(monitor-theta plot-win)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"><span class="font1">0.01</span></td>
-<td class="td1" valign="top"><span class="font1">;step between plotted points</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"><span class="font1">100.0</span></td>
-<td class="td1" valign="top"><span class="font1">;final time</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"><span class="font1">1.0e-13)</span></td>
-<td class="td1" valign="top"><span class="font1">;local error tolerance</span></td>
-</tr>
-</table>
-</div>
+((evolve pend-state-derivative
+         1.0 ;m=1kg
+         1.0 ;l=1m
+         9.8 ;g=9.8m/s^2
+         0.1 ;a=1/10 m
+         (* 2.0 (sqrt 9.8)) ) ;omega
+ (up 0.0 ;t0=0
+     1.0 ;theta0=1 radian
+     0.0) ;thetadot0=0 radians/s
+ (monitor-theta plot-win)
+ 0.01 ;step between plotted points
+ 100.0 ;final time
+ 1.0e-13) ;local error tolerance
+{% endhighlight %}</div>
 
 <p><a href="#Fig_1-7">Figure 1.7</a> shows the angle <em>&#x03B8;</em> versus time for a couple of orbits for the driven pendulum. The initial conditions for the two runs are the same except that in one the bob is given a tiny velocity equal to 10<sup>&#x2212;10</sup>m/s, about one atom width per second. The initial segments of the two orbits are indistinguishable. After about 75 seconds the two orbits diverge and become completely different. This extreme sensitivity to tiny changes in initial conditions is characteristic of what is called <em>chaotic behavior</em>. Later, we will investigate this example further, using other tools such as Lyapunov exponents, phase space, and Poincar&#x00E9; sections.</p>
 <a id="p77"></a>
@@ -2276,14 +1994,11 @@ layout: chapter
 <p class="noindent">is conserved along realizable paths. The function <em>&#x2130;</em> is called the <em>energy state function</em>.<sup><a class="footnote_link" href="#endnote_83" id="endnote_ref_83">83</a></sup> The energy state function for a system depends on the choice of Lagrangian used to describe the system.<sup><a class="footnote_link" href="#endnote_84" id="endnote_ref_84">84</a></sup> Let <em>E</em> &#x003D; <em>&#x2130;</em> &#x2218; &#x0393;[<em>q</em>] denote the energy function on the path <em>q</em>. The energy function has a constant value along any realizable trajectory if the Lagrangian has no explicit time dependence; the energy <em>E</em> may have a different value for different trajectories. A system that has no explicit time dependence is called <em>autonomous</em>.</p>
 
 <p>Given a Lagrangian procedure <span class="font1">L</span>, we may construct the energy function:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (Lagrangian-&#x003E;energy L)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((P ((partial 2) L)))</span></p>
-
-<p class="pqp2"><span class="font1">(- (<sub>&#x002A;</sub> P velocity) L)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (Lagrangian->energy L)
+  (let ((P ((partial 2) L)))
+    (- (* P velocity) L)))
+{% endhighlight %}</div>
 </section>
 </section>
 <section title="Energy in terms of kinetic and potential energies">
@@ -2342,125 +2057,81 @@ layout: chapter
 <p class="eqtext"><epub:switch id="mathmlSwitch253"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>;</mo><mi>r</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><mi>&#x03C6;</mi><mo>;</mo><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover><mo>,</mo><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo>,</mo><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><mo stretchy='false'>(</mo><msup><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><msup><mi>r</mi><mn>2</mn></msup><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo stretchy='false'>)</mo><mo>.</mo></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">As a procedure:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((T3-spherical m) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate state))</span></p>
-
-<p class="pqp5"><span class="font1">(qdot (velocity state)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((r (ref q 0))</span></p>
-
-<p class="pqp6"><span class="font1">(theta (ref q 1))</span></p>
-
-<p class="pqp6"><span class="font1">(rdot (ref qdot 0))</span></p>
-
-<p class="pqp6"><span class="font1">(thetadot (ref qdot 1))</span></p>
-
-<p class="pqp6"><span class="font1">(phidot (ref qdot 2)))</span></p>
-
-<p class="pqp4"><span class="font1">(<sub>&#x002A;</sub> 1/2 m</span></p>
-
-<p class="pqp5"><span class="font1">(&#x002B; (square rdot)</span></p>
-
-<p class="pqp7"><span class="font1">(square (<sub>&#x002A;</sub> r thetadot))</span></p>
-
-<p class="pqp7"><span class="font1">(square (<sub>&#x002A;</sub> r (sin theta) phidot)))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((T3-spherical m) state)
+  (let ((q (coordinate state))
+        (qdot (velocity state)))
+    (let ((r (ref q 0))
+          (theta (ref q 1))
+          (rdot (ref qdot 0))
+          (thetadot (ref qdot 1))
+          (phidot (ref qdot 2)))
+      (* 1/2 m
+         (+ (square rdot)
+            (square (* r thetadot))
+            (square (* r (sin theta) phidot)))))))
+{% endhighlight %}</div>
 
 <p class="noindent">A Lagrangian is then formed by subtracting the potential energy:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (L3-central m Vr)</span></p>
-
-<p class="pqp1"><span class="font1">(define (Vs state)</span></p>
-
-<p class="pqp3"><span class="font1">(let ((r (ref (coordinate state) 0)))</span></p>
-
-<p class="pqp4"><span class="font1">(Vr r)))</span></p>
-
-<p class="pqp1"><span class="font1">(- (T3-spherical m) Vs))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (L3-central m Vr)
+  (define (Vs state)
+    (let ((r (ref (coordinate state) 0)))
+      (Vr r)))
+  (- (T3-spherical m) Vs))
+{% endhighlight %}</div>
 
 <p class="noindent">Let's first look at the generalized forces (the derivatives of the Lagrangian with respect to the generalized coordinates). We compute these with a partial derivative with respect to the coordinate argument of the Lagrangian:</p>
-<a id="p85"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((partial 1) (L3-central 'm (literal-function 'V)))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't</span></p>
-
-<p class="pqp5"><span class="font1">(up 'r 'theta 'phi)</span></p>
-
-<p class="pqp5"><span class="font1">(up 'rdot 'thetadot 'phidot))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((partial 1) (L3-central 'm (literal-function 'V)))
+   (up 't
+       (up 'r 'theta 'phi)
+       (up 'rdot 'thetadot 'phidot))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch254"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>[</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mrow><mi>m</mi><msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mi>r</mi><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi>m</mi><mi>r</mi><msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>&#x2212;</mo><mi>D</mi><mi>V</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mi>m</mi><msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><msup><mi>r</mi><mn>2</mn></msup><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='center'><mn>0</mn></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">The <em>&#x03C6;</em> component of the force is zero because <em>&#x03C6;</em> does not appear in the Lagrangian (it is a cyclic coordinate). The corresponding momentum component is conserved. Compute the momenta:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((partial 2) (L3-central 'm (literal-function 'V)))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't</span></p>
-
-<p class="pqp4"><span class="font1">(up 'r 'theta 'phi)</span></p>
-
-<p class="pqp4"><span class="font1">(up 'rdot 'thetadot 'phidot))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  (((partial 2) (L3-central 'm (literal-function 'V)))
+   (up 't
+       (up 'r 'theta 'phi)
+       (up 'rdot 'thetadot 'phidot))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch255"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>[</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mrow><mi>m</mi><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mi>m</mi><msup><mi>r</mi><mn>2</mn></msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mi>m</mi><msup><mi>r</mi><mn>2</mn></msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">The momentum conjugate to <em>&#x03C6;</em> is conserved. This is the <em>z</em> component of the angular momentum <epub:switch id="mathmlSwitch256"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>r</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x00D7;</mo><mo stretchy='false'>(</mo><mi>m</mi><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch>, for vector position <epub:switch id="mathmlSwitch257"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>r</mi><mo stretchy="false">&#x2192;</mo></mover></math></epub:case></epub:switch> and linear momentum <epub:switch id="mathmlSwitch258"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover></mrow></math></epub:case></epub:switch>. We can show this by writing the <em>z</em> component of the angular momentum in spherical coordinates:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define ((ang-mom-z m) rectangular-state)
+  (let ((xyz (coordinate rectangular-state))
+        (v (velocity rectangular-state)))
+    (ref (cross-product xyz (* m v)) 2)))
 
-<p class="pq-noindent"><span class="font1">(define ((ang-mom-z m) rectangular-state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((xyz (coordinate rectangular-state))</span></p>
-
-<p class="pqp4b"><span class="font1">(v (velocity rectangular-state)))</span></p>
-
-<p class="pqp3"><span class="font1">(ref (cross-product xyz (<sub>&#x002A;</sub> m v)) 2)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define (s-&#x003E;r spherical-state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate spherical-state)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((r (ref q 0))</span></p>
-
-<p class="pqp5a"><span class="font1">(theta (ref q 1))</span></p>
-
-<p class="pqp5a"><span class="font1">(phi (ref q 2)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((x (<sub>&#x002A;</sub> r (sin theta) (cos phi)))</span></p>
-
-<p class="pqp6a"><span class="font1">(y (<sub>&#x002A;</sub> r (sin theta) (sin phi)))</span></p>
-
-<p class="pqp6a"><span class="font1">(z (<sub>&#x002A;</sub> r (cos theta))))</span></p>
-
-<p class="pqp4"><span class="font1">(up x y z)))))</span></p>
-</div>
-<a id="p86"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((compose (ang-mom-z 'm) (F-&#x003E;C s-&#x003E;r))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't</span></p>
-
-<p class="pqp4"><span class="font1">(up 'r 'theta 'phi)</span></p>
-
-<p class="pqp4"><span class="font1">(up 'rdot 'thetadot 'phidot))))</span></p>
-</div>
-<div class="pull-quotebox">
+(define (s->r spherical-state)
+  (let ((q (coordinate spherical-state)))
+    (let ((r (ref q 0))
+          (theta (ref q 1))
+          (phi (ref q 2)))
+      (let ((x (* r (sin theta) (cos phi)))
+            (y (* r (sin theta) (sin phi)))
+            (z (* r (cos theta))))
+        (up x y z)))))
+{% endhighlight %}</div>
+<div class="code">{% highlight scheme %}
+(show-expression
+  ((compose (ang-mom-z 'm) (F->C s->r))
+   (up 't
+       (up 'r 'theta 'phi)
+       (up 'rdot 'thetadot 'phidot))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch259"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><msup><mi>r</mi><mn>2</mn></msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -2468,19 +2139,14 @@ layout: chapter
 <p class="noindent">The choice of the <em>z</em>-axis is arbitrary, so the conservation of any component of the angular momentum implies the conservation of all components. Thus the total angular momentum is conserved. We can choose the <em>z</em>-axis so all of the angular momentum is in the <em>z</em> component. Since <epub:switch id="mathmlSwitch260"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x00B7;</mo><mo stretchy='false'>(</mo><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x00D7;</mo><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x00B7;</mo><mo stretchy='false'>(</mo><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x00D7;</mo><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo stretchy='false'>)</mo><mo>=</mo><mn>0</mn></mrow></math></epub:case></epub:switch>, the motion is confined to the plane perpendicular to the angular momentum: <em>&#x03B8;</em> &#x003D; <em>&#x03C0;</em>/2, and <epub:switch id="mathmlSwitch261"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo>=</mo><mn>0</mn></mrow></math></epub:case></epub:switch>. Planar motion in a central-force field was discussed in <a href="chapter001.html#h1-6a">section 1.6</a>.</p>
 
 <p>We can also see that the energy state function computed from the Lagrangian for a central field is in fact <em>T</em> &#x002B; <em>V</em> :</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((Lagrangian-&#x003E;energy (L3-central 'm (literal-function 'V)))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't</span></p>
-
-<p class="pqp4"><span class="font1">(up 'r 'theta 'phi)</span></p>
-
-<p class="pqp4"><span class="font1">(up 'rdot 'thetadot 'phidot))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+  ((Lagrangian->energy (L3-central 'm (literal-function 'V)))
+   (up 't
+       (up 'r 'theta 'phi)
+       (up 'rdot 'thetadot 'phidot))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch262"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><msup><mi>r</mi><mn>2</mn></msup><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mi>r</mi><mn>2</mn></msup><msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msup><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover><mn>2</mn></msup><mo>+</mo><mi>V</mi><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch></p>
 
@@ -2498,18 +2164,13 @@ layout: chapter
 <p class="noindent">Consider the situation of two bodies of masses <em>M</em><sub>0</sub> and <em>M</em><sub>1</sub> in circular orbit about their common center of mass. What is the <a id="p87"></a>behavior of a third particle, gravitationally attracted to the other two, that must move in the plane of their circular orbit? Assume that the third particle has such small mass that we can neglect its effect on the orbits of the two massive particles.</p>
 
 <p>The third particle, of mass <em>m</em>, moves in a field derived from a time-varying gravitational potential energy. We have:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L0 m V) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time local))</span></p>
-
-<p class="pqp4b"><span class="font1">(q (coordinates local))</span></p>
-
-<p class="pqp4b"><span class="font1">(v (velocities local)))</span></p>
-
-<p class="pqp2"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m (square v)) (V t q))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L0 m V) local)
+  (let ((t (time local))
+        (q (coordinates local))
+        (v (velocities local)))
+    (- (* 1/2 m (square v)) (V t q))))
+{% endhighlight %}</div>
 
 <p class="noindent">Let <em>a</em> be the constant distance between the two bodies. If we put the center of mass at the origin of the coordinate system then the distances of the two particles from the origin are:</p>
 
@@ -2521,36 +2182,22 @@ layout: chapter
 
 
 <p class="noindent">We choose our axes so that at <em>t</em> &#x003D; 0 the body with mass <em>M</em><sub>1</sub> is on the positive <epub:switch id="mathmlSwitch265"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>x</mi><mo stretchy='false'>&#x02C6;</mo></mover></math></epub:case></epub:switch> axis and the body with mass <em>M</em><sub>0</sub> is on the negative <epub:switch id="mathmlSwitch266"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>x</mi><mo stretchy='false'>&#x02C6;</mo></mover></math></epub:case></epub:switch> axis. The gravitational potential energy function is:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((V a GM0 GM1 m) t xy)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((Omega (sqrt (/ (&#x002B; GM0 GM1) (expt a 3))))</span></p>
-
-<p class="pqp4b"><span class="font1">(a0 (<sub>&#x002A;</sub> (/ GM1 (&#x002B; GM0 GM1)) a))</span></p>
-
-<p class="pqp4b"><span class="font1">(a1 (<sub>&#x002A;</sub> (/ GM0 (&#x002B; GM0 GM1)) a)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((x (ref xy 0)) (y (ref xy 1))</span></p>
-
-<p class="pqp6a"><span class="font1">(x0 (<sub>&#x002A;</sub> -1 a0 (cos (<sub>&#x002A;</sub> Omega t))))</span></p>
-
-<p class="pqp6a"><span class="font1">(y0 (<sub>&#x002A;</sub> -1 a0 (sin (<sub>&#x002A;</sub> Omega t))))</span></p>
-
-<p class="pqp6a"><span class="font1">(x1 (<sub>&#x002A;</sub> &#x002B;1 a1 (cos (<sub>&#x002A;</sub> Omega t))))</span></p>
-
-<p class="pqp6a"><span class="font1">(y1 (<sub>&#x002A;</sub> &#x002B;1 a1 (sin (<sub>&#x002A;</sub> Omega t)))))</span></p>
-
-<p class="pqp4"><span class="font1">(let ((r0</span></p>
-
-<p class="pqp8"><span class="font1">(sqrt (&#x002B; (square (- x x0)) (square (- y y0)))))</span></p>
-
-<p class="pqp7"><span class="font1">(r1</span></p>
-
-<p class="pqp8"><span class="font1">(sqrt (&#x002B; (square (- x x1)) (square (- y y1))))))</span></p>
-
-<p class="pqp5"><span class="font1">(- (&#x002B; (/ (<sub>&#x002A;</sub> GM0 m) r0) (/ (<sub>&#x002A;</sub> GM1 m) r1)))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((V a GM0 GM1 m) t xy)
+  (let ((Omega (sqrt (/ (+ GM0 GM1) (expt a 3))))
+        (a0 (* (/ GM1 (+ GM0 GM1)) a))
+        (a1 (* (/ GM0 (+ GM0 GM1)) a)))
+    (let ((x (ref xy 0)) (y (ref xy 1))
+                         (x0 (* -1 a0 (cos (* Omega t))))
+                         (y0 (* -1 a0 (sin (* Omega t))))
+                         (x1 (* +1 a1 (cos (* Omega t))))
+                         (y1 (* +1 a1 (sin (* Omega t)))))
+      (let ((r0
+              (sqrt (+ (square (- x x0)) (square (- y y0)))))
+            (r1
+              (sqrt (+ (square (- x x1)) (square (- y y1))))))
+        (- (+ (/ (* GM0 m) r0) (/ (* GM1 m) r1)))))))
+{% endhighlight %}</div>
 <a id="p88"></a>
 
 <p>It is convenient to examine the motion of the third particle in a rotating coordinate system where the massive particles are fixed. We can place the rotating axes so that the two massive particles are on the <epub:switch id="mathmlSwitch267"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>x</mi><mo stretchy='false'>&#x02C6;</mo></mover><mo>&#x2032;</mo></mrow></math></epub:case></epub:switch> axis, and we can choose the rotating and nonrotating axes to be coincident at <em>t</em> &#x003D; 0. We can transform to the rotating rectangular coordinates as we did on <a href="chapter001.html#p48">page 48</a>. The resulting Lagrangian is the Lagrangian for the free particle with the addition of two gravitational potential energy terms:</p>
@@ -2559,86 +2206,51 @@ layout: chapter
 
 
 <p class="noindent">where now <epub:switch id="mathmlSwitch269"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>r</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><msup><mrow><mo stretchy='false'>(</mo><msub><mi>x</mi><mi>r</mi></msub><mo>+</mo><msub><mi>a</mi><mn>0</mn></msub><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msubsup><mi>y</mi><mi>r</mi><mn>2</mn></msubsup><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>and</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><msubsup><mi>r</mi><mn>1</mn><mn>2</mn></msubsup><mo>=</mo><msup><mrow><mrow><mo>(</mo><mrow><msub><mi>x</mi><mi>r</mi></msub><mo>&#x2212;</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mo>+</mo><msubsup><mi>y</mi><mi>r</mi><mn>2</mn></msubsup></mrow></math></epub:case></epub:switch>. As a program we can write:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((LR3B m a GM0 GM1) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinates local))</span></p>
-
-<p class="pqp4b"><span class="font1">(qdot (velocities local))</span></p>
-
-<p class="pqp4b"><span class="font1">(Omega (sqrt (/ (&#x002B; GM0 GM1) (expt a 3))))</span></p>
-
-<p class="pqp4b"><span class="font1">(a0 (<sub>&#x002A;</sub> (/ GM1 (&#x002B; GM0 GM1)) a))</span></p>
-
-<p class="pqp4b"><span class="font1">(a1 (<sub>&#x002A;</sub> (/ GM0 (&#x002B; GM0 GM1)) a)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((x (ref q 0))&#160;&#160;&#160;&#160;&#160;(y (ref q 1))</span></p>
-
-<p class="pqp5a"><span class="font1">(xdot (ref qdot 0)) (ydot (ref qdot 1)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((r0 (sqrt (&#x002B; (square (&#x002B; x a0)) (square y))))</span></p>
-
-<p class="pqp6a"><span class="font1">(r1 (sqrt (&#x002B; (square (- x a1)) (square y)))))</span></p>
-
-<p class="pqp4"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 1/2 m (square qdot))</span></p>
-
-<p class="pqp5b"><span class="font1">(<sub>&#x002A;</sub> 1/2 m (square Omega) (square q))</span></p>
-
-<p class="pqp5b"><span class="font1">(<sub>&#x002A;</sub> m Omega (- (<sub>&#x002A;</sub> x ydot) (<sub>&#x002A;</sub> xdot y)))</span></p>
-
-<p class="pqp5b"><span class="font1">(/ (<sub>&#x002A;</sub> GM0 m) r0) (/ (<sub>&#x002A;</sub> GM1 m) r1))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((LR3B m a GM0 GM1) local)
+  (let ((q (coordinates local))
+        (qdot (velocities local))
+        (Omega (sqrt (/ (+ GM0 GM1) (expt a 3))))
+        (a0 (* (/ GM1 (+ GM0 GM1)) a))
+        (a1 (* (/ GM0 (+ GM0 GM1)) a)))
+    (let ((x (ref q 0))     (y (ref q 1))
+                            (xdot (ref qdot 0)) (ydot (ref qdot 1)))
+      (let ((r0 (sqrt (+ (square (+ x a0)) (square y))))
+            (r1 (sqrt (+ (square (- x a1)) (square y)))))
+        (+ (* 1/2 m (square qdot))
+           (* 1/2 m (square Omega) (square q))
+           (* m Omega (- (* x ydot) (* xdot y)))
+           (/ (* GM0 m) r0) (/ (* GM1 m) r1))))))
+{% endhighlight %}</div>
 
 <p>Notice that the Lagrangian in rotating coordinates is independent of time. So the energy state function defined by this Lagrangian is a conserved quantity. Let's compute it. It is clearest if we express the result in terms of &#x03A9;, <em>a</em><sub>0</sub>, and <em>a</em><sub>1</sub>, so we make those into explicit parameters of the Lagrangian:</p>
-<a id="p89"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((LR3B1 m a0 a1 Omega GM0 GM1) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinates local))</span></p>
-
-<p class="pqp4b"><span class="font1">(qdot (velocities local)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((x (ref q 0))&#160;&#160;&#160;&#160;&#160;(y (ref q 1))</span></p>
-
-<p class="pqp5a"><span class="font1">(xdot (ref qdot 0)) (ydot (ref qdot 1)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((r0 (sqrt (&#x002B; (square (&#x002B; x a0)) (square y))))</span></p>
-
-<p class="pqp6a"><span class="font1">(r1 (sqrt (&#x002B; (square (- x a1)) (square y)))))</span></p>
-
-<p class="pqp4"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 1/2 m (square qdot))</span></p>
-
-<p class="pqp5b"><span class="font1">(<sub>&#x002A;</sub> 1/2 m (square Omega) (square q))</span></p>
-
-<p class="pqp5b"><span class="font1">(<sub>&#x002A;</sub> m Omega (- (<sub>&#x002A;</sub> x ydot) (<sub>&#x002A;</sub> xdot y)))</span></p>
-
-<p class="pqp5b"><span class="font1">(/ (<sub>&#x002A;</sub> GM0 m) r0) (/ (<sub>&#x002A;</sub> GM1 m) r1))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((LR3B1 m a0 a1 Omega GM0 GM1) local)
+  (let ((q (coordinates local))
+        (qdot (velocities local)))
+    (let ((x (ref q 0))     (y (ref q 1))
+                            (xdot (ref qdot 0)) (ydot (ref qdot 1)))
+      (let ((r0 (sqrt (+ (square (+ x a0)) (square y))))
+            (r1 (sqrt (+ (square (- x a1)) (square y)))))
+        (+ (* 1/2 m (square qdot))
+           (* 1/2 m (square Omega) (square q))
+           (* m Omega (- (* x ydot) (* xdot y)))
+           (/ (* GM0 m) r0) (/ (* GM1 m) r1))))))
+{% endhighlight %}</div>
 
 <p class="noindent">And we compute the energy state function (with a bit of hand simplification):</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((Lagrangian-&#x003E;energy (LR3B1 'm 'a_0 'a_1 'Omega 'GM_0 'GM_1))</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'x_r 'y_r) (up 'v_r^x 'v_r^y)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> 1/2 m (expt v_r^x 2))</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(<sub>&#x002A;</sub> 1/2 m (expt v_r^y 2))</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(/ (<sub>&#x002A;</sub> -1 GM_0 m)</em></span></p>
-
-<p class="pqp3a"><span class="font1"><em>(sqrt (&#x002B; (expt (&#x002B; x_r a_0) 2) (expt y_r 2))))</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(/ (<sub>&#x002A;</sub> -1 GM_1 m)</em></span></p>
-
-<p class="pqp3a"><span class="font1"><em>(sqrt (&#x002B; (expt (- x_r a_1) 2) (expt y_r 2))))</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(<sub>&#x002A;</sub> -1/2 m (expt Omega 2) (expt x_r 2))</em></span></p>
-
-<p class="pqp1a"><span class="font1"><em>(<sub>&#x002A;</sub> -1/2 m (expt Omega 2) (expt y_r 2)))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((Lagrangian->energy (LR3B1 'm 'a_0 'a_1 'Omega 'GM_0 'GM_1))
+ (up 't (up 'x_r 'y_r) (up 'v_r^x 'v_r^y)))
+(+ (* 1/2 m (expt v_r^x 2))
+   (* 1/2 m (expt v_r^y 2))
+   (/ (* -1 GM_0 m)
+      (sqrt (+ (expt (+ x_r a_0) 2) (expt y_r 2))))
+   (/ (* -1 GM_1 m)
+      (sqrt (+ (expt (- x_r a_1) 2) (expt y_r 2))))
+   (* -1/2 m (expt Omega 2) (expt x_r 2))
+   (* -1/2 m (expt Omega 2) (expt y_r 2)))
+{% endhighlight %}</div>
 
 <p class="noindent">If we separate this into a velocity-dependent part and a velocity-independent part we get</p>
 
@@ -2744,52 +2356,35 @@ layout: chapter
 <p class="noindent">which we recognize as minus the <em>z</em> component of the angular momentum: <epub:switch id="mathmlSwitch307"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x00D7;</mo><mo stretchy='false'>(</mo><mi>m</mi><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch>. Since the Lagrangian is preserved by any continuous rotational symmetry, all components of the vector angular momenta are conserved for the central-potential problem.</p>
 
 <p>The procedure calls <span class="font1">((Rx angle-x) q)</span>, <span class="font1">((Ry angle-y) q)</span>, and <span class="font1">((Rz angle-z) q)</span> rotate the rectangular tuple <span class="font1">q</span> about the indicated axis by the indicated angle.<sup><a class="footnote_link" href="#endnote_88" id="endnote_ref_88">88</a></sup> We use these to make a parametric coordinate transformation <span class="font1">F-tilde</span>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (F-tilde angle-x angle-y angle-z)</span></p>
-
-<p class="pqp1"><span class="font1">(compose (Rx angle-x) (Ry angle-y) (Rz angle-z) coordinate))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (F-tilde angle-x angle-y angle-z)
+  (compose (Rx angle-x) (Ry angle-y) (Rz angle-z) coordinate))
+{% endhighlight %}</div>
 
 <p class="noindent">A Lagrangian for motion in a central potential is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-central-rectangular m U) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate state))</span></p>
-
-<p class="pqp4b"><span class="font1">(v (velocity state)))</span></p>
-
-<p class="pqp2"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m (square v))</span></p>
-
-<p class="pqp4"><span class="font1">(U (sqrt (square q))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-central-rectangular m U) state)
+  (let ((q (coordinate state))
+        (v (velocity state)))
+    (- (* 1/2 m (square v))
+       (U (sqrt (square q))))))
+{% endhighlight %}</div>
 
 <p class="noindent">The Noether integral is then</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define the-Noether-integral
+  (let ((L (L-central-rectangular
+             'm (literal-function 'U))))
+    (* ((partial 2) L) ((D F-tilde) 0 0 0))))
 
-<p class="pq-noindent"><span class="font1">(define the-Noether-integral</span></p>
-
-<p class="pqp1"><span class="font1">(let ((L (L-central-rectangular</span></p>
-
-<p class="pqp7"><span class="font1">'m (literal-function 'U))))</span></p>
-
-<p class="pqp2"><span class="font1">(<sub>&#x002A;</sub> ((partial 2) L) ((D F-tilde) 0 0 0))))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(the-Noether-integral</span></p>
-
-<p class="pqp1"><span class="font1">(up 't</span></p>
-
-<p class="pqp3"><span class="font1">(up 'x 'y 'z)</span></p>
-
-<p class="pqp3"><span class="font1">(up 'vx 'vy 'vz)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(down (&#x002B; (<sub>&#x002A;</sub> m vy z) (<sub>&#x002A;</sub> -1 m vz y))</em></span></p>
-
-<p class="pqp3a"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> m vz x) (<sub>&#x002A;</sub> -1 m vx z))</em></span></p>
-
-<p class="pqp3a"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> m vx y) (<sub>&#x002A;</sub> -1 m vy x)))</em></span></p>
-</div>
+(the-Noether-integral
+  (up 't
+      (up 'x 'y 'z)
+      (up 'vx 'vy 'vz)))
+(down (+ (* m vy z) (* -1 m vz y))
+      (+ (* m vz x) (* -1 m vx z))
+      (+ (* m vx y) (* -1 m vy x)))
+{% endhighlight %}</div>
 
 <p class="noindent">We get all three components of the angular momentum.</p>
 <a id="p94"></a>
@@ -2836,44 +2431,31 @@ layout: chapter
 <p class="eqtext" id="disp_1.174"><epub:switch id="mathmlSwitch324"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mover accent='true'><mo>&#x0393;</mo><mo>&#x00AF;</mo></mover><mo stretchy='false'>(</mo><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover><mo stretchy='false'>)</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>v</mi><mo>,</mo><mo>&#x2026;</mo><mo stretchy='false'>)</mo><mo>=</mo><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover><mo stretchy='false'>[</mo><mi>O</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>v</mi><mo>,</mo><mo>&#x2026;</mo><mo stretchy='false'>)</mo><mo stretchy='false'>]</mo><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.174</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p>The procedure <span class="font1">Gamma-bar</span> implements the function <epub:switch id="mathmlSwitch325"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mo>&#x0393;</mo><mo>&#x00AF;</mo></mover></math></epub:case></epub:switch> that reconstitutes a path-dependent function into a local-tuple function:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((Gamma-bar f-bar) local)</span></p>
-
-<p class="pqp1"><span class="font1">((f-bar (osculating-path local)) (time local)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((Gamma-bar f-bar) local)
+  ((f-bar (osculating-path local)) (time local)))
+{% endhighlight %}</div>
 <a id="p96"></a>
 
 <p class="noindent">The procedure <span class="font1">osculating-path</span> takes a number of local components and returns a path with these components; it is implemented as a power series.</p>
 
 <p>We can use <span class="font1">Gamma-bar</span> to construct the procedure <span class="font1">F-&#x003E;C</span> that takes a coordinate transformation <span class="font1">F</span> and generates the procedure that transforms local tuples. The procedure <span class="font1">F-&#x003E;C</span> constructs a path-dependent procedure <span class="font1">f-bar</span> that takes a coordinate path in the primed system and returns the local tuple of the corresponding path in the unprimed coordinate system. It then uses <span class="font1">Gamma-bar</span> to abstract <span class="font1">f-bar</span> to arbitrary local tuples in the primed coordinate system.<sup><a class="footnote_link" href="#endnote_90" id="endnote_ref_90">90</a></sup></p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define (F->C F)
+  (define (C local)
+    (let ((n (vector-length local)))
+      (define (f-bar q-prime)
+        (define q
+          (compose F (Gamma q-prime)))
+        (Gamma q n))
+      ((Gamma-bar f-bar) local)))
+  C)
 
-<p class="pq-noindent"><span class="font1">(define (F-&#x003E;C F)</span></p>
-
-<p class="pqp1"><span class="font1">(define (C local)</span></p>
-
-<p class="pqp2"><span class="font1">(let ((n (vector-length local)))</span></p>
-
-<p class="pqp3"><span class="font1">(define (f-bar q-prime)</span></p>
-
-<p class="pqp4"><span class="font1">(define q</span></p>
-
-<p class="pqp5"><span class="font1">(compose F (Gamma q-prime)))</span></p>
-
-<p class="pqp4"><span class="font1">(Gamma q n))</span></p>
-
-<p class="pqp3"><span class="font1">((Gamma-bar f-bar) local)))</span></p>
-
-<p class="pqp1"><span class="font1">C)</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((F-&#x003E;C p-&#x003E;r)</span></p>
-
-<p class="pqp2"><span class="font1">(up 't (up 'r 'theta) (up 'rdot 'thetadot))))</span></p>
-</div>
-<div class="pull-quotebox">
+(show-expression
+  ((F->C p->r)
+   (up 't (up 'r 'theta) (up 'rdot 'thetadot))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch326"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mi>t</mi></mtd></mtr><mtr><mtd columnalign='center'><mrow><mrow><mo>(</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mrow><mi>r</mi><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mi>r</mi><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mrow><mo>(</mo><mrow><mtable columnalign='center'><mtr columnalign='center'><mtd columnalign='center'><mrow><mo>&#x2212;</mo><mi>r</mi><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo>+</mo><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd columnalign='center'><mrow><mi>r</mi><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo>+</mo><mover accent='true'><mi>r</mi><mo>&#x02D9;</mo></mover><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -2886,22 +2468,15 @@ layout: chapter
 <p class="eqtext" id="disp_1.175"><epub:switch id="mathmlSwitch328"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>D</mi><mi>t</mi></msub><mi>F</mi><mo>=</mo><mover accent='true'><mo>&#x0393;</mo><mo>&#x00AF;</mo></mover><mo stretchy='false'>(</mo><mover accent='true'><mi>G</mi><mo>&#x00AF;</mo></mover><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd columnalign='left'><mrow><mtext>with</mtext></mrow></mtd><mtd columnalign='left'><mrow><mover accent='true'><mi>G</mi><mo>&#x00AF;</mo></mover><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo>=</mo><mi>D</mi><mo stretchy='false'>(</mo><mi>F</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.175</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">The total time derivative can be expressed as a program:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (Dt F)</span></p>
-
-<p class="pqp1"><span class="font1">(define (DtF state)</span></p>
-
-<p class="pqp2"><span class="font1">(let ((n (vector-length state)))</span></p>
-
-<p class="pqp3"><span class="font1">(define (DF-on-path q)</span></p>
-
-<p class="pqp4"><span class="font1">(D (compose F (Gamma q (- n 1)))))</span></p>
-
-<p class="pqp3"><span class="font1">((Gamma-bar DF-on-path) state)))</span></p>
-
-<p class="pqp1"><span class="font1">DtF)</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (Dt F)
+  (define (DtF state)
+    (let ((n (vector-length state)))
+      (define (DF-on-path q)
+        (D (compose F (Gamma q (- n 1)))))
+      ((Gamma-bar DF-on-path) state)))
+  DtF)
+{% endhighlight %}</div>
 
 <p class="noindent">Given a procedure <span class="font1">F</span> implementing a local-tuple function and a path <span class="font1">q</span>, we construct a new procedure <span class="font1">(compose F (Gamma q))</span>. The procedure <span class="font1">DF-on-path</span> implements the derivative of this function of time. We then abstract this off the path with <span class="font1">Gamma-bar</span> to give the total time derivative.</p>
 
@@ -2935,38 +2510,27 @@ layout: chapter
 <p class="eqtext" id="disp_1.180"><epub:switch id="mathmlSwitch336"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi mathvariant='script'>E</mi><mo stretchy='false'>[</mo><mi>L</mi><mo stretchy='false'>]</mo><mo>=</mo><msub><mi>D</mi><mi>t</mi></msub><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>L</mi><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>L</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.180</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">The procedure <span class="font1">Euler-Lagrange-operator</span> implements <epub:switch id="mathmlSwitch337"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant='script'>E</mi></math></epub:case></epub:switch>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (Euler-Lagrange-operator L)</span></p>
-
-<p class="pqp1"><span class="font1">(- (Dt ((partial 2) L)) ((partial 1) L))).</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (Euler-Lagrange-operator L)
+  (- (Dt ((partial 2) L)) ((partial 1) L))).
+{% endhighlight %}</div>
 
 <p>For example, applied to the Lagrangian for the harmonic oscillator, we have</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((Euler-Lagrange-operator</span></p>
-
-<p class="pqp1"><span class="font1">(L-harmonic 'm 'k))</span></p>
-
-<p class="pqp1b"><span class="font1">(up 't 'x 'v 'a))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> a m) (<sub>&#x002A;</sub> k x))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((Euler-Lagrange-operator
+   (L-harmonic 'm 'k))
+ (up 't 'x 'v 'a))
+(+ (* a m) (* k x))
+{% endhighlight %}</div>
 
 <p class="noindent">Notice that the components of the local tuple are individually specified. Using equation (<a href="chapter001.html#disp_1.179">1.179</a>), the Lagrange equations for the harmonic oscillator are</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((compose</span></p>
-
-<p class="pqp2"><span class="font1">(Euler-Lagrange-operator (L-harmonic 'm 'k))</span></p>
-
-<p class="pqp2"><span class="font1">(Gamma (literal-function 'x) 4))</span></p>
-
-<p class="pqp1"><span class="font1">'t)</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>(&#x002B; (<sub>&#x002A;</sub> k (x t)) (<sub>&#x002A;</sub> m (((expt D 2) x) t)))</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((compose
+   (Euler-Lagrange-operator (L-harmonic 'm 'k))
+   (Gamma (literal-function 'x) 4))
+ 't)
+(+ (* k (x t)) (* m (((expt D 2) x) t)))
+{% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_1-38"><strong>Exercise  1.38: Properties of</strong> E</p>
 
@@ -3595,11 +3159,11 @@ layout: chapter
 <div id="endnote_42"><p class="ntx"><a epub:type="noteref" href="#endnote_ref_42"><sup>42</sup></a>Here is one way to implement <span class="font1">make-path</span>:</p>
 <div class="code">{% highlight scheme %}
 (define (make-path t0 q0 t1 q1 qs)
-    (let ((n (length qs)))
-        (let ((ts (linear-interpolants t0 t1 n)))
-            (Lagrange-interpolation-function
-                (append (list q0) qs (list q1))
-                (append (list t0) ts (list t1))))))
+  (let ((n (length qs)))
+    (let ((ts (linear-interpolants t0 t1 n)))
+      (Lagrange-interpolation-function
+        (append (list q0) qs (list q1))
+        (append (list t0) ts (list t1))))))
 {% endhighlight %}</div>
 <p class="noindent">The procedure <span class="font1">linear-interpolants</span> produces a list of elements that linearly interpolate the first two arguments. We use this procedure here to specify <span class="font1">ts</span>, the <span class="font1">n</span> evenly spaced intermediate times between <span class="font1">t0</span> and <span class="font1">t1</span> at which the path will be specified. The parameters being adjusted, <span class="font1">qs</span>, are the positions at these intermediate times. The procedure <span class="font1">Lagrange-interpolation-function</span> takes a list of values and a list of times and produces a procedure that computes the Lagrange interpolation polynomial that passes through these points.</p></div>
 
@@ -3704,20 +3268,14 @@ layout: chapter
 <p class="ntx" id="endnote_87"><a epub:type="noteref" href="#endnote_ref_87"><sup>87</sup></a>The total time derivative is like a derivative with respect to a real-number argument in that it does not generate structure, so it can commute with derivatives that generate structure. Be careful, though: it may not commute with some derivatives for other reasons. For example, <epub:switch id="mathmlSwitch434"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>D</mi><mi>t</mi></msub><msub><mo>&#x2202;</mo><mn>1</mn></msub><mo stretchy='false'>(</mo><mover accent='true'><mi>F</mi><mo>&#x02DC;</mo></mover><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> is the same as <epub:switch id="mathmlSwitch435"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>D</mi><mi>t</mi></msub><mo stretchy='false'>(</mo><mover accent='true'><mi>F</mi><mo>&#x02DC;</mo></mover><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch>, but <epub:switch id="mathmlSwitch436"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>D</mi><mi>t</mi></msub><msub><mo>&#x2202;</mo><mn>2</mn></msub><mo stretchy='false'>(</mo><mover accent='true'><mi>F</mi><mo>&#x02DC;</mo></mover><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> is not the same as <epub:switch id="mathmlSwitch437"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>D</mi><mi>t</mi></msub><mo stretchy='false'>(</mo><mover accent='true'><mi>F</mi><mo>&#x02DC;</mo></mover><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch>. The reason is that <epub:switch id="mathmlSwitch438"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>F</mi><mo>&#x02DC;</mo></mover><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> does not depend on the velocity, but <epub:switch id="mathmlSwitch439"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>D</mi><mi>t</mi></msub><mo stretchy='false'>(</mo><mover accent='true'><mi>F</mi><mo>&#x02DC;</mo></mover><mo stretchy='false'>(</mo><mi>s</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> does.</p>
 
 <p class="ntx" id="endnote_88"><a epub:type="noteref" href="#endnote_ref_88"><sup>88</sup></a>The definition of the procedure <span class="font1">Rx</span> is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((Rx angle) q)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((ca (cos angle)) (sa (sin angle)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((x (ref q 0)) (y (ref q 1)) (z (ref q 2)))</span></p>
-
-<p class="pqp3"><span class="font1">(up x</span></p>
-
-<p class="pqp5"><span class="font1">(- (<sub>&#x002A;</sub> ca y) (<sub>&#x002A;</sub> sa z))</span></p>
-
-<p class="pqp5"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> sa y) (<sub>&#x002A;</sub> ca z))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((Rx angle) q)
+  (let ((ca (cos angle)) (sa (sin angle)))
+    (let ((x (ref q 0)) (y (ref q 1)) (z (ref q 2)))
+      (up x
+          (- (* ca y) (* sa z))
+          (+ (* sa y) (* ca z))))))
+{% endhighlight %}</div>
 
 <p class="noindent">The definitions of <span class="font1">Ry</span> and <span class="font1">Rz</span> are similar. See footnote <a class="footnote_link" href="#endnote_69">69</a>.</p>
 

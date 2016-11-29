@@ -194,75 +194,52 @@ layout: chapter
 <h2 class="level2"><strong>Computing Hamilton's equations</strong></h2>
 
 <p class="noindent">Hamilton's equations are a system of first-order ordinary differential equations. A procedural formulation of Lagrange's equations as a first-order system was presented in <a href="chapter001.html#h1-6b">section 1.7</a>. The following formulation of Hamilton's equations is analogous:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((Hamilton-equations Hamiltonian) q p)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((state-path (qp-&#x003E;H-state-path q p)))</span></p>
-
-<p class="pqp2"><span class="font1">(- (D state-path)</span></p>
-
-<p class="pqp4"><span class="font1">(compose (Hamiltonian-&#x003E;state-derivative Hamiltonian)</span></p>
-
-<p class="pqp9"><span class="font1">state-path))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((Hamilton-equations Hamiltonian) q p)
+(let ((state-path (qp->H-state-path q p)))
+(- (D state-path)
+(compose (Hamiltonian->state-derivative Hamiltonian)
+state-path))))
+{% endhighlight %}</div>
 <a id="p204"></a>
 
 <p class="noindent">The Hamiltonian state derivative is computed as follows:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((Hamiltonian-&#x003E;state-derivative Hamiltonian) H-state)</span></p>
-
-<p class="pqp1"><span class="font1">(up 1</span></p>
-
-<p class="pqp3"><span class="font1">(((partial 2) Hamiltonian) H-state)</span></p>
-
-<p class="pqp3"><span class="font1">(- (((partial 1) Hamiltonian) H-state))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((Hamiltonian->state-derivative Hamiltonian) H-state)
+(up 1
+(((partial 2) Hamiltonian) H-state)
+(- (((partial 1) Hamiltonian) H-state))))
+{% endhighlight %}</div>
 
 <p class="noindent">The state in the Hamiltonian formulation is composed of the time, the coordinates, and the momenta. We call this an <span class="font1">H-state</span>, to distinguish it from the state in the Lagrangian formulation. We can select the components of the Hamiltonian state with the selectors <span class="font1">time</span>, <span class="font1">coordinate</span>, <span class="font1">momentum</span>. We construct Hamiltonian states from their components with <span class="font1">up</span>. The first component of the state is time, so the first component of the state derivative is one, the time rate of change of time. Given procedures <span class="font1">q</span> and <span class="font1">p</span> implementing coordinate and momentum path functions, the Hamiltonian state path can be constructed with the following procedure:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((qp-&#x003E;H-state-path q p) t)</span></p>
-
-<p class="pqp1"><span class="font1">(up t (q t) (p t)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((qp->H-state-path q p) t)
+(up t (q t) (p t)))
+{% endhighlight %}</div>
 
 <p class="noindent">The <span class="font1">Hamilton-equations</span> procedure returns the residuals of Hamilton's equations for the given paths.</p>
 
 <p>For example, a procedure implementing the Hamiltonian for a point mass with potential energy <em>V</em> (<em>x</em>, <em>y</em>) is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((H-rectangular m V) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate state))</span></p>
-
-<p class="pqp4b"><span class="font1">(p (momentum state)))</span></p>
-
-<p class="pqp2"><span class="font1">(&#x002B; (/ (square p) (<sub>&#x002A;</sub> 2 m))</span></p>
-
-<p class="pqp4"><span class="font1">(V (ref q 0) (ref q 1)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((H-rectangular m V) state)
+(let ((q (coordinate state))
+(p (momentum state)))
+(+ (/ (square p) (* 2 m))
+(V (ref q 0) (ref q 1)))))
+{% endhighlight %}</div>
 
 <p class="noindent">Hamilton's equations are</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(let ((V (literal-function 'V (-&#x003E; (X Real Real) Real)))</span></p>
-
-<p class="pqp4b"><span class="font1">(q (up (literal-function 'x)</span></p>
-
-<p class="pqp9"><span class="font1">(literal-function 'y)))</span></p>
-
-<p class="pqp4b"><span class="font1">(p (down (literal-function 'p_x)</span></p>
-
-<p class="pqp9"><span class="font1">(literal-function 'p_y))))</span></p>
-
-<p class="pqp3"><span class="font1">(((Hamilton-equations (H-rectangular 'm V)) q p) 't)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(show-expression
+(let ((V (literal-function 'V (-> (X Real Real) Real)))
+(q (up (literal-function 'x)
+(literal-function 'y)))
+(p (down (literal-function 'p_x)
+(literal-function 'p_y))))
+(((Hamilton-equations (H-rectangular 'm V)) q p) 't)))
+{% endhighlight %}</div>
 <a id="p205"></a>
-<div class="pull-quotebox">
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch793"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msub><mi>p</mi><mi>x</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mi>m</mi></mfrac></mrow></mtd></mtr><mtr><mtd><mrow><mi>D</mi><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mi>m</mi></mfrac></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mi>D</mi><msub><mi>p</mi><mi>x</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>V</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi>D</mi><msub><mi>p</mi><mi>y</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>V</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>y</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -499,99 +476,65 @@ layout: chapter
 <h2 class="level2"><strong>Computing Hamiltonians</strong></h2>
 
 <p class="noindent">We implement the Legendre transform for quadratic functions by the procedure<sup><a class="footnote_link" href="#endnote_13" id="endnote_ref_13">13</a></sup></p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (Legendre-transform F)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((w-of-v (D F)))</span></p>
-
-<p class="pqp2"><span class="font1">(define (G w)</span></p>
-
-<p class="pqp3"><span class="font1">(let ((zero (compatible-zero w)))</span></p>
-
-<p class="pqp4"><span class="font1">(let ((M ((D w-of-v) zero))</span></p>
-
-<p class="pqp7a"><span class="font1">(b (w-of-v zero)))</span></p>
-
-<p class="pqp5"><span class="font1">(let ((v (solve-linear-left M (- w b))))</span></p>
-
-<p class="pqp6"><span class="font1">(- (<sub>&#x002A;</sub> w v) (F v))))))</span></p>
-
-<p class="pqp2"><span class="font1">G))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (Legendre-transform F)
+(let ((w-of-v (D F)))
+(define (G w)
+(let ((zero (compatible-zero w)))
+(let ((M ((D w-of-v) zero))
+(b (w-of-v zero)))
+(let ((v (solve-linear-left M (- w b))))
+(- (* w v) (F v))))))
+G))
+{% endhighlight %}</div>
 
 <p class="noindent">The procedure <span class="font1">Legendre-transform</span> takes a procedure of one argument and returns the procedure that is associated with it by the Legendre transform. If <em>w</em> &#x003D; <em>DF</em> (<em>v</em>), <em>wv</em> &#x003D; <em>F</em> (<em>v</em>) &#x002B; <em>G</em>(<em>w</em>), and <em>v</em> &#x003D; <em>DG</em>(<em>w</em>) specifies a one-argument Legendre transformation, then <em>G</em> is the function associated with <em>F</em> by the Legendre transform: <epub:switch id="mathmlSwitch845"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>G</mi><mo>=</mo><mi>I</mi><mi mathvariant='script'>V</mi><mo>&#x2212;</mo><mi>F</mi><mo>&#x2218;</mo><mi mathvariant='script'>V</mi></mrow></math></epub:case></epub:switch>, where <epub:switch id="mathmlSwitch846"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant='script'>V</mi></math></epub:case></epub:switch> is the functional inverse of <em>DF</em>.</p>
 
 <p>We can use the <span class="font1">Legendre-transform</span> procedure to compute a Hamiltonian from a Lagrangian:</p>
-<a id="p213"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((Lagrangian-&#x003E;Hamiltonian Lagrangian) H-state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((t (time H-state))</span></p>
-
-<p class="pqp4b"><span class="font1">(q (coordinate H-state))</span></p>
-
-<p class="pqp4b"><span class="font1">(p (momentum H-state)))</span></p>
-
-<p class="pqp2"><span class="font1">(define (L qdot)</span></p>
-
-<p class="pqp3"><span class="font1">(Lagrangian (up t q qdot)))</span></p>
-
-<p class="pqp2"><span class="font1">((Legendre-transform L) p)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((Lagrangian->Hamiltonian Lagrangian) H-state)
+(let ((t (time H-state))
+(q (coordinate H-state))
+(p (momentum H-state)))
+(define (L qdot)
+(Lagrangian (up t q qdot)))
+((Legendre-transform L) p)))
+{% endhighlight %}</div>
 
 <p class="noindent">Notice that the one-argument <span class="font1">Legendre-transform</span> procedure is sufficient. The passive variables are given no special attention, they are just passed around.</p>
 
 <p>The Lagrangian may be obtained from the Hamiltonian by the procedure:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((Hamiltonian-&#x003E;Lagrangian Hamiltonian) L-state)</span></p>
-
-<p class="pqp2"><span class="font1">(let ((t (time L-state))</span></p>
-
-<p class="pqp5"><span class="font1">(q (coordinate L-state))</span></p>
-
-<p class="pqp5"><span class="font1">(qdot (velocity L-state)))</span></p>
-
-<p class="pqp2"><span class="font1">(define (H p)</span></p>
-
-<p class="pqp3"><span class="font1">(Hamiltonian (up t q p)))</span></p>
-
-<p class="pqp2"><span class="font1">((Legendre-transform H) qdot)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((Hamiltonian->Lagrangian Hamiltonian) L-state)
+(let ((t (time L-state))
+(q (coordinate L-state))
+(qdot (velocity L-state)))
+(define (H p)
+(Hamiltonian (up t q p)))
+((Legendre-transform H) qdot)))
+{% endhighlight %}</div>
 
 <p class="noindent">Notice that the two procedures <span class="font1">Hamiltonian-&#x003E;Lagrangian</span> and <span class="font1">Lagrangian-&#x003E;Hamiltonian</span> are identical, except for the names.</p>
 
 <p>For example, the Hamiltonian for the motion of the point mass with the potential energy <em>V</em> (<em>x</em>, <em>y</em>) may be computed from the Lagrangian:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-rectangular m V) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local))</span></p>
-
-<p class="pqp4b"><span class="font1">(qdot (velocity local)))</span></p>
-
-<p class="pqp2"><span class="font1">(- (<sub>&#x002A;</sub> 1/2 m (square qdot))</span></p>
-
-<p class="pqp4"><span class="font1">(V (ref q 0) (ref q 1)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-rectangular m V) local)
+(let ((q (coordinate local))
+(qdot (velocity local)))
+(- (* 1/2 m (square qdot))
+(V (ref q 0) (ref q 1)))))
+{% endhighlight %}</div>
 
 <p class="noindent">And the Hamiltonian is, as we saw in equation (<a href="chapter003.html#disp_3.22">3.22</a>):</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((Lagrangian-&#x003E;Hamiltonian</span></p>
-
-<p class="pqp2"><span class="font1">(L-rectangular</span></p>
-
-<p class="pqp4"><span class="font1">'m</span></p>
-
-<p class="pqp4"><span class="font1">(literal-function 'V (-&#x003E; (X Real Real) Real))))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't (up 'x 'y) (down 'p_x 'p_y))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+((Lagrangian->Hamiltonian
+(L-rectangular
+'m
+(literal-function 'V (-> (X Real Real) Real))))
+(up 't (up 'x 'y) (down 'p_x 'p_y))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch847"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>x</mi><mn>2</mn></msubsup></mrow><mi>m</mi></mfrac><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>y</mi><mn>2</mn></msubsup></mrow><mi>m</mi></mfrac></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -757,40 +700,29 @@ layout: chapter
 <p class="eqtext" id="disp_3.93"><epub:switch id="mathmlSwitch881"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mrow><mn>0</mn><mo>=</mo><mo>&#x007B;</mo><mi>F</mi><mo>,</mo><mo>&#x007B;</mo><mtext>&#x2009;</mtext><mi>G</mi><mo>,</mo><mi>H</mi><mo>&#x007D;</mo><mo>&#x007D;</mo><mo>+</mo><mo>&#x007B;</mo><mi>H</mi><mo>,</mo><mo>&#x007B;</mo><mi>F</mi><mo>,</mo><mi>G</mi><mo>&#x007D;</mo><mo>&#x007D;</mo><mo>+</mo><mo>&#x007B;</mo><mi>G</mi><mo>,</mo><mo>&#x007B;</mo><mi>H</mi><mo>,</mo><mi>F</mi><mo>&#x007D;</mo><mo>&#x007D;</mo><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>3.93</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></math></epub:case></epub:switch></p>
 
 <p class="noindent">All but the last of (<a href="chapter003.html#disp_3.88">3.88</a>&#x2013;<a href="chapter003.html#disp_3.93">3.93</a>) can immediately be verified from the definition. Jacobi's identity requires a little more effort to verify. We can use the computer to avoid some work. Define some literal phase-space functions of Hamiltonian type:</p>
-<div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define F
+(literal-function 'F
+(-> (UP Real (UP Real Real) (DOWN Real Real)) Real)))
 
-<p class="pq-noindent"><span class="font1">(define F</span></p>
+(define G
+(literal-function 'G
+(-> (UP Real (UP Real Real) (DOWN Real Real)) Real)))
 
-<p class="pqp1"><span class="font1">(literal-function 'F</span></p>
-
-<p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real) (DOWN Real Real)) Real)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define G</span></p>
-
-<p class="pqp1"><span class="font1">(literal-function 'G</span></p>
-
-<p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real) (DOWN Real Real)) Real)))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define H</span></p>
-
-<p class="pqp1"><span class="font1">(literal-function 'H</span></p>
-
-<p class="pqp2"><span class="font1">(-&#x003E; (UP Real (UP Real Real) (DOWN Real Real)) Real)))</span></p>
-</div>
+(define H
+(literal-function 'H
+(-> (UP Real (UP Real Real) (DOWN Real Real)) Real)))
+{% endhighlight %}</div>
 
 <p class="noindent">Then we check the Jacobi identity:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">((&#x002B; (Poisson-bracket F (Poisson-bracket G H))</span></p>
-
-<p class="pqp2a"><span class="font1">(Poisson-bracket G (Poisson-bracket H F))</span></p>
-
-<p class="pqp2a"><span class="font1">(Poisson-bracket H (Poisson-bracket F G)))</span></p>
-
-<p class="pqp1"><span class="font1">(up 't (up 'x 'y) (down 'px 'py)))</span></p>
-
-<p class="pq-noindent"><span class="font1"><em>0</em></span></p>
-</div>
+<div class="code">{% highlight scheme %}
+((+ (Poisson-bracket F (Poisson-bracket G H))
+(Poisson-bracket G (Poisson-bracket H F))
+(Poisson-bracket H (Poisson-bracket F G)))
+(up 't (up 'x 'y) (down 'px 'py)))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
+0
+{% endhighlight %}</div>
 
 <p class="noindent">The residual is zero, so the Jacobi identity is satisfied for any three phase-space state functions with two degrees of freedom.</p>
 </section>
@@ -876,43 +808,30 @@ layout: chapter
 
 <p>We can check our derivations with the computer. A procedure implementing the Lagrangian has already been introduced (below equation <a href="chapter001.html#disp_1.69">1.69</a>). We can use this to get the Hamiltonian:</p>
 <a id="p228"></a>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((Lagrangian-&#x003E;Hamiltonian</span></p>
-
-<p class="pqp3"><span class="font1">(L-central-polar 'm (literal-function 'V)))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't (up 'r 'phi) (down 'p_r 'p_phi))))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+((Lagrangian->Hamiltonian
+(L-central-polar 'm (literal-function 'V)))
+(up 't (up 'r 'phi) (down 'p_r 'p_phi))))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch891"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>&#x03C6;</mi><mn>2</mn></msubsup></mrow><mrow><mi>m</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>r</mi><mn>2</mn></msubsup></mrow><mi>m</mi></mfrac></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">and to develop Hamilton's equations:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">(((Hamilton-equations</span></p>
-
-<p class="pqp3"><span class="font1">(Lagrangian-&#x003E;Hamiltonian</span></p>
-
-<p class="pqp4b"><span class="font1">(L-central-polar 'm (literal-function 'V))))</span></p>
-
-<p class="pqp2"><span class="font1">(up (literal-function 'r)</span></p>
-
-<p class="pqp4b"><span class="font1">(literal-function 'phi))</span></p>
-
-<p class="pqp2"><span class="font1">(down (literal-function 'p_r)</span></p>
-
-<p class="pqp6a"><span class="font1">(literal-function 'p_phi)))</span></p>
-
-<p class="pqp2"><span class="font1">'t))</span></p>
-</div>
-<div class="pull-quotebox">
+<div class="code">{% highlight scheme %}
+(show-expression
+(((Hamilton-equations
+(Lagrangian->Hamiltonian
+(L-central-polar 'm (literal-function 'V))))
+(up (literal-function 'r)
+(literal-function 'phi))
+(down (literal-function 'p_r)
+(literal-function 'p_phi)))
+'t))
+{% endhighlight %}</div>
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch892"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msub><mi>p</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mi>m</mi></mfrac></mrow></mtd></mtr><mtr><mtd><mrow><mi>D</mi><mi>&#x03C6;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mrow><mi>m</mi><msup><mrow><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mfrac></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mi>D</mi><msub><mi>p</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><mi>D</mi><mi>V</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msup><mrow><mo stretchy='false'>(</mo><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow><mrow><mi>m</mi><msup><mrow><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>3</mn></msup></mrow></mfrac></mrow></mtd></mtr><mtr><mtd><mrow><mi>D</mi><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -925,50 +844,32 @@ layout: chapter
 <p>The axisymmetric top has two continuous symmetries we would like to exploit. It has the symmetry that neither the kinetic nor potential energy is sensitive to the orientation of the top about <a id="p229"></a>the symmetry axis. The kinetic and potential energy are also insensitive to a rotation of the physical system about the vertical axis, because the gravitational field is uniform. We take advantage of these symmetries by choosing coordinates that naturally express them. We already have an appropriate coordinate system that does the job&#x2014;the Euler angles. We choose the reference orientation of the top so that the symmetry axis is vertical. The first Euler angle, <em>&#x03C8;</em>, expresses a rotation about the symmetry axis. The next Euler angle, <em>&#x03B8;</em>, is the tilt of the symmetry axis of the top from the vertical. The third Euler angle, <em>&#x03C6;</em>, expresses a rotation of the top about the fixed <em>&#x1E91;</em> axis. The symmetries of the problem imply that the first and third Euler angles do not appear in the Hamiltonian. As a consequence the momenta conjugate to these angles are conserved quantities. The problem of determining the motion of the axisymmetric top is reduced to the problem of determining the evolution of <em>&#x03B8;</em> and <em>p<sub>&#x03B8;</sub></em>. Let's work out the details.</p>
 
 <p>In terms of Euler angles, a Lagrangian for the axisymmetric top is (see <a href="chapter002.html#h1-12b">section 2.10</a>):</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((L-axisymmetric-top A C gMR) local)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q (coordinate local))</span></p>
-
-<p class="pqp5"><span class="font1">(qdot (velocity local)))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((theta (ref q 0))</span></p>
-
-<p class="pqp6"><span class="font1">(thetadot (ref qdot 0))</span></p>
-
-<p class="pqp6"><span class="font1">(phidot (ref qdot 1))</span></p>
-
-<p class="pqp6"><span class="font1">(psidot (ref qdot 2)))</span></p>
-
-<p class="pqp3"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 1/2 A</span></p>
-
-<p class="pqp7"><span class="font1">(&#x002B; (square thetadot)</span></p>
-
-<p class="pqp9"><span class="font1">(square (<sub>&#x002A;</sub> phidot (sin theta)))))</span></p>
-
-<p class="pqp5"><span class="font1">(<sub>&#x002A;</sub> 1/2 C</span></p>
-
-<p class="pqp7"><span class="font1">(square (&#x002B; psidot (<sub>&#x002A;</sub> phidot (cos theta)))))</span></p>
-
-<p class="pqp5"><span class="font1">(<sub>&#x002A;</sub> -1 gMR (cos theta))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((L-axisymmetric-top A C gMR) local)
+(let ((q (coordinate local))
+(qdot (velocity local)))
+(let ((theta (ref q 0))
+(thetadot (ref qdot 0))
+(phidot (ref qdot 1))
+(psidot (ref qdot 2)))
+(+ (* 1/2 A
+(+ (square thetadot)
+(square (* phidot (sin theta)))))
+(* 1/2 C
+(square (+ psidot (* phidot (cos theta)))))
+(* -1 gMR (cos theta))))))
+{% endhighlight %}</div>
 
 <p class="noindent">where <span class="font1">gMR</span> is the product of the gravitational acceleration, the mass of the top, and the distance from the point of support to the center of mass. The Hamiltonian is nicer than we have a right to expect:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((Lagrangian-&#x003E;Hamiltonian (L-axisymmetric-top 'A 'C 'gMR))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't</span></p>
-
-<p class="pqp4"><span class="font1">(up 'theta 'phi 'psi)</span></p>
-
-<p class="pqp4"><span class="font1">(down 'p_theta 'p_phi 'p_psi))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(show-expression
+((Lagrangian->Hamiltonian (L-axisymmetric-top 'A 'C 'gMR))
+(up 't
+(up 'theta 'phi 'psi)
+(down 'p_theta 'p_phi 'p_psi))))
+{% endhighlight %}</div>
 <a id="p230"></a>
-<div class="pull-quotebox">
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch893"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>&#x03C8;</mi><mn>2</mn></msubsup></mrow><mi>C</mi></mfrac></mrow></mtd><mtd columnalign='left'><mrow><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>&#x03C8;</mi><mn>2</mn></msubsup><msup><mrow><mo stretchy='false'>(</mo><mi>cos</mi><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow><mrow><mi>A</mi><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>&#x03B8;</mi><mn>2</mn></msubsup></mrow><mi>A</mi></mfrac><mo>&#x2212;</mo><mfrac><mrow><msub><mi>p</mi><mi>&#x03C6;</mi></msub><msub><mi>p</mi><mi>&#x03C8;</mi></msub><mi>cos</mi><mo>&#x2061;</mo><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow><mrow><mi>A</mi><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>&#x03C6;</mi><mn>2</mn></msubsup></mrow><mrow><mi>A</mi><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mfrac></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>+</mo><mi>g</mi><mi>M</mi><mi>R</mi><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 </div>
@@ -1094,51 +995,39 @@ layout: chapter
 <p class="noindent">Most problems do not have enough symmetries to be reducible to quadrature. It is natural to turn to numerical integration to learn more about the evolution of such systems. The evolution in phase space may be found by numerical integration of Hamilton's equations.</p>
 
 <p>As an illustration, consider again the periodically driven pendulum (see <a href="chapter001.html#p74">page 74</a>). The Hamiltonian is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(show-expression</span></p>
-
-<p class="pqp1"><span class="font1">((Lagrangian-&#x003E;Hamiltonian</span></p>
-
-<p class="pqp3"><span class="font1">(L-periodically-driven-pendulum 'm 'l 'g 'a 'omega))</span></p>
-
-<p class="pqp2"><span class="font1">(up 't 'theta 'p_theta)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(show-expression
+((Lagrangian->Hamiltonian
+(L-periodically-driven-pendulum 'm 'l 'g 'a 'omega))
+(up 't 'theta 'p_theta)))
+{% endhighlight %}</div>
 <a id="p237"></a>
 <figure>
 <img src="images/Art_P730.jpg" alt="art"/>
 <figcaption id="Fig_3-9"><strong>Figure 3.9</strong> A trajectory of the periodically driven pendulum on the (<em>&#x03B8;</em>, <em>p<sub>&#x03B8;</sub></em>) phase plane. The trajectory starts in the oscillation region at (1, 0). It oscillates for a while, but then escapes into circulation, only later to be recaptured into oscillation.</figcaption>
 </figure>
-<div class="pull-quotebox">
+<div class="result-math">
 
 <p class="eqtext"><epub:switch id="mathmlSwitch917"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo>&#x2212;</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>a</mi><mn>2</mn></msup><mi>m</mi><msup><mi>&#x03C9;</mi><mn>2</mn></msup><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mtext>&#x2009;</mtext><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><msup><mrow><mo stretchy='false'>(</mo><mo stretchy='false'>(</mo><mi>&#x03C9;</mi><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi>a</mi><mi>g</mi><mi>m</mi><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03C9;</mi><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mtext>&#x2009;</mtext><mfrac><mrow><mo>+</mo><mi>a</mi><mi>&#x03C9;</mi><msub><mi>p</mi><mi>&#x03B8;</mi></msub><mtext>&#x2009;</mtext><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mtext>&#x2009;</mtext><mi>sin</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03C9;</mi><mi>t</mi><mo stretchy='false'>)</mo></mrow><mi>l</mi></mfrac><mo>&#x2212;</mo><mi>g</mi><mi>l</mi><mi>m</mi><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mo stretchy='false'>(</mo><mi>&#x03B8;</mi><mo stretchy='false'>)</mo><mo>+</mo><mfrac><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msubsup><mi>p</mi><mi>&#x03B8;</mi><mn>2</mn></msubsup></mrow><mrow><msup><mi>l</mi><mn>2</mn></msup><mi>m</mi></mrow></mfrac></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 </div>
 
 <p class="noindent">Hamilton's equations for the periodically driven pendulum are un-revealing, so we will not show them. We build a system derivative from the Hamiltonian:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (H-pend-sysder m l g a omega)</span></p>
-
-<p class="pqp1"><span class="font1">(Hamiltonian-&#x003E;state-derivative</span></p>
-
-<p class="pqp2"><span class="font1">(Lagrangian-&#x003E;Hamiltonian</span></p>
-
-<p class="pqp3"><span class="font1">(L-periodically-driven-pendulum m l g a omega))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (H-pend-sysder m l g a omega)
+(Hamiltonian->state-derivative
+(Lagrangian->Hamiltonian
+(L-periodically-driven-pendulum m l g a omega))))
+{% endhighlight %}</div>
 
 <p class="noindent">Now we integrate this system, with the same initial conditions as in <a href="chapter001.html#h1-6b">section 1.7</a> (see <a href="chapter001.html#Fig_1-7">figure 1.7</a>), but display the trajectory in phase space (<a href="chapter003.html#Fig_3-9">figure 3.9</a>), using a monitor procedure:</p>
-<a id="p238"></a><div class="pull-quote">
+<div class="code">{% highlight scheme %}
+(define window (frame :-pi :pi -10.0 10.0))
 
-<p class="pq-noindent"><span class="font1">(define window (frame :-pi :pi -10.0 10.0))</span></p>
-
-<p class="pq-noindent1-top"><span class="font1">(define ((monitor-p-theta win) state)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((q ((principal-value :pi) (coordinate state)))</span></p>
-
-<p class="pqp5"><span class="font1">(p (momentum state)))</span></p>
-
-<p class="pqp2"><span class="font1">(plot-point win q p)))</span></p>
-</div>
+(define ((monitor-p-theta win) state)
+(let ((q ((principal-value :pi) (coordinate state)))
+(p (momentum state)))
+(plot-point win q p)))
+{% endhighlight %}</div>
 
 <p class="noindent">We use <span class="font1">evolve</span> to explore the evolution of the system:</p>
 <table class="table1n">
@@ -1296,17 +1185,12 @@ layout: chapter
 <img src="images/Art_P739.jpg" alt="art"/>
 <figcaption id="Fig_3-14"><strong>Figure 3.14</strong> A surface of section for the rapidly driven pendulum on the (<em>&#x03B8;</em>, <em>p<sub>&#x03B8;</sub></em>) phase plane. Here we see the emergence of a vertical equilibrium. The angular momentum scale is &#x2212;20 to 20 kg m<sup>2</sup> s<sup>&#x2212;1</sup>. For this section the parameters are: <em>m</em> &#x003D; 1 kg, <em>l</em> &#x003D; 1 m, <em>g</em> &#x003D; 9.8 m s<sup>&#x2212;2</sup>, <em>A</em> &#x003D; 0.2 m, <em>&#x03C9;</em> &#x003D; 10.1<em>&#x03C9;</em><sub>0</sub>.</figcaption>
 </figure>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (driven-pendulum-map m l g A omega)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((advance (state-advancer H-pend-sysder m l g A omega))</span></p>
-
-<p class="pqp5"><span class="font1">(map-period (/ :2pi omega)))</span></p>
-
-<p class="pqp2"><span class="font1">(lambda (theta ptheta return fail)</span></p>
-
-<p class="pqp3"><span class="font1">(let ((ns (advance</span></p>
+<div class="code">{% highlight scheme %}
+(define (driven-pendulum-map m l g A omega)
+(let ((advance (state-advancer H-pend-sysder m l g A omega))
+(map-period (/ :2pi omega)))
+(lambda (theta ptheta return fail)
+(let ((ns (advance
 <table class="table1n">
 <tr>
 <td class="td1" valign="top">
@@ -1329,51 +1213,44 @@ layout: chapter
 <td class="td1" valign="top"></td>
 </tr>
 </table>
-</div>
+{% endhighlight %}</div>
 
 <p class="noindent">A map procedure takes the two section coordinates (here <span class="font1">theta</span> and <span class="font1">ptheta</span>) and two &#x201C;continuation&#x201D; procedures. If the section coordinates given are in the domain of the map, it produces two new section coordinates and passes them to the <span class="font1">return</span> continuation, otherwise the map procedure calls the <span class="font1">fail</span> continuation procedure with no arguments.<sup><a class="footnote_link" href="#endnote_27" id="endnote_ref_27">27</a></sup></p>
 <a id="p248"></a>
 
 <p>The trajectories of a map can be explored with an interactive interface. The procedure <span class="font1">explore-map</span> lets us use a pointing device to choose initial conditions for trajectories. For example, the surface of section in <a href="chapter003.html#Fig_3-12">figure 3.12</a> was generated by plotting a number of trajectories, using a pointer to choose initial conditions, with the following program:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define win (frame :-pi :pi -20 20))</span></p>
+<div class="code">{% highlight scheme %}
+(define win (frame :-pi :pi -20 20))
 <table class="table1n1">
 <tr>
 <td class="td1" valign="top">
 <p class="noindent1-top"><span class="font1">(let ((m 1.0)</span></p></td>
 <td class="td1" valign="top">
-<p class="noindent1-top"><span class="font1">;m&#x003D;1kg</span></p></td>
+<p class="noindent1-top"><span class="font1">;m=1kg</span></p></td>
 </tr>
 <tr>
 <td class="td1" valign="top">
 <p class="pqp3a"><span class="font1">(l 1.0)</span></p></td>
-<td class="td1" valign="top"><span class="font1">;l&#x003D;1m</span></td>
+<td class="td1" valign="top"><span class="font1">;l=1m</span></td>
 </tr>
 <tr>
 <td class="td1" valign="top">
 <p class="pqp3a"><span class="font1">(g 9.8)</span></p></td>
-<td class="td1" valign="top"><span class="font1">;g&#x003D;9.8m/s<sup>2</sup></span></td>
+<td class="td1" valign="top"><span class="font1">;g=9.8m/s<sup>2</sup></span></td>
 </tr>
 <tr>
 <td class="td1" valign="top">
 <p class="pqp3a"><span class="font1">(A 0.05))</span></p></td>
-<td class="td1" valign="top"><span class="font1">;A&#x003D;1/20m</span></td>
+<td class="td1" valign="top"><span class="font1">;A=1/20m</span></td>
 </tr>
 </table>
-
-<p class="pqp1"><span class="font1">(let ((omega0 (sqrt (/ g l))))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((omega (<sub>&#x002A;</sub> 4.2 omega0)))</span></p>
-
-<p class="pqp3"><span class="font1">(explore-map</span></p>
-
-<p class="pqp3"><span class="font1">win</span></p>
-
-<p class="pqp3a"><span class="font1">(driven-pendulum-map m l g A omega)</span></p>
-
-<p class="pqp3a"><span class="font1">1000)))) ;1000 points for each initial condition</span></p>
-</div>
+(let ((omega0 (sqrt (/ g l))))
+(let ((omega (* 4.2 omega0)))
+(explore-map
+win
+(driven-pendulum-map m l g A omega)
+1000)))) ;1000 points for each initial condition
+{% endhighlight %}</div>
 
 <p class="noindent1-top-exe" id="Exe_3-10"><strong>Exercise  3.10: Fun with phase portraits</strong></p>
 
@@ -1544,144 +1421,92 @@ layout: chapter
 <h3 class="level3" id="h3_3-6-4"><a href="toc.html#Rh3_3-6-4"><strong>3.6.4 Computing H&#x00E9;non&#x2013;Heiles Surfaces of Section</strong></a></h3>
 
 <p class="noindent">The following procedures implement the Poincar&#x00E9; map for the H&#x00E9;non&#x2013;Heiles system:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (HHmap E dt sec-eps int-eps)</span></p>
-
-<p class="pqp1"><span class="font1">(define ((make-advance advancer eps) s dt)</span></p>
-
-<p class="pqp2"><span class="font1">(advancer s dt eps))</span></p>
-
-<p class="pqp1"><span class="font1">(let ((adv</span></p>
-
-<p class="pqp5"><span class="font1">(make-advance (state-advancer HHsysder) int-eps)))</span></p>
-
-<p class="pqp2"><span class="font1">(lambda (y py cont fail)</span></p>
-
-<p class="pqp3"><span class="font1">(let ((initial-state (section-&#x003E;state E y py)))</span></p>
-
-<p class="pqp4"><span class="font1">(if (not initial-state)</span></p>
-
-<p class="pqp6a"><span class="font1">(fail)</span></p>
-
-<p class="pqp6a"><span class="font1">(find-next-crossing initial-state adv dt sec-eps</span></p>
-
-<p class="pqp8"><span class="font1">(lambda (crossing-state running-state)</span></p>
-
-<p class="pqp9"><span class="font1">(cont (ref (coordinate crossing-state)</span></p>
-
-<p class="pqp10a"><span class="font1">1)</span></p>
-
-<p class="pqp12a"><span class="font1">(ref (momentum crossing-state)</span></p>
-
-<p class="pqp10a"><span class="font1">1)))))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (HHmap E dt sec-eps int-eps)
+(define ((make-advance advancer eps) s dt)
+(advancer s dt eps))
+(let ((adv
+(make-advance (state-advancer HHsysder) int-eps)))
+(lambda (y py cont fail)
+(let ((initial-state (section->state E y py)))
+(if (not initial-state)
+(fail)
+(find-next-crossing initial-state adv dt sec-eps
+(lambda (crossing-state running-state)
+(cont (ref (coordinate crossing-state)
+1)
+(ref (momentum crossing-state)
+1)))))))))
+{% endhighlight %}</div>
 
 <p class="noindent">Besides supplying the energy <span class="font1">E</span> of the section we must also supply a time step for the integrator to achieve, a tolerance for a point to be on the section <span class="font1">sec-eps</span>, and a local truncation error specification for the integrator <span class="font1">int-eps</span>.</p>
 
 <p>For each initial point (<em>y</em>, <em>p<sub>y</sub></em>) on the surface of section, the map first finds the initial state that has the specified energy, if one exists. The procedure <span class="font1">section-&#x003E;state</span> handles this task:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (section-&#x003E;state E y py)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((d (- E (&#x002B; (HHpotential (up 0 (up 0 y)))</span></p>
-
-<p class="pqp11"><span class="font1">(<sub>&#x002A;</sub> 1/2 (square py))))))</span></p>
-
-<p class="pqp2"><span class="font1">(if (&#x003E;&#x003D; d 0.0)</span></p>
-
-<p class="pqp4"><span class="font1">(let ((px (sqrt (<sub>&#x002A;</sub> 2 d))))</span></p>
-
-<p class="pqp5"><span class="font1">(up 0 (up 0 y) (down px py)))</span></p>
-
-<p class="pqp4"><span class="font1">&#x0023;f)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (section->state E y py)
+(let ((d (- E (+ (HHpotential (up 0 (up 0 y)))
+(* 1/2 (square py))))))
+(if (>= d 0.0)
+(let ((px (sqrt (* 2 d))))
+(up 0 (up 0 y) (down px py)))
+#f)))
+{% endhighlight %}</div>
 
 <p class="noindent">The procedure <span class="font1">section-&#x003E;state</span> returns <span class="font1">&#x0023;f</span> (false) if there is no state consistent with the specified energy.</p>
 
 <p>The Hamiltonian procedure for the H&#x00E9;non&#x2013;Heiles problem is</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (HHHam s)</span></p>
-
-<p class="pqp1"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 1/2 (square (momentum s)))</span></p>
-
-<p class="pqp3"><span class="font1">(HHpotential s)))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (HHHam s)
+(+ (* 1/2 (square (momentum s)))
+(HHpotential s)))
+{% endhighlight %}</div>
 
 <p class="noindent">with the potential energy</p>
-<a id="p262"></a><div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (HHpotential s)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((x (ref (coordinate s) 0))</span></p>
-
-<p class="pqp4"><span class="font1">(y (ref (coordinate s) 1)))</span></p>
-
-<p class="pqp2"><span class="font1">(&#x002B; (<sub>&#x002A;</sub> 1/2 (&#x002B; (square x) (square y)))</span></p>
-
-<p class="pqp3a"><span class="font1">(- (<sub>&#x002A;</sub> (square x) y) (<sub>&#x002A;</sub> 1/3 (cube y))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (HHpotential s)
+(let ((x (ref (coordinate s) 0))
+(y (ref (coordinate s) 1)))
+(+ (* 1/2 (+ (square x) (square y)))
+(- (* (square x) y) (* 1/3 (cube y))))))
+{% endhighlight %}</div>
 
 <p>The system derivative is computed directly from the Hamiltonian.</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (HHsysder)</span></p>
-
-<p class="pqp1"><span class="font1">(Hamiltonian-&#x003E;state-derivative HHHam))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (HHsysder)
+(Hamiltonian->state-derivative HHHam))
+{% endhighlight %}</div>
 
 <p>The procedure <span class="font1">find-next-crossing</span> advances the initial state until successive states are on opposite sides of the section plane.</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (find-next-crossing state advance dt sec-eps cont)</span></p>
-
-<p class="pqp1"><span class="font1">(let lp ((s state))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((next-state (advance s dt)))</span></p>
-
-<p class="pqp3"><span class="font1">(if (and (&#x003E; (ref (coordinate next-state) 0) 0)</span></p>
-
-<p class="pqp8a"><span class="font1">(&#x003C; (ref (coordinate s) 0) 0))</span></p>
-
-<p class="pqp4"><span class="font1">(let ((crossing-state</span></p>
-
-<p class="pqp9"><span class="font1">(refine-crossing sec-eps advance s)))</span></p>
-
-<p class="pqp5"><span class="font1">(cont crossing-state next-state))</span></p>
-
-<p class="pqp4"><span class="font1">(lp next-state)))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (find-next-crossing state advance dt sec-eps cont)
+(let lp ((s state))
+(let ((next-state (advance s dt)))
+(if (and (> (ref (coordinate next-state) 0) 0)
+(< (ref (coordinate s) 0) 0))
+(let ((crossing-state
+(refine-crossing sec-eps advance s)))
+(cont crossing-state next-state))
+(lp next-state)))))
+{% endhighlight %}</div>
 
 <p class="noindent">After finding states that straddle the section plane the crossing is refined by Newton's method, as implemented by the procedure <span class="font1">refine-crossing</span>. The procedure <span class="font1">find-next-crossing</span> returns both the crossing point and the next state produced by the integrator. The next state is not used in this problem but it is needed for other cases.</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define (refine-crossing sec-eps advance state)</span></p>
-
-<p class="pqp1"><span class="font1">(let lp ((state state))</span></p>
-
-<p class="pqp2"><span class="font1">(let ((x (ref (coordinate state) 0))</span></p>
-
-<p class="pqp6"><span class="font1">(xd (ref (momentum state) 0)))</span></p>
-
-<p class="pqp3"><span class="font1">(let ((zstate (advance state (- (/ x xd)))))</span></p>
-
-<p class="pqp4"><span class="font1">(if (&#x003C; (abs (ref (coordinate zstate) 0))</span></p>
-
-<p class="pqp8"><span class="font1">sec-eps)</span></p>
-
-<p class="pqp6"><span class="font1">zstate</span></p>
-
-<p class="pqp6"><span class="font1">(lp zstate))))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define (refine-crossing sec-eps advance state)
+(let lp ((state state))
+(let ((x (ref (coordinate state) 0))
+(xd (ref (momentum state) 0)))
+(let ((zstate (advance state (- (/ x xd)))))
+(if (< (abs (ref (coordinate zstate) 0))
+sec-eps)
+zstate
+(lp zstate))))))
+{% endhighlight %}</div>
 
 <p>To explore the H&#x00E9;non&#x2013;Heiles map we use <span class="font1">explore-map</span> as before. The following exploration generated <a href="chapter003.html#Fig_3-20">figure 3.20</a>:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define win (frame -0.5 0.7 -0.6 0.6))</span></p>
-
-<p class="pq-noindent"><span class="font1">(explore-map win (HHmap 0.125 0.1 1.0e-10 1.0e-12) 500)</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define win (frame -0.5 0.7 -0.6 0.6))
+(explore-map win (HHmap 0.125 0.1 1.0e-10 1.0e-12) 500)
+{% endhighlight %}</div>
 <a id="p263"></a>
 </section>
 <section title="Non-Axisymmetric Top">
@@ -1969,16 +1794,12 @@ layout: chapter
 <p class="noindent">This map is known as the &#x201C;standard map.&#x201D;<sup><a class="footnote_link" href="#endnote_36" id="endnote_ref_36">36</a></sup> A curious feature of the standard map is that the momentum variable <em>I</em> is treated as an angular quantity. The derivative of the map has determinant one, implying the map is area preserving.</p>
 
 <p>We can implement the standard map:</p>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define ((standard-map K) theta I return failure)</span></p>
-
-<p class="pqp1"><span class="font1">(let ((nI (&#x002B; I (<sub>&#x002A;</sub> K (sin theta)))))</span></p>
-
-<p class="pqp2"><span class="font1">(return ((principal-value :2pi) (&#x002B; theta nI))</span></p>
-
-<p class="pqp7"><span class="font1">((principal-value :2pi) nI))))</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define ((standard-map K) theta I return failure)
+(let ((nI (+ I (* K (sin theta)))))
+(return ((principal-value :2pi) (+ theta nI))
+((principal-value :2pi) nI))))
+{% endhighlight %}</div>
 
 <p>We use the <span class="font1">explore-map</span> procedure introduced earlier to use a pointing device to interactively explore the surface of section. For example, to explore the surface of section for parameter <em>K</em> &#x003D; 0.6 we use:</p>
 <a id="p279"></a>
@@ -1986,12 +1807,10 @@ layout: chapter
 <img src="images/Art_P808.jpg" alt="art"/>
 <figcaption id="Fig_3-27"><strong>Figure 3.27</strong> Surface of section for the standard map for <em>K</em> &#x003D; 0.6. The section shows mostly regular trajectories, with a few dominant islands, but also a number of small chaotic zones.</figcaption>
 </figure>
-<div class="pull-quote">
-
-<p class="pq-noindent"><span class="font1">(define window (frame 0.0 :2pi 0.0 :2pi))</span></p>
-
-<p class="pq-noindent"><span class="font1">(explore-map window (standard-map 0.6) 2000)</span></p>
-</div>
+<div class="code">{% highlight scheme %}
+(define window (frame 0.0 :2pi 0.0 :2pi))
+(explore-map window (standard-map 0.6) 2000)
+{% endhighlight %}</div>
 
 <p class="noindent">The resulting surface of section, for a variety of orbits chosen with the pointer, is shown in <a href="chapter003.html#Fig_3-27">figure 3.27</a>. The surface of section does indeed look qualitatively similar to the surfaces of section generated by dynamical systems.</p>
 
