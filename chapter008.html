@@ -41,7 +41,10 @@ layout: appendix
 {% endhighlight %}</div><div class="result">{% highlight scheme %}
 3.14
 
+{% endhighlight %}</div>
+<div class="code">{% highlight scheme %}
 (+ 1 (* 2 1.07))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 3.14
 {% endhighlight %}</div>
 
@@ -62,6 +65,7 @@ layout: appendix
 <p class="noindent">This expression can be read: &#x201C;The procedure of one argument, <em>x</em>, that multiplies <em>x</em> by <em>x</em>.&#x201D; Of course, we can use this expression in any context where a procedure is needed. For example,</p>
 <div class="code">{% highlight scheme %}
 ((lambda (x) (* x x)) 4)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 16
 {% endhighlight %}</div>
 <a id="p499"></a>
@@ -85,6 +89,7 @@ layout: appendix
 <p class="noindent">we can then use the symbols <span class="font1">pi</span> and <span class="font1">square</span> wherever the numeral or the <em>&#x03BB;</em>-expression could appear. For example, the area of the surface of a sphere of radius 5 is</p>
 <div class="code">{% highlight scheme %}
 (* 4 pi (square 5))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 314.1592653589793
 {% endhighlight %}</div>
 
@@ -98,25 +103,27 @@ layout: appendix
 <p>In Scheme, procedures may be passed as arguments and returned as values. For example, it is possible to make a procedure that implements the mathematical notion of the composition of two functions:<sup><a class="footnote_link" href="#endnote_6" id="endnote_ref_6">6</a></sup></p>
 <div class="code">{% highlight scheme %}
 (define compose
-(lambda (f g)
-(lambda (x)
-(f (g x)))))
+  (lambda (f g)
+    (lambda (x)
+      (f (g x)))))
 
 ((compose square sin) 2)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 .826821810431806
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (square (sin 2))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 .826821810431806
 {% endhighlight %}</div>
 
 <p class="noindent">Using the syntactic sugar shown above, we can write the definition more conveniently. The following are both equivalent to the definition above:</p>
 <div class="code">{% highlight scheme %}
 (define (compose f g)
-(lambda (x)
-(f (g x))))
+  (lambda (x)
+    (f (g x))))
 
 (define ((compose f g) x)
-(f (g x)))
+  (f (g x)))
 {% endhighlight %}</div>
 </section>
 <section title="Conditionals">
@@ -124,43 +131,18 @@ layout: appendix
 
 <p class="noindent">Conditional expressions may be used to choose among several expressions to produce a value. For example, a procedure that implements the absolute value function may be written:</p>
 <div class="code">{% highlight scheme %}
-<table class="table1">
-<tr>
-<td class="td1" valign="top"><span class="font1">(define</span></td>
-<td class="td1" valign="top"><span class="font1">(abs x)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="right"><span class="font1">(cond</span></p></td>
-<td class="td1" valign="top"><span class="font1">((< x 0) (- x))</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">((= x 0) x)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1">((> x 0) x)))</span></td>
-</tr>
-</table>
+(define (abs x)
+  (cond ((< x 0) (- x))
+        ((= x 0) x)
+        ((> x 0) x)))
 {% endhighlight %}</div>
 
 <p class="noindent">The conditional <span class="font1">cond</span> takes a number of clauses. Each clause has a predicate expression, which may be either true or false, and a consequent expression. The value of the <span class="font1">cond</span> expression is the value of the consequent expression of the first clause for which the corresponding predicate expression is true. The general form of a conditional expression is</p>
 <div class="code">{% highlight scheme %}
-<table class="table1">
-<tr>
-<td class="td1" valign="top"><span class="font1">(cond</span></td>
-<td class="td1" valign="top"><span class="font1">(</span><em>predicate-1 consequent-1</em><span class="font1">)</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1">&#x22EF;</span></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top"></td>
-<td class="td1" valign="top"><span class="font1"><span class="font1">(</span><em>predicate-n consequent-n</em><span class="font1">))</span></span></td>
-</tr>
-</table>
+(cond
+  (predicate-1 consequent-1)
+  ...
+  (predicate-n consequent-n))
 {% endhighlight %}</div>
 
 <p class="noindent">For convenience there is a special predicate expression <span class="font1">else</span> that can be used as the predicate in the last clause of a <span class="font1">cond</span>.</p>
@@ -169,9 +151,9 @@ layout: appendix
 <p>The <span class="font1">if</span> construct provides another way to make a conditional when there is only a binary choice to be made. For example, because we have to do something special only when the argument is negative, we could have defined <span class="font1">abs</span> as:</p>
 <div class="code">{% highlight scheme %}
 (define (abs x)
-(if (< x 0)
-(- x)
-x))
+  (if (< x 0)
+    (- x)
+    x))
 {% endhighlight %}</div>
 
 <p class="noindent">The general form of an <span class="font1">if</span> expression is</p>
@@ -186,14 +168,16 @@ x))
 <p class="noindent">Given conditionals and definitions, we can write recursive procedures. For example, to compute the <em>n</em>th factorial number we may write:</p>
 <div class="code">{% highlight scheme %}
 (define (factorial n)
-(if (= n 0)
-1
-(* n (factorial (- n 1)))))
+  (if (= n 0)
+    1
+    (* n (factorial (- n 1)))))
 
 (factorial 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 720
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (factorial 40)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 815915283247897734345611269596115894272000000000
 {% endhighlight %}</div>
 </section>
@@ -203,21 +187,22 @@ x))
 <p class="noindent">The <span class="font1">let</span> expression is used to give names to objects in a local context. For example,</p>
 <div class="code">{% highlight scheme %}
 (define (f radius)
-(let ((area (* 4 pi (square radius)))
-(volume (* 4/3 pi (cube radius))))
-(/ volume area)))
+  (let ((area (* 4 pi (square radius)))
+        (volume (* 4/3 pi (cube radius))))
+    (/ volume area)))
 
 (f 3)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 1
 {% endhighlight %}</div>
 <a id="p502"></a>
 
 <p class="noindent">The general form of a <span class="font1">let</span> expression is</p>
 <div class="code">{% highlight scheme %}
-(let ((</span> <em>variable-1 expression-1</em><span class="font1">)
-<p class="pqp3a">&#x22EF;</p>
-(</span><em>variable-n expression-n</em><span class="font1">))
-<p class="pqp1"><em>body</em><span class="font1">)</span></p>
+(let ((variable-1 expression-1)
+      ...
+      (variable-n expression-n))
+  body)
 {% endhighlight %}</div>
 
 <p class="noindent">The value of the <span class="font1">let</span> expression is the value of the <em>body</em> expression in the context where the variables <em>variable-i</em> have the values of the expressions <em>expression-i</em>. The expressions <em>expression-i</em> may not refer to any of the variables <em>variable-j</em> given values in the <span class="font1">let</span> expression.</p>
@@ -227,12 +212,13 @@ x))
 <p>A slight variant of the <span class="font1">let</span> expression provides a convenient way to express looping constructs. We can write a procedure that implements an alternative algorithm for computing factorials as follows:</p>
 <div class="code">{% highlight scheme %}
 (define (factorial n)
-(let factlp ((count 1) (answer 1))
-(if (> count n)
-answer
-(factlp (+ count 1) (* count answer)))))
+  (let factlp ((count 1) (answer 1))
+    (if (> count n)
+      answer
+      (factlp (+ count 1) (* count answer)))))
 
 (factorial 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 720
 {% endhighlight %}</div>
 
@@ -248,36 +234,44 @@ answer
 (define a-list (list 6 946 8 356 12 620))
 
 a-list
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (6 946 8 356 12 620)
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (list-ref a-list 3)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 356
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (list-ref a-list 0)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 6
 {% endhighlight %}</div>
 
 <p>Lists are built from pairs. A pair is made using the constructor <span class="font1">cons</span>. The selectors for the two components of the pair are <span class="font1">car</span> and <span class="font1">cdr</span> (pronounced &#x201C;could-er&#x201D;).<sup><a class="footnote_link" href="#endnote_7" id="endnote_ref_7">7</a></sup> A list is a chain of pairs, such that the <span class="font1">car</span> of each pair is the list element and the <span class="font1">cdr</span> of each pair is the next pair, except for the last <span class="font1">cdr</span>, which is a distinguishable value called the empty list and is written <span class="font1">()</span>. Thus,</p>
 <div class="code">{% highlight scheme %}
 (car a-list)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 6
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (cdr a-list)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (946 8 356 12 620)
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (car (cdr a-list))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 946
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (define another-list
 (cons 32 (cdr a-list)))
 
 another-list
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (32 946 8 356 12 620)
-<a id="p504"></a>
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (car (cdr another-list))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 946
 {% endhighlight %}</div>
+<a id="p504"></a>
 
 <p class="noindent">Both <span class="font1">a-list</span> and <span class="font1">another-list</span> share the same tail (their <span class="font1">cdr</span>).</p>
 
@@ -289,12 +283,15 @@ another-list
 (vector 37 63 49 21 88 56))
 
 a-vector
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 #(37 63 49 21 88 56)
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (vector-ref a-vector 3)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 21
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (vector-ref a-vector 0)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 37
 {% endhighlight %}</div>
 
@@ -312,13 +309,15 @@ a-vector
 <p>We can test if two symbols are identical by using the predicate <span class="font1">eq?</span>. For example, we can write a program to determine if an expression is a sum:</p>
 <div class="code">{% highlight scheme %}
 (define (sum? expression)
-(and (pair? expression)
-(eq? (car expression) '+)))
+  (and (pair? expression)
+       (eq? (car expression) '+)))
 
 (sum? '(+ 3 a))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 #t
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (sum? '(* 3 a))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 #f
 {% endhighlight %}</div>
 
@@ -332,17 +331,18 @@ a-vector
 <p class="noindent">Sometimes it is necessary to perform some action, such as plot a point or print a value, in the process of a computation. Such an action is called an <em>effect</em>.<sup><a class="footnote_link" href="#endnote_9" id="endnote_ref_9">9</a></sup> For example, to see in more detail how the factorial program computes its answer we can interpolate a <span class="font1">write-line</span> statement in the body of the <span class="font1">factlp</span> internal procedure. This will print out a list of the count and the answer for each iteration:</p>
 <div class="code">{% highlight scheme %}
 (define (factorial n)
-(let factlp ((count 1) (answer 1))
-(write-line (list count answer))
-(if (> count n)
-answer
-(factlp (+ count 1) (* count answer)))))
+  (let factlp ((count 1) (answer 1))
+    (write-line (list count answer))
+    (if (> count n)
+      answer
+      (factlp (+ count 1) (* count answer)))))
 {% endhighlight %}</div>
 <a id="p506"></a>
 
 <p>When we execute the modified <span class="font1">factorial</span> procedure we can watch the counter incrementing and the answer being built:</p>
 <div class="code">{% highlight scheme %}
 (factorial 6)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (1 1)
 (2 1)
 (3 2)
@@ -360,10 +360,10 @@ answer
 <p class="noindent">Effects like printing a value or plotting a point are pretty benign, but there are more powerful (and thus dangerous) effects, called <em>assignments</em>. An assignment <em>changes</em> the value of a variable or an entry in a data structure. Almost everything we are computing are mathematical functions: for a particular input they always produce the same result. However, with assignment we can make objects that change their behavior as they are used. For example, we can make a device that counts every time we call it:</p>
 <div class="code">{% highlight scheme %}
 (define (make-counter)
-(let ((count 0))
-(lambda ()
-(set! count (+ count 1))
-count)))
+  (let ((count 0))
+    (lambda ()
+      (set! count (+ count 1))
+      count)))
 {% endhighlight %}</div>
 
 <p>Let's make two counters:</p>
@@ -375,29 +375,34 @@ count)))
 <p>These two counters have independent local state. Calling a counter causes it to increment its local state variable, <span class="font1">count</span>, and return its value.</p>
 <div class="code">{% highlight scheme %}
 (c1)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 1
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (c1)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 2
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (c2)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 1
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (c1)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 3
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 (c2)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 2
 {% endhighlight %}</div>
 
 <p>Assignment to variables is sometimes useful. For example, it may be useful to accumulate some objects into a list for further analysis. Here is an elegant way to do this:</p>
 <div class="code">{% highlight scheme %}
 (define (make-collector)
-(let ((lst '()))
-(cons (lambda (new)
-(set! lst (cons new lst))
-new)
-(lambda () lst))))
+  (let ((lst '()))
+    (cons (lambda (new)
+            (set! lst (cons new lst))
+            new)
+          (lambda () lst))))
 {% endhighlight %}</div>
 
 <p class="noindent">This procedure makes a pair of two procedures. The <span class="font1">car</span> of the pair is a procedure that adds to a list and the <span class="font1">cdr</span> of the pair is a procedure that reports the list that has been collected.</p>
@@ -408,27 +413,34 @@ new)
 (define c4 (make-collector))
 
 ((car c3) 42)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 42
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((car c4) 'jerry)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 jerry
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((car c3) 28)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 28
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((car c3) 14)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 14
-<a id="p508"></a>
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((car c4) 'jack)
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 jack
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((cdr c3))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (14 28 42)
-
+{% endhighlight %}</div><div class="code">{% highlight scheme %}
 ((cdr c4))
+{% endhighlight %}</div><div class="result">{% highlight scheme %}
 (jack jerry)
 {% endhighlight %}</div>
+<a id="p508"></a>
 
 <p>It is also possible to assign to the elements of a data structure, such as a list or vector. This is unnecessary in our work so we won't tell you about how to do it&#x0021; In general, it is good practice to avoid assignments whenever possible, but if you need them they are available.<sup><a class="footnote_link" href="#endnote_10" id="endnote_ref_10">10</a></sup></p>
 
