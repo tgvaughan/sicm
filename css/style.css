@@ -66,10 +66,15 @@ body {
   position: relative;
 }
 
-section {
+body > section {
   margin: 1em auto;
   width: 67ex;
   max-width: 88%;
+}
+
+section > section {
+    margin: 0;
+    padding: 0;
 }
 
 h1, h2, h3, h4, h5 {

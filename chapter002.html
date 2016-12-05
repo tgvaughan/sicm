@@ -1363,7 +1363,8 @@ layout: chapter
 <div class="code">{% highlight scheme %}
 (define (quaternion->rotation-matrix q)
   (let ((q0 (quaternion-ref q 0)) (q1 (quaternion-ref q 1))
-                                  (q2 (quaternion-ref q 2)) (q3 (quaternion-ref q 3)))
+                                  (q2 (quaternion-ref q 2))
+                                  (q3 (quaternion-ref q 3)))
     (let ((m^2
             (+ (expt q0 2) (expt q1 2)
                (expt q2 2) (expt q3 2))))
@@ -1543,97 +1544,25 @@ layout: chapter
 <p>Below we set up the initial conditions and use <span class="font1">monitor-errors</span> to plot the errors. We use the same initial conditions that we did for Euler angles. We get the rotation matrix <span class="font1">M</span> that transforms the reference position to the initial Euler state and use that to construct the equivalent quaternion state for this evolution.</p>
 <div class="code">{% highlight scheme %}
 (define win (frame 0.0 100.0 -1.0e-13 1.0e-13))
-<p> </p>
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1">(let* ((A 1.0) (B (sqrt 2.0)) (C 2.0)</span></td>
-                                                                <td class="td1" valign="top"><span class="font1">; moments of inertia</span></td>
-                                                                </tr>
-                                                                <tr>
-                                                                <td class="td1" valign="top">
-                                                                <p class="pqp3b"><span class="font1">(Euler-state (up 0.0</span></p></td>
-                                                                                                                      <td class="td1" valign="top"><span class="font1">; initial state</span></td>
-                                                                                                                      </tr>
-                                                                                                                      <tr>
-                                                                                                                      <td class="td1" valign="top">
-                                                                                                                      <p class="pqp10"><span class="font1">(up 1.0 0.0 0.0)</span></p></td>
-                                                                                                                      <td class="td1" valign="top"></td>
-                                                                                                                      </tr>
-                                                                                                                      <tr>
-                                                                                                                      <td class="td1" valign="top">
-                                                                                                                      <p class="pqp10"><span class="font1">(up 0.1 0.1 0.1)))</span></p></td>
-                                                                <td class="td1" valign="top"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                <td class="td1" valign="top">
-                                                                <p class="pqp3b"><span class="font1">(M (Euler->M (coordinates Euler-state)))</span></p></td>
-                                                                <td class="td1" valign="top"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                <td class="td1" valign="top">
-                                                                <p class="pqp3b"><span class="font1">(q (quaternion->vector (rotation-matrix->quaternion M)))</span></p></td>
-                                                                <td class="td1" valign="top"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                <td class="td1" valign="top">
-                                                                <p class="pqp3b"><span class="font1">(qw-state0</span></p></td>
-                                                                                                       <td class="td1" valign="top"></td>
-                                                                                                       </tr>
-                                                                                                       <tr>
-                                                                                                       <td class="td1" valign="top">
-                                                                                                       <p class="pqp3b"><span class="font1">(up (time Euler-state)</span></p></td>
-                                                                                                                                                <td class="td1" valign="top"></td>
-                                                                                                                                                </tr>
-                                                                                                                                                <tr>
-                                                                                                                                                <td class="td1" valign="top">
-                                                                                                                                                <p class="pqp5"><span class="font1">q</span></p></td>
-                                                                                                                                                <td class="td1" valign="top"></td>
-                                                                                                                                                </tr>
-                                                                                                                                                <tr>
-                                                                                                                                                <td class="td1" valign="top">
-                                                                                                                                                <p class="pqp5"><span class="font1">(Euler-state->omega-body Euler-state))))</span></p></td>
-                                                   <td class="td1" valign="top"></td>
-                                                   </tr>
-                                                   <tr>
-                                                   <td class="td1" valign="top"><span class="font1">(let ((L0 ((qw-state->L-space A B C) qw-state0))</span></td>
-                                                                                                          <td class="td1" valign="top"></td>
-                                                                                                          </tr>
-                                                                                                          <tr>
-                                                                                                          <td class="td1" valign="top">
-                                                                                                          <p class="pqp3"><span class="font1">(E0 ((T-body A B C) (ref qw-state0 2))))</span></p></td>
-                                                                                                      <td class="td1" valign="top"></td>
-                                                                                                      </tr>
-                                                                                                      <tr>
-                                                                                                      <td class="td1" valign="top">
-                                                                                                      <p class="pqp2"><span class="font1">((evolve qw-sysder A B C)</span></p></td>
-                                                                                                                                           <td class="td1" valign="top"></td>
-                                                                                                                                           </tr>
-                                                                                                                                           <tr>
-                                                                                                                                           <td class="td1" valign="top">
-                                                                                                                                           <p class="pqp3"><span class="font1">qw-state0</span></p></td>
-                                                                                                                                           <td class="td1" valign="top"></td>
-                                                                                                                                           </tr>
-                                                                                                                                           <tr>
-                                                                                                                                           <td class="td1" valign="top">
-                                                                                                                                           <p class="pqp3"><span class="font1">(monitor-errors win A B C L0 E0)</span></p></td>
-                                                                                                                                           <td class="td1" valign="top"></td>
-                                                                                                                                           </tr>
-                                                                                                                                           <tr>
-                                                                                                                                           <td class="td1" valign="top">
-                                                                                                                                           <p class="pqp3"><span class="font1">0.1</span></p></td>
-                                                                                                                                           <td class="td1" valign="top"><span class="font1">; step between plotted points</span></td>
-                                                                                                                                           </tr>
-                                                                                                                                           <tr>
-                                                                                                                                           <td class="td1" valign="top">
-                                                                                                                                           <p class="pqp3"><span class="font1">100.0</span></p></td>
-                                                                                                                                           <td class="td1" valign="top"><span class="font1">; final time</span></td>
-                                                                                                                                           </tr>
-                                                                                                                                           <tr>
-                                                                                                                                           <td class="td1" valign="top">
-                                                                                                                                           <p class="pqp3"><span class="font1">1.0e-12)))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-</table>
+
+(let* ((A 1.0) (B (sqrt 2.0)) (C 2.0) ; moments of inertia
+               (Euler-state (up 0.0 ; initial state
+                                (up 1.0 0.0 0.0)
+                                (up 0.1 0.1 0.1)))
+               (M (Euler->M (coordinates Euler-state)))
+               (q (quaternion->vector (rotation-matrix->quaternion M)))
+               (qw-state0
+                 (up (time Euler-state)
+                     q
+                     (Euler-state->omega-body Euler-state))))
+  (let ((L0 ((qw-state->L-space A B C) qw-state0))
+        (E0 ((T-body A B C) (ref qw-state0 2))))
+    ((evolve qw-sysder A B C)
+     qw-state0
+     (monitor-errors win A B C L0 E0)
+     0.1 ; step between plotted points
+     100.0 ; final time
+     1.0e-12)))
 {% endhighlight %}</div>
 
 <p class="noindent"><a href="#Fig_2-15">Figure 2.15</a> shows the relative errors in the energy and the spatial components of the angular momentum that arise in this integration. It is interesting to note that the errors incurred by integrating using Euler angles and quaternions are about a factor of ten smaller than the ones that appear when the coordinates are Euler angles.</p>
