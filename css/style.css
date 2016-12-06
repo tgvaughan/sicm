@@ -72,11 +72,6 @@ body > section {
   max-width: 88%;
 }
 
-section > section {
-    margin: 0;
-    padding: 0;
-}
-
 h1, h2, h3, h4, h5 {
   font-family: "Linux Biolinum O", sans-serif; 
   margin-top: 1.6em;

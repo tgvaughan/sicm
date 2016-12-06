@@ -37,7 +37,7 @@ layout: chapter
 <p>We have found that a Lagrangian for a system with rigid constraints can be written as the difference of the kinetic and potential energies. The kinetic and potential energies are naturally expressed in terms of the positions and velocities of the constituent particles. To write the Lagrangian in terms of the generalized coordinates and velocities we must specify functions that relate the generalized coordinates to the positions of the constituent particles. In the systems with rigid constraints considered up to now these functions were explicitly given for each of the constituent particles and individually included in the derivation of the Lagrangian. For a rigid body, however, there are too many consituent particles to handle each one of them in this way. We need to find means of expressing the kinetic and potential energies of rigid bodies in terms of the generalized coordinates and velocities, without going through the particle-by-particle details.</p>
 
 <p>The strategy is to first rewrite the kinetic and potential energies in terms of quantities that characterize essential aspects of the distribution of mass in the body and the state of motion of the body. Only later do we introduce generalized coordinates. For the kinetic energy, it turns out a small number of parameters completely specify the state of motion and the relevant aspects of the distribution of mass in the body. For the potential energy, we find that for some specific problems the potential energy can be represented with a small number of parameters, but in general we have to make approximations to obtain a representation with a manageable number of parameters.</p>
-<section title="Rotational Kinetic Energy">
+
 <h1 class="level1" id="h1-7"><a href="toc.html#Rh1-7"><strong>2.1&#160;&#160;&#160;Rotational Kinetic Energy</strong></a></h1>
 
 <p class="noindent">We consider a rigid body to be made up of a large number of constituent particles with mass <em>m</em><sub><em>&#x03B1;</em></sub>, position <epub:switch id="mathmlSwitch448"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mi>&#x03B1;</mi></msub></mrow></math></epub:case></epub:switch>, and velocities <a id="p121"></a><epub:switch id="mathmlSwitch449"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mover accent='true'><mover accent='true'><mi>x</mi><mo stretchy="false">&#x2192;</mo></mover><mo>&#x02D9;</mo></mover><mi>&#x03B1;</mi></msub></mrow></math></epub:case></epub:switch>, with rigid positional constraints among them. The kinetic energy is</p>
@@ -86,8 +86,8 @@ layout: chapter
 <p>Written in terms of appropriate generalized coordinates, the kinetic energy is a Lagrangian for a free rigid body. If we choose generalized coordinates so that the center of mass position is entirely specified by some of them and the orientation is entirely specified by others, then the Lagrange equations for a free rigid body will decouple into two groups of equations, one concerned with the motion of the center of mass and one concerned with the orientation.</p>
 
 <p>Such a separation might occur in other problems, such as a rigid body moving in a uniform gravitational field, but in general, potential energies cannot be separated as the kinetic energy separates. So the motion of the center of mass and the rotational motion are usually coupled through the potential. Even in these cases, it is usually an advantage to choose generalized coordinates that separately specify the position of the center of mass and the orientation.</p>
-</section>
-<section title="Kinematics of Rotation">
+
+
 <h1 class="level1" id="h1-8"><a href="toc.html#Rh1-8"><strong>2.2&#160;&#160;&#160;Kinematics of Rotation</strong></a></h1>
 
 <p class="noindent">The motion of a rigid body about a center of rotation, a reference position that is fixed with respect to the body, is characterized <a id="p123"></a>at each moment by a rotation axis and a rate of rotation. Let's elaborate.</p>
@@ -155,7 +155,7 @@ layout: chapter
 
 <p>The relationship of the angular velocity vector to the path is a kinematic relationship; it is valid for any path. Thus we can abstract it to obtain the components of the angular velocity at a moment given the configuration and velocity at that moment.</p>
 <a id="p126"></a>
-<section title="Implementation of angular velocity functions">
+
 <h2 class="level2"><strong>Implementation of angular velocity functions</strong></h2>
 
 <p class="noindent">The following procedure gives the components of the angular velocity as a function of time along the path:</p>
@@ -189,9 +189,9 @@ layout: chapter
 {% endhighlight %}</div>
 
 <p class="noindent">These procedures give the angular velocities as a function of state. We will see them in action after we get some <span class="font1">M-of-q</span>'s to work with, starting in <a href="chapter002.html#h1-11">section 2.7</a>.</p>
-</section>
-</section>
-<section title="Moments of Inertia">
+
+
+
 <h1 class="level1" id="h1-8a"><a href="toc.html#Rh1-8a"><strong>2.3&#160;&#160;&#160;Moments of Inertia</strong></a></h1>
 
 <p class="noindent">The rotational kinetic energy is the sum of the kinetic energy of each of the constituents of the rigid body. We can rewrite the <a id="p127"></a>rotational kinetic energy in terms of the angular velocity vector and certain aggregate quantities determined by the distribution of mass in the rigid body.</p>
@@ -268,8 +268,8 @@ layout: chapter
 <p class="eqtext"><epub:switch id="mathmlSwitch521"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>&#x03C1;</mi><mrow><mo>(</mo><mi>r</mi><mo>)</mo></mrow><mo>=</mo><mfrac><mi>M</mi><mrow><msup><mi>R</mi><mn>3</mn></msup></mrow></mfrac><mfrac><mrow><mi>sin</mi><mrow><mo>(</mo><mrow><mrow><mrow><mi>&#x03C0;</mi><mi>r</mi></mrow><mo>/</mo><mi>R</mi></mrow></mrow><mo>)</mo></mrow></mrow><mrow><mrow><mrow><mn>4</mn><mi>r</mi></mrow><mo>/</mo><mi>R</mi></mrow></mrow></mfrac><mo>,</mo></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">where <em>M</em> is the mass and <em>R</em> is the radius of Jupiter. Find the moment of inertia of Jupiter in terms of <em>M</em> and <em>R</em>.</p>
-</section>
-<section title="Inertia Tensor">
+
+
 <h1 class="level1" id="h1-9"><a href="toc.html#Rh1-9"><strong>2.4&#160;&#160;&#160;Inertia Tensor</strong></a></h1>
 
 <p class="noindent">The representation of the rotational kinetic energy in terms of the inertia tensor was derived with the help of a rectangular coordinate system with basis vectors <em>&#x00EA;<sub>i</sub></em>. There was nothing special about this particular rectangular basis. So, the kinetic energy must have the same form in any rectangular coordinate system. We can use this fact to derive how the inertia tensor changes if the body or the coordinate system is rotated.</p>
@@ -304,8 +304,8 @@ layout: chapter
 <p class="eqtext" id="disp_2.35"><epub:switch id="mathmlSwitch544"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mstyle mathvariant='bold'><mi>I</mi><mo>&#x2032;</mo></mstyle><mo>=</mo><msup><mstyle mathvariant='bold'><mi>R</mi></mstyle><mi mathvariant='script'>T</mi></msup><mstyle mathvariant='bold'><mi>I</mi><mi>R</mi></mstyle><mo>.</mo></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mn>2.35</mn></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">Thus the inertia matrix transforms by a similarity transformation.<sup><a class="footnote_link" href="#endnote_6" id="endnote_ref_6">6</a></sup></p>
-</section>
-<section title="Principal Moments of Inertia">
+
+
 <h1 class="level1" id="h1-9a"><a href="toc.html#Rh1-9a"><strong>2.5&#160;&#160;&#160;Principal Moments of Inertia</strong></a></h1>
 
 <p class="noindent">We can use the transformation properties of the inertia tensor (<a href="chapter002.html#disp_2.35">2.35</a>) to show that there are special rectangular coordinate systems for which the inertia tensor <em>I</em>&#x2032; is diagonal, that is, <epub:switch id="mathmlSwitch545"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>I</mi><mrow><mi>i</mi><mi>j</mi></mrow><mo>&#x2032;</mo></msubsup><mo>=</mo><mn>0</mn></mrow></math></epub:case></epub:switch> for <em>i</em> &#x2260; <em>j</em>. Let's assume that <strong>I&#x2032;</strong> is diagonal and solve for the rotation matrix <strong>R</strong> that does the job. Multiplying both sides of (<a href="chapter002.html#disp_2.35">2.35</a>) on the left by <strong>R</strong>, we have</p>
@@ -377,8 +377,8 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_2-7"><strong>Exercise  2.7: This book</strong></p>
 
 <p class="noindent">Measure this book. You will admit that it is pretty dense. Don't worry, you will get to throw it later. Show that the principal axes are the lines connecting the centers of opposite faces of the idealized brick approximating the book. Compute the corresponding principal moments of inertia.</p>
-</section>
-<section title="Vector Angular Momentum">
+
+
 <h1 class="level1" id="h1-10"><a href="toc.html#Rh1-10"><strong>2.6&#160;&#160;&#160;Vector Angular Momentum</strong></a></h1>
 
 <p class="noindent">The vector angular momentum of a particle is the cross product of its position vector and its linear momentum vector. For a rigid body the vector angular momentum is the sum of the vector angular momentum of each of the constituents. Here we find an expression for the vector angular momentum of a rigid body in terms of the inertia tensor and the angular velocity vector.</p>
@@ -451,8 +451,8 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_2-8"><strong>Exercise  2.8: Rotational angular momentum</strong></p>
 
 <p class="noindent">Verify that expression (<a href="chapter002.html#disp_2.50">2.50</a>) for the components of the rotational angular momentum (<a href="chapter002.html#disp_2.49">2.49</a>) in terms of the inertia tensor is correct.</p>
-</section>
-<section title="Euler Angles">
+
+
 <h1 class="level1" id="h1-11"><a href="toc.html#Rh1-11"><strong>2.7&#160;&#160;&#160;Euler Angles</strong></a></h1>
 
 <p class="noindent">To go further we must finally specify a set of generalized coordinates. We first do this using the traditional <em>Euler angles</em>. Later, we find other ways of describing the orientation of a rigid body.</p>
@@ -588,13 +588,13 @@ layout: chapter
 {% endhighlight %}</div>
 
 <p class="noindent">These procedures are local state functions, like Lagrangians.</p>
-</section>
-<section title="Motion of a Free Rigid Body">
+
+
 <h1 class="level1" id="h1-12"><a href="toc.html#Rh1-12"><strong>2.8&#160;&#160;&#160;Motion of a Free Rigid Body</strong></a></h1>
 
 <p class="noindent">The kinetic energy, expressed in terms of a suitable set of generalized coordinates, is a Lagrangian for a free rigid body. In <a href="chapter002.html#h1-7">section 2.1</a> we found that the kinetic energy of a rigid body can be written as the sum of the rotational kinetic energy and the translational kinetic energy. If we choose one set of coordinates to specify the position and another set to specify the orientation, the Lagrangian becomes a sum of a translational Lagrangian and a rotational Lagrangian. The Lagrange equations for translational motion are not coupled to the Lagrange equations for the rotational motion. For a free rigid body the translational motion is just that of a free particle: uniform motion. Here we concentrate on the rotational motion of the free rigid body. We can adopt the Euler angles as the coordinates that specify the orientation; the rotational kinetic energy was expressed in terms of Euler angles in the previous section.</p>
 <a id="p142"></a>
-<section title="Conserved quantities">
+
 <h2 class="level2"><strong>Conserved quantities</strong></h2>
 
 <p class="noindent">The Lagrangian for a free rigid body has no explicit time dependence, so we can deduce that the energy, which is just the kinetic energy, is conserved by the motion.</p>
@@ -638,7 +638,7 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_2-11"><strong>Exercise  2.11: Conservation of angular momentum</strong></p>
 
 <p class="noindent">Fill in the details of the argument that Noether's theorem implies that vector angular momentum is conserved by the motion of the free rigid body.</p>
-<section title="Computing the Motion of Free Rigid Bodies">
+
 <h3 class="level3" id="h3_2-8-1"><a href="toc.html#Rh3_2-8-1"><strong>2.8.1 Computing the Motion of Free Rigid Bodies</strong></a></h3>
 
 <p class="noindent">Lagrange's equations for the motion of a free rigid body in terms of Euler angles are quite disgusting, so we will not show them here. However, we will use the Lagrange equations to explore the motion of the free rigid body.</p>
@@ -746,8 +746,8 @@ layout: chapter
 <img src="images/Art_P474.jpg" alt="art"/>
 <figcaption id="Fig_2-2"><strong>Figure 2.2</strong> The relative error in energy and in the three spatial components of the angular momentum versus time. It is interesting to note that the energy error is one of the three falling curves.</figcaption>
 </figure>
-</section>
-<section title="Qualitative Features of Free Rigid Body Motion">
+
+
 <h3 class="level3" id="h3_2-8-2"><a href="toc.html#Rh3_2-8-2"><strong>2.8.2 Qualitative Features of Free Rigid Body Motion</strong></a></h3>
 
 <p class="noindent">The evolution of the components of the angular momentum on the principal axes has a remarkable property. For almost every initial condition the body components of the angular momentum periodically trace a simple closed curve.</p>
@@ -790,10 +790,10 @@ layout: chapter
 <p>Before moving on, we can make some further physical deductions. Suppose a freely rotating body is subject to some sort of internal friction that dissipates energy but conserves the angular momentum. For example, real bodies flex as they spin. If the spin axis moves with respect to the body then the flexing changes with time, and this changing distortion converts kinetic energy of rotation into heat. Internal processes do not change the total angular momentum of the system. If we hold the magnitude of the angular momentum fixed but gradually decrease the energy, then the curve of intersection on which the system moves gradually deforms. For a given angular momentum there is a lower limit on the energy: the energy cannot be so low that there are no intersections. For this lowest energy the intersection of the angular momentum sphere and the energy ellipsoid is a pair of points on the axis of maximum moment of inertia. With energy dissipation, a freely rotating physical body eventually ends up with the lowest energy consistent with the given angular momentum, which is rotation about the principal axis with the largest moment of inertia (typically the shortest physical axis).</p>
 
 <p>Thus, we expect that given enough time all freely rotating physical bodies will end up rotating about the axis of largest moment of inertia. You can demonstrate this to your satisfaction by twirling a small bottle containing some viscous fluid, such as correction fluid. What you will find is that, whatever spin you try to put <a id="p151"></a>on the bottle, it will reorient itself so that the axis of the largest moment of inertia is aligned with the spin axis. Remarkably, this is very nearly true of almost every body in the solar system for which there is enough information to decide. The deviations from principal axis rotation for the Earth are tiny: the angle between the angular momentum vector and the <em>&#x0109;</em> axis for the Earth is less than one arc-second.<sup><a class="footnote_link" href="#endnote_10" id="endnote_ref_10">10</a></sup> In fact, the evidence is that all of the planets, the Moon and all the other natural satellites, and almost all of the asteroids rotate very nearly about the largest moment of inertia. We have deduced that this is to be expected using an elementary argument. There are exceptions. Comets typically do not rotate about the largest moment. As they are heated by the sun, material spews out from localized jets, and the back reaction from these jets changes the rotation state. Among the natural satellites, the only known exception is Saturn's satellite Hyperion, which is tumbling chaotically. Hyperion is especially out of round and subject to strong gravitational torques from Saturn.</p>
-</section>
-</section>
-</section>
-<section title="Euler's Equations">
+
+
+
+
 <h1 class="level1" id="h1-12a"><a href="toc.html#Rh1-12a"><strong>2.9&#160;&#160;&#160;Euler's Equations</strong></a></h1>
 
 <p class="noindent">For a free rigid body we have seen that the components of the angular momentum on the principal axes comprise a self-contained dynamical system: the variation of the principal axis components depends only on the principal axis components. Here we derive equations that govern the evolution of these components.</p>
@@ -862,7 +862,7 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_2-12"><strong>Exercise  2.12:</strong></p>
 
 <p class="noindent">Fill in the details of the derivation of equation (<a href="chapter002.html#disp_2.73">2.73</a>). You may want to use the computer to help with the algebra.</p>
-<section title="Euler's equations for forced rigid bodies">
+
 <h2 class="level2"><strong>Euler's equations for forced rigid bodies</strong></h2>
 
 <p class="noindent">Euler's equations were derived for a free rigid body. In general, we must be able to deal with external forcing. How do we do this? First, we derive expressions for the vector torque. Then we include the vector torque in the Euler equations.</p>
@@ -918,9 +918,9 @@ layout: chapter
 <a id="p157"></a>
 
 <p class="noindent1-topa"><strong>b.</strong> A free bicycle wheel rolls on a horizontal surface. If it starts to tilt, the torque from gravity will cause the wheel to turn. Which way will it turn? The reasoning that applied to part <strong>a</strong> does not directly apply to the rolling bicycle wheel, which is not a holonomic system. However, it is interesting to think about whether the behavior of the two systems is related.</p>
-</section>
-</section>
-<section title="Axisymmetric Tops">
+
+
+
 <h1 class="level1" id="h1-12b"><a href="toc.html#Rh1-12b"><strong>2.10&#160;&#160;&#160;Axisymmetric Tops</strong></a></h1>
 
 <p class="noindent">We have all played with a top at one time or another. For the purposes of analysis we will consider an idealized top that does not wander around. Thus, an ideal top is a rotating rigid body, one point of which is fixed in space. Furthermore, the center of mass of the top is not at the fixed point, which is the center of rotation, and there is a uniform gravitational acceleration.</p>
@@ -1044,15 +1044,15 @@ layout: chapter
 <p class="noindent1-topa"><strong>d.</strong> The Newtonian rule is that the rate of change of the angular momentum is the torque. Assume the top is spinning so fast that the angular momentum is nearly the same as the angular momentum of rotation about the symmetry axis. By equating the rate of change of this vector angular momentum to the gravitational torque on the center of mass develop an approximate formula for the precession rate.</p>
 
 <p class="noindent1-topa"><strong>e.</strong> Numerically integrate the top to check your deductions.</p>
-</section>
-<section title="Spin-Orbit Coupling">
+
+
 <h1 class="level1" id="h1-12c"><a href="toc.html#Rh1-12c"><strong>2.11&#160;&#160;&#160;Spin-Orbit Coupling</strong></a></h1>
 
 <p class="noindent1-top">The rotation of planets and natural satellites is affected by the gravitational forces from other celestial bodies. As an extended application of the Lagrangian method for forced rigid bodies, we consider the rotation of celestial objects subject to gravitational forces.</p>
 
 <p>We first develop the form of the potential energy for the gravitational interaction of an extended body with an external point mass. With this potential energy and the usual rigid-body kinetic energy we can form Lagrangians that model a number of systems. We will take an initial look at the rotation of the Moon and Mercury; later, after we have developed more tools, we will return to study these systems.</p>
-<section>
-<section title="Development of the Potential Energy">
+
+
 <h3 class="level3" id="h3_2-11-1"><a href="toc.html#Rh3_2-11-1"><strong>2.11.1 Development of the Potential Energy</strong></a></h3>
 
 <p class="noindent">The first task is to develop convenient expressions for the gravitational potential energy of the interaction of a rigid body with a distant point mass. A rigid body can be thought of as made of a large number of mass elements, subject to rigid coordinate constraints. We have seen that the kinetic energy of a rigid body is conveniently expressed in terms of the moments of inertia of the body and the angular velocity vector, which in turn can be represented in terms of a suitable set of generalized coordinates. The potential energy can be developed in a similar manner. We first represent the potential energy in terms of moments of the mass distribution and later introduce generalized coordinates as particular parameters of the potential energy.</p>
@@ -1124,8 +1124,8 @@ layout: chapter
 
 <p class="eqtext"><epub:switch id="mathmlSwitch687"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mo>=</mo><msup><mrow><mrow><mo>(</mo><mrow><mi>cos</mi><msub><mi>&#x03B8;</mi><mi>a</mi></msub></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mi>A</mi><mo>+</mo><msup><mrow><mrow><mo>(</mo><mrow><mi>cos</mi><msub><mi>&#x03B8;</mi><mi>b</mi></msub></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mi>B</mi><mo>+</mo><msup><mrow><mrow><mo>(</mo><mrow><mi>cos</mi><msub><mi>&#x03B8;</mi><mi>c</mi></msub></mrow><mo>)</mo></mrow></mrow><mn>2</mn></msup><mi>C</mi><mo>.</mo></mrow></math></epub:case></epub:switch></p>
 <a id="p170"></a>
-</section>
-<section title="Rotation of the Moon and Hyperion">
+
+
 <h3 class="level3" id="h3_2-11-2"><a href="toc.html#Rh3_2-11-2"><strong>2.11.2 Rotation of the Moon and Hyperion</strong></a></h3>
 
 <p class="noindent">The approximation to the potential energy that we have derived can be used for a number of different problems. It can be used to investigate the effect of oblateness on the motion of an artificial satellite about the Earth, or to incorporate the effect of planetary oblateness on the evolution of the orbits of natural satellites, such as the Moon or the Galilean satellites of Jupiter. However, as the principal application here, we will use it to investigate the rotational dynamics of natural satellites and planets.</p>
@@ -1210,8 +1210,8 @@ layout: chapter
 <img src="images/Art_P550.jpg" alt="art"/>
 <figcaption id="Fig_2-13"><strong>Figure 2.13</strong> The angle <em>&#x03B8;</em> &#x2212; <em>f</em> versus time for 50 orbit periods. The ordinate scale is &#x00B1;<em>&#x03C0;</em> radian. The out-of-roundness parameter is large <em>&#x03F5;</em> &#x003D; 0.89, with an orbital eccentricity of <em>e</em> &#x003D; 0.1. The system is strongly driven. The rotation is apparently chaotic.</figcaption>
 </figure>
-</section>
-<section title="Spin-Orbit Resonances">
+
+
 <h3 class="level3" id="h3_2-11-3"><a href="toc.html#Rh3_2-11-3"><strong>2.11.3 Spin-Orbit Resonances</strong></a></h3>
 
 <p class="noindent">Consider the motion of the Moon in synchronous rotation. We have seen that if we give the Moon a kick so that it is not exactly pointing one face to the Earth, then the face will oscillate back and forth relative to the direction to the Earth. If we give it a really big kick, then instead of oscillating it will spin relative to the direction to the Earth. How do we understand this?</p>
@@ -1288,10 +1288,10 @@ layout: chapter
 <p class="eqtext" id="disp_2.122"><epub:switch id="mathmlSwitch717"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mo>&#x0394;</mo><mover accent='true'><mi>&#x03C6;</mi><mo>&#x02D9;</mo></mover><mo>=</mo><mi>n</mi><mi mathvariant="italic">&#x03F5;</mi><msqrt><mrow><mfrac><mrow><mn>7</mn><mi>e</mi></mrow><mn>2</mn></mfrac><mo>.</mo></mrow></msqrt></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mn>2.122</mn></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">This gives the approximate range of rotation rate over which Mercury can oscillate stably in the 3:2 resonance.</p>
-</section>
-</section>
-</section>
-<section title="Nonsingular Coordinates and Quaternions">
+
+
+
+
 <h1 class="level1" id="h1-12d"><a href="toc.html#Rh1-12d"><strong>2.12&#160;&#160;&#160;Nonsingular Coordinates and Quaternions</strong></a></h1>
 
 <p class="noindent">The Euler angles provide a convenient way to parameterize the orientation of a rigid body. However, the equations of motion derived for them have singularities. Though we can avoid the singularities by using other Euler-like combinations with different <a id="p182"></a>singularities, this kludge is not very satisfying. Let's brainstorm a bit and see if we can come up with something better.</p>
@@ -1432,7 +1432,7 @@ layout: chapter
 <p class="noindent">where <strong>1</strong> is the 4 &#x00D7; 4 unit matrix.</p>
 
 <p>If we forget that these are matrices, and just use the algebraic properties of <strong>i</strong>, <strong>j</strong>, and <strong>k</strong> we get the &#x201C;imaginary number&#x201D; representation invented by Hamilton.</p>
-<section title="Composition of rotations">
+
 <h2 class="level2"><strong>Composition of rotations</strong></h2>
 
 <p class="noindent">What is the quaternion that represents the composition of two rotations?</p>
@@ -1474,7 +1474,7 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_2-19"><strong>Exercise  2.19: Quaternions</strong></p>
 
 <p class="noindent">Verify equations (<a href="chapter002.html#disp_2.129">2.129</a>) and (<a href="chapter002.html#disp_2.130">2.130</a>) using only the algebraic properties given in equation (<a href="chapter002.html#disp_2.127">2.127</a>).</p>
-<section title="Motion in Terms of Quaternions">
+
 <h3 class="level3" id="h3_2-12-1"><a href="toc.html#Rh3_2-12-1"><strong>2.12.1 Motion in Terms of Quaternions</strong></a></h3>
 
 <p class="noindent">Quaternions give us nice coordinates that do not suffer from the singularities of Euler angles. So we can make use of them to compute motions of a rigid body without needing to worry about the singularities.</p>
@@ -1566,10 +1566,10 @@ layout: chapter
 {% endhighlight %}</div>
 
 <p class="noindent"><a href="#Fig_2-15">Figure 2.15</a> shows the relative errors in the energy and the spatial components of the angular momentum that arise in this integration. It is interesting to note that the errors incurred by integrating using Euler angles and quaternions are about a factor of ten smaller than the ones that appear when the coordinates are Euler angles.</p>
-</section>
-</section>
-</section>
-<section title="Summary">
+
+
+
+
 <h1 class="level1" id="h1-13"><a href="toc.html#Rh1-13"><strong>2.13&#160;&#160;&#160;Summary</strong></a></h1>
 
 <p class="noindent">A rigid body is an example of a mechanical system with constraints. Thus, in a sense this chapter on rigid bodies was nothing but an extended example of the application of the ideas developed in the first chapter. The equations of motion are just the Lagrange equations.</p>
@@ -1590,8 +1590,8 @@ layout: chapter
 <p>For an axisymmetric top with uniform gravitational acceleration, the potential energy is exactly the potential energy due to elevation of the center of mass. Aspects of the motion of the top <a id="p193"></a>are deduced from the conserved quantities. Euler angles are just the right thing for this problem.</p>
 
 <p>For other problems, such as the rotational motion of an out-of-round satellite near a planet, the potential energy cannot be written in finite terms, and judicious approximations must be made. The essential character of such diverse systems as the rotation of the Moon, Hyperion, and Mercury are captured by a simple model problem.</p>
-</section>
-<section title="Projects">
+
+
 <h1 class="level1" id="h1-14"><a href="toc.html#Rh1-14"><strong>2.14&#160;&#160;&#160;Projects</strong></a></h1>
 
 <p class="noindent1-top-exe" id="Exe_2-20"><strong>Exercise  2.20: Free rigid body</strong></p>
@@ -1666,4 +1666,4 @@ layout: chapter
 
 <p class="ntx" id="endnote_24"><a epub:type="noteref" href="#endnote_ref_24"><sup>24</sup></a>We could incorporate external torques by using the augmented Euler's equations (<a href="chapter002.html#disp_2.83">2.83</a>).</p>
 <a id="p194"></a>
-</section>
+

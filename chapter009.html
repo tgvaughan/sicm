@@ -29,7 +29,7 @@ layout: appendix
 <p>We often want to manipulate aggregate quantities, such as the collection of all of the rectangular coordinates of a collection of particles, without explicitly manipulating the component parts. Tensor arithmetic provides a traditional way of manipulating aggregate objects: Indices label the parts; conventions, such as the summation convention, are introduced to manipulate the indices. We introduce a <em>tuple arithmetic</em> as an alternative way of manipulating aggregate quantities that usually lets us avoid labeling the parts with indices. Tuple arithmetic is inspired by tensor arithmetic but it is more general: not all of the components of a tuple need to be of the same size or type.</p>
 
 <p>The mathematical notation is in one-to-one correspondence with expressions of the computer language <em>Scheme</em> [<a href="bibliography.html#bib_24">24</a>]. Scheme is based on the <em>&#x03BB;</em>-calculus [<a href="bibliography.html#bib_13">13</a>] and directly supports the manipulation of functions. We augment Scheme with symbolic, numerical, <a id="p510"></a>and generic features to support our applications. For a simple introduction to Scheme, see the Scheme appendix. The correspondence between the mathematical notation and Scheme requires that mathematical expressions be unambiguous and self-contained. Scheme provides immediate feedback in verification of mathematical deductions and facilitates the exploration of the behavior of systems.</p>
-<section title="Functions">
+
 <h2 class="level2"><strong>Functions</strong></h2>
 
 <p class="noindent">The value of the function <em>f</em>, given the argument <em>x</em>, is written <em>f</em>(<em>x</em>). The expression <em>f</em>(<em>x</em>) denotes the value of the function at the given argument; when we wish to denote the function we write just <em>f</em>. Functions may take several arguments. For example, we may have the function that gives the Euclidean distance between two points in the plane given by their rectangular coordinates:</p>
@@ -79,8 +79,8 @@ layout: appendix
 {% endhighlight %}</div><div class="result">{% highlight scheme %}
 7.274379414605454
 {% endhighlight %}</div>
-</section>
-<section title="Symbolic values">
+
+
 <h2 class="level2"><strong>Symbolic values</strong></h2>
 
 <p class="noindent">As in usual mathematical notation, arithmetic is extended to allow the use of symbols that represent unknown or incompletely specified mathematical objects. These symbols are manipulated as if they had values of a known type. By default, a Scheme symbol is assumed to represent a real number. So the expression <span class="font1">'a</span> is a literal Scheme symbol that represents an unspecified real number:</p>
@@ -119,8 +119,8 @@ layout: appendix
 <p class="noindent">We may use such a literal function anywhere that an explicit function of the same type may be used.</p>
 
 <p>There is a whole language for describing the type of a literal function in terms of the number of arguments, the types of the arguments, and the types of the values. Here we describe a function that maps pairs of real numbers to real numbers with the expression <span class="font1">(-&#x003E; (X Real Real) Real)</span>. Later we will introduce structured arguments and values and show extensions of literal functions to handle these.</p>
-</section>
-<section title="Tuples">
+
+
 <h2 class="level2"><strong>Tuples</strong></h2>
 
 <p class="noindent">There are two kinds of tuples: <em>up</em> tuples and <em>down</em> tuples. We write tuples as ordered lists of their components; a tuple is delimited by parentheses if it is an up tuple and by square brackets if it is a down tuple. For example, the up tuple <em>v</em> of velocity components <em>v</em><sup>0</sup>, <em>v</em><sup>1</sup>, and <em>v</em><sup>2</sup> is</p>
@@ -236,8 +236,8 @@ b
 
 
 <p class="noindent">Multiplication of tuples that represent linear transformations is associative but generally not commutative, just as the composition of the transformations is associative but not generally commutative.</p>
-</section>
-<section title="Derivatives">
+
+
 <h2 class="level2"><strong>Derivatives</strong></h2>
 
 <p class="noindent">The derivative of a function <em>f</em> is a function, denoted by <em>Df</em>. Our notational convention is that <em>D</em> is a high-precedence operator. Thus <em>D</em> operates on the adjacent function before any other application occurs: <em>Df</em>(<em>x</em>) is the same as (<em>Df</em>)(<em>x</em>). Higher-order derivatives are described by exponentiating the derivative operator. Thus the <em>n</em>th derivative of a function <em>f</em> is notated as <em>D<sup>n</sup>f</em>.</p>
@@ -291,8 +291,8 @@ b
 (+ (((expt D 2) f) x) (* -1 (f x)))
 {% endhighlight %}</div>
 <a id="p518"></a>
-</section>
-<section title="Derivatives of functions of multiple arguments">
+
+
 <h2 class="level2"><strong>Derivatives of functions of multiple arguments</strong></h2>
 
 <p class="noindent">The derivative generalizes to functions that take multiple arguments. The derivative of a real-valued function of multiple arguments is an object whose contraction with the tuple of increments in the arguments gives a linear approximation to the increment in the function's value.</p>
@@ -401,8 +401,8 @@ b
   (up (((partial 2 0) H) (up t (up x y) (down p_x p_y)))
       (((partial 2 1) H) (up t (up x y) (down p_x p_y)))))
 {% endhighlight %}</div>
-</section>
-<section title="Structured results">
+
+
 <h2 class="level2"><strong>Structured results</strong></h2>
 
 <p class="noindent">Some functions produce structured outputs. A function whose output is a tuple is equivalent to a tuple of component functions each of which produces one component of the output tuple.</p>
@@ -516,4 +516,4 @@ b
 
 <p class="ntx" id="endnote_3"><a epub:type="noteref" href="#endnote_ref_3"><sup>3</sup></a>Partial derivative operators such as <span class="font1">(partial 2)</span> are operators, so <span class="font1">(expt (partial 1) 2)</span> is a second partial derivative.</p>
 <a id="p524"></a>
-</section>
+

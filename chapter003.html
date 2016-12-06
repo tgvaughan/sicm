@@ -41,7 +41,7 @@ layout: chapter
 <p>The Lagrangian formulation of mechanics has provided the means to investigate the motion of complicated mechanical systems. We have found that dynamical systems exhibit a bewildering variety of possible motions. The motion is sometimes rather simple and sometimes very complicated. Sometimes the evolution is very sensitive to the initial conditions, and sometimes it is not. And sometimes there are orbits that maintain resonance relationships with a drive. Consider the periodically driven pendulum: it can behave more or less as an undriven pendulum with extra wiggles, it can move in a strongly chaotic manner, or it can move in resonance with the drive, oscillating once for every two cycles of the drive or looping around once per drive cycle. Or consider the Moon. The Moon rotates synchronously with its orbital motion, always pointing roughly the same face to the Earth. However, Mercury rotates three times every two times it circles the Sun, and Hyperion rotates chaotically.</p>
 
 <p>How can we make sense of this? How do we put the possible motions of these systems in relation to one another? What other <a id="p197"></a>motions are possible? The Hamiltonian formulation of dynamics provides a convenient framework in which the possible motions may be placed and understood. We will be able to see the range of stable resonance motions and the range of states reached by chaotic trajectories, and discover other unsuspected possible motions. So the Hamiltonian formulation gives us much more than the stated goal of expressing the system derivative in terms of potentially conserved quantities.</p>
-<section title="Hamilton's Equations">
+
 <h1 class="level1" id="h1-15"><a href="toc.html#Rh1-15"><strong>3.1&#160;&#160;&#160;Hamilton's Equations</strong></a></h1>
 
 <p class="noindent">The momenta are given by momentum state functions of the time, the coordinates, and the velocities.<sup><a class="footnote_link" href="#endnote_1" id="endnote_ref_1">1</a></sup> Locally, we can find inverse functions that give the velocities in terms of the time, the coordinates, and the momenta. We can use this inverse function to represent the state in terms of the coordinates and momenta rather than the coordinates and velocities. The equations of motion when recast in terms of coordinates and momenta are called <em>Hamilton's canonical equations</em>.</p>
@@ -134,7 +134,7 @@ layout: chapter
 <p class="noindent">The Hamiltonian has the same value as the energy function <em>&#x2130;</em> (see equation <a href="chapter001.html#disp_1.142">1.142</a>), except that the velocities are expressed in terms of time, coordinates, and momenta by <epub:switch id="mathmlSwitch780"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant='script'>V</mi></math></epub:case></epub:switch>:</p>
 
 <p class="eqtext" id="disp_3.20"><epub:switch id="mathmlSwitch781"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>&#x2130;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi mathvariant='script'>V</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>3.20</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></math></epub:case></epub:switch></p>
-<section title="Illustration">
+
 <h2 class="level2"><strong>Illustration</strong></h2>
 
 <p class="noindent">Let's try something simple: the motion of a particle of mass <em>m</em> with potential energy <em>V</em> (<em>x</em>, <em>y</em>). A Lagrangian is</p>
@@ -170,8 +170,8 @@ layout: chapter
 
 <p class="noindent">For the pendulum with a sliding support (see <a href="chapter001.html#Exe_1-20">exercise 1.20</a>), derive a Hamiltonian and Hamilton's equations.</p>
 <a id="p202"></a>
-</section>
-<section title="Hamiltonian state">
+
+
 <h2 class="level2"><strong>Hamiltonian state</strong></h2>
 
 <p class="noindent">Given a coordinate path <em>q</em> and a Lagrangian <em>L</em>, the corresponding momentum path <em>p</em> is given by equation (<a href="chapter003.html#disp_3.2">3.2</a>). Equation (<a href="chapter003.html#disp_3.17">3.17</a>) expresses the same relationship in terms of the corresponding Hamiltonian <em>H</em>. That these relations are valid for any path, whether or not it is a realizable path, allows us to abstract to arbitrary velocity and momentum at a moment. At a moment, the momentum <em>p</em> for the state tuple (<em>t</em>, <em>q</em>, <em>v</em>) is <em>p</em> &#x003D; &#x2202;<sub>2</sub><em>L</em>(<em>t</em>, <em>q</em>, <em>v</em>). We also have <em>v</em> &#x003D; &#x2202;<sub>2</sub><em>H</em>(<em>t</em>, <em>q</em>, <em>p</em>). In the Lagrangian formulation the state of the system at a moment can be specified by the local state tuple (<em>t</em>, <em>q</em>, <em>v</em>) of time, generalized coordinates, and generalized velocities. Lagrange's equations determine a unique path emanating from this state. In the Hamiltonian formulation the state can be specified by the tuple (<em>t</em>, <em>q</em>, <em>p</em>) of time, generalized coordinates, and generalized momenta. Hamilton's equations determine a unique path emanating from this state. The Lagrangian state tuple (<em>t</em>, <em>q</em>, <em>v</em>) encodes exactly the same information as the Hamiltonian state tuple (<em>t</em>, <em>q</em>, <em>p</em>); we need a Lagrangian or a Hamiltonian to relate them. The two formulations are equivalent in that the same coordinate path emanates from them for equivalent initial states.</p>
@@ -189,8 +189,8 @@ layout: chapter
 <p class="noindent">The Hamiltonian state tuple is not uniquely determined by the path <em>q</em> because it depends upon our choice of Lagrangian, which is not unique.</p>
 
 <p>The 2<em>n</em>-dimensional space whose elements are labeled by the <em>n</em> generalized coordinates <em>q<sup>i</sup></em> and the <em>n</em> generalized momenta <em>p<sub>i</sub></em> is called the <em>phase space</em>. The components of the generalized coordinates and momenta are collectively called the <em>phase-space components</em>.<sup><a class="footnote_link" href="#endnote_8" id="endnote_ref_8">8</a></sup> The dynamical state of the system is completely specified by the phase-space state tuple (<em>t</em>, <em>q</em>, <em>p</em>), given a Lagrangian or Hamiltonian to provide the map between velocities and momenta.</p>
-</section>
-<section title="Computing Hamilton's equations">
+
+
 <h2 class="level2"><strong>Computing Hamilton's equations</strong></h2>
 
 <p class="noindent">Hamilton's equations are a system of first-order ordinary differential equations. A procedural formulation of Lagrange's equations as a first-order system was presented in <a href="chapter001.html#h1-6b">section 1.7</a>. The following formulation of Hamilton's equations is analogous:</p>
@@ -249,7 +249,7 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_3-3"><strong>Exercise  3.3: Computing Hamilton's equations</strong></p>
 
 <p class="noindent">Check your answers to <a href="chapter003.html#Exe_3-1">exercise 3.1</a> with the <span class="font1">Hamilton-equations</span> procedure.</p>
-<section title="The Legendre Transformation">
+
 <h3 class="level3" id="h3_3-1-1"><a href="toc.html#Rh3_3-1-1"><strong>3.1.1 The Legendre Transformation</strong></a></h3>
 
 <p class="noindent">The Legendre transformation abstracts a key part of the process of transforming from the Lagrangian to the Hamiltonian formulation of mechanics&#x2014;the replacement of functional dependence on generalized velocities with functional dependence on generalized momenta. The momentum state function is defined as a partial derivative of the Lagrangian, a real-valued function of time, coordinates, and velocities. The Legendre transformation provides an inverse that gives the velocities in terms of the momenta: we are able to write the velocities as a partial derivative of a different real-valued function of time, coordinates, and momenta.<sup><a class="footnote_link" href="#endnote_9" id="endnote_ref_9">9</a></sup></p>
@@ -303,9 +303,9 @@ layout: chapter
 
 <p class="noindent">with constant <em>C</em>. The requirement for <em>G</em> depends only on <em>DG</em> so we can choose to define <em>G</em> with <em>C</em> &#x003D; 0.</p>
 <a id="p208"></a>
-</section>
-</section>
-<section title="Legendre transformations with passive arguments">
+
+
+
 <h2 class="level2"><strong>Legendre transformations with passive arguments</strong></h2>
 
 <p class="noindent">Let <em>F</em> be a real-valued function of two arguments and</p>
@@ -385,8 +385,8 @@ layout: chapter
 
 <p class="noindent1-topa"><strong>c.</strong> <em>F</em> (<em>x</em>, <em>y</em>, <em>&#x1E8B;</em>, <em>&#x1E8F;</em>) &#x003D; <em>x&#x1E8B;</em><sup>2</sup> &#x002B; 3<em>&#x1E8B;&#x1E8F;</em> &#x002B; <em>y&#x1E8F;</em><sup>2</sup>, with <em>&#x1E8B;</em> and <em>&#x1E8F;</em> active.</p>
 <a id="p210"></a>
-</section>
-<section title="Hamilton's equations from the Legendre transformation">
+
+
 <h2 class="level2"><strong>Hamilton's equations from the Legendre transformation</strong></h2>
 
 <p class="noindent">We can use the Legendre transformation with the Lagrangian playing the role of <em>F</em> and with the generalized velocity slot playing the role of the active argument. The Hamiltonian plays the role of <em>G</em> with the momentum slot active. The coordinate and time slots are passive arguments.</p>
@@ -449,8 +449,8 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_3-5"><strong>Exercise  3.5: Conservation of the Hamiltonian</strong></p>
 
 <p class="noindent">Using Hamilton's equations, show directly that the Hamiltonian is a conserved quantity if it has no explicit time dependence.</p>
-</section>
-<section title="Legendre transforms of quadratic functions">
+
+
 <h2 class="level2"><strong>Legendre transforms of quadratic functions</strong></h2>
 
 <p class="noindent">We cannot implement the Legendre transform in general because it involves finding the functional inverse of an arbitrary function. However, many physical systems can be described by Lagrangians that are quadratic forms in the generalized velocities. For such functions the generalized momenta are linear functions of the generalized velocities, and thus explicitly invertible.</p>
@@ -471,8 +471,8 @@ layout: chapter
 <p class="noindent">and we can use this to compute the value of the function <em>G</em>:</p>
 
 <p class="eqtext" id="disp_3.66"><epub:switch id="mathmlSwitch844"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>G</mi><mo stretchy='false'>(</mo><mi>w</mi><mo stretchy='false'>)</mo><mo>=</mo><mi>w</mi><mi mathvariant='script'>V</mi><mo stretchy='false'>(</mo><mi>w</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>F</mi><mo stretchy='false'>(</mo><mi mathvariant='script'>V</mi><mo stretchy='false'>(</mo><mi>w</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>3.66</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
-</section>
-<section title="Computing Hamiltonians">
+
+
 <h2 class="level2"><strong>Computing Hamiltonians</strong></h2>
 
 <p class="noindent">We implement the Legendre transform for quadratic functions by the procedure<sup><a class="footnote_link" href="#endnote_13" id="endnote_ref_13">13</a></sup></p>
@@ -557,7 +557,7 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_3-7"><strong>Exercise  3.7: An ellipsoidal bowl</strong></p>
 
 <p class="noindent">Consider a point particle of mass <em>m</em> constrained to move in a bowl and acted upon by a uniform gravitational acceleration <em>g</em>. The bowl <a id="p215"></a>is ellipsoidal, with height <em>z</em> &#x003D; <em>ax</em><sup>2</sup> &#x002B; <em>by</em><sup>2</sup>. Make a Hamiltonian for this system. Can you make any immediate deductions about this system?</p>
-<section title="Hamilton's Equations from the Action Principle">
+
 <h3 class="level3" id="h3_3-1-2"><a href="toc.html#Rh3_3-1-2"><strong>3.1.2 Hamilton's Equations from the Action Principle</strong></a></h3>
 
 <p class="noindent">The previous two derivations of Hamilton's equations made use of the Lagrange equations. Hamilton's equations can also be derived directly from the action principle.</p>
@@ -617,8 +617,8 @@ layout: chapter
 <p class="eqtext" id="disp_3.78"><epub:switch id="mathmlSwitch862"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>p</mi><mo>=</mo><mo>&#x2212;</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>,</mo><mtext>&#x2009;</mtext><mi>p</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>3.78</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">which is the &#x201C;dynamical&#x201D; Hamilton equation.<sup><a class="footnote_link" href="#endnote_16" id="endnote_ref_16">16</a></sup></p>
-</section>
-<section title="A Wiring Diagram">
+
+
 <h3 class="level3" id="h3_3-1-3"><a href="toc.html#Rh3_3-1-3"><strong>3.1.3 A Wiring Diagram</strong></a></h3>
 
 <p class="noindent"><a href="#Fig_3-3">Figure 3.3</a> shows a summary of the functional relationship between the Lagrangian and the Hamiltonian descriptions of a dynamical system. The diagram shows a &#x201C;circuit&#x201D; interconnecting some &#x201C;devices&#x201D; with &#x201C;wires.&#x201D; The devices represent the mathematical functions that relate the quantities on their terminals. The wires represent identifications of the quantities on the terminals that they connect. For example, there is a box that represents the Lagrangian function. Given values <em>t</em>, <em>q</em>, and <epub:switch id="mathmlSwitch863"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></epub:case></epub:switch>, the value of the Lagrangian <epub:switch id="mathmlSwitch864"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>L</mi><mrow><mo>(</mo><mrow><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch> is on the terminal labeled <em>L</em>, which is wired to an addend terminal of an adder. Other terminals of the Lagrangian carry the values of the partial derivatives of the Lagrangian function.</p>
@@ -626,10 +626,10 @@ layout: chapter
 <p>The upper part of the diagram summarizes the relationship of the Hamiltonian to the Lagrangian. For example, the sum of the values on the terminals <em>L</em> of the Lagrangian and <em>H</em> of the Hamiltonian is the product of the value on the <epub:switch id="mathmlSwitch865"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></epub:case></epub:switch> terminal of the Lagrangian and the value on the <em>p</em> terminal of the Hamiltonian. This is the active part of the Legendre transform. The passive variables are related by the corresponding partial derivatives being negations of each other. In the lower part of the diagram the equations of motion are indicated by the presence of the integrators, relating the dynamical quantities to their time derivatives.</p>
 
 <p>One can use this diagram to help understand the underlying unity of the Lagrangian and Hamiltonian formulations of mechanics. Lagrange's equations are just the connection of the <em>&#x1E57;</em> wire to the &#x2202;<sub>1</sub><em>L</em> terminal of the Lagrangian device. One of Hamilton's equations is just the connection of the <em>&#x1E57;</em> wire (through the negation <a id="p218"></a>device) to the &#x2202;<sub>1</sub><em>H</em> terminal of the Hamiltonian device. The other is just the connection of the <epub:switch id="mathmlSwitch866"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover></math></epub:case></epub:switch> wire to the &#x2202;<sub>2</sub><em>H</em> terminal of the Hamiltonian device. We see that the two formulations are consistent. One does not have to abandon any part of the Lagrangian formulation to use the Hamiltonian formulation: there are deductions that can be made using both simultaneously.</p>
-</section>
-</section>
-</section>
-<section title="Poisson Brackets">
+
+
+
+
 <h1 class="level1" id="h1-16"><a href="toc.html#Rh1-16"><strong>3.2&#160;&#160;&#160;Poisson Brackets</strong></a></h1>
 
 <p class="noindent">Here we introduce the Poisson bracket, in terms of which Hamilton's equations have an elegant and symmetric expression. Consider a function <em>F</em> of time, coordinates, and momenta. The value of <em>F</em> along the path <em>&#x03C3;</em>(<em>t</em>) &#x003D; (<em>t</em>, <em>q</em>(<em>t</em>), <em>p</em>(<em>t</em>)) is (<em>F</em> &#x2218; <em>&#x03C3;</em>)(<em>t</em>) &#x003D; <em>F</em> (<em>t</em>, <em>q</em>(<em>t</em>), <em>p</em>(<em>t</em>)). The time derivative of <em>F</em> &#x2218; <em>&#x03C3;</em> is</p>
@@ -675,7 +675,7 @@ layout: chapter
 <p>The Poisson bracket of any function with itself is zero, so we recover the conservation of energy for a system that has no explicit time dependence:</p>
 
 <p class="eqtext" id="disp_3.87"><epub:switch id="mathmlSwitch875"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>E</mi><mo>=</mo><mi>D</mi><mo stretchy='false'>(</mo><mi>H</mi><mo>&#x2218;</mo><mi>&#x03C3;</mi><mo stretchy='false'>)</mo><mo>=</mo><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>H</mi><mo>+</mo><mo>&#x007B;</mo><mi>H</mi><mo>,</mo><mi>H</mi><mo>&#x007D;</mo><mo stretchy='false'>)</mo><mo>&#x2218;</mo><mi>&#x03C3;</mi><mo>=</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>H</mi><mo>&#x2218;</mo><mi>&#x03C3;</mi><mo>.</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>3.87</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
-<section title="Properties of the Poisson bracket">
+
 <h2 class="level2"><strong>Properties of the Poisson bracket</strong></h2>
 
 <p class="noindent">Let <em>F</em>, <em>G</em>, and <em>H</em> be functions of time, position, and momentum, and let <em>c</em> be independent of position and momentum.</p>
@@ -725,8 +725,8 @@ layout: chapter
 {% endhighlight %}</div>
 
 <p class="noindent">The residual is zero, so the Jacobi identity is satisfied for any three phase-space state functions with two degrees of freedom.</p>
-</section>
-<section title="Poisson brackets of conserved quantities">
+
+
 <h2 class="level2"><strong>Poisson brackets of conserved quantities</strong></h2>
 
 <p class="noindent">The Poisson bracket of conserved quantities is conserved. Let <em>F</em> and <em>G</em> be time-independent phase-space state functions: &#x2202;<sub>0</sub><em>F</em> &#x003D; &#x2202;<sub>0</sub><em>G</em> &#x003D; 0. If <em>F</em> and <em>G</em> are conserved by the evolution under <em>H</em> then</p>
@@ -743,9 +743,9 @@ layout: chapter
 <p class="eqtext" id="disp_3.96"><epub:switch id="mathmlSwitch884"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><mo stretchy='false'>(</mo><mo>&#x007B;</mo><mi>F</mi><mo>,</mo><mtext>&#x2009;</mtext><mi>G</mi><mo>&#x007D;</mo><mo>&#x2218;</mo><mi>&#x03C3;</mi><mo stretchy='false'>)</mo><mo>=</mo><mn>0</mn><mo>,</mo></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>3.96</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">so &#x007B;<em>F, G</em>&#x007D; is a conserved quantity. The Poisson bracket of two conserved quantities is also a conserved quantity.</p>
-</section>
-</section>
-<section title="One Degree of Freedom">
+
+
+
 <h1 class="level1" id="h1-17"><a href="toc.html#Rh1-17"><strong>3.3&#160;&#160;&#160;One Degree of Freedom</strong></a></h1>
 
 <p class="noindent">The solutions of time-independent systems with one degree of freedom can be found by quadrature. Such systems conserve the Hamiltonian: the Hamiltonian has a constant value on each realizable trajectory. We can use this constraint to eliminate the momentum in favor of the coordinate, obtaining the single equation <em>Dq</em>(<em>t</em>) &#x003D; <em>f</em>(<em>q</em>(<em>t</em>)).<sup><a class="footnote_link" href="#endnote_18" id="endnote_ref_18">18</a></sup></p>
@@ -759,8 +759,8 @@ layout: chapter
 
 <p>These orbit types are all illustrated by the prototypical phase plane of the pendulum (see <a href="chapter003.html#Fig_3-4">figure 3.4</a>). The solutions lie on contours of the Hamiltonian. There are three regions of the phase plane; in each the motion is qualitatively different. In the central region the pendulum oscillates; above this there is a region in which the pendulum circulates in one direction; below the oscillation region the pendulum circulates in the other direction. In the center of the oscillation region there is a stable equilibrium, at which the pendulum is hanging motionless. At the boundaries between these regions, the pendulum is asymptotic to the unstable equilibrium, at which the pendulum is standing upright.<sup><a class="footnote_link" href="#endnote_19" id="endnote_ref_19">19</a></sup> There are two asymptotic trajectories, corresponding to the two ways the equilibrium can be approached. Each of these is also asymptotic to the unstable equilibrium going backward in time.</p>
 <a id="p224"></a>
-</section>
-<section title="Phase Space Reduction">
+
+
 <h1 class="level1" id="h1-18"><a href="toc.html#Rh1-18"><strong>3.4&#160;&#160;&#160;Phase Space Reduction</strong></a></h1>
 
 <p class="noindent">Our motivation for the development of Hamilton's equations was to focus attention on the quantities that can be conserved&#x2014;the momenta and the energy. In the Hamiltonian formulation the generalized configuration coordinates and the conjugate momenta comprise the state of the system at a given time. We know from the Lagrangian formulation that if the Lagrangian does not depend on some coordinate then the conjugate momentum is conserved. This is also true in the Hamiltonian formulation, but there is a distinct advantage to the Hamiltonian formulation. In the Lagrangian formulation the knowledge of the conserved momentum does not lead immediately to any simplification of the problem, but in the Hamiltonian formulation the fact that momenta are conserved gives an immediate reduction in the dimension of the system to be solved. In fact, if a coordinate does not appear in the Hamiltonian then the dimension of the system of coupled equations that remain to be solved is reduced by two&#x2014;the coordinate does not appear and the conjugate momentum is constant.</p>
@@ -789,7 +789,7 @@ layout: chapter
 
 <p>So if there is a continuous symmetry it will probably be to our advantage to choose a coordinate system that explicitly incorporates the symmetry, making the Hamiltonian independent of a coordinate. Then the dimension of the phase space of the coupled system will be reduced by two for every coordinate that does not appear in the Hamiltonian.<sup><a class="footnote_link" href="#endnote_22" id="endnote_ref_22">22</a></sup></p>
 <a id="p227"></a>
-<section title="Motion in a central potential">
+
 <h2 class="level2"><strong>Motion in a central potential</strong></h2>
 
 <p class="noindent">Consider the motion of a particle of mass <em>m</em> in a central potential. A natural choice for generalized coordinates that reflects the symmetry is polar coordinates. A Lagrangian is (equation <a href="chapter001.html#disp_1.69">1.69</a>):</p>
@@ -835,8 +835,8 @@ layout: chapter
 
 <p class="eqtext"><epub:switch id="mathmlSwitch892"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mrow><mrow><mo>(</mo><mrow><mtable><mtr><mtd><mrow><mi>D</mi><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msub><mi>p</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mi>m</mi></mfrac></mrow></mtd></mtr><mtr><mtd><mrow><mi>D</mi><mi>&#x03C6;</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow><mrow><mi>m</mi><msup><mrow><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow></mfrac></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mo>[</mo><mrow><mtable><mtr><mtd><mrow><mi>D</mi><msub><mi>p</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo>+</mo><mi>D</mi><mi>V</mi><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mfrac><mrow><msup><mrow><mo stretchy='false'>(</mo><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>2</mn></msup></mrow><mrow><mi>m</mi><msup><mrow><mo stretchy='false'>(</mo><mi>r</mi><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mn>3</mn></msup></mrow></mfrac></mrow></mtd></mtr><mtr><mtd><mrow><mi>D</mi><msub><mi>p</mi><mi>&#x03C6;</mi></msub><mo stretchy='false'>(</mo><mi>t</mi><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow><mo>]</mo></mrow></mrow></mtd></mtr></mtable></mrow><mo>)</mo></mrow></mrow></math></epub:case></epub:switch></p>
 </div>
-</section>
-<section title="Axisymmetric top">
+
+
 <h2 class="level2"><strong>Axisymmetric top</strong></h2>
 
 <p class="noindent">We reconsider the axisymmetric top (see <a href="chapter002.html#h1-12b">section 2.10</a>) from the Hamiltonian point of view. Recall that a top is a rotating rigid body, one point of which is fixed in space. The center of mass is not at the fixed point, and there is a uniform gravitational field. An axisymmetric top is a top with an axis of symmetry. We consider here an axisymmetric top with the fixed point on the symmetry axis.</p>
@@ -918,7 +918,7 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_3-8"><strong>Exercise  3.8: Sleeping top</strong></p>
 
 <p class="noindent">Verify that the critical angular velocity above which an axisymmetric top can sleep is given by equation (<a href="chapter003.html#disp_3.105">3.105</a>).</p>
-<section title="Lagrangian Reduction">
+
 <h3 class="level3" id="h3_3-4-1"><a href="toc.html#Rh3_3-4-1"><strong>3.4.1 Lagrangian Reduction</strong></a></h3>
 
 <p class="noindent">Suppose there are cyclic coordinates. In the Hamiltonian formulation, the equations of motion for the coordinates and momenta for the other degrees of freedom form a self-contained subsystem in <a id="p234"></a>which the momenta conjugate to the cyclic coordinates are parameters. We can form a Lagrangian for this subsystem by performing a Legendre transform of the reduced Hamiltonian. Alternatively, we can start with the full Lagrangian and perform a Legendre transform for only those coordinates that are cyclic. The equations of motion are Hamilton's equations for those variables that are transformed and Lagrange's equations for the others. The momenta conjugate to the cyclic coordinates are conserved and can be treated as parameters in the Lagrangian for the remaining coordinates.</p>
@@ -986,10 +986,10 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_3-9"><strong>Exercise  3.9: Routhian equations of motion</strong></p>
 
 <p class="noindent">Verify that the equations of motion are given by equations (<a href="chapter003.html#disp_3.114">3.114</a>&#x2013;<a href="chapter003.html#disp_3.116">3.116</a>).</p>
-</section>
-</section>
-</section>
-<section title="Phase Space Evolution">
+
+
+
+
 <h1 class="level1" id="h1-19"><a href="toc.html#Rh1-19"><strong>3.5&#160;&#160;&#160;Phase Space Evolution</strong></a></h1>
 
 <p class="noindent">Most problems do not have enough symmetries to be reducible to quadrature. It is natural to turn to numerical integration to learn more about the evolution of such systems. The evolution in phase space may be found by numerical integration of Hamilton's equations.</p>
@@ -1098,8 +1098,8 @@ layout: chapter
 </table>
 
 <p class="noindent">The trajectory sometimes oscillates and sometimes circulates. The patterns in the phase plane are reminiscent of the trajectories in the phase plane of the undriven pendulum shown in <a href="chapter003.html#Fig_3-4">figure 3.4</a> on <a href="chapter003.html#p225">page 225</a>.</p>
-<section>
-<section title="Phase-Space Description Is Not Unique">
+
+
 <h3 class="level3" id="h3_3-5-1"><a href="toc.html#Rh3_3-5-1"><strong>3.5.1 Phase-Space Description Is Not Unique</strong></a></h3>
 
 <p class="noindent">We are familiar with the fact that a given motion of a system is expressed differently in different coordinate systems: the functions that express a motion in rectangular coordinates are different from the functions that express the same motion in polar coordinates. However, in a given coordinate system the evolution of the local state tuple for particular initial conditions is unique. The generalized velocity path function is the derivative of the generalized coordinate path function. On the other hand, the coordinate system alone does not uniquely specify the phase-space description. The relationship of the momentum to the coordinates and the velocities depends on the Lagrangian, and many different Lagrangians may be used to describe the behavior of the same physical system. When two Lagrangians for the same physical system are different, the phase-space descriptions of a dynamical state are different.</p>
@@ -1114,10 +1114,10 @@ layout: chapter
 <p class="eqtext" id="disp_3.122"><epub:switch id="mathmlSwitch919"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>p</mi><mi>&#x03B8;</mi></msub><mo>=</mo><mi>m</mi><msup><mi>l</mi><mn>2</mn></msup><mover accent='true'><mi>&#x03B8;</mi><mo>&#x02D9;</mo></mover><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>3.122</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">The two momenta differ by an additive distortion that varies periodically in time and depends on <em>&#x03B8;</em>. That the phase-space descriptions are different is illustrated in <a href="chapter003.html#Fig_3-10">figure 3.10</a>. The evolution of the system is the same for each.</p>
-</section>
-</section>
-</section>
-<section title="Surfaces of Section">
+
+
+
+
 <h1 class="level1" id="h1-20"><a href="toc.html#Rh1-20"><strong>3.6&#160;&#160;&#160;Surfaces of Section</strong></a></h1>
 
 <p class="noindent">Computing the evolution of mechanical systems is just the beginning of understanding the dynamics. Typically, we want to know much more than the phase space evolution of some particular trajectory. We want to obtain a qualitative understanding of the motion. We want to know what sorts of motion are possible, and how one type relates to others. We want to abstract the essential dynamics from the myriad particular evolutions that we can calculate. Paradoxically, it turns out that by throwing away most of the calculated information about a trajectory we gain essential new information about the character of the trajectory and its relation to other trajectories.</p>
@@ -1131,8 +1131,8 @@ layout: chapter
 <a id="p241"></a>
 
 <p>The surface of section technique was put to spectacular use in the 1964 landmark paper [<a href="bibliography.html#bib_22">22</a>] by astronomers Michel H&#x00E9;non and Carl Heiles. In their numerical investigations they found that some trajectories are chaotic, whereas other trajectories are regular. An essential characteristic of the chaotic motions is that initially nearby trajectories separate exponentially with time; the separation of regular trajectories is linear.<sup><a class="footnote_link" href="#endnote_24" id="endnote_ref_24">24</a></sup> They found that these two types of trajectories are typically clustered in the phase space into regions of regular motion and regions of chaotic motion.</p>
-<section>
-<section title="Periodically Driven Systems">
+
+
 <h3 class="level3" id="h3_3-6-1"><a href="toc.html#Rh3_3-6-1"><strong>3.6.1 Periodically Driven Systems</strong></a></h3>
 
 <p class="noindent">For a periodically driven system the surface of section is a stroboscopic view of the evolution; we consider only the state of the system at the strobe times, with the period of the strobe equal to the drive period. We generate a surface of section for a periodically driven system by computing a number of trajectories and accumulating the phase-space coordinates of each trajectory whenever the drive passes through some particular phase. Let <em>T</em> be the period of the drive; then, for each trajectory, the surface of section accumulates the phase-space points (<em>q</em>(<em>t</em>), <em>p</em>(<em>t</em>)), (<em>q</em>(<em>t</em> &#x002B; <em>T</em>), <em>p</em>(<em>t</em> &#x002B; <em>T</em>)), (<em>q</em>(<em>t</em> &#x002B; 2<em>T</em>), <em>p</em>(<em>t</em> &#x002B; 2<em>T</em>)), and so on (see <a href="chapter003.html#Fig_3-11">figure 3.11</a>). For a system with a single degree of freedom we can plot the sequence of phase-space points on a <em>q</em>, <em>p</em> surface.</p>
@@ -1175,8 +1175,8 @@ layout: chapter
 </figure>
 
 <p>It is a surprising fact that if we shake the support of a pendulum fast enough then the pendulum can stand upright. This phenomenon can be visualized with the surface of section. <a href="#Fig_3-14">Figure 3.14</a> shows a surface of section when the drive frequency is large compared to the natural frequency. That the pendulum can stand upright is indicated by the existence of a regular island at the inverted equilibrium. The surface of section shows that the pendulum can remain upright for a range of initial displacements from the vertical.</p>
-</section>
-<section title="Computing Stroboscopic Surfaces of Section">
+
+
 <h3 class="level3" id="h3_3-6-2"><a href="toc.html#Rh3_3-6-2"><strong>3.6.2 Computing Stroboscopic Surfaces of Section</strong></a></h3>
 
 <p class="noindent">We already have the system derivative for the driven pendulum, and we can use it to make a parametric map for constructing Poincar&#x00E9; sections:</p>
@@ -1219,14 +1219,14 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_3-10"><strong>Exercise  3.10: Fun with phase portraits</strong></p>
 
 <p class="noindent">Choose some one-degree-of-freedom dynamical system that you are curious about and that can be driven with a periodic drive. Construct a map of the sort we made for the driven pendulum and do some exploring. Are there chaotic regions? Are all of the chaotic regions connected together?</p>
-</section>
-<section title="Autonomous Systems">
+
+
 <h3 class="level3" id="h3_3-6-3"><a href="toc.html#Rh3_3-6-3"><strong>3.6.3 Autonomous Systems</strong></a></h3>
 
 <p class="noindent">We illustrated the use of Poincar&#x00E9; sections to visualize qualitative features of the phase space for a one-degree-of-freedom system with periodic drive, but the idea is more general. Here we show how H&#x00E9;non and Heiles [<a href="bibliography.html#bib_22">22</a>] used the surface of section to elucidate the properties of an autonomous system.</p>
-</section>
-</section>
-<section title="H&#x00E9;non&#x2013;Heiles background">
+
+
+
 <h2 class="level2"><strong>H&#x00E9;non&#x2013;Heiles background</strong></h2>
 
 <p class="noindent">In the early '60s astronomers were up against a wall. Careful measurements of the motion of nearby stars in the galaxy had allowed particular statistical averages of the observed motions to be determined, and the averages were not at all what was expected. In particular, what was calculated was the velocity dispersion: the root mean square deviation of the velocity from the average. We use angle brackets to denote an average over nearby stars: &#x003C; <em>w</em> &#x003E; is the average value of some quantity <em>w</em> for the stars in the ensemble. <a id="p249"></a>The average velocity is <epub:switch id="mathmlSwitch921"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>&#x003C;</mo><mtext>&#x2009;</mtext><mover accent='true'><mover accent='true'><mi>x</mi><mo stretchy='false'>&#x2192;</mo></mover><mo>&#x02D9;</mo></mover><mtext>&#x2009;</mtext><mo>&#x003E;</mo></mrow></math></epub:case></epub:switch>. The components of the velocity dispersion are</p>
@@ -1287,8 +1287,8 @@ layout: chapter
 <p class="eqtext" id="disp_3.134"><epub:switch id="mathmlSwitch937"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>&#x03C3;</mi><mi>r</mi></msub><mo>&#x2248;</mo><mn>2</mn><msub><mi>&#x03C3;</mi><mi>z</mi></msub><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>3.134</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p>H&#x00E9;non and Heiles [<a href="bibliography.html#bib_22">22</a>] approached this problem differently from others at the time. Rather than improving the models for the motion of stars in the galaxy, they concentrated on what turned out to be the central issue: What is the qualitative nature of motion? The problem had nothing to do with galactic dynamics in particular, but with the problem of motion. They abstracted the dynamical problem from the particulars of galactic dynamics.</p>
-</section>
-<section title="The system of H&#x00E9;non and Heiles">
+
+
 <h2 class="level2"><strong>The system of H&#x00E9;non and Heiles</strong></h2>
 
 <p class="noindent">We have seen that the study of the motion of a point with mass <em>m</em> and an axisymmetric potential energy reduces to the study of a reduced two-degree-of-freedom problem in <em>r</em> and <em>z</em> with potential energy <em>U</em>(<em>r</em>, <em>z</em>). H&#x00E9;non and Heiles chose to study the motion in a two-degree-of-freedom system with a particularly simple potential energy so that the dynamics would be clear and the calculation uncluttered. The H&#x00E9;non&#x2013;Heiles Hamiltonian is</p>
@@ -1334,8 +1334,8 @@ layout: chapter
 <img src="images/Art_P759.jpg" alt="art"/>
 <figcaption id="Fig_3-17"><strong>Figure 3.17</strong> Another trajectory of the H&#x00E9;non&#x2013;Heiles Hamiltonian projected on the (<em>x</em>, <em>y</em>) plane. The energy is <em>E</em> &#x003D; 1/8.</figcaption>
 </figure>
-</section>
-<section title="Interpretation">
+
+
 <h2 class="level2"><strong>Interpretation</strong></h2>
 
 <p class="noindent">On the section, the energy is</p>
@@ -1381,7 +1381,7 @@ layout: chapter
 
 <p>The section for a particular energy summarizes the dynamics at that energy. A sequence of sections for various energies shows how the major features change with the energy. We have already noticed that at low energy the section is dominated by regular orbits, at intermediate energy the section is divided more or less equally into regular and chaotic regions, and at high energies the section is dominated by a single chaotic zone. We will see that such transitions from regular to chaotic behavior are quite common; similar phenomena occur in widely different systems, though the details depend on the system under study.</p>
 <a id="p261"></a>
-<section title="Computing H&#x00E9;non&#x2013;Heiles Surfaces of Section">
+
 <h3 class="level3" id="h3_3-6-4"><a href="toc.html#Rh3_3-6-4"><strong>3.6.4 Computing H&#x00E9;non&#x2013;Heiles Surfaces of Section</strong></a></h3>
 
 <p class="noindent">The following procedures implement the Poincar&#x00E9; map for the H&#x00E9;non&#x2013;Heiles system:</p>
@@ -1472,8 +1472,8 @@ layout: chapter
 (explore-map win (HHmap 0.125 0.1 1.0e-10 1.0e-12) 500)
 {% endhighlight %}</div>
 <a id="p263"></a>
-</section>
-<section title="Non-Axisymmetric Top">
+
+
 <h3 class="level3" id="h3_3-6-5"><a href="toc.html#Rh3_3-6-5"><strong>3.6.5 Non-Axisymmetric Top</strong></a></h3>
 
 <p class="noindent">We have seen that the motion of an axisymmetric top can be essentially solved. A plot of the rate of change of the tilt angle versus the tilt angle is a simple closed curve. The evolution of the other angles describing the configuration can be obtained by quadrature once the tilting motion has been solved. Now let's consider a non-axisymmetric top. A non-axisymmetric top is a top with three unequal moments of inertia. The pivot is not at the center of mass, so uniform gravity exerts a torque. We assume the line between the pivot and the center of mass is one of the principal axes, which we take to be <em>&#x0109;</em>. There are no torques about the vertical axis, so the vertical component of the angular momentum is conserved. If we write the Hamiltonian in terms of the Euler angles, the angle <em>&#x03C6;</em>, which corresponds to rotation about the vertical, does not appear. Thus the momentum conjugate to this angle is conserved. The nontrivial degrees of freedom are <em>&#x03B8;</em> and <em>&#x03C8;</em>, with their conjugate momenta.</p>
@@ -1481,10 +1481,10 @@ layout: chapter
 <p>We can make a surface of section (see <a href="chapter003.html#Fig_3-22">figure 3.22</a>) for this problem by displaying <em>p<sub>&#x03B8;</sub></em> versus <em>&#x03B8;</em> when <em>&#x03C8;</em> &#x003D; 0. There are in general two values of <em>p<sub>&#x03C8;</sub></em> possible for given values of energy and <em>p</em><sub><em>&#x03C6;</em></sub>. We plot points only if the value of <em>p<sub>&#x03C8;</sub></em> at the crossing is the larger of the two possibilities. This makes the points of the section correspond uniquely to a trajectory.</p>
 
 <p>In this section there is a large quasiperiodic island surrounding a fixed point that corresponds to the tilted equilibrium point of the awake axisymmetric top (see <a href="chapter003.html#Fig_3-7">figure 3.7</a> in <a href="chapter003.html#h1-18">section 3.4</a>). Surrounding this is a large chaotic zone that extends from <em>&#x03B8;</em> &#x003D; 0 to angles near <em>&#x03C0;</em>. If this top is placed initially near the vertical, it exhibits chaotic motion that carries it to large tilt angles. If the top is started within the quasiperiodic island, the tilt is stable.</p>
-</section>
-</section>
-</section>
-<section title="Exponential Divergence">
+
+
+
+
 <h1 class="level1" id="h1-21"><a href="toc.html#Rh1-21"><strong>3.7&#160;&#160;&#160;Exponential Divergence</strong></a></h1>
 
 <p class="noindent">H&#x00E9;non and Heiles discovered that the chaotic trajectories had remarkable sensitivity to small changes in initial conditions&#x2014;initially nearby chaotic trajectories separate roughly exponentially with time. On the other hand, regular trajectories do not exhibit this sensitivity&#x2014;initially nearby regular trajectories separate roughly linearly with time.</p>
@@ -1540,14 +1540,14 @@ layout: chapter
 
 <p>In Hamiltonian systems, the Lyapunov exponents must satisfy the following constraints. Lyapunov exponents come in pairs; for every Lyapunov exponent <em>&#x03BB;</em>, its negation &#x2212;<em>&#x03BB;</em> is also an exponent. For every conserved quantity, one of the Lyapunov exponents is zero, as is its negation. So the Lyapunov exponents can be used to check for the existence of conserved quantities. The sum of the Lyapunov exponents for a Hamiltonian system is zero, so volume elements do not grow exponentially. We will see in the next section that phase-space volume is actually conserved for Hamiltonian systems.</p>
 <a id="p268"></a>
-</section>
-<section title="Liouville's Theorem">
+
+
 <h1 class="level1" id="h1-21a"><a href="toc.html#Rh1-21a"><strong>3.8&#160;&#160;&#160;Liouville's Theorem</strong></a></h1>
 
 <p class="noindent">If an ensemble of states occupies a particular volume of phase space at one moment, then the subsequent evolution of that volume by the flow described by Hamilton's equations may distort the ensemble but does not change the volume the ensemble occupies. The fact that phase-space volume is preserved by the phase flow is called <em>Liouville's theorem</em>.</p>
 
 <p>We will first illustrate the preservation of phase-space volume with a simple example and then prove it in general.</p>
-<section title="The phase flow for the pendulum">
+
 <h2 class="level2"><strong>The phase flow for the pendulum</strong></h2>
 
 <p class="noindent">Consider an undriven pendulum described by the Hamiltonian</p>
@@ -1555,8 +1555,8 @@ layout: chapter
 <p class="eqtext" id="disp_3.146"><epub:switch id="mathmlSwitch950"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>&#x03B8;</mi><mo>,</mo><msub><mi>p</mi><mi>&#x03B8;</mi></msub><mo stretchy='false'>)</mo><mo>=</mo><mfrac><mrow><msubsup><mi>p</mi><mi>&#x03B8;</mi><mn>2</mn></msubsup></mrow><mrow><mn>2</mn><msup><mi>l</mi><mn>2</mn></msup><mi>m</mi></mrow></mfrac><mo>+</mo><mi>g</mi><mi>l</mi><mi>m</mi><mtext>&#x2009;</mtext><mi>cos</mi><mo>&#x2061;</mo><mtext>&#x2009;</mtext><mi>&#x03B8;</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>3.146</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">In <a href="chapter003.html#Fig_3-25">figure 3.25</a> we see the evolution of an elliptic region around a point on the <em>&#x03B8;</em>-axis, in the oscillation region of the pendulum. Three later positions of the region are shown. The region is stretched and sheared by the flow, but the area is preserved. After many cycles, the starting region will be stretched to be a thin layer distributed in the phase angle of the pendulum. <a href="#Fig_3-26">Figure 3.26</a> shows a similar evolution (for smaller time intervals) of a region straddling the separatrix<sup><a class="footnote_link" href="#endnote_32" id="endnote_ref_32">32</a></sup> near the unstable equilibrium point. The phase-space region rapidly stretches along the separatrix, while preserving the area. The initial conditions that start in the oscillation region (inside of the separatrix) will continue to spread into a thin ring-shaped region, while the initial conditions that start outside of the separatrix will spread into a thin region of rotation on the outside of the separatrix.</p>
-</section>
-<section title="Proof of Liouville's theorem">
+
+
 <h2 class="level2"><strong>Proof of Liouville's theorem</strong></h2>
 
 <p class="noindent">Consider a set of ordinary differential equations of the form</p>
@@ -1636,15 +1636,15 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_3-11"><strong>Exercise  3.11: Determinants and traces</strong></p>
 
 <p class="noindent">Show that equation (<a href="chapter003.html#disp_3.153">3.153</a>) is correct.</p>
-</section>
-<section title="Area preservation of stroboscopic surfaces of section">
+
+
 <h2 class="level2"><strong>Area preservation of stroboscopic surfaces of section</strong></h2>
 
 <p class="noindent">Surfaces of section for periodically driven Hamiltonian systems are area preserving if the section coordinates are the phase-space coordinate and momentum. This is an important feature of surfaces of section. It is a consequence of Liouville's theorem for one-degree-of-freedom problems.</p>
 
 <p>It is also the case that surfaces of section such as those we have used for the H&#x00E9;non&#x2013;Heiles problem are area preserving, but we are not ready to prove this yet&#x0021;</p>
-</section>
-<section title="Poincar&#x00E9; recurrence">
+
+
 <h2 class="level2"><strong>Poincar&#x00E9; recurrence</strong></h2>
 
 <p class="noindent">The <em>Poincar&#x00E9; recurrence theorem</em> is a remarkable theorem that is a trivial consequence of Liouville's theorem. Loosely, the theorem states that almost all trajectories eventually return arbitrarily close to where they started. This is true regardless of whether the trajectories are chaotic or regular.</p>
@@ -1655,13 +1655,13 @@ layout: chapter
 <p>We can prove this by considering the successive images of <em>U</em> under the time evolution. For simplicity, we restrict consideration to time evolution for a time interval &#x0394;. The map of the phase space onto itself generated by time evolution for an interval &#x0394; we call <em>C</em>. Subsequent applications of the map generate a discrete time evolution. Sets of points in phase space transform by evolving all the points in the set; the image of the set <em>U</em> is denoted <em>C</em>(<em>U</em>). Now consider the trajectory of the set <em>U</em>, that is, the sets <em>C<sup>n</sup></em>(<em>U</em>) where <em>C<sup>n</sup></em> indicates the <em>n</em>-times composition of <em>C</em>. Now there are two possibilities: either the successive images <em>C<sup>i</sup></em>(<em>U</em>) intersect or they do not. If they do not intersect, then with each iteration, a volume of <em>D</em> equal to the volume of <em>U</em> gets &#x201C;used up&#x201D; and cannot belong to the further image. But the volume of <em>D</em> is finite, so we cannot fit an infinite number of non-intersecting finite volumes into it. Therefore, after some number of iterations the images intersect. Suppose <em>C<sup>i</sup></em>(<em>U</em>) intersects with <em>C<sup>j</sup></em>(<em>U</em>), with <em>j &#x003C; i</em>, for definiteness. Then the pre-image of each must also intersect, since the pre-image of a point in the intersection belongs to both sets. Thus <em>C</em><sup><em>i</em>&#x2212;1</sup>(<em>U</em>) intersects <em>C</em><sup><em>j</em>&#x2212;1</sup>(<em>U</em>). This can be continued until finally we have that <em>C</em><sup><em>i</em>&#x2212;<em>j</em></sup>(<em>U</em>) intersects <em>U</em>. So we have proven that after <em>i</em> &#x2212; <em>j</em> iterations of the map <em>C</em> there are a set of points initially in <em>U</em> that return to the neighborhood <em>U</em>.</p>
 
 <p>So for every neighborhood of every point in the phase space there is a subneighborhood such that the trajectories emanating from all of the points in that subneighborhood return to that subneighborhood. Thus almost every trajectory returns arbitrarily close to where it started.</p>
-</section>
-<section title="The gas in the corner of the room">
+
+
 <h2 class="level2"><strong>The gas in the corner of the room</strong></h2>
 
 <p class="noindent">Suppose we have a collection of <em>N</em> classical atoms in a perfectly sealed room. The phase-space dimension of this system is 6<em>N</em>. A point in this phase space is denoted <em>z</em>. Suppose that initially all the atoms are, say, within one centimeter of one corner, with arbitrarily chosen finite velocities. This corresponds to some initial point <em>z</em><sub>0</sub> in the phase space. The phase space of the system is limited in space by the room and in momentum by energy conservation; the phase space is bounded. The recurrence theorem then says that in the neighborhood of <em>z</em><sub>0</sub> there is an initial condition of the system that returns to the neighborhood of <em>z</em><sub>0</sub> after some time. For the individual atoms this means that after some time <a id="p274"></a>all of the atoms will be found in the corner of the room again, and again, and again. Makes one wonder about the second law of thermodynamics, doesn't it?<sup><a class="footnote_link" href="#endnote_33" id="endnote_ref_33">33</a></sup></p>
-</section>
-<section title="Nonexistence of attractors in Hamiltonian systems">
+
+
 <h2 class="level2"><strong>Nonexistence of attractors in Hamiltonian systems</strong></h2>
 
 <p class="noindent">Some systems have attractors. An <em>attractor</em> is a region of phase space that gobbles volumes of trajectories. For an attractor there is some larger region, the basin of attraction, such that sets of trajectories with nonzero volume eventually end up in the attractor and never leave it. The recurrence theorem shows that Hamiltonian systems with bounded phase space do not have attractors. Consider some candidate volume in the proposed basin of attraction. The recurrence theorem guarantees that some trajectories in the candidate volume return to the volume repeatedly. Therefore, the volume is not in a basin of attraction. Attractors do not exist in Hamiltonian systems with bounded phase space.</p>
@@ -1742,9 +1742,9 @@ layout: chapter
 <p class="eqtext" id="disp_3.172"><epub:switch id="mathmlSwitch978"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><msub><mo>&#x2202;</mo><mn>0</mn></msub><mi>f</mi><mo>+</mo><mo>&#x007B;</mo><mi>f</mi><mo>,</mo><mi>H</mi><mo>&#x007D;</mo><mo>=</mo><mn>0.</mn></mrow></mtd><mtd><mrow><mo stretchy='false'>(</mo><mn>3.172</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">This linear partial differential equation governs the evolution of the density function, and thus shows how our state of knowledge evolves.</p>
-</section>
-</section>
-<section title="Standard Map">
+
+
+
 <h1 class="level1" id="h1-21b"><a href="toc.html#Rh1-21b"><strong>3.9&#160;&#160;&#160;Standard Map</strong></a></h1>
 
 <p class="noindent">We have seen that the surfaces of section for a number of different problems are qualitatively very similar. They all show two qualitatively different types of motion: regular motion and chaotic motion. They show that these types of orbits are clustered: there are regions of the surface of section that have mostly regular trajectories and other regions dominated by chaotic behavior. We have also seen a transition to large-scale chaotic behavior as some <a id="p278"></a>parameter is varied. Now we have learned that the map that takes points on a two-dimensional surface of section to new points on the surface of section is area preserving. The sole property that these maps of the section onto itself have in common (that we know of at this point) is that they preserve area. Otherwise they are quite distinct. Suppose we consider an abstract map of the section onto itself that is area preserving, without regard for whether the map is generated by some dynamical system. Do area-preserving maps typically show similar phenomena, or is the dynamical origin of the map crucial to the phenomena we have found?<sup><a class="footnote_link" href="#endnote_35" id="endnote_ref_35">35</a></sup></p>
@@ -1799,8 +1799,8 @@ layout: chapter
 
 <p class="noindent1-topa"><strong>c.</strong> Explore the phase portrait of this map for a few values of the parameter <em>&#x03B1;</em>. The map is particularly interesting for <em>&#x03B1;</em> &#x003D; 1.32 and <em>&#x03B1;</em> &#x003D; 1.2. What happens in between?</p>
 <a id="p281"></a>
-</section>
-<section title="Summary">
+
+
 <h1 class="level1" id="h1-22"><a href="toc.html#Rh1-22"><strong>3.10&#160;&#160;&#160;Summary</strong></a></h1>
 
 <p class="noindent">Lagrange's equations are a system of <em>n</em> second-order ordinary differential equations in the time, the generalized coordinates, the generalized velocities, and the generalized accelerations. Trajectories are determined by the coordinates and the velocities at a moment.</p>
@@ -1821,8 +1821,8 @@ layout: chapter
 <a id="p282"></a>
 
 <p>Surfaces of section for two-degree-of-freedom systems and for periodically driven one-degree-of-freedom systems are area preserving. Abstract area-preserving maps of a phase plane onto itself show the same division of the phase space into chaotic and regular regions as surfaces of section generated by dynamical systems. They also show transitions to large-scale chaos.</p>
-</section>
-<section title="Projects">
+
+
 <h1 class="level1" id="h1-23"><a href="toc.html#Rh1-23"><strong>3.11&#160;&#160;&#160;Projects</strong></a></h1>
 
 <p class="noindent1-top-exe" id="Exe_3-14"><strong>Exercise  3.14: Periodically driven pendulum</strong></p>
@@ -1944,4 +1944,4 @@ layout: chapter
 
 <p class="ntx" id="endnote_36"><a epub:type="noteref" href="#endnote_ref_36"><sup>36</sup></a>The standard map has been extensively studied. Early investigations were by Chirikov [<a href="bibliography.html#bib_12">12</a>] and by Taylor [<a href="bibliography.html#bib_44">44</a>], so the map is sometimes called the Chirikov&#x2013;Taylor map. Chirikov coined the term &#x201C;standard map,&#x201D; which we adopt.</p>
 <a id="p284"></a>
-</section>
+

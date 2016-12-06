@@ -39,7 +39,7 @@ layout: chapter
 <a id="p458"></a>
 
 <p>There are a number of strategies for doing this. One strategy is to seek a canonical transformation that eliminates from the Hamiltonian the terms of order <em>&#x03F5;</em> that impede solution&#x2014;this typically introduces new terms of order <em>&#x03F5;</em><sup>2</sup>. Then one seeks another canonical transformation that eliminates the terms of order <em>&#x03F5;</em><sup>2</sup> impeding solution, leaving terms of order <em>&#x03F5;</em><sup>3</sup>. We can imagine repeating this process until the part that impedes solution is of such high order in <em>&#x03F5;</em> that it can be neglected. Having reduced the problem to a solvable problem, we can reverse the sequence of transformations to find an approximate solution of the original problem. Does this process converge? How do we know we can ever neglect the remaining terms? Let's follow this path and see where it goes.</p>
-<section title="Perturbation Theory with Lie Series">
+
 <h1 class="level1" id="h1-42"><a href="toc.html#Rh1-42"><strong>7.1&#160;&#160;&#160;Perturbation Theory with Lie Series</strong></a></h1>
 
 <p class="noindent">Given a system, we look for a decomposition of the Hamiltonian in the form</p>
@@ -86,8 +86,8 @@ layout: chapter
 <p class="noindent">using the identity (<a href="chapter006.html#disp_6.111">6.111</a>). Notice that the time evolution of <em>H</em><sub>0</sub> is expressed in terms of the evolution operator <em>E</em> rather than the Lie-transform operator <em>E</em>&#x2032;, because the time must also be advanced. The power-series expansion for <epub:switch id="mathmlSwitch1760"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>E</mi><mrow><mo>&#x0394;</mo><mi>t</mi><mo>,</mo><msub><mi>H</mi><mn>0</mn></msub></mrow></msub></mrow></math></epub:case></epub:switch> is expressed in terms of <epub:switch id="mathmlSwitch1761"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>D</mi><mrow><msub><mi>H</mi><mn>0</mn></msub></mrow></msub></mrow></math></epub:case></epub:switch> rather than <epub:switch id="mathmlSwitch1762"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>L</mi><msub><mi>H</mi><mn>0</mn></msub></msub></mrow></math></epub:case></epub:switch> (see <a href="chapter006.html#disp_6.136">6.136</a>). If the Lie transform <epub:switch id="mathmlSwitch1763"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>E</mi><mrow><mi mathvariant="italic">&#x03F5;</mi><mo>,</mo><mi>W</mi></mrow><mo>&#x2032;</mo></msubsup><mo>=</mo><msup><mi>e</mi><mrow><mi mathvariant="italic">&#x03F5;</mi><msub><mi>L</mi><mi>W</mi></msub></mrow></msup></mrow></math></epub:case></epub:switch> must be evaluated by summing the series, then we must specify the order to which the sum extends.</p>
 
 <p>Assuming everything goes okay, we can imagine repeating this process to eliminate the order <em>&#x03F5;</em><sup>2</sup> terms and so on, bringing the transformed Hamiltonian as close as we like to <em>H</em><sub>0</sub>. Unfortunately, there are complications. We can understand some of these complications and how to deal with them by considering some specific applications.</p>
-</section>
-<section title="Pendulum as a Perturbed Rotor">
+
+
 <h1 class="level1" id="h1-42a"><a href="toc.html#Rh1-42a"><strong>7.2&#160;&#160;&#160;Pendulum as a Perturbed Rotor</strong></a></h1>
 
 <p class="noindent">The pendulum is a simple one-degree-of-freedom system, for which the solutions are known. If we consider the pendulum as a free rotor with the added complication of gravity, then we can carry out a perturbation step as just described to see how well it approximates the known motion of the pendulum.</p>
@@ -296,8 +296,8 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_7-1"><strong>Exercise  7.1: Symplectic residual</strong></p>
 
 <p class="noindent">For the transformation <span class="font1">(C alpha beta epsilon order)</span>, compute the residuals in the symplectic test for various orders of truncation of the Lie series.</p>
-<section>
-<section title="Higher Order">
+
+
 <h3 class="level3" id="h3_7-2-1"><a href="toc.html#Rh3_7-2-1"><strong>7.2.1 Higher Order</strong></a></h3>
 
 <p class="noindent">We can improve the perturbative solution by carrying out additional perturbation steps. The overall plan is the same as before. We perform a Lie transformation with a new generator that eliminates the desired terms from the Hamiltonian.</p>
@@ -344,8 +344,8 @@ layout: chapter
 <img src="images/Art_P1192.jpg" alt="art"/>
 <figcaption id="Fig_7-6"><strong>Figure 7.6</strong> The two-step perturbative solution is shown over a longer time. The actual solution is a closed curve in the phase plane; this perturbative solution wanders all over the place and gets worse with time.</figcaption>
 </figure>
-</section>
-<section title="Eliminating Secular Terms">
+
+
 <h3 class="level3" id="h3_7-2-2"><a href="toc.html#Rh3_7-2-2"><strong>7.2.2 Eliminating Secular Terms</strong></a></h3>
 
 <p class="noindent">A solution to the problem of secular terms was developed by Lindstedt and Poincar&#x00E9;. The goal of each perturbation step is to eliminate terms in the Hamiltonian that prevent solution. However, the term in <em>H</em>&#x2032; that led to the secular term in the generator <em>W</em>&#x2032; does not actually impede solution. So a better procedure is to leave that term in the Hamiltonian and find the generator <em>W</em>&#x2033; that eliminates only the term that is periodic in <em>&#x03B8;</em>&#x2032;. So <em>W</em>&#x2033; must satisfy</p>
@@ -382,10 +382,10 @@ layout: chapter
 <img src="images/Art_P1193.jpg" alt="art"/>
 <figcaption id="Fig_7-7"><strong>Figure 7.7</strong> The two-step perturbative solution without secular terms is compared to the actual solution. The perturbative solution is now a closed curve and is very close to the actual solution.</figcaption>
 </figure>
-</section>
-</section>
-</section>
-<section title="Many Degrees of Freedom">
+
+
+
+
 <h1 class="level1" id="h1-43"><a href="toc.html#Rh1-43"><strong>7.3&#160;&#160;&#160;Many Degrees of Freedom</strong></a></h1>
 
 <p class="noindent">Other problems are encountered in applying perturbation theory to systems with more than a single degree of freedom. Consider an <em>n</em> degrees-of-freedom Hamiltonian of the form</p>
@@ -458,8 +458,8 @@ layout: chapter
 <p class="eqtext" id="disp_7.51"><epub:switch id="mathmlSwitch1810"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable><mtr><mtd><mrow><mrow><mo>|</mo><mrow><msub><mi>A</mi><mi>k</mi></msub><mrow><mo>(</mo><mi>p</mi><mo>&#x2032;</mo><mo>)</mo></mrow></mrow><mo>|</mo></mrow><mo>&#x2264;</mo><mi>C</mi><msup><mi>e</mi><mrow><mo>&#x2212;</mo><mi>&#x03B2;</mi><msub><mrow><mrow><mo>|</mo><mi>k</mi><mo>|</mo></mrow></mrow><mo>+</mo></msub></mrow></msup><mo>,</mo></mrow></mtd><mtd><mrow><mrow><mo>(</mo><mrow><mn>7.51</mn></mrow><mo>)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">for some positive <em>&#x03B2;</em> and <em>C</em>, and where &#x007C;<em>k</em>&#x007C;<sub>&#x002B;</sub> &#x003D; &#x007C;<em>k</em><sub>0</sub>&#x007C; &#x002B; &#x007C;<em>k</em><sub>1</sub>&#x007C; &#x002B; &#x22EF;. At any stage of a perturbation approximation we can limit consideration to just those terms that are larger than a specified magnitude. The size of the excluded region corresponding to a term is of order square root of &#x007C;<em>A<sub>k</sub></em>(<em>p</em>&#x2032;)&#x007C; and the inequality (<a href="chapter007.html#disp_7.51">7.51</a>) shows that &#x007C;<em>A<sub>k</sub></em>(<em>p</em>&#x2032;)&#x007C; decreases exponentially with the order of the term.</p>
-<section>
-<section title="Driven Pendulum as a Perturbed Rotor">
+
+
 <h3 class="level3" id="h3_7-3-1"><a href="toc.html#Rh3_7-3-1"><strong>7.3.1 Driven Pendulum as a Perturbed Rotor</strong></a></h3>
 
 <p class="noindent">More concretely, consider the periodically driven pendulum. We will develop approximate solutions for the driven pendulum as a perturbed rotor.</p>
@@ -493,10 +493,10 @@ layout: chapter
 <p class="noindent">where <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; &#x2202;<sub>2,0</sub><em>H</em><sub>0</sub>(<em>&#x03C4;</em>; <em>&#x03B8;</em>, <em>t</em>; <em>p</em>, <em>p<sub>t</sub></em>) &#x003D; <em>p</em>/<em>&#x03B1;</em> is the unperturbed rotor frequency.</p>
 
 <p>The resulting approximate solution has three regions in which there are small denominators, and so three regions that are excluded from applicability of the perturbative solution. Regions of phase space for which <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) is near 0, <em>&#x03C9;</em>, and &#x2212;<em>&#x03C9;</em> are excluded. Away from these regions the perturbative solution works well, <a id="p478"></a>just as in the rotor approximation for the pendulum. Unfortunately, some of the more interesting regions of the phase space of the driven pendulum are excluded: the region in which we find the remnant of the undriven pendulum is excluded, as are the two resonance regions in which the rotation of the pendulum is synchronous with the drive. We need to develop methods for approximating these regions.</p>
-</section>
-</section>
-</section>
-<section title="Nonlinear Resonance">
+
+
+
+
 <h1 class="level1" id="h1-44"><a href="toc.html#Rh1-44"><strong>7.4&#160;&#160;&#160;Nonlinear Resonance</strong></a></h1>
 
 <p class="noindent">We can develop an approximation for an isolated resonance region as follows. We again consider Hamiltonians of the form</p>
@@ -554,8 +554,8 @@ layout: chapter
 
 
 <p>If the resonance regions are sufficiently separated, then a global solution can be constructed by splicing together such solutions for each resonance region.</p>
-<section>
-<section title="Pendulum Approximation">
+
+
 <h3 class="level3" id="h3_7-4-1"><a href="toc.html#Rh3_7-4-1"><strong>7.4.1 Pendulum Approximation</strong></a></h3>
 
 <p class="noindent">The resonance Hamiltonian (<a href="chapter007.html#disp_7.64">7.64</a>) has a single degree of freedom and is therefore solvable (reducible to quadratures). We can develop an approximate analytic solution in the vicinity of the resonance by making use of the fact that the solution is valid there. The resonance Hamiltonian can be approximated by a generalized pendulum Hamiltonian.</p>
@@ -598,9 +598,9 @@ layout: chapter
 
 <p class="eqtext" id="disp_7.73"><epub:switch id="mathmlSwitch1840"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>&#x03B1;</mi><mo>&#x2032;</mo><mo>=</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mrow><mrow><mo stretchy="true">(</mo><mrow><msubsup><mo>&#x2202;</mo><mrow><mn>2</mn><mo>,</mo><mn>0</mn></mrow><mn>2</mn></msubsup><msubsup><mi>H</mi><mrow><mi>n</mi><mo>,</mo><mn>0</mn></mrow><mo>&#x2033;</mo></msubsup><mrow><mo stretchy="true">(</mo><mrow><mi>t</mi><mo>;</mo><mi>&#x03C3;</mi><mo>,</mo><mi>&#x03B8;</mi><mo>&#x2032;</mo><mo>;</mo><msub><mo>&#x03A3;</mo><mi>n</mi></msub><mo>,</mo><mo>&#x0398;</mo><mo>&#x2032;</mo></mrow><mo stretchy="true">)</mo></mrow></mrow><mo stretchy="true">)</mo></mrow></mrow></mrow></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>&#x03B2;</mi><mo>&#x2032;</mo><mo>=</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><msubsup><mi>H</mi><mrow><mi>n</mi><mo>,</mo><mn>1</mn></mrow><mo>&#x2033;</mo></msubsup><mrow><mo stretchy="true">(</mo><mrow><mi>t</mi><mo>;</mo><mi>&#x03C3;</mi><mo>,</mo><mi>&#x03B8;</mi><mo>&#x2032;</mo><mo>;</mo><msub><mo>&#x03A3;</mo><mi>n</mi></msub><mo>,</mo><mo>&#x0398;</mo><mo>&#x2032;</mo></mrow><mo stretchy="true">)</mo></mrow><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mrow><mo stretchy="true">(</mo><mrow><mn>7.73</mn></mrow><mo stretchy="true">)</mo></mrow></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-</section>
-</section>
-<section title="Driven pendulum resonances">
+
+
+
 <h2 class="level2"><strong>Driven pendulum resonances</strong></h2>
 
 <p class="noindent">Consider the behavior of the periodically driven pendulum in the vicinity of the resonance <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; <em>&#x03C9;</em>.</p>
@@ -681,12 +681,12 @@ layout: chapter
 <figcaption id="Fig_7-11"><strong>Figure 7.11</strong> Composite surface of section (top) for the driven pendulum constructed by combining the first-order perturbative solution for the region near the resonance <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; 0 and the regions near the resonances <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; &#x00B1;<em>&#x03C9;</em>. A corresponding surface of section for the actual driven pendulum is shown below. The parameters of the system are the same as in <a href="chapter007.html#Fig_7-10">figure 7.10</a> except that <em>&#x03B3;</em> &#x003D; 5/4.</figcaption>
 </figure>
 <a id="p488"></a>
-<section title="Reading the Hamiltonian">
+
 <h3 class="level3" id="h3_7-4-2"><a href="toc.html#Rh3_7-4-2"><strong>7.4.2 Reading the Hamiltonian</strong></a></h3>
 
 <p class="noindent">The locations and widths of the primary resonance islands can often be read straight off the Hamiltonian when expressed as a Poisson series. For each term in the series for the perturbation there is a corresponding resonance island. The width of the island can often be simply computed from the coefficients in the Hamiltonian. So just by looking at the Hamiltonian we can get a good idea of what sort of behavior we will see on the surface of section. For instance, in the driven pendulum, the Hamiltonian (<a href="chapter007.html#disp_7.54">7.54</a>) has three terms. We could anticipate, just from looking at the Hamiltonian, that three main resonance islands are to be found on the surface of section. We know that these islands will be located where the resonant combination of angles is slow. So for the periodically driven pendulum the resonances occur near <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; <em>&#x03C9;</em>, <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; 0, and <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; &#x2212;<em>&#x03C9;</em>. The approximate widths of the resonance islands can be computed with a simple calculation.</p>
-</section>
-<section title="Resonance-Overlap Criterion">
+
+
 <h3 class="level3" id="h3_7-4-3"><a href="toc.html#Rh3_7-4-3"><strong>7.4.3 Resonance-Overlap Criterion</strong></a></h3>
 
 <p class="noindent">As the size of the drive increases, the chaotic zones near the separatrices get larger and then merge into a large chaotic sea. The resonance-overlap criterion gives an analytic estimate of when this occurs. The basic idea is to compare the sum of the widths of neighboring resonances with their separation. If the sum of the half-widths is greater than the separation, then the resonance-overlap criterion predicts there will be large-scale chaotic behavior near the overlapping resonances. In the case of the periodically driven pendulum, the half-width of the <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; 0 resonance is <epub:switch id="mathmlSwitch1850"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><msqrt><mrow><mi>&#x03B1;</mi><mi>&#x03B2;</mi></mrow></msqrt></mrow></math></epub:case></epub:switch> and the half-width of the <em>&#x03C9;<sub>r</sub></em>(<em>p</em>) &#x003D; <em>&#x03C9;</em> resonance is <epub:switch id="mathmlSwitch1851"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><msqrt><mrow><mi>&#x03B1;</mi><mi>&#x03B3;</mi></mrow></msqrt></mrow></math></epub:case></epub:switch> (see <a href="chapter007.html#Fig_7-12">figure 7.12</a>). The separation of the resonances is <em>&#x03B1;&#x03C9;</em>. So resonance overlap occurs if</p>
@@ -702,8 +702,8 @@ layout: chapter
 </figure>
 
 <p>A way of thinking about why the resonance-overlap criterion usually overestimates the strength required to get large-scale chaos is that other effects must be taken into account. For instance, as the drive is increased second-order resonances appear between the primary resonances; these resonances take up space and so resonance overlap occurs for smaller drive than would be expected by considering the primary resonances alone. Also, the chaotic zones at each separatrix have area that must be accounted for.</p>
-</section>
-<section title="Higher-Order Perturbation Theory">
+
+
 <h3 class="level3" id="h3_7-4-4"><a href="toc.html#Rh3_7-4-4"><strong>7.4.4 Higher-Order Perturbation Theory</strong></a></h3>
 
 <p class="noindent">As the drive is increased, a variety of new islands emerge, which are not evident in the original Hamiltonian. To find approximations for motion in these regions we can use higher-order perturbation theory. The basic plan is the same as before. At any stage the Hamiltonian (which is perhaps a result of earlier stages of perturbation theory) is expressed as a Poisson series (a multiple-angle Fourier series). The terms that are not resonant in a region of interest are eliminated by a Lie transformation. The remaining resonance terms involve only a single combination of angle and are thus solvable by making a canonical transformation to resonance coordinates. We complete the solution and transform back to the original coordinates.</p>
@@ -735,8 +735,8 @@ layout: chapter
 </figure>
 
 <p class="noindent">A surface of section in the appropriate resonance region using this solution is shown in <a href="chapter007.html#Fig_7-13">figure 7.13</a>. Comparing this to the actual surface of section (<a href="chapter007.html#Fig_7-10">figure 7.10</a>), we see that the approximate solution provides a good representation of this resonance motion.</p>
-</section>
-<section title="Stability of the Inverted Vertical Equilibrium">
+
+
 <h3 class="level3" id="h3_7-4-5"><a href="toc.html#Rh3_7-4-5"><strong>7.4.5 Stability of the Inverted Vertical Equilibrium</strong></a></h3>
 
 <p class="noindent">As a second application, we use second-order perturbation theory to investigate the inverted vertical equilibrium of the periodically driven pendulum.</p>
@@ -776,10 +776,10 @@ layout: chapter
 <img src="images/Art_P1201.jpg" alt="art"/>
 <figcaption id="Fig_7-15"><strong>Figure 7.15</strong> Stability of the inverted vertical equilibrium over a range of parameters. The full parameter space displayed was sampled over a regular grid. The dots indicate parameters for which the actual driven pendulum is linearly stable; nothing is plotted in the case of instability. The diagonal line is the locus of points satisfying <epub:switch id="mathmlSwitch1865"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo>(</mo><mrow><mrow><mi>&#x03C9;</mi><mo>/</mo><mrow><msub><mi>&#x03C9;</mi><mi>s</mi></msub></mrow></mrow></mrow><mo>)</mo></mrow><mrow><mo>(</mo><mrow><mrow><mi>A</mi><mo>/</mo><mi>l</mi></mrow></mrow><mo>)</mo></mrow><mo>=</mo><msqrt><mn>2</mn></msqrt></mrow></math></epub:case></epub:switch>.</figcaption>
 </figure>
-</section>
-</section>
-</section>
-<section title="Summary">
+
+
+
+
 <h1 class="level1" id="h1-45"><a href="toc.html#Rh1-45"><strong>7.5&#160;&#160;&#160;Summary</strong></a></h1>
 
 <p class="noindent">The goal of perturbation theory is to relate aspects of the motions of a given system to those of a nearby solvable system. Perturbation <a id="p495"></a>theory can be used to predict features such as the size and location of the resonance islands and chaotic zones.</p>
@@ -796,8 +796,8 @@ layout: chapter
 <a id="p496"></a>
 
 <p>Higher-order perturbative descriptions can be developed to describe islands that do not correspond to particular terms in the Hamiltonian, secondary resonances, bifurcations, and so on. The theory can be extended to describe as much detail as one wishes.</p>
-</section>
-<section title="Projects">
+
+
 <h1 class="level1" id="h1-46"><a href="toc.html#Rh1-46"><strong>7.6&#160;&#160;&#160;Projects</strong></a></h1>
 
 <p class="noindent1-top-exe" id="Exe_7-4"><strong>Exercise  7.4: Periodically driven pendulum</strong></p>
@@ -828,4 +828,4 @@ layout: chapter
 <p class="ntx" id="endnote_3"><a epub:type="noteref" href="#endnote_ref_3"><sup>3</sup></a>Any linearly independent combination will be acceptable here.</p>
 
 <p class="ntx" id="endnote_4"><a epub:type="noteref" href="#endnote_ref_4"><sup>4</sup></a>For <em>W</em><sub>&#x002B;</sub> see equations <a href="chapter007.html#disp_7.74">7.74</a> and <a href="chapter007.html#disp_7.75">7.75</a>; for the general relationship between a term in the generator and the coordinate transformation generated see equations <a href="chapter007.html#disp_7.48">7.48</a> and <a href="chapter007.html#disp_7.49">7.49</a>.</p>
-</section>
+

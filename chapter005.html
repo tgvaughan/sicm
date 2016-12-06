@@ -34,7 +34,7 @@ layout: chapter
 <a id="p336"></a>
 
 <p>A <em>canonical transformation</em> is a phase-space coordinate transformation and an associated transformation of the Hamiltonian such that the dynamics given by Hamilton's equations in the two representations describe the same evolution of the system.</p>
-<section title="Point Transformations">
+
 <h1 class="level1" id="h1-29"><a href="toc.html#Rh1-29"><strong>5.1&#160;&#160;&#160;Point Transformations</strong></a></h1>
 
 <p class="noindent">A <em>point transformation</em> is a canonical transformation that extends a possibly time-dependent transformation of the configuration coordinates to a phase-space transformation. For example, one might want to reexpress motion in terms of polar coordinates, given a description in terms of rectangular coordinates. In order to extend a transformation of the configuration coordinates to a phase-space transformation we must specify how the momenta and Hamiltonian are transformed.</p>
@@ -105,7 +105,7 @@ layout: chapter
 
 <p class="noindent">For time-independent coordinate transformations the Hamiltonian transforms by composition with the associated phase-space transformation. We can also see this from the general relationship (<a href="chapter005.html#disp_5.7">5.7</a>) between the Hamiltonians.</p>
 <a id="p339"></a>
-<section title="Implementing point transformations">
+
 <h2 class="level2"><strong>Implementing point transformations</strong></h2>
 
 <p class="noindent">The procedure <span class="font1">F-&#x003E;CH</span> takes a procedure <span class="font1">F</span> implementing a transformation of configuration coordinates and returns a procedure implementing a transformation of phase-space coordinates:<sup><a class="footnote_link" href="#endnote_4" id="endnote_ref_4">4</a></sup></p>
@@ -214,9 +214,9 @@ layout: chapter
 
 <p class="noindent">Let <em>q</em> and <em>q</em>&#x2032; be rectangular coordinates that are related by a rotation <em>R</em>: <em>q</em> &#x003D; <em>Rq</em>&#x2032;. The Lagrangian for the system is <epub:switch id="mathmlSwitch1081"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>v</mi><mo stretchy='false'>)</mo><mo>=</mo><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup><mo>&#x2212;</mo><mi>V</mi><mo stretchy='false'>(</mo><mi>q</mi><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch>. Find the corresponding phase-space transformation <em>C</em><sub>H</sub>. Compare the transformation equations for the rectangular components of the momenta to those for the rectangular components of the velocities. Are you surprised, considering equation (<a href="chapter005.html#disp_5.10">5.10</a>)?</p>
 <a id="p342"></a>
-</section>
-</section>
-<section title="General Canonical Transformations">
+
+
+
 <h1 class="level1" id="h1-29a"><a href="toc.html#Rh1-29a"><strong>5.2&#160;&#160;&#160;General Canonical Transformations</strong></a></h1>
 
 <p class="noindent">Although we have shown how to extend any coordinate transformation of the configuration space to a canonical transformation, there are other ways to construct canonical transformations. How do we know if we have a canonical transformation? To test if a transformation is canonical we may use the fact that if the transformation is canonical, then Hamilton's equations of motion for the transformed system and the original system will be equivalent.</p>
@@ -281,7 +281,7 @@ layout: chapter
 <p>For time-independent point transformations an appropriate Hamiltonian can be formed by composition with the corresponding phase-space transformation. For more general canonical transformations, we will see that if a transformation is independent of time, a suitable Hamiltonian for the transformed system can be obtained by composing the Hamiltonian with the phase-space transformation. In this case we obtain a more specific formula:</p>
 
 <p class="eqtext" id="disp_5.21"><epub:switch id="mathmlSwitch1090"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msub><mi>D</mi><mi>s</mi></msub><mi>H</mi><mo>&#x2218;</mo><msub><mi>C</mi><mtext>H</mtext></msub><mo>=</mo><mi>D</mi><msub><mi>C</mi><mtext>H</mtext></msub><mo>&#x00B7;</mo><msub><mi>D</mi><mi>s</mi></msub><mo stretchy='false'>(</mo><mi>H</mi><mo>&#x2218;</mo><msub><mi>C</mi><mtext>H</mtext></msub><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.21</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
-<section title="Polar-canonical transformation">
+
 <h2 class="level2"><strong>Polar-canonical transformation</strong></h2>
 
 <p class="noindent">The analysis of the harmonic oscillator illustrates the use of a general canonical transformation in the solution of a problem. The harmonic oscillator is a mathematical model of a simple spring-mass system. A Hamiltonian for a spring-mass system with mass <em>m</em> and spring constant <em>k</em> is</p>
@@ -403,7 +403,7 @@ layout: chapter
 <p class="noindent1-topa"><strong>c.</strong> Show that the identity transformation is canonical.</p>
 
 <p class="noindent1-topa"><strong>d.</strong> Show that there is an inverse for a canonical transformation and the inverse is canonical.</p>
-<section title="Time-Dependent Transformations">
+
 <h3 class="level3" id="h3_5-2-1"><a href="toc.html#Rh3_5-2-1"><strong>5.2.1 Time-Dependent Transformations</strong></a></h3>
 
 <p class="noindent">We have seen that for time-dependent point transformations the Hamiltonian appropriate for the transformed system is the original Hamiltonian composed with the transformation and augmented with an additive correction. Here we find a similar decomposition for general time-dependent canonical transformations.</p>
@@ -464,9 +464,9 @@ layout: chapter
      (* (D C)
         (+ T-func (D-phase-space K)))))
 {% endhighlight %}</div>
-</section>
-</section>
-<section title="Rotating coordinates">
+
+
+
 <h2 class="level2"><strong>Rotating coordinates</strong></h2>
 
 <p class="noindent">Consider a time-dependent transformation to uniformly rotating coordinates:<sup><a class="footnote_link" href="#endnote_10" id="endnote_ref_10">10</a></sup></p>
@@ -540,7 +540,7 @@ layout: chapter
 
 <p class="noindent">The residuals are zero so this <em>K</em> correctly completes the canonical transformation.</p>
 <a id="p350"></a>
-<section title="Abstracting the Canonical Condition">
+
 <h3 class="level3" id="h3_5-2-2"><a href="toc.html#Rh3_5-2-2"><strong>5.2.2 Abstracting the Canonical Condition</strong></a></h3>
 
 <p class="noindent">We just saw that for the case of rotating coordinates the truth of equation (<a href="chapter005.html#disp_5.41">5.41</a>) did not depend on the details of the Hamiltonian. If <em>C</em><sub>H</sub> satisfies equation (<a href="chapter005.html#disp_5.41">5.41</a>) for any <em>H</em> then we can derive a condition on <em>C</em><sub>H</sub> that is independent of <em>H</em>.</p>
@@ -597,9 +597,9 @@ layout: chapter
 {% endhighlight %}</div>
 
 <p>This condition, equation (<a href="chapter005.html#disp_5.52">5.52</a>), on <em>C</em><sub>H</sub>, called the <em>canonical condition</em>, does not depend on the details of <em>H</em>. This is a remarkable result: we can decide whether a phase-space transformation preserves the dynamics of Hamilton's equations without further reference to the details of the dynamical system. If the transformation is time dependent we can add a correction to the Hamiltonian to make it canonical.</p>
-</section>
-</section>
-<section title="Examples">
+
+
+
 <h2 class="level2"><strong>Examples</strong></h2>
 
 <p class="noindent">The polar-canonical transformation satisfies the canonical condition:</p>
@@ -626,8 +626,8 @@ layout: chapter
 {% endhighlight %}</div>
 
 <p class="noindent">So this transformation does not satisfy the canonical condition.</p>
-</section>
-<section title="Canonical condition and Poisson brackets">
+
+
 <h2 class="level2"><strong>Canonical condition and Poisson brackets</strong></h2>
 
 <p class="noindent">The canonical condition can be written simply in terms of Poisson brackets.</p>
@@ -668,8 +668,8 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_5-5"><strong>Exercise  5.5: Poisson bracket conditions</strong></p>
 
 <p class="noindent">Fill in the details to show that the canonical condition (<a href="chapter005.html#disp_5.52">5.52</a>) is equivalent to the fundamental Poisson brackets (<a href="chapter005.html#disp_5.56">5.56</a>) and that the condition on <em>K</em> (<a href="chapter005.html#disp_5.42">5.42</a>) is equivalent to the Poisson bracket condition on <em>K</em> (<a href="chapter005.html#disp_5.58">5.58</a>).</p>
-</section>
-<section title="Symplectic matrices">
+
+
 <h2 class="level2"><strong>Symplectic matrices</strong></h2>
 
 <p class="noindent">It is convenient to reformulate the canonical condition in terms of matrices. We can obtain a matrix representation of a structure with the utility <span class="font1">s-&#x003E;m</span> that takes a structure that represents a multiplier of a linear transformation and returns a matrix representation of the multiplier. The procedure <span class="font1">s-&#x003E;m</span> takes three arguments: <span class="font1">(s-&#x003E;m ls A rs)</span>. The <span class="font1">ls</span> and <span class="font1">rs</span> specify the shapes of objects that multiply <span class="font1">A</span> on the left and right to give a numerical value. These specify the basis. So, the matrix representation of the multiplier corresponding to <epub:switch id="mathmlSwitch1138"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>J</mi><mo>&#x02DC;</mo></mover></math></epub:case></epub:switch> is</p>
@@ -817,13 +817,13 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_5-9"><strong>Exercise  5.9: Whittaker transform</strong></p>
 
 <p class="noindent">Shew that the transformation <em>q</em> &#x003D; log ((sin <em>p</em>&#x2032;)/<em>q</em>&#x2032;) with <em>p</em> &#x003D; <em>q</em>&#x2032; cot <em>p</em>&#x2032; is symplectic.</p>
-</section>
-</section>
-<section title="Invariants of Canonical Transformations">
+
+
+
 <h1 class="level1" id="h1-30"><a href="toc.html#Rh1-30"><strong>5.3&#160;&#160;&#160;Invariants of Canonical Transformations</strong></a></h1>
 
 <p class="noindent">Canonical transformations allow us to change the phase-space coordinate system that we use to express a problem, preserving the form of Hamilton's equations. If we solve Hamilton's equations in one phase-space coordinate system we can use the transformation to carry the solution to the other coordinate system. What other properties are preserved by a canonical transformation?</p>
-<section title="Noninvariance of pv">
+
 <h2 class="level2"><strong>Noninvariance of</strong> <em>pv</em></h2>
 
 <p class="noindent">We noted in equation (<a href="chapter005.html#disp_5.10">5.10</a>) that point transformations that are canonical extensions of time-independent coordinate transformations preserve the value of <em>pv</em>. This does not hold for more general canonical transformations. We can illustrate this with the polar-canonical transformation. Along corresponding paths <em>x</em>, <em>p<sub>x</sub></em> and <em>&#x03B8;</em>, <em>I</em></p>
@@ -842,8 +842,8 @@ layout: chapter
 
 <p class="noindent">In general this is not zero. So the product <em>pv</em> is not necessarily invariant under general canonical transformations.</p>
 <a id="p358"></a>
-</section>
-<section title="Invariance of Poisson brackets">
+
+
 <h2 class="level2"><strong>Invariance of Poisson brackets</strong></h2>
 
 <p class="noindent">Here is a remarkable fact: the composition of the Poisson bracket of two phase-space state functions with a canonical transformation is the same as the Poisson bracket of each of the two functions composed with the transformation separately. Loosely speaking, the Poisson bracket is invariant under canonical phase-space transformations.</p>
@@ -856,8 +856,8 @@ layout: chapter
 <p class="noindent">where the fact that <em>C</em><sub>H</sub> satisfies equation (<a href="chapter005.html#disp_5.41">5.41</a>) was used in the middle. This is</p>
 
 <p class="eqtext" id="disp_5.67"><epub:switch id="mathmlSwitch1151"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mo>&#x007B;</mo><mi>f</mi><mo>&#x2218;</mo><msub><mi>C</mi><mtext>H</mtext></msub><mo>,</mo><mi>g</mi><mo>&#x2218;</mo><msub><mi>C</mi><mtext>H</mtext></msub><mo>&#x007D;</mo><mo>=</mo><mo>&#x007B;</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo>&#x007D;</mo><mo>&#x2218;</mo><msub><mi>C</mi><mtext>H</mtext></msub><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.67</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
-</section>
-<section title="Volume preservation">
+
+
 <h2 class="level2"><strong>Volume preservation</strong></h2>
 
 <p class="noindent">Consider a canonical transformation <em>C</em><sub>H</sub>. Let <em>&#x0108;<sub>t</sub></em> be a function with parameter <em>t</em> such that (<em>q</em>, <em>p</em>) &#x003D; <em>&#x0108;<sub>t</sub></em>(<em>q</em>&#x2032;, <em>p</em>&#x2032;) if (<em>t</em>, <em>q</em>, <em>p</em>) &#x003D; <em>C</em><sub>H</sub>(<em>t</em>, <em>q</em>&#x2032;, <em>p</em>&#x2032;). The function <em>&#x0108;<sub>t</sub></em> maps phase-space coordinates to alternate phase-space coordinates at a given time. Consider regions <em>R</em> in (<em>q</em>, <em>p</em>) and <em>R</em> in (<em>q</em>&#x2032;, <em>p</em>&#x2032;) such that <em>R</em> &#x003D; <em>&#x0108;<sub>t</sub></em>(<em>R</em>&#x2032;). The volume of region <em>R</em>&#x2032; is</p>
@@ -873,8 +873,8 @@ layout: chapter
 <a id="p359"></a>
 
 <p>Liouville's theorem shows that time evolution preserves phase-space volume. Here we see that canonical transformations also preserve phase volumes. Later, we will find that time evolution actually generates a canonical transformation.</p>
-</section>
-<section title="The symplectic 2-form">
+
+
 <h2 class="level2"><strong>The symplectic 2-form</strong></h2>
 
 <p class="noindent">Define</p>
@@ -1004,8 +1004,8 @@ layout: chapter
 
 
 <p class="noindent">is not satisfied because <strong>J</strong> is not invertible. Equation (<a href="chapter005.html#disp_5.86">5.86</a>) is satisfied, however, for time-independent transformations.</p>
-</section>
-<section title="Poincar&#x00E9; integral invariant">
+
+
 <h2 class="level2"><strong>Poincar&#x00E9; integral invariant</strong></h2>
 
 <p class="noindent">The invariance of the symplectic 2-form under canonical transformations has a simple interpretation. Consider how the area of an incremental parallelogram in phase space transforms under canonical transformation. Let (&#x0394;<em>q</em>, &#x0394;<em>p</em>) and (<em>&#x03B4;q</em>, <em>&#x03B4;p</em>) be small increments in phase space, originating at (<em>q</em>, <em>p</em>). Consider the incremental parallelogram with vertex at (<em>q</em>, <em>p</em>) with these two phase-space increments as edges. The sum of the areas of the canonical projections of this incremental parallelogram can be written</p>
@@ -1057,9 +1057,9 @@ layout: chapter
 <p class="noindent1-topa"><strong>a.</strong> Show that the transformation is symplectic for any <em>a</em>.</p>
 
 <p class="noindent1-topa"><strong>b.</strong> Show that equation (<a href="chapter005.html#disp_5.92">5.92</a>) is not generally satisfied for the region enclosed by a curve of constant <em>J</em>.</p>
-</section>
-</section>
-<section title="Generating Functions">
+
+
+
 <h1 class="level1" id="h1-31"><a href="toc.html#Rh1-31"><strong>5.4&#160;&#160;&#160;Generating Functions</strong></a></h1>
 
 <p class="noindent">We have considered a number of properties of general canonical transformations without having a method for coming up with them. Here we introduce the method of <em>generating functions</em>. The generating function is a real-valued function that compactly specifies a canonical transformation through its partial derivatives, as follows.</p>
@@ -1105,7 +1105,7 @@ layout: chapter
 <p class="noindent">To put the transformation in explicit form requires that the inverse functions <em>A</em> and <em>B</em> exist.</p>
 
 <p>We can use the above relations to verify that some given transformation from one set of phase-space coordinates (<em>q</em>, <em>p</em>) with Hamiltonian function <em>H</em>(<em>t</em>, <em>q</em>, <em>p</em>) to another set (<em>q</em>&#x2032;, <em>p</em>&#x2032;) with Hamiltonian function <em>H</em>&#x2032;(<em>t</em>, <em>q</em>&#x2032;, <em>p</em>&#x2032;) is canonical by finding an <em>F</em><sub>1</sub>(<em>t</em>, <em>q</em>, <em>q</em>&#x2032;) such that the above relations are satisfied. We can also use arbitrarily chosen generating functions of type <em>F</em><sub>1</sub> to generate new canonical transformations.</p>
-<section title="The polar-canonical transformation">
+
 <h2 class="level2"><strong>The polar-canonical transformation</strong></h2>
 
 <p class="noindent">The polar-canonical transformation (<a href="chapter005.html#disp_5.27">5.27</a>) from coordinate and momentum (<em>x</em>, <em>p<sub>x</sub></em>) to new coordinate and new momentum (<em>&#x03B8;</em>, <em>I</em>),</p>
@@ -1146,7 +1146,7 @@ layout: chapter
 
 
 <p class="noindent">generates the polar-canonical transformation. This shows that this transformation is canonical.</p>
-<section title="F1 Generates Canonical Transformations">
+
 <h3 class="level3" id="h3_5-4-1"><a href="toc.html#Rh3_5-4-1"><strong>5.4.1</strong> <em>F</em><sub>1</sub>&#160;<strong>Generates Canonical Transformations</strong></a></h3>
 
 <p class="noindent">We can prove directly that the transformation generated by an <em>F</em><sub>1</sub> is canonical by showing that if Hamilton's equations are satisfied in one set of coordinates then they will be satisfied in the other set of coordinates. Let <em>F</em><sub>1</sub> take arguments (<em>t</em>, <em>x</em>, <em>y</em>). The relations among the coordinates are</p>
@@ -1197,17 +1197,17 @@ layout: chapter
 
 
 <p class="noindent">can be derived in a similar way. So the generating function relations indeed specify a canonical transformation.</p>
-</section>
-<section title="Generating Functions and Integral Invariants">
+
+
 <h3 class="level3" id="h3_5-4-2"><a href="toc.html#Rh3_5-4-2"><strong>5.4.2 Generating Functions and Integral Invariants</strong></a></h3>
 
 <p class="noindent">Generating functions can be used to specify a canonical transformation by the prescription given above. Here we show how to get a generating function from a canonical transformation, and derive the generating function rules.</p>
 
 <p>The generating function representation of canonical transformations can be derived from the Poincar&#x00E9; integral invariants, as follows. We first show that, given a canonical transformation, the integral invariants imply the existence of a function of phase-space coordinates that can be written as a path-independent line integral. Then we show that partial derivatives of this function, represented in mixed coordinates, give the generating function relations between the old and new coordinates. We need to do this only for time-independent transformations because time-dependent transformations become time independent in the extended phase space (see <a href="chapter005.html#h1-32">section 5.5</a>).</p>
 <a id="p369"></a>
-</section>
-</section>
-<section title="Generating functions of type F1">
+
+
+
 <h2 class="level2"><strong>Generating functions of type</strong> <em>F</em><sub>1</sub></h2>
 
 <p class="noindent">Let <em>C</em> be a time-independent canonical transformation, and let <em>C<sub>t</sub></em> be the <em>qp</em>-part of the transformation. The transformation <em>C<sub>t</sub></em> preserves the integral invariant equation (<a href="chapter005.html#disp_5.90">5.90</a>). One way to express the equality of areas is as a line integral (<a href="chapter005.html#disp_5.92">5.92</a>):</p>
@@ -1284,8 +1284,8 @@ layout: chapter
 <p class="noindent">These are just the configuration and momentum parts of the generating function relations for canonical transformation. So starting with a canonical transformation, we can find a generating function that gives the coordinate&#x2013;momentum part of the transformation through its derivatives.</p>
 
 <p>Starting from a general canonical transformation, we have constructed an <em>F</em><sub>1</sub> generating function from which the canonical transformation may be rederived. So we expect there is a generating function for every canonical transformation.<sup><a class="footnote_link" href="#endnote_22" id="endnote_ref_22">22</a></sup></p>
-</section>
-<section title="Generating functions of type F2">
+
+
 <h2 class="level2"><strong>Generating functions of type</strong> <em>F</em><sub>2</sub></h2>
 
 <p class="noindent">Point transformations were excluded from the previous argument because we could not deduce the momenta from the coordinates. However, a similar derivation allows us to make a generating function for this case. The integral invariants give us an equality of area integrals. There are other ways of writing the equality-of-areas relation (<a href="chapter005.html#disp_5.90">5.90</a>) as a line integral. We can also write</p>
@@ -1317,8 +1317,8 @@ layout: chapter
 
 <p class="eqtext" id="disp_5.137"><epub:switch id="mathmlSwitch1241"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><msub><mi>F</mi><mn>2</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mi>i</mi></msup><mo>=</mo><msubsup><mi>f</mi><mrow><msubsup><mi>q</mi><mi>i</mi><mo>&#x2032;</mo></msubsup></mrow><mo>&#x2032;</mo></msubsup><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.137</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-</section>
-<section title="Relationship between F1 and F2">
+
+
 <h2 class="level2"><strong>Relationship between</strong> <em>F</em><sub>1</sub>&#160;<strong>and</strong> <em>F</em><sub>2</sub></h2>
 
 <p class="noindent">For canonical transformations that can be described by both an <em>F</em><sub>1</sub> and an <em>F</em><sub>2</sub>, there must be a relation between them. The alternative line integral expressions for the area integral are related. Consider the difference</p>
@@ -1363,7 +1363,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_5.147"><epub:switch id="mathmlSwitch1251"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>H</mi><mo>&#x2032;</mo><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>&#x2032;</mo><mo>,</mo><mi>p</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mo>&#x2212;</mo><mi>H</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo stretchy='false'>)</mo><mo>=</mo><msub><mo>&#x2202;</mo><mn>0</mn></msub><msub><mi>F</mi><mn>2</mn></msub><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>p</mi><mo>&#x2032;</mo><mo stretchy='false'>)</mo><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.147</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
-<section title="Types of Generating Functions">
+
 <h3 class="level3" id="h3_5-4-3"><a href="toc.html#Rh3_5-4-3"><strong>5.4.3 Types of Generating Functions</strong></a></h3>
 
 <p class="noindent">We have used generating functions of the form <em>F</em><sub>1</sub>(<em>t</em>, <em>q</em>, <em>q</em>&#x2032;) to construct canonical transformations:</p>
@@ -1427,8 +1427,8 @@ layout: chapter
 
 <p>The generating functions presented each treat the coordinates and momenta collectively. One could define more complicated generating functions for which the transformations of different degrees of freedom are specified by generating functions of different types.</p>
 <a id="p375"></a>
-</section>
-<section title="Point Transformations">
+
+
 <h3 class="level3" id="h3_5-4-4"><a href="toc.html#Rh3_5-4-4"><strong>5.4.4 Point Transformations</strong></a></h3>
 
 <p class="noindent">Point transformations can be represented in terms of a generating function of type <em>F</em><sub>2</sub>. Equations (<a href="chapter005.html#disp_5.6">5.6</a>), which define a canonical point transformation derived from a coordinate transformation <em>F</em>, are</p>
@@ -1493,9 +1493,9 @@ layout: chapter
 
 
 <p class="noindent">This is why we could not use generating functions of type <em>F</em><sub>1</sub> to construct point transformations.</p>
-</section>
-</section>
-<section title="Polar and rectangular coordinates">
+
+
+
 <h2 class="level2"><strong>Polar and rectangular coordinates</strong></h2>
 
 <p class="noindent">A commonly required point transformation is the transition between polar coordinates and rectangular coordinates:</p>
@@ -1520,8 +1520,8 @@ layout: chapter
 
 
 <p class="noindent">So, interpreted in terms of Newtonian vectors, <epub:switch id="mathmlSwitch1279"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>p</mi><mi>r</mi></msub><mo>=</mo><mover accent='true'><mi>r</mi><mo stretchy="false">&#x02C6;</mo></mover><mo>&#x00B7;</mo><mover accent='true'><mi>p</mi><mo stretchy='false'>&#x2192;</mo></mover></mrow></math></epub:case></epub:switch> is the radial component of the linear momentum and <epub:switch id="mathmlSwitch1280"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>p</mi><mi>&#x03B8;</mi></msub><mo>=</mo><mrow><mo>&#x2016;</mo><mrow><mover accent='true'><mi>r</mi><mo stretchy='false'>&#x2192;</mo></mover><mo>&#x00D7;</mo><mover accent='true'><mi>p</mi><mo stretchy='false'>&#x2192;</mo></mover></mrow><mo>&#x2016;</mo></mrow></mrow></math></epub:case></epub:switch> is the magnitude of the angular momentum. The point transformation is time independent, so the Hamiltonian transforms by composition.</p>
-</section>
-<section title="Rotating coordinates">
+
+
 <h2 class="level2"><strong>Rotating coordinates</strong></h2>
 
 <p class="noindent">A useful time-dependent point transformation is the transition to a rotating coordinate system. This is most easily accomplished in polar coordinates. Here we have</p>
@@ -1545,8 +1545,8 @@ layout: chapter
 
 
 <p class="noindent">The Hamiltonians differ by the derivative of the generating function with respect to the time argument. In transforming to rotating <a id="p378"></a>coordinates, the values of the Hamiltonians differ by the product of the angular momentum and the angular velocity of the coordinate system. Notice that this addition to the Hamiltonian is the same as was found earlier (<a href="chapter005.html#disp_5.45">5.45</a>).</p>
-</section>
-<section title="Reducing the two-body problem to the one-body problem">
+
+
 <h2 class="level2"><strong>Reducing the two-body problem to the one-body problem</strong></h2>
 
 <p class="noindent">In this example we illustrate how canonical transformations can be used to eliminate some of the degrees of freedom, leaving a problem with fewer degrees of freedom.</p>
@@ -1640,8 +1640,8 @@ layout: chapter
 <a id="p381"></a>
 
 <p class="noindent">Notice that, without further specifying <em>c</em>, the problem has been separated into the problem of determining the relative motion of the two masses, and the problem of the other degrees of freedom. We did not need a priori knowledge that the center of mass might be important; in fact, only for a particular choice of <em>c</em> &#x003D; (<em>m</em><sub>1</sub> &#x002B; <em>m</em><sub>2</sub>)<sup>&#x2212;1</sup> does <em>X</em> become the center of mass.</p>
-</section>
-<section title="Epicyclic motion">
+
+
 <h2 class="level2"><strong>Epicyclic motion</strong></h2>
 
 <p class="noindent">It is often useful to compose a sequence of canonical transformations to make up the transformation we need for any particular mechanical problem. The transformations we have supplied are especially useful as components in these computations.</p>
@@ -1882,7 +1882,7 @@ layout: chapter
 <img src="images/Art_P1150.jpg" alt="art"/>
 <figcaption id="Fig_5-7"><strong>Figure 5.7</strong> The numerically integrated orbit of a particle with a force law <em>F</em> &#x221D; <em>r</em><sup>&#x2212;3/4</sup>. For this law the ratio of the epicyclic frequency to the orbital frequency is exactly 3/2. This is manifest in the three-fold symmetry of the rosette-like shape and the fact that one must cross two orbits to get from the inside to the outside of the rosette.</figcaption>
 </figure>
-<section title="Total Time Derivatives">
+
 <h3 class="level3" id="h3_5-4-5"><a href="toc.html#Rh3_5-4-5"><strong>5.4.5 Total Time Derivatives</strong></a></h3>
 
 <p class="noindent">The addition of a total time derivative to a Lagrangian leads to the same Lagrange equations. However, the two Lagrangians have different momenta, and they lead to different Hamilton's equations. Here we find out how to represent the corresponding canonical transformation with a generating function.</p>
@@ -1945,9 +1945,9 @@ layout: chapter
 
 
 <p class="noindent">We see that this transformation may be used to modify terms in the Hamiltonian that are linear in the momenta. Starting from <em>H</em>, <a id="p392"></a>the transformation introduces linear momentum terms; starting from <em>H</em>&#x2032;, the transformation eliminates the linear terms.</p>
-</section>
-</section>
-<section title="Driven pendulum">
+
+
+
 <h2 class="level2"><strong>Driven pendulum</strong></h2>
 
 <p class="noindent">We illustrate the use of this transformation with the driven pendulum. The Hamiltonian for the driven pendulum derived from the <em>T</em> &#x2212; <em>V</em> Lagrangian (see <a href="chapter001.html#h3_1-6-2">section 1.6.2</a>) is</p>
@@ -2040,9 +2040,9 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_5-15"><strong>Exercise  5.15: Standard-map generating function</strong></p>
 
 <p class="noindent">Find a generating function for the standard map (see <a href="chapter005.html#Exe_5-8">exercise 5.8</a> on <a href="chapter005.html#p357">page 357</a>).</p>
-</section>
-</section>
-<section title="Extended Phase Space">
+
+
+
 <h1 class="level1" id="h1-32"><a href="toc.html#Rh1-32"><strong>5.5&#160;&#160;&#160;Extended Phase Space</strong></a></h1>
 
 <p class="noindent">In this section we show that we can treat time as just another coordinate if we wish. Systems described by a time-dependent Hamiltonian may be recast in terms of a time-independent Hamiltonian with an extra degree of freedom. An advantage of this view is that what was a time-dependent canonical transformation can be treated as a time-independent transformation, where there are no additional conditions for adjusting the Hamiltonian.</p>
@@ -2141,7 +2141,7 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_5-18"><strong>Exercise  5.18: Lorentz transformations</strong></p>
 
 <p class="noindent">Investigate Lorentz transformations as point transformations in the extended phase space.</p>
-<section title="Restricted three-body problem">
+
 <h2 class="level2"><strong>Restricted three-body problem</strong></h2>
 
 <p class="noindent">An example that shows the utility of reformulating a problem in the extended phase space is the restricted three-body problem: the motion of a low-mass particle subject to the gravitational attraction of two other massive bodies that move in some fixed orbit. The problem is an idealization of the situation where a body with very small mass moves in the presence of two bodies with much larger masses. Any effects of the smaller body on the larger bodies are neglected. In the simplest version, the motion of all three bodies is assumed to be in the same plane, and the orbits of the two massive bodies are circular.</p>
@@ -2203,7 +2203,7 @@ layout: chapter
 <p class="noindent1-top-exe" id="Exe_5-19"><strong>Exercise  5.19: Transformations in the extended phase space</strong></p>
 
 <p class="noindent">In <a href="chapter005.html#h3_5-2-1">section 5.2.1</a> we found that time-dependent transformations for which the derivative of the coordinate&#x2013;momentum part is symplectic are canonical only if the Hamiltonian is modified by adding a function <em>K</em> subject to certain constraints (equation <a href="chapter005.html#disp_5.42">5.42</a>). Show that the constraints on <em>K</em> follow from the symplectic condition in the extended phase space, using the choice <em>t</em> &#x003D; <em>&#x03C4;</em>.</p>
-<section title="Poincar&#x00E9;&#x2013;Cartan Integral Invariant">
+
 <h3 class="level3" id="h3_5-5-1"><a href="toc.html#Rh3_5-5-1"><strong>5.5.1 Poincar&#x00E9;&#x2013;Cartan Integral Invariant</strong></a></h3>
 
 <p class="noindent">The Poincar&#x00E9; invariant (<a href="chapter005.html#h1-30">section 5.3</a>) is especially useful in the extended phase space with <em>t</em> &#x003D; <em>&#x03C4;</em>. In the extended phase space the extended Hamiltonian does not depend on the independent variable. In the extended phase space canonical transformations are symplectic and the Hamiltonian transforms by composition.</p>
@@ -2217,10 +2217,10 @@ layout: chapter
 <p class="eqtext" id="disp_5.290"><epub:switch id="mathmlSwitch1411"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mstyle displaystyle='true'><mrow><msub><mo>&#x222E;</mo><mrow><mo>&#x2202;</mo><mi>R</mi></mrow></msub><mrow><mo stretchy='false'>(</mo><mstyle displaystyle='true'><munderover><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>&#x2212;</mo><mn>1</mn></mrow></munderover><mrow><msub><mi>p</mi><mi>i</mi></msub><mi>d</mi><msup><mi>q</mi><mi>i</mi></msup><mo>&#x2212;</mo><mi>E</mi><mi>d</mi><mi>t</mi></mrow></mstyle><mo stretchy='false'>)</mo><mo>=</mo><mstyle displaystyle='true'><mrow><msub><mo>&#x222E;</mo><mrow><mo>&#x2202;</mo><mi>R</mi><mo>&#x2032;</mo></mrow></msub><mrow><mo stretchy='false'>(</mo><mstyle displaystyle='true'><munderover><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>&#x2212;</mo><mn>1</mn></mrow></munderover><mrow><msubsup><mi>p</mi><mi>i</mi><mo>&#x2032;</mo></msubsup><mi>d</mi><mi>q</mi><msup><mo>&#x2032;</mo><mi>i</mi></msup><mo>&#x2212;</mo><mi>E</mi><mo>&#x2032;</mo><mi>d</mi><mi>t</mi><mo>&#x2032;</mo></mrow></mstyle><mo stretchy='false'>)</mo><mo>.</mo></mrow></mrow></mstyle></mrow></mrow></mstyle></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.290</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 
 <p class="noindent">The relations (<a href="chapter005.html#disp_5.289">5.289</a>) and (<a href="chapter005.html#disp_5.290">5.290</a>) are two formulations of the <em>Poincar&#x00E9;&#x2013;Cartan integral invariant</em>.</p>
-</section>
-</section>
-</section>
-<section title="Reduced Phase Space">
+
+
+
+
 <h1 class="level1" id="h1-33"><a href="toc.html#Rh1-33"><strong>5.6&#160;&#160;&#160;Reduced Phase Space</strong></a></h1>
 
 <p class="noindent">Suppose we have a system with <em>n</em>&#x002B;1 degrees of freedom described by a time-independent Hamiltonian in a (2<em>n</em> &#x002B; 2)-dimensional phase space. Here we can play the converse game: we can choose <a id="p403"></a>any generalized coordinate to play the role of &#x201C;time&#x201D; and the negation of its conjugate momentum to play the role of a new <em>n</em>-degree-of-freedom time-dependent Hamiltonian in a <em>reduced phase space</em> of 2<em>n</em> dimensions.</p>
@@ -2268,7 +2268,7 @@ layout: chapter
 
 <p class="eqtext" id="disp_5.301"><epub:switch id="mathmlSwitch1422"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><mi>D</mi><msubsup><mi>p</mi><mi>i</mi><mi>r</mi></msubsup><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mfrac><mrow><mi>D</mi><msub><mi>p</mi><mi>i</mi></msub><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mrow><mi>D</mi><msup><mi>q</mi><mi>n</mi></msup><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow></mfrac></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mfrac><mrow><mo>&#x2212;</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo><mi>p</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub></mrow><mrow><msup><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>2</mn></msub><mi>H</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>,</mo><mi>q</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo>,</mo><mi>p</mi><mo stretchy='false'>(</mo><mi>&#x03C4;</mi><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mi>n</mi></msup></mrow></mfrac></mrow></mtd><mtd columnalign='left'><mrow></mrow></mtd></mtr><mtr columnalign='left'><mtd columnalign='left'><mrow></mrow></mtd><mtd columnalign='left'><mrow><mo>=</mo><mo>&#x2212;</mo><msub><mrow><mo stretchy='false'>(</mo><msub><mo>&#x2202;</mo><mn>1</mn></msub><msub><mi>H</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>x</mi><mo>,</mo><msub><mi>q</mi><mi>r</mi></msub><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo>,</mo><msup><mi>p</mi><mi>r</mi></msup><mo stretchy='false'>(</mo><mi>x</mi><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo><mo stretchy='false'>)</mo></mrow><mi>i</mi></msub><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>5.301</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p405"></a>
-<section title="Orbits in a central field">
+
 <h2 class="level2"><strong>Orbits in a central field</strong></h2>
 
 <p class="noindent">Consider planar motion in a central field. We have already seen this expressed in polar coordinates in equation (<a href="chapter003.html#disp_3.100">3.100</a>):</p>
@@ -2328,8 +2328,8 @@ layout: chapter
 <a id="p407"></a>
 
 <p>Although we have treated time in a special way so far, we have found that time is not special. It can be included in the coordinates to make a driven system autonomous. And it can be eliminated from any autonomous system in favor of any other coordinate. This leads to numerous strategies for simplifying problems, by removing time variation and then performing canonical transforms on the resulting conservative autonomous system to make a nice coordinate that we can then dump back into the role of time.</p>
-</section>
-<section title="Generating functions in extended phase space">
+
+
 <h2 class="level2"><strong>Generating functions in extended phase space</strong></h2>
 
 <p class="noindent">We can represent canonical transformations with mixed-variable generating functions. We can extend these to represent transformations in the extended phase space. Let <em>F</em><sub>2</sub> be a generating function with arguments (<em>t</em>, <em>q</em>, <em>p</em>&#x2032;). Then, the corresponding <epub:switch id="mathmlSwitch1436"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>F</mi><mn>2</mn><mi>e</mi></msubsup></mrow></math></epub:case></epub:switch> in the extended phase space can be taken to be</p>
@@ -2350,9 +2350,9 @@ layout: chapter
 
 <p class="noindent">In the extended phase space the time is one of the coordinates. Carry out the transformation to rotating coordinates using an <em>F</em><sub>2</sub>-type generating function in the extended phase space. Compare Hamiltonian (<a href="chapter005.html#disp_5.178">5.178</a>) to the Hamiltonian obtained by composition with the transformation.</p>
 <a id="p408"></a>
-</section>
-</section>
-<section title="Summary">
+
+
+
 <h1 class="level1" id="h1-34"><a href="toc.html#Rh1-34"><strong>5.7&#160;&#160;&#160;Summary</strong></a></h1>
 
 <p class="noindent">Canonical transformations can be used to reformulate a problem in coordinates that are easier to understand or that expose some symmetry of a problem.</p>
@@ -2362,8 +2362,8 @@ layout: chapter
 <p>A generating function is a real-valued function of the phase-space coordinates and time that represents a canonical transformation through its partial derivatives. We found that every canonical transformation can be represented by a generating function. The proof depends on the Poincar&#x00E9; integral invariant.</p>
 
 <p>We can formulate an extended phase space in which time is treated as another coordinate. Time-dependent transformations are simple in the extended phase space. In the extended phase space the Poincar&#x00E9; integral invariant is the Poincar&#x00E9;&#x2013;Cartan integral invariant. We can also reformulate a time-independent problem as a time-dependent problem with fewer degrees of freedom, with one of the original coordinates taking on the role of time; this is the reduced phase space.</p>
-</section>
-<section title="Projects">
+
+
 <h1 class="level1" id="h1-35"><a href="toc.html#Rh1-35"><strong>5.8&#160;&#160;&#160;Projects</strong></a></h1>
 
 <p class="noindent1-top-exe" id="Exe_5-21"><strong>Exercise  5.21: Hierarchical Jacobi coordinates</strong></p>
@@ -2501,4 +2501,4 @@ layout: chapter
 <p class="ntx" id="endnote_27"><a epub:type="noteref" href="#endnote_ref_27"><sup>27</sup></a>Actually, the traditional Jacobi constant is <em>C</em> &#x003D; &#x2212;2<em>H</em>&#x2032;.</p>
 
 <p class="ntx" id="endnote_28"><a epub:type="noteref" href="#endnote_ref_28"><sup>28</sup></a>We could have chosen to reparameterize in terms of <em>&#x03C6;</em>, but then both <em>p<sub>r</sub></em> and <em>r</em> would occur in the resulting time-independent Hamiltonian. The path we have chosen takes advantage of the fact that <em>&#x03C6;</em> does not appear in our Hamiltonian, so <em>p<sub>&#x03C6;</sub></em> is a constant of the motion. This structure suggests that to solve this kind of problem we need to look ahead, as in playing chess.</p>
-</section>
+

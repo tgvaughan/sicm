@@ -32,7 +32,7 @@ layout: appendix
 
 <p>Scheme is a simple programming language based on expressions. An expression names a value. For example, the numeral <span class="font1">3.14</span> names an approximation to a familiar number. There are primitive expressions, such as numerals, that we directly recognize, and there are compound expressions of several kinds.</p>
 
-<section title="Procedure calls">
+
 <h2 class="level2"><strong>Procedure calls</strong></h2>
 
 <p class="noindent">A <em>procedure call</em> is a kind of compound expression. A procedure call is a sequence of expressions delimited by parentheses. The first subexpression in a procedure call is taken to name a procedure, and the rest of the subexpressions are taken to name the arguments to that procedure. The value produced by the procedure when applied to the given arguments is the value named by the procedure call. For example,</p>
@@ -53,8 +53,8 @@ layout: appendix
 <p class="noindent1-top"><span class="font1">(</span>   <em>operator   operand-1</em>  <span class="font1">&#x2026;</span>  <em>operand-n</em>  <span class="font1">)</span></p>
 
 <p class="noindent1-top">where <em>operator</em> names a procedure and <em>operand-i</em> names the <em>i</em>th argument.<sup><a class="footnote_link" href="#endnote_3" id="endnote_ref_3">3</a></sup></p>
-</section>
-<section title="Lambda expressions">
+
+
 <h2 class="level2"><strong>Lambda expressions</strong></h2>
 
 <p class="noindent">Just as we use numerals to name numbers, we use <em>&#x03BB;</em>-expressions to name procedures.<sup><a class="footnote_link" href="#endnote_4" id="endnote_ref_4">4</a></sup> For example, the procedure that squares its input can be written:</p>
@@ -75,8 +75,8 @@ layout: appendix
 <p class="noindent1-top"><span class="font1">(lambda</span>   <em>formal-parameters   body</em><span class="font1">)</span></p>
 
 <p class="noindent1-top">where <em>formal-parameters</em> is a list of symbols that will be the names of the arguments to the procedure and <em>body</em> is an expression that may refer to the formal parameters. The value of a procedure call is the value of the body of the procedure with the arguments substituted for the formal parameters.</p>
-</section>
-<section title="Definitions">
+
+
 <h2 class="level2"><strong>Definitions</strong></h2>
 
 <p class="noindent">We can use the <span class="font1">define</span> construct to give a name to any object. For example, if we make the definitions<sup><a class="footnote_link" href="#endnote_5" id="endnote_ref_5">5</a></sup></p>
@@ -125,8 +125,8 @@ layout: appendix
 (define ((compose f g) x)
   (f (g x)))
 {% endhighlight %}</div>
-</section>
-<section title="Conditionals">
+
+
 <h2 class="level2"><strong>Conditionals</strong></h2>
 
 <p class="noindent">Conditional expressions may be used to choose among several expressions to produce a value. For example, a procedure that implements the absolute value function may be written:</p>
@@ -161,8 +161,8 @@ layout: appendix
 <p class="noindent1-top"><span class="font1">(if</span> <em>predicate consequent alternative</em><span class="font1">)</span></p>
 
 <p class="noindent1-top">If the <em>predicate</em> is true the value of the <span class="font1">if</span> expression is the value of the <em>consequent</em>, otherwise it is the value of the <em>alternative</em>.</p>
-</section>
-<section title="Recursive procedures">
+
+
 <h2 class="level2"><strong>Recursive procedures</strong></h2>
 
 <p class="noindent">Given conditionals and definitions, we can write recursive procedures. For example, to compute the <em>n</em>th factorial number we may write:</p>
@@ -180,8 +180,8 @@ layout: appendix
 {% endhighlight %}</div><div class="result">{% highlight scheme %}
 815915283247897734345611269596115894272000000000
 {% endhighlight %}</div>
-</section>
-<section title="Local names">
+
+
 <h2 class="level2"><strong>Local names</strong></h2>
 
 <p class="noindent">The <span class="font1">let</span> expression is used to give names to objects in a local context. For example,</p>
@@ -223,8 +223,8 @@ layout: appendix
 {% endhighlight %}</div>
 
 <p class="noindent">Here, the symbol <span class="font1">factlp</span> following the <span class="font1">let</span> is locally defined to be a procedure that has the variables <span class="font1">count</span> and <span class="font1">answer</span> as its formal parameters. It is called the first time with the expressions 1 and 1, initializing the loop. Whenever the procedure named <span class="font1">factlp</span> is called later, these variables get new values that are the values of the operand expressions <span class="font1">(&#x002B; count 1)</span> and <span class="font1">(<sub>&#x002A;</sub> count answer)</span>.</p>
-</section>
-<section title="Compound data&#x2014;lists and vectors">
+
+
 <h2 class="level2"><strong>Compound data&#x2014;lists and vectors</strong></h2>
 
 <p class="noindent">Data can be glued together to form compound data structures. A list is a data structure in which the elements are linked sequentially. A Scheme vector is a data structure in which the elements are packed in a linear array. New elements can be added to lists, but to access the <em>n</em>th element of a list takes computing time proportional to <em>n</em>. By contrast a Scheme vector is of fixed length, and its elements can be accessed in constant time. All data structures <a id="p503"></a>in this book are implemented as combinations of lists and Scheme vectors. Compound data objects are constructed from components by procedures called constructors and the components are accessed by selectors.</p>
@@ -300,8 +300,8 @@ a-vector
 <p>There is a predicate <span class="font1">vector?</span> that is true of vectors and false for all other types of data.</p>
 
 <p>The elements of lists and vectors may be any kind of data, including numbers, procedures, lists, and vectors. Numerous other procedures for manipulating list-structured data and vector-structured data can be found in the Scheme online documentation.</p>
-</section>
-<section title="Symbols">
+
+
 <h2 class="level2"><strong>Symbols</strong></h2>
 
 <p class="noindent">Symbols are a very important kind of primitive data type that we use to make programs and algebraic expressions. You probably have noticed that Scheme programs look just like lists. In fact, they are lists. Some of the elements of the lists that make up programs are symbols, such as <span class="font1">&#x002B;</span> and <span class="font1">vector</span>.<sup><a class="footnote_link" href="#endnote_8" id="endnote_ref_8">8</a></sup> If we are to make programs that can manipulate programs, we need to be able to write an expression that names such a symbol. This is accomplished by the mechanism of <em>quotation</em>. The name of the symbol <a id="p505"></a><span class="font1">&#x002B;</span> is the expression <span class="font1">'&#x002B;</span>, and in general the name of an expression is the expression preceded by a single quote character. Thus the name of the expression <span class="font1">(&#x002B; 3 a)</span> is <span class="font1">'(&#x002B; 3 a)</span>.</p>
@@ -324,8 +324,8 @@ a-vector
 <p class="noindent">Here <span class="font1">&#x0023;t</span> and <span class="font1">&#x0023;f</span> are the printed representations of the boolean values true and false.</p>
 
 <p>Consider what would happen if we were to leave out the quote in the expression <span class="font1">(sum? '(&#x002B; 3 a))</span>. If the variable <span class="font1">a</span> had the value 4 we would be asking if 7 is a sum. But what we wanted to know was whether the expression <span class="font1">(&#x002B; 3 a)</span> is a sum. That is why we need the quote.</p>
-</section>
-<section title="Effects">
+
+
 <h2 class="level2"><strong>Effects</strong></h2>
 
 <p class="noindent">Sometimes it is necessary to perform some action, such as plot a point or print a value, in the process of a computation. Such an action is called an <em>effect</em>.<sup><a class="footnote_link" href="#endnote_9" id="endnote_ref_9">9</a></sup> For example, to see in more detail how the factorial program computes its answer we can interpolate a <span class="font1">write-line</span> statement in the body of the <span class="font1">factlp</span> internal procedure. This will print out a list of the count and the answer for each iteration:</p>
@@ -354,7 +354,7 @@ a-vector
 {% endhighlight %}</div>
 
 <p>The body of every procedure or <span class="font1">let</span>, as well as the consequent of every <span class="font1">cond</span> clause, allows statements that have effects to be used. The effect statement generally has no useful value. The final expression in the body or clause produces the value that is returned. In this example the <span class="font1">if</span> expression produces the value of the <span class="font1">factorial</span>.</p>
-<section title="Assignments">
+
 <h3 class="level3"><em><strong>Assignments</strong></em></h3>
 
 <p class="noindent">Effects like printing a value or plotting a point are pretty benign, but there are more powerful (and thus dangerous) effects, called <em>assignments</em>. An assignment <em>changes</em> the value of a variable or an entry in a data structure. Almost everything we are computing are mathematical functions: for a particular input they always produce the same result. However, with assignment we can make objects that change their behavior as they are used. For example, we can make a device that counts every time we call it:</p>
@@ -463,5 +463,5 @@ jack
 <p class="ntx" id="endnote_9"><a epub:type="noteref" href="#endnote_ref_9"><sup>9</sup></a>This is computer-science jargon: An effect is a change to something. For example, <span class="font1">write-line</span> changes the display by printing something to the display.</p>
 
 <p class="ntx" id="endnote_10"><a epub:type="noteref" href="#endnote_ref_10"><sup>10</sup></a>The discipline of programming without assignments is called <em>functional programming</em>. Functional programs are generally easier to understand, and have fewer bugs than <em>imperative programs</em>.</p>
-</section>
-</section>
+
+
