@@ -54,7 +54,7 @@ layout: chapter
 <p>The variational formulation has numerous advantages over the Newtonian formulation. The equations of motion for those parameters that describe the state of the system are derived in the same way regardless of the choice of those parameters: the method of formulation does not depend on the choice of coordinate system. If there are positional constraints among the particles of a system the Newtonian formulation requires that we consider the forces maintaining these constraints, whereas in the variational formulation the constraints can be built into the coordinates. The variational formulation reveals the association of conservation laws with symmetries. The variational formulation provides a framework for placing any particular motion of a system in the context of all possible motions of the system. We pursue the variational formulation because of these advantages.</p>
 <a id="p4"></a>
 
-<h1 class="level1" id="h1-2"><a href="toc.html#Rh1-2"><strong>1.1&#160;&#160;&#160;Configuration Spaces</strong></a></h1>
+<h1 class="level1" id="h1-2"><strong>1.1&#160;&#160;&#160;Configuration Spaces</strong></h1>
 
 <p class="noindent">Let us consider mechanical systems that can be thought of as composed of constituent point particles, with mass and position, but with no internal structure.<sup><a class="footnote_link" href="#endnote_3" id="endnote_ref_3">3</a></sup> Extended bodies may be thought of as composed of a large number of these constituent particles with specific spatial relationships among them. Extended bodies maintain their shape because of spatial constraints among the constituent particles. Specifying the position of all the constituent particles of a system specifies the <em>configuration</em> of the system. The existence of constraints among parts of the system, such as those that determine the shape of an extended body, means that the constituent particles cannot assume all possible positions. The set of all configurations of the system that can be assumed is called the <em>configuration space</em> of the system. The <em>dimension</em> of the configuration space is the smallest number of parameters that have to be given to completely specify a configuration. The dimension of the configuration space is also called the number of <em>degrees of freedom</em> of the system.<sup><a class="footnote_link" href="#endnote_4" id="endnote_ref_4">4</a></sup></p>
 
@@ -82,7 +82,7 @@ layout: chapter
 <a id="p6"></a>
 
 
-<h1 class="level1" id="h1-3"><a href="toc.html#Rh1-3"><strong>1.2&#160;&#160;&#160;Generalized Coordinates</strong></a></h1>
+<h1 class="level1" id="h1-3"><strong>1.2&#160;&#160;&#160;Generalized Coordinates</strong></h1>
 
 <p class="noindent">In order to be able to talk about specific configurations we need to have a set of parameters that label the configurations. The parameters used to specify the configuration of the system are called the <em>generalized coordinates</em>. Consider an unconstrained free particle. The configuration of the particle is specified by giving its position. This requires three parameters. The unconstrained particle has three degrees of freedom. One way to specify the position of a particle is to specify its rectangular coordinates relative to some chosen coordinate axes. The rectangular components of the position are generalized coordinates for an unconstrained particle. Or consider an ideal planar double pendulum: a point mass constrained to be a given distance from a fixed point by a rigid rod, with a second mass constrained to be at a given distance from the first mass by another rigid rod, all confined to a vertical plane. The configuration is specified if the orientation of the two rods is given. This requires at least two parameters; the planar double pendulum has two degrees of freedom. One way to specify the orientation of each rod is to specify the angle it makes with a vertical plumb line. These two angles are generalized coordinates for the planar double pendulum.</p>
 
@@ -101,7 +101,7 @@ layout: chapter
 <p class="noindent">For each of the systems in <a href="chapter001.html#Exe_1-1">exercise 1.1</a>, specify a system of generalized coordinates that can be used to describe the behavior of the system.</p>
 
 
-<h1 class="level1" id="h1-4"><a href="toc.html#Rh1-4"><strong>1.3&#160;&#160;&#160;The Principle of Stationary Action</strong></a></h1>
+<h1 class="level1" id="h1-4"><strong>1.3&#160;&#160;&#160;The Principle of Stationary Action</strong></h1>
 
 <p class="noindent">Let us suppose that for each physical system there is a path-distinguishing function that is stationary on realizable paths. We will try to deduce some of its properties.</p>
 
@@ -167,7 +167,7 @@ layout: chapter
 
 
 
-<h1 class="level1" id="h1-5"><a href="toc.html#Rh1-5"><strong>1.4&#160;&#160;&#160;Computing Actions</strong></a></h1>
+<h1 class="level1" id="h1-5"><strong>1.4&#160;&#160;&#160;Computing Actions</strong></h1>
 
 <p class="noindent">To illustrate the above ideas, and to introduce their formulation as computer programs, we consider the simplest mechanical system&#x2014;a free particle moving in three dimensions. Euler and Lagrange discovered that for a free particle the time integral of the kinetic energy over the particle's actual path is smaller than the same integral along any alternative path between the same points: a free particle moves according to the principle of stationary action, provided we take the Lagrangian to be the kinetic energy. The kinetic energy for a particle of mass <em>m</em> and velocity <epub:switch id="mathmlSwitch10"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover></math></epub:case></epub:switch> is <epub:switch id="mathmlSwitch11"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mstyle scriptlevel='+1'><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow></math></epub:case></epub:switch>, where <em>v</em> is the magnitude of <epub:switch id="mathmlSwitch12"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>v</mi><mo stretchy="false">&#x2192;</mo></mover></math></epub:case></epub:switch>. In this case we can choose the generalized coordinates to be the ordinary rectangular coordinates.</p>
 
@@ -413,7 +413,7 @@ layout: chapter
 
 
 
-<h1 class="level1" id="h1-6"><a href="toc.html#Rh1-6"><strong>1.5&#160;&#160;&#160;The Euler&#x2013;Lagrange Equations</strong></a></h1>
+<h1 class="level1" id="h1-6"><strong>1.5&#160;&#160;&#160;The Euler&#x2013;Lagrange Equations</strong></h1>
 
 <p class="noindent">The principle of stationary action characterizes the realizable paths of systems in configuration space as those for which the action has a stationary value. In elementary calculus, we learn that the critical points of a function are the points where the derivative vanishes. In an analogous way, the paths along which the action is stationary are solutions of a system of differential equations. This system, called the <em>Euler&#x2013;Lagrange equations</em> or just the <em>Lagrange equations</em>, is the link that permits us to use the principle of stationary action to compute the motions of mechanical systems, and to relate the variational and Newtonian formulations of mechanics.</p>
 <a id="p24"></a>
@@ -439,7 +439,7 @@ layout: chapter
 
 <p class="noindent">where <em>i</em> &#x003D; 0, &#x2026;, <em>n</em> &#x2212; 1. In these equations we see that the partial derivatives of the Lagrangian function are taken, then the path and its derivative are substituted for the position and velocity arguments of the Lagrangian, resulting in an expression in terms of the time.</p>
 
-<h3 class="level3" id="h3_1-5-1"><a href="toc.html#Rh3_1-5-1"><strong>1.5.1 Derivation of the Lagrange Equations</strong></a></h3>
+<h3 class="level3" id="h3_1-5-1"><strong>1.5.1 Derivation of the Lagrange Equations</strong></h3>
 
 <p class="noindent">We will show that the principle of stationary action implies that realizable paths satisfy the Euler&#x2013;Lagrange equations.</p>
 
@@ -673,7 +673,7 @@ layout: chapter
 
 <p class="noindent">In general, these equations, first derived by Poisson, will involve the fourth derivative of <em>q</em>. Note that the derivation is completely analogous <a id="p33"></a>to the derivation of the Lagrange equations without accelerations; it is just longer. What restrictions must we place on the variations so that the critical path satisfies a differential equation?</p>
 
-<h3 class="level3" id="h3_1-5-2"><a href="toc.html#Rh3_1-5-2"><strong>1.5.2 Computing Lagrange's Equations</strong></a></h3>
+<h3 class="level3" id="h3_1-5-2"><strong>1.5.2 Computing Lagrange's Equations</strong></h3>
 
 <p class="noindent">The procedure for computing Lagrange's equations mirrors the functional expression (<a href="chapter001.html#disp_1.12">1.12</a>), where the procedure <span class="font1">Gamma</span> implements &#x0393;:<sup><a class="footnote_link" href="#endnote_56" id="endnote_ref_56">56</a></sup></p>
 <div class="code">{% highlight scheme %}
@@ -798,7 +798,7 @@ layout: chapter
 
 
 
-<h1 class="level1" id="h1-6a"><a href="toc.html#Rh1-6a"><strong>1.6&#160;&#160;&#160;How to Find Lagrangians</strong></a></h1>
+<h1 class="level1" id="h1-6a"><strong>1.6&#160;&#160;&#160;How to Find Lagrangians</strong></h1>
 
 <p class="noindent">Lagrange's equations are a system of second-order differential equations. In order to use them to compute the evolution of a mechanical system, we must find a suitable Lagrangian for the system. There is no general way to construct a Lagrangian for every system, but there is an important class of systems for which we can identify Lagrangians in a straightforward way in terms of kinetic and potential energy. The key idea is to construct a Lagrangian <em>L</em> such that Lagrange's equations are Newton's equations <epub:switch id="mathmlSwitch80"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>F</mi><mo stretchy="false">&#x2192;</mo></mover><mo>=</mo><mi>m</mi><mover accent='true'><mi>a</mi><mo stretchy="false">&#x2192;</mo></mover></mrow></math></epub:case></epub:switch>.</p>
 
@@ -980,7 +980,7 @@ layout: chapter
 <p class="noindent">Check that the Lagrange equations for central force motion in polar coordinates and in rectangular coordinates are equivalent. Determine the relationship among the second derivatives by substituting paths into the transformation equations and computing derivatives, then substitute these relations into the equations of motion.</p>
 <a id="p44"></a>
 
-<h3 class="level3" id="h3_1-6-1"><a href="toc.html#Rh3_1-6-1"><strong>1.6.1 Coordinate Transformations</strong></a></h3>
+<h3 class="level3" id="h3_1-6-1"><strong>1.6.1 Coordinate Transformations</strong></h3>
 
 <p class="noindent">The motion of a system is independent of the coordinates we use to describe it. This coordinate-free nature of the motion is apparent in the action principle. The action depends only on the value of the Lagrangian along the path and not on the particular coordinates used in the representation of the Lagrangian. We can use this property to find a Lagrangian in one coordinate system in terms of a Lagrangian in another coordinate system.</p>
 
@@ -1154,7 +1154,7 @@ layout: chapter
 
 <p>Because this is a free particle the velocity in the original unrotated coordinates is constant. In rotating coordinates, the Coriolis terms describe an acceleration that is perpendicular to the velocity, causing the trajectory to curve.</p>
 
-<h3 class="level3" id="h3_1-6-2"><a href="toc.html#Rh3_1-6-2"><strong>1.6.2 Systems with Rigid Constraints</strong></a></h3>
+<h3 class="level3" id="h3_1-6-2"><strong>1.6.2 Systems with Rigid Constraints</strong></h3>
 
 <p class="noindent">We have found that <em>L</em> &#x003D; <em>T</em> &#x2212; <em>V</em> is a suitable Lagrangian for a system of point particles subject to forces derived from a potential. Extended bodies can sometimes be conveniently idealized as a system of point particles connected by rigid constraints. We will find that <em>L</em> &#x003D; <em>T</em> &#x2212; <em>V</em>, expressed in irredundant coordinates, is also a suitable Lagrangian for modeling systems of point particles with rigid constraints. We will first illustrate the method and then provide a justification.</p>
 
@@ -1399,7 +1399,7 @@ layout: chapter
 
 <p class="noindent">Find the tension in an undriven planar pendulum.</p>
 
-<h3 class="level3" id="h3_1-6-3"><a href="toc.html#Rh3_1-6-3"><strong>1.6.3 Constraints as Coordinate Transformations</strong></a></h3>
+<h3 class="level3" id="h3_1-6-3"><strong>1.6.3 Constraints as Coordinate Transformations</strong></h3>
 
 <p class="noindent">The derivation of a Lagrangian for a constrained system involves steps that are analogous to those in the derivation of a coordinate transformation.</p>
 
@@ -1508,7 +1508,7 @@ layout: chapter
 <p>Construct a coordinate transformation <span class="font1">F</span> from these parts that you can use with <span class="font1">F-&#x003E;C</span> to compose with the free Lagrangian for a particle in a gravitational potential to make a Lagrangian for the Foucault pendulum. The Newtonian potential energy is &#x2212;<em>GMm/r</em>, where <em>r</em> is the distance of the bob from the center of the Earth, and <em>M</em> is the mass of the Earth.</p>
 
 
-<h3 class="level3" id="h3_1-6-4"><a href="toc.html#Rh3_1-6-4"><strong>1.6.4 The Lagrangian Is Not Unique</strong></a></h3>
+<h3 class="level3" id="h3_1-6-4"><strong>1.6.4 The Lagrangian Is Not Unique</strong></h3>
 
 <p class="noindent">Lagrangians are not in a one-to-one relationship with physical systems&#x2014;many Lagrangians can be used to describe the same physical system. In this section we will demonstrate this by showing that the addition to the Lagrangian of a &#x201C;total time derivative&#x201D; of a function of the coordinates and time does not change the paths of stationary action or the equations of motion deduced from the action principle.</p>
 
@@ -1678,7 +1678,7 @@ layout: chapter
 
 
 
-<h1 class="level1" id="h1-6b"><a href="toc.html#Rh1-6b"><strong>1.7&#160;&#160;&#160;Evolution of Dynamical State</strong></a></h1>
+<h1 class="level1" id="h1-6b"><strong>1.7&#160;&#160;&#160;Evolution of Dynamical State</strong></h1>
 
 <p class="noindent">Lagrange's equations are ordinary differential equations that the path must satisfy. They can be used to test if a proposed path is a realizable path of the system. However, we can also use them to develop a path, starting with initial conditions.</p>
 
@@ -1902,7 +1902,7 @@ layout: chapter
 
 
 
-<h1 class="level1" id="h1-6c"><a href="toc.html#Rh1-6c"><strong>1.8&#160;&#160;&#160;Conserved Quantities</strong></a></h1>
+<h1 class="level1" id="h1-6c"><strong>1.8&#160;&#160;&#160;Conserved Quantities</strong></h1>
 
 <p class="noindent">A function of the state of the system that is constant along a solution path is called a <em>conserved quantity</em> or a <em>constant of motion</em>.<sup><a class="footnote_link" href="#endnote_79" id="endnote_ref_79">79</a></sup> If <em>C</em> is a conserved quantity, then</p>
 
@@ -1912,7 +1912,7 @@ layout: chapter
 <p class="noindent">for solution paths <em>q</em>. In this section, we will investigate systems with symmetry and find that symmetries are associated with conserved quantities. For instance, linear momentum is conserved in a system with translational symmetry, angular momentum is conserved if there is rotational symmetry, energy is conserved if the system does not depend on the origin of time. We first consider systems for which a coordinate system can be chosen that expresses the symmetry naturally, and later discuss systems for which no coordinate system can be chosen that simultaneously expresses all symmetries.</p>
 
 
-<h3 class="level3" id="h3_1-8-1"><a href="toc.html#Rh3_1-8-1"><strong>1.8.1 Conserved Momenta</strong></a></h3>
+<h3 class="level3" id="h3_1-8-1"><strong>1.8.1 Conserved Momenta</strong></h3>
 
 <p class="noindent">If a Lagrangian <em>L</em>(<em>t</em>, <em>q</em>, <em>v</em>) does not depend on some particular coordinate <em>q<sup>i</sup></em>, then</p>
 
@@ -1969,7 +1969,7 @@ layout: chapter
 
 <p>We see that there is great advantage in making a judicious choice for the coordinate system. If we can choose the coordinates so that a symmetry of the system is reflected in the Lagrangian by the absence of some coordinate component, then the existence of a corresponding conserved quantity will be evident.<sup><a class="footnote_link" href="#endnote_82" id="endnote_ref_82">82</a></sup></p>
 
-<h3 class="level3" id="h3_1-8-2"><a href="toc.html#Rh3_1-8-2"><strong>1.8.2 Energy Conservation</strong></a></h3>
+<h3 class="level3" id="h3_1-8-2"><strong>1.8.2 Energy Conservation</strong></h3>
 
 <p class="noindent">Momenta are conserved by the motion if the Lagrangian does not depend on the corresponding coordinate. There is another constant of the motion, the energy, if the Lagrangian <epub:switch id="mathmlSwitch242"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>L</mi><mo stretchy='false'>(</mo><mi>t</mi><mo>,</mo><mi>q</mi><mo>,</mo><mover accent='true'><mi>q</mi><mo>&#x02D9;</mo></mover><mo stretchy='false'>)</mo></mrow></math></epub:case></epub:switch> does not depend explicitly on the time: &#x2202;<sub>0</sub><em>L</em> &#x003D; 0.</p>
 
@@ -2050,7 +2050,7 @@ layout: chapter
 
 <p class="noindent">A particle of mass <em>m</em> slides off a horizontal cylinder of radius <em>R</em> in a uniform gravitational field with acceleration <em>g</em>. If the particle starts close to the top of the cylinder with zero initial speed, with what angular velocity does it leave the cylinder? Use the method of incorporating constraint forces that we introduced in <a href="chapter001.html#h3_1-6-2">section 1.6.2</a>, together with conservation of energy.</p>
 
-<h3 class="level3" id="h3_1-8-3"><a href="toc.html#Rh3_1-8-3"><strong>1.8.3 Central Forces in Three Dimensions</strong></a></h3>
+<h3 class="level3" id="h3_1-8-3"><strong>1.8.3 Central Forces in Three Dimensions</strong></h3>
 
 <p class="noindent">One important physical system is the motion of a particle in a central field in three dimensions, with an arbitrary potential energy <em>V</em> (<em>r</em>) depending only on the radius. We will describe this system in spherical coordinates <em>r</em>, <em>&#x03B8;</em>, and <em>&#x03C6;</em>, where <em>&#x03B8;</em> is the colatitude and <em>&#x03C6;</em> is the longitude. The kinetic energy has three terms:</p>
 
@@ -2159,7 +2159,7 @@ layout: chapter
 <p class="noindent">A spherical pendulum is a massive bob, subject to uniform gravity, that may swing in three dimensions, but remains at a given distance from the pivot. Formulate a Lagrangian for a spherical pendulum driven by vertical motion of the pivot. What symmetry(ies) can you find? Find coordinates that express the symmetry(ies). What is conserved? Give analytic expression(s) for the conserved quantity(ies).</p>
 
 
-<h3 class="level3" id="h3_1-8-4"><a href="toc.html#Rh3_1-8-4"><strong>1.8.4 The Restricted Three-Body Problem</strong></a></h3>
+<h3 class="level3" id="h3_1-8-4"><strong>1.8.4 The Restricted Three-Body Problem</strong></h3>
 
 <p class="noindent">Consider the situation of two bodies of masses <em>M</em><sub>0</sub> and <em>M</em><sub>1</sub> in circular orbit about their common center of mass. What is the <a id="p87"></a>behavior of a third particle, gravitationally attracted to the other two, that must move in the plane of their circular orbit? Assume that the third particle has such small mass that we can neglect its effect on the orbits of the two massive particles.</p>
 
@@ -2268,7 +2268,7 @@ layout: chapter
 <p class="noindent">Derive the Lagrange equations for the restricted three-body problem, given the Lagrangian (<a href="chapter001.html#disp_1.150">1.150</a>). Identify the Coriolis and centrifugal force terms in your equations of motion.</p>
 
 
-<h3 class="level3" id="h3_1-8-5"><a href="toc.html#Rh3_1-8-5"><strong>1.8.5 Noether's Theorem</strong></a></h3>
+<h3 class="level3" id="h3_1-8-5"><strong>1.8.5 Noether's Theorem</strong></h3>
 
 <p class="noindent">We have seen that if a system has a symmetry and a coordinate system can be chosen so that the Lagrangian does not depend on the coordinate associated with that symmetry, then there is a conserved quantity associated with the symmetry. However, there are more general symmetries that no coordinate system can fully express. For example, motion in a central potential is spherically symmetric (the dynamical system is invariant under rotations about any axis), but the expression of the Lagrangian for the system in spherical coordinates exhibits symmetry around only one axis. More generally, a Lagrangian has a symmetry if there is a coordinate transformation that leaves the Lagrangian unchanged. A continuous symmetry is a parametric family of symmetries. Noether proved that for any continuous symmetry there is a conserved quantity.</p>
 
@@ -2403,7 +2403,7 @@ layout: chapter
 
 
 
-<h1 class="level1" id="h1-6d"><a href="toc.html#Rh1-6d"><strong>1.9&#160;&#160;&#160;Abstraction of Path Functions</strong></a></h1>
+<h1 class="level1" id="h1-6d"><strong>1.9&#160;&#160;&#160;Abstraction of Path Functions</strong></h1>
 
 <p class="noindent">An essential step in the derivation of the local-tuple transformation function <em>C</em> from the coordinate transformation <em>F</em> was the deduction of the relationship between the velocities in the two coordinate systems. We did this by inserting coordinate paths into the coordinate transformation function <em>F</em>, differentiating, and then generalizing the results on the path to arbitrary velocities at a moment. The last step is an example of a more general problem of abstracting a local-tuple function from a path function. Given a function <em>f</em> of a local tuple, a corresponding path-dependent function <epub:switch id="mathmlSwitch311"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mtext>&#x2009;</mtext><mtext>is</mtext><mtext>&#x2009;</mtext><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo><mo>=</mo><mi>f</mi><mo>&#x2218;</mo><mo>&#x0393;</mo><mo stretchy='false'>[</mo><mi>q</mi><mo stretchy='false'>]</mo></mrow></math></epub:case></epub:switch>. Given <epub:switch id="mathmlSwitch312"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover></math></epub:case></epub:switch>, how can we reconstitute <em>f</em>? The local-tuple function <em>f</em> depends on only a finite number of components of the local tuple, and <epub:switch id="mathmlSwitch313"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover></math></epub:case></epub:switch> depends only on the corresponding local components of the path. So <epub:switch id="mathmlSwitch314"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover></math></epub:case></epub:switch> has the same value for all paths that have that number of components of the local tuple in common. Given <epub:switch id="mathmlSwitch315"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover></math></epub:case></epub:switch> we can reconstitute <em>f</em> by taking the argument of <em>f</em>, which is a finite initial segment of a local tuple, constructing a path that has this local description, and finding the value of <epub:switch id="mathmlSwitch316"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent='true'><mi>f</mi><mo>&#x00AF;</mo></mover></math></epub:case></epub:switch> for this path.</p>
 
@@ -2547,7 +2547,7 @@ layout: chapter
 
 
 
-<h1 class="level1" id="h1-6e"><a href="toc.html#Rh1-6e"><strong>1.10&#160;&#160;&#160;Constrained Motion</strong></a></h1>
+<h1 class="level1" id="h1-6e"><strong>1.10&#160;&#160;&#160;Constrained Motion</strong></h1>
 
 <p class="noindent">An advantage of the Lagrangian approach is that coordinates can often be chosen that exactly describe the freedom of the system, automatically incorporating any constraints. We may also use coordinates that have more freedom than the system actually has and consider explicit constraints among the coordinates. For example, the planar pendulum has a one-dimensional configuration space. We have formulated this problem using the angle from the vertical as the configuration coordinate. Alternatively, we may choose to represent the pendulum as a body moving in the plane, constrained to be on the circle of the correct radius around the pivot. We would like to have valid descriptions for both choices and show they are equivalent. In this section we develop tools to handle problems with explicit constraints. The constraints considered here are more general than those used in the demonstration that the Lagrangian for systems with rigid constraints can be written as the difference of kinetic and potential energies (see <a href="chapter001.html#h3_1-6-2">section 1.6.2</a>).</p>
 
@@ -2583,7 +2583,7 @@ layout: chapter
 <p class="noindent">Note that these are functions of time; the variation at a given time is tangent to the constraint at that time.</p>
 
 
-<h3 class="level3" id="h3_1-10-1"><a href="toc.html#Rh3_1-10-1"><strong>1.10.1 Coordinate Constraints</strong></a></h3>
+<h3 class="level3" id="h3_1-10-1"><strong>1.10.1 Coordinate Constraints</strong></h3>
 
 <p class="noindent">Consider constraints that do not depend on velocities:</p>
 
@@ -2756,7 +2756,7 @@ layout: chapter
 
 <p class="noindent1-topa"><strong>c.</strong> Assume that <em>h</em>(<em>x</em>, <em>y</em>) is axisymmetric about <em>x</em> &#x003D; <em>y</em> &#x003D; 0. Can you find such an <em>h</em> that yields motions with closed orbits?</p>
 
-<h3 class="level3" id="h3_1-10-2"><a href="toc.html#Rh3_1-10-2"><strong>1.10.2 Derivative Constraints</strong></a></h3>
+<h3 class="level3" id="h3_1-10-2"><strong>1.10.2 Derivative Constraints</strong></h3>
 
 <p class="noindent">Here we investigate velocity-dependent constraints that are &#x201C;total time derivatives&#x201D; of velocity-independent constraints. The methods presented so far do not apply because the constraint is velocity-dependent.</p>
 
@@ -2852,7 +2852,7 @@ layout: chapter
 <p class="eqtext" id="disp_1.229"><epub:switch id="mathmlSwitch395"><epub:case required-namespace="http://www.w3.org/1998/Math/MathML"><math display='block' xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtable columnalign='left'><mtr columnalign='left'><mtd columnalign='left'><mrow><msup><mi>D</mi><mn>2</mn></msup><mi>&#x03B8;</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mfrac><mi>g</mi><mi>R</mi></mfrac><mi>sin</mi><mo>&#x2061;</mo><mi>&#x03C6;</mi><mo>.</mo></mrow></mtd><mtd columnalign='left'><mrow><mo stretchy='false'>(</mo><mn>1.229</mn><mo stretchy='false'>)</mo></mrow></mtd></mtr></mtable></mrow></math></epub:case></epub:switch></p>
 <a id="p112"></a>
 
-<h3 class="level3" id="h3_1-10-3"><a href="toc.html#Rh3_1-10-3"><strong>1.10.3 Nonholonomic Systems</strong></a></h3>
+<h3 class="level3" id="h3_1-10-3"><strong>1.10.3 Nonholonomic Systems</strong></h3>
 
 <p class="noindent">Systems with constraints that are not integrable are termed <em>non-holonomic systems</em>. A constraint is not integrable if it cannot be written in terms of an equivalent coordinate constraint. An example of a nonholonomic system is a ball rolling without slipping in a bowl. As the ball rolls it must turn so that its surface does not move relative to the bowl at the point of contact. This looks as if it might establish a relation between the location of the ball in the bowl and the orientation of the ball, but it doesn't. The ball may return to the same place in the bowl with different orientations depending on the intervening path it has taken. As a consequence, the constraints cannot be used to eliminate any coordinates.</p>
 
@@ -2923,7 +2923,7 @@ layout: chapter
 
 
 
-<h1 class="level1" id="h1-6f"><a href="toc.html#Rh1-6f"><strong>1.11&#160;&#160;&#160;Summary</strong></a></h1>
+<h1 class="level1" id="h1-6f"><strong>1.11&#160;&#160;&#160;Summary</strong></h1>
 
 <p class="noindent">To analyze a mechanical system we construct an action function that gives us a way to distinguish realizable motions from other conceivable motions of the system. The action function is constructed so as to be stationary only on paths describing realizable motions, with respect to variations of the path. This is the <em>principle of stationary action</em>. The principle of stationary action is a coordinate-independent specification of the realizable paths. For systems with or without constraints we may choose any system of coordinates that uniquely determines the configuration of the system.</p>
 
@@ -2937,7 +2937,7 @@ layout: chapter
 <a id="p116"></a>
 
 
-<h1 class="level1" id="h1-6g"><a href="toc.html#Rh1-6g"><strong>1.12&#160;&#160;&#160;Projects</strong></a></h1>
+<h1 class="level1" id="h1-6g"><strong>1.12&#160;&#160;&#160;Projects</strong></h1>
 
 <p class="noindent1-top-exe" id="Exe_1-43"><strong>Exercise  1.43: A numerical investigation</strong></p>
 
