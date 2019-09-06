@@ -1030,72 +1030,21 @@ layout: chapter
 {% endhighlight %}</div>
 
 <p class="noindent">We use <span class="font1">evolve</span> to explore the evolution of the system:</p>
-<table class="table1n">
-<tr>
-<td class="td1" valign="top"><span class="font1">(let ((m 1.0)</span></td>
-<td class="td1" valign="top"><span class="font1">;m&#x003D;1kg</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3a"><span class="font1">(l 1.0)</span></p></td>
-<td class="td1" valign="top"><span class="font1">;l&#x003D;1m</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3a"><span class="font1">(g 9.8)</span></p></td>
-<td class="td1" valign="top"><span class="font1">;g&#x003D;9.8m/s<sup>2</sup></span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3a"><span class="font1">(A 0.1)</span></p></td>
-<td class="td1" valign="top"><span class="font1">;A&#x003D;1/10 m</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp3a"><span class="font1">(omega (<sub>&#x002A;</sub> 2 (sqrt 9.8))))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp1"><span class="font1">((evolve H-pend-sysder m l g A omega)</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">(up 0.0</span></p></td>
-<td class="td1" valign="top"><span class="font1">;t<sub>0</sub>&#x003D;0</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4b"><span class="font1">1.0</span></p></td>
-<td class="td1" valign="top"><span class="font1">;theta<sub>0</sub>&#x003D;1 rad</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp4b"><span class="font1">0.0)</span></p></td>
-<td class="td1" valign="top"><span class="font1">;p<sub>0</sub>&#x003D;0 kg m<sup>2</sup>/s</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">(monitor-p-theta window)</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">0.01</span></p></td>
-<td class="td1" valign="top"><span class="font1">;plot interval</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">100.0</span></p></td>
-<td class="td1" valign="top"><span class="font1">;final time</span></td>
-</tr>
-<tr>
-<td class="td1" valign="top">
-<p class="pqp2"><span class="font1">1.0e-12))</span></p></td>
-<td class="td1" valign="top"></td>
-</tr>
-</table>
+<div class="code">{% highlight scheme %}
+(let ((m 1.0)           ;m=1 kg
+      (l 1.0)           ;l=1 m
+      (g 9.8)           ;g=9.8 m/s²
+      (A 0.1)           ;A=1/10 m
+      (omega (* 2 (sqrt 9.8)))
+      ((evolve H-pend-sysder m l g A omega)
+       (up 0.0          ;t₀=0
+           1.0          ;θ₀=1 rad
+           0.0)         ;p₀=0 kg m²/s
+       (monitor-p-theta window)
+       0.01             ;plot interval
+       100.0            ;final time
+       1.0e-12)))
+{% endhighlight %}</div>
 
 <p class="noindent">The trajectory sometimes oscillates and sometimes circulates. The patterns in the phase plane are reminiscent of the trajectories in the phase plane of the undriven pendulum shown in <a href="chapter003.html#Fig_3-4">figure 3.4</a> on <a href="chapter003.html#p225">page 225</a>.</p>
 
